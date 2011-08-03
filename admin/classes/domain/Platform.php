@@ -598,7 +598,7 @@ class Platform extends DatabaseObject {
 	//returns platform object from name
 	public function getByName($platformName){
 
-		$query = "select platformID from Platform where upper(name) = upper('" . str_replace("'","\'", $platformName) . "') LIMIT 1;";
+		$query = "select platformID from Platform where upper(name) = upper('" . str_replace("'","''", $platformName) . "') LIMIT 1;";
 
 		$result = $this->db->processQuery($query, 'assoc');
 

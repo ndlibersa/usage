@@ -17,6 +17,8 @@
 */
 
 
+set_time_limit(300);
+
 include_once 'directory.php';
 
 $pageTitle = 'Upload Process Complete';
@@ -357,10 +359,15 @@ while (!feof($file_handle)) {
 		#################################################################
 		//first, remove the '-' from the ISSNs
 		$printISSN = strtoupper(trim(str_replace ('-','',$printISSN)));
+		//remove blank
+		$printISSN = strtoupper(trim(str_replace (' ','',$printISSN)));
 		if (strpos(strtoupper($printISSN),'N/A') !== false) $printISSN = '';
 		if ($printISSN == '00000000') $printISSN = '';
 		if (strtoupper($printISSN) == 'XXXXXXXX') $printISSN = '';
+
 		$onlineISSN = strtoupper(trim(str_replace ('-','',$onlineISSN)));
+		//remove blank
+		$onlineISSN = strtoupper(trim(str_replace (' ','',$onlineISSN)));
 		if (strpos(strtoupper($onlineISSN),'N/A') !== false) $onlineISSN = '';
 		if ($onlineISSN == '00000000') $onlineISSN = '';
 		if (strtoupper($onlineISSN) == 'XXXXXXXX') $onlineISSN = '';
@@ -373,7 +380,7 @@ while (!feof($file_handle)) {
 
 		//strip out double quotes, escape single quotes and fix &
 		$journalTitle = trim(str_replace ('"','',$journalTitle));
-		$journalTitle = trim(str_replace ("'","\'",$journalTitle));
+		$journalTitle = trim(str_replace ("'","''",$journalTitle));
 		$journalTitle = trim(str_replace ("&amp;","&",$journalTitle));
 
 

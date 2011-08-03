@@ -32,7 +32,7 @@ class Publisher extends DatabaseObject {
 	//returns array of the first listed issn objects
 	public function getByName($publisherName){
 
-		$query = "select publisherID from Publisher where upper(name) = upper('" . str_replace("'","\'", $publisherName) . "') LIMIT 1;";
+		$query = "select publisherID from Publisher where upper(name) = upper('" . str_replace("'","''", $publisherName) . "') LIMIT 1;";
 
 		$result = $this->db->processQuery($query, 'assoc');
 

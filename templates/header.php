@@ -78,7 +78,7 @@ $currentPage = $parts[count($parts) - 1];
 ?>
 </span>
 <br />
-<span style='color:red;font-size:90%;'>(Test)</span>
+<span style='color:red;font-size:90%;'></span>
 </div>
 </td>
 </tr>
@@ -111,9 +111,9 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 				<li><a href="<?php echo $coralURL; ?>" target='_blank'><img src='images/change/coral-main.gif'></a></li>
 				<?php
 				}
-				if ($config->settings->licensingModule == 'Y') {
+				if ($config->settings->resourcesModule == 'Y') {
 				?>
-				<li><a href="<?php echo $coralURL; ?>licensing/" target='_blank'><img src='images/change/coral-licensing.gif'></a></li>
+				<li><a href="<?php echo $coralURL; ?>resources/" target='_blank'><img src='images/change/coral-resources.gif'></a></li>
 				<?php
 				}
 				if ($config->settings->organizationsModule == 'Y') {
@@ -121,15 +121,15 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 				<li><a href="<?php echo $coralURL; ?>organizations/" target='_blank'><img src='images/change/coral-organizations.gif'></a></li>
 				<?php
 				}
-				if ($config->settings->resourcesModule == 'Y') {
+				if ($config->settings->licensingModule == 'Y') {
 				?>
-				<li><a href="<?php echo $coralURL; ?>resources/" target='_blank'><img src='images/change/coral-resources.gif'></a></li>
+				<li><a href="<?php echo $coralURL; ?>licensing/" target='_blank'><img src='images/change/coral-licensing.gif'></a></li>
 				<?php
 				}
 				if ($config->settings->cancellationModule == 'Y') {
 				?>
 				<li><a href="<?php echo $coralURL; ?>cancellation/" target='_blank'><img src='images/change/coral-cancellation.gif'></a></li>
-				<? } ?>
+				<?php } ?>
 			</ul>
 		</li>
 		</ul>

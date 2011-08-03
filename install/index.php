@@ -36,7 +36,7 @@ if ($step == "3"){
 				$errorMessage[] = "Unable to access the database '" . $database_name . "'.  Please verify it has been created.<br />MySQL Error: " . mysql_error();
 			}else{
 				//make sure the tables don't already exist - otherwise this script will overwrite all of the data!
-				$query = "SELECT count(*) count FROM information_schema.`COLUMNS` WHERE table_schema = '" . $database_name . "' AND table_name='License'";
+				$query = "SELECT count(*) count FROM information_schema.`COLUMNS` WHERE table_schema = '" . $database_name . "' AND table_name='Title'";
 
 				//if License table exists, error out
 				if (!$row = mysql_fetch_array(mysql_query($query))){
@@ -178,6 +178,7 @@ if ($step == "3"){
 	$remoteAuthVariableName = trim($_POST['remoteAuthVariableName']);
 	$organizationsModule = $_POST['organizationsModule'];
 	$cancellationModule = $_POST['cancellationModule'];
+	$resourcesModule = $_POST['resourcesModule'];
 	$licensingModule = $_POST['licensingModule'];
 	$reportingModule = $_POST['reportingModule'];
 	$useOutliers = $_POST['useOutliers'];
@@ -311,7 +312,7 @@ if ($step == "3"){
 	</ul>
 
 
-	<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+	<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 	<input type='hidden' name='step' value='1'>
 	<input type="submit" value="Continue" name="submit">
 	</form>
@@ -340,9 +341,9 @@ if ($step == "3"){
 
 	<h3>Getting system info and verifying php version</h3>
 	<ul>
-	<li>System: <?=$phpinfo['phpinfo']['System'];?></li>
-    <li>PHP version: <?=phpversion();?></li>
-    <li>Server API: <?=$phpinfo['phpinfo']['Server API'];?></li>
+	<li>System: <?php echo $phpinfo['phpinfo']['System'];?></li>
+    <li>PHP version: <?php echo phpversion();?></li>
+    <li>Server API: <?php echo $phpinfo['phpinfo']['Server API'];?></li>
 	</ul>
 
 	<br />
@@ -352,7 +353,7 @@ if ($step == "3"){
 
 	if (phpversion() >= 5){
 	?>
-		<form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+		<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 		<input type='hidden' name='step' value='2'>
 		<input type="submit" value="Continue" name="submit">
 		</form>
@@ -367,7 +368,7 @@ if ($step == "3"){
 	if (!$database_host) $database_host='localhost';
 	if (!$database_name) $database_name='coral_usage_prod';
 	?>
-		<form method="post" action="<?=$_SERVER['PHP_SELF']?>">
+		<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
 		<h3>MySQL info with permissions to create tables</h3>
 		<?php
 			if (count($errorMessage) > 0){
@@ -382,25 +383,25 @@ if ($step == "3"){
 			<tr>
 				<td>&nbsp;Database Host</td>
 				<td>
-					<input type="text" name="database_host" value='<?=$database_host?>' size="30">
+					<input type="text" name="database_host" value='<?php echo $database_host?>' size="30">
 				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;Database Schema Name</td>
 				<td>
-					<input type="text" name="database_name" size="30" value="<?=$database_name?>">
+					<input type="text" name="database_name" size="30" value="<?php echo $database_name?>">
 				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;Database Username</td>
 				<td>
-					<input type="text" name="database_username" size="30" value="<?=$database_username?>">
+					<input type="text" name="database_username" size="30" value="<?php echo $database_username?>">
 				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;Database Password</td>
 				<td>
-					<input type="text" name="database_password" size="30" value="<?=$database_password?>">
+					<input type="text" name="database_password" size="30" value="<?php echo $database_password?>">
 				</td>
 			</tr>
 			<tr>
@@ -423,7 +424,7 @@ if ($step == "3"){
 } else if ($step == '3') {
 
 	?>
-		<form method="post" action="<?=$_SERVER['PHP_SELF']?>">
+		<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
 		<h3>MySQL user for CORAL web application - with select, insert, update, delete privileges to CORAL schemas</h3>
 		*It's recommended but not required that this user is different than the one used on the prior step
 		<?php
@@ -434,21 +435,21 @@ if ($step == "3"){
 				echo "</ul></span>";
 			}
 		?>
-		<input type="hidden" name="database_host" value='<?=$database_host?>'>
-		<input type="hidden" name="database_name" value="<?=$database_name?>">
+		<input type="hidden" name="database_host" value='<?php echo $database_host?>'>
+		<input type="hidden" name="database_name" value="<?php echo $database_name?>">
 
 		<table width="100%" border="0" cellspacing="0" cellpadding="2">
 		<tr>
 			<tr>
 				<td>&nbsp;Database Username</td>
 				<td>
-					<input type="text" name="database_username" size="30" value="<?=$database_username?>">
+					<input type="text" name="database_username" size="30" value="<?php echo $database_username?>">
 				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;Database Password</td>
 				<td>
-					<input type="text" name="database_password" size="30" value="<?=$database_password?>">
+					<input type="text" name="database_password" size="30" value="<?php echo $database_password?>">
 				</td>
 			</tr>
 
@@ -458,7 +459,7 @@ if ($step == "3"){
 			<tr>
 				<td>&nbsp;Your Login ID</td>
 				<td>
-					<input type="text" name="admin_login" size="30" value="<?=$admin_login?>">
+					<input type="text" name="admin_login" size="30" value="<?php echo $admin_login?>">
 				</td>
 			</tr>
 			<tr>
@@ -484,11 +485,11 @@ if ($step == "3"){
 	if ($_POST['cancellationModule']) $cancellationChecked = "checked";
 	if ($_POST['licensingModule']) $licensingChecked = "checked";
 	if ($_POST['reportingModule']) $reportingModule = "checked";
-	if ($_POST['resourcesChecked']) $resourcesChecked = "checked";
+	if ($_POST['resourcesModule']) $resourcesChecked = "checked";
 	if ($_POST['useOutliers']) $useOutliersChecked = "checked";
 
 	?>
-		<form method="post" action="<?=$_SERVER['PHP_SELF']?>">
+		<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
 		<h3>Inter-operability and other config settings</h3>
 		<?php
 			if (count($errorMessage) > 0){
@@ -498,61 +499,61 @@ if ($step == "3"){
 				echo "</ul></span>";
 			}
 		?>
-		<input type="hidden" name="database_host" value='<?=$database_host?>'>
-		<input type="hidden" name="database_name" value="<?=$database_name?>">
-		<input type="hidden" name="database_username" value='<?=$database_username?>'>
-		<input type="hidden" name="database_password" value="<?=$database_password?>">
+		<input type="hidden" name="database_host" value='<?php echo $database_host?>'>
+		<input type="hidden" name="database_name" value="<?php echo $database_name?>">
+		<input type="hidden" name="database_username" value='<?php echo $database_username?>'>
+		<input type="hidden" name="database_password" value="<?php echo $database_password?>">
 
 		<table width="100%" border="0" cellspacing="0" cellpadding="2">
 		<tr>
 			<tr>
-				<td>&nbsp;Are you using the usage statistics reporting module?</td>
+				<td>&nbsp;Are you using the Usage Statistics Reporting module?</td>
 				<td>
-					<input type="checkbox" name="reportingModule" value="Y" <?=$reportingModule?>>
+					<input type="checkbox" name="reportingModule" value="Y" <?php echo $reportingModule?>>
 				</td>
 			</tr>
 			<tr>
-				<td>&nbsp;Are you using organizations module?</td>
+				<td>&nbsp;Are you using the Organizations module?</td>
 				<td>
-					<input type="checkbox" name="organizationsModule" value="Y" <?=$organizationsChecked?>>
+					<input type="checkbox" name="organizationsModule" value="Y" <?php echo $organizationsChecked?>>
 				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;&nbsp;&nbsp;If so, enter organizations database schema name</td>
 				<td>
-					<input type="text" name="organizationsDatabaseName" style="width:250px;" value="<?=$organizationsDatabaseName?>">
+					<input type="text" name="organizationsDatabaseName" style="width:250px;" value="<?php echo $organizationsDatabaseName?>">
 				</td>
 			</tr>
 			<tr>
-				<td>&nbsp;Are you using cancellation module?</td>
+				<td>&nbsp;Are you using the Resources module?</td>
 				<td>
-					<input type="checkbox" name="cancellationModule" value="Y" <?=$cancellationChecked?>>
+					<input type="checkbox" name="resourcesModule" value="Y" <?php echo $resourcesChecked?>>
 				</td>
 			</tr>
 			<tr>
-				<td>&nbsp;Are you using the licensing module?</td>
+				<td>&nbsp;Are you using the Licensing module?</td>
 				<td>
-					<input type="checkbox" name="licensingModule" value="Y" <?=$licensingChecked?>>
+					<input type="checkbox" name="licensingModule" value="Y" <?php echo $licensingChecked?>>
 				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;Are you going to use the outlier flagging feature<br />&nbsp; when importing statistics?</td>
 				<td>
-					<input type="checkbox" name="useOutliers" value="Y" <?=$useOutliersChecked?>>
+					<input type="checkbox" name="useOutliers" value="Y" <?php echo $useOutliersChecked?>>
 				</td>
 			</tr>
 
 			<tr>
 				<td>&nbsp;Link Resolver Base URL (optional)</td>
 				<td>
-					<textarea id="base_url" name="base_url" style="width:250px;" rows="3"><?=$base_url?></textarea>
+					<textarea id="base_url" name="base_url" style="width:250px;" rows="3"><?php echo $base_url?></textarea>
 				</td>
 			</tr>
 
 			<tr>
 				<td>&nbsp;Remote Auth Variable Name</td>
 				<td>
-					<input type="text" name="remoteAuthVariableName" style="width:250px;" value="<?=$remoteAuthVariableName?>">
+					<input type="text" name="remoteAuthVariableName" style="width:250px;" value="<?php echo $remoteAuthVariableName?>">
 				</td>
 			</tr>
 			<tr>

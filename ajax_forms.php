@@ -272,7 +272,7 @@ switch ($action) {
 
 		</div>
 
-		<script type="text/javascript" src="js/forms/platformNoteSubmitForm.js"></script>
+		<script type="text/javascript" src="js/forms/platformNoteSubmitForm.js?random=<?php echo rand(); ?>"></script>
 
 		<?php
 
@@ -341,7 +341,7 @@ switch ($action) {
 
 		</div>
 
-		<script type="text/javascript" src="js/forms/publisherNoteSubmitForm.js"></script>
+		<script type="text/javascript" src="js/forms/publisherNoteSubmitForm.js?random=<?php echo rand(); ?>"></script>
 
 		<?php
 
@@ -409,7 +409,7 @@ switch ($action) {
 
 		</div>
 
-		<script type="text/javascript" src="js/forms/externalLoginSubmitForm.js"></script>
+		<script type="text/javascript" src="js/forms/externalLoginSubmitForm.js?random=<?php echo rand(); ?>"></script>
 
 		<?php
 
@@ -459,7 +459,7 @@ switch ($action) {
 
 
 
-		<script type="text/javascript" src="js/forms/organizationForm.js"></script>
+		<script type="text/javascript" src="js/forms/organizationForm.js?random=<?php echo rand(); ?>"></script>
 		</form>
 		</div>
 
@@ -537,7 +537,7 @@ switch ($action) {
 		<input type="hidden" id='year' name='year' value='<?php echo $year; ?>'>
 		<input type="hidden" id='month' name='month' value='<?php echo $month; ?>'>
 
-		<script type="text/javascript" src="js/forms/outlierSubmitForm.js"></script>
+		<script type="text/javascript" src="js/forms/outlierSubmitForm.js?random=<?php echo rand(); ?>"></script>
 		</div>
 
 
@@ -631,7 +631,7 @@ switch ($action) {
 		<input type="hidden" id='archiveInd' name='archiveInd' value='<?php echo $archiveInd; ?>'>
 		<input type="hidden" id='year' name='year' value='<?php echo $year; ?>'>
 
-		<script type="text/javascript" src="js/forms/overrideSubmitForm.js"></script>
+		<script type="text/javascript" src="js/forms/overrideSubmitForm.js?random=<?php echo rand(); ?>"></script>
 		</div>
 
 
@@ -687,7 +687,7 @@ switch ($action) {
 		<input type="hidden" id='platformID' name='platformID' value='<?php echo $platformID; ?>'>
 		<input type="hidden" id='publisherPlatformID' name='publisherPlatformID' value='<?php echo $publisherPlatformID; ?>'>
 
-		<script type="text/javascript" src="js/forms/issnSubmitForm.js"></script>
+		<script type="text/javascript" src="js/forms/issnSubmitForm.js?random=<?php echo rand(); ?>"></script>
 
 
 		<?php
@@ -819,7 +819,7 @@ switch ($action) {
 		</div>
 
 
-		<script type="text/javascript" src="js/forms/adminUserForm.js"></script>
+		<script type="text/javascript" src="js/forms/adminUserForm.js?random=<?php echo rand(); ?>"></script>
 		<?php
 
 		break;

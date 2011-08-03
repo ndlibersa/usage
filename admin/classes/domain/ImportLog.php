@@ -35,7 +35,7 @@ class ImportLog extends DatabaseObject {
 
 
 		//now formulate query
-		$query = "SELECT importLogID, loginID, date_format(importDateTime, \"%m/%d/%Y %h:%i %p\") dateTime, fileName, archiveFileURL, logFileURL, details
+		$query = "SELECT importLogID, loginID, importDateTime dateTime, fileName, archiveFileURL, logFileURL, details
 					FROM ImportLog
 					ORDER BY importDateTime DESC " . $limitStatement;
 

@@ -52,4 +52,32 @@ if (false === function_exists('lcfirst')) {
 	}
 }
 
+
+//fix default timezone for PHP > 5.3
+if(function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get")){
+	@date_default_timezone_set(@date_default_timezone_get());
+}
+
+
+
+
+
+function format_date($mysqlDate) {
+
+	//see http://php.net/manual/en/function.date.php for options
+
+	//there is a dependence on strtotime recognizing date format for date inputs
+	//thus, european format (d-m-Y) must use dashes rather than slashes
+
+	//upper case Y = four digit year
+	//lower case y = two digit year
+	//make sure digit years matches for both directory.php and common.js
+
+	//SUGGESTED: "m/d/Y" or "d-m-Y"
+
+	return date("m/d/Y", strtotime($mysqlDate));
+
+}
+
+
 ?>

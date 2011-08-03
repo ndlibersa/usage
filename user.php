@@ -16,6 +16,7 @@
 **************************************************************************************************************************
 */
 
+
 //get login id from server
 if (!isset($_SESSION['loginID'])){
 	//the following code takes the remote auth variable name from the config settings and evaluates it to get the actual value from web server
@@ -30,7 +31,7 @@ if (!isset($_SESSION['loginID'])){
 	$remoteAuth=eval("return \$$theVarStem;");
 
 	//use the split in case the remote login is supplied as an email address
-	list ($loginID,$restofAddr) = split("@", $remoteAuth);
+	list ($loginID,$restofAddr) = explode("@", $remoteAuth);
 
 	session_start();
 	$_SESSION['loginID'] = $loginID;

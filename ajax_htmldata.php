@@ -918,7 +918,7 @@ switch ($action) {
 				}
 
 				echo "<tr>";
-				echo "<td $classAdd style='padding:3px;'>" . $importLog['dateTime'] . "</td>";
+				echo "<td $classAdd style='padding:3px;'>" . format_date($importLog['dateTime']) . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $importLog['fileName'] . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $importLog['loginID'] . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $importLog['details'] . "</td>";
