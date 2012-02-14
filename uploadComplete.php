@@ -536,7 +536,7 @@ while (!feof($file_handle)) {
 								$prevMonths='';
 								$currMonths='';
 								$yearAddWhere='';
-								$outlierID = '';
+								$outlierID = '0';
 								$outlierLevel = '';
 
 								if ($i == 1){
@@ -576,11 +576,11 @@ while (!feof($file_handle)) {
 									}
 
 								}else{
-									$outlierID = '';
+									$outlierID = '0';
 								}
 
 							}else{
-								$outlierID = '';
+								$outlierID = '0';
 							}
 
 							//if override and this is not a merged title delete original data so we don't have duplicates in system ($i = month)

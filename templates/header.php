@@ -28,6 +28,8 @@ $currentPage = $_SERVER["SCRIPT_NAME"];
 $parts = Explode('/', $currentPage);
 $currentPage = $parts[count($parts) - 1];
 
+//get CORAL URL for 'Change Module' and logout link
+$coralURL = $util->getCORALURL();
 
 ?>
 
@@ -73,12 +75,11 @@ $currentPage = $parts[count($parts) - 1];
 	if ($user->lastName){
 		echo $user->firstName . " " . $user->lastName;
 	}else{
-		echo "Guest User";
+		echo $user->loginID;
 	}
 ?>
 </span>
-<br />
-<span style='color:red;font-size:90%;'></span>
+<br /><?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout'>logout</a>"; } ?>
 </div>
 </td>
 </tr>
@@ -97,9 +98,6 @@ $currentPage = $parts[count($parts) - 1];
 //only show the 'Change Module' if there are other modules installed or if there is an index to the main CORAL page
 
 if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->organizationsModule == 'Y') || ($config->settings->resourcesModule == 'Y') || ($config->settings->cancellationModule == 'Y') || ($config->settings->usageModule == 'Y')) {
-
-	//get CORAL URL for 'Change Module'
-	$coralURL = $util->getCORALURL();
 
 	?>
 

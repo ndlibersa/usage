@@ -54,6 +54,7 @@ class DatabaseObject extends DynamicObject {
 		$this->primaryKey = $arguments->primaryKey;
 		$this->db = new DBService;
 		$this->defineRelationships();
+		//$this->defineAttributes();  //now performed in load
 		$this->overridePrimaryKeyName();
 		$this->load();
 
@@ -69,7 +70,10 @@ class DatabaseObject extends DynamicObject {
 		$query = "SELECT COLUMN_NAME FROM information_schema.`COLUMNS` WHERE table_schema = '";
 		$query .= $this->db->config->database->name . "' AND table_name = '$this->tableName'";// MySQL-specific
 		foreach ($this->db->processQuery($query) as $result) {
-			$this->addAttribute($result[0]);
+			$attributeName = $result[0];
+			if ($attributeName != $this->primaryKeyName) {
+				$this->addAttribute($attributeName);
+			}
 		}
 	}
 
@@ -206,14 +210,13 @@ class DatabaseObject extends DynamicObject {
 	public function save() {
 		$pairs = array();
 		foreach (array_keys($this->attributeNames) as $attributeName) {
-			if (isset($this->attributes[$attributeName])){
-				$value = $this->attributes[$attributeName];
-				$value = addslashes($value);
-				$value = "'$value'";
-			}else{
+			$value = $this->attributes[$attributeName];
+			if ($value == '' || !isset($value)) {
 				$value = "NULL";
+			} else {
+				$value = $this->db->escapeString($value);
+				$value = "'$value'";
 			}
-
 			$pair = "`$attributeName`=$value";
 			array_push($pairs, $pair);
 		}
@@ -234,21 +237,13 @@ class DatabaseObject extends DynamicObject {
 
 	public function all() {
 		$query = "SELECT * FROM `$this->tableName` ORDER BY 2, 1";
+
 		$result = $this->db->processQuery($query);
 		$objects = array();
-
-
-		if (isset($result[lcfirst($this->tableName) . 'ID'])){
-				$className = get_class($this);
-				$object = new $className(new NamedArguments(array('primaryKey' => $result[lcfirst($this->tableName) . 'ID'])));
-				array_push($objects, $object);
-
-		}else{
-			foreach ($result as $row) {
-				$className = get_class($this);
-				$object = new $className(new NamedArguments(array('primaryKey' => $row[0])));
-				array_push($objects, $object);
-			}
+		foreach ($result as $row) {
+			$className = get_class($this);
+			$object = new $className(new NamedArguments(array('primaryKey' => $row[0])));
+			array_push($objects, $object);
 		}
 
 		return $objects;
@@ -291,7 +286,14 @@ class DatabaseObject extends DynamicObject {
 				$this->attributes[$attributeName] = $result[$attributeName];
 			}
 		}else{
-			$this->defineAttributes();
+			// Figure out attributes from existing database
+			$query = "SELECT COLUMN_NAME FROM information_schema.`COLUMNS` WHERE table_schema = '";
+			$query .= $this->db->config->database->name . "' AND table_name = '$this->tableName'";// MySQL-specific
+			foreach ($this->db->processQuery($query) as $result) {
+				$attributeName = $result[0];
+				$this->addAttribute($attributeName);
+			}
+
 		}
 	}
 

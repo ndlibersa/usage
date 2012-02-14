@@ -99,6 +99,23 @@ class Utility {
 		return $this->getCORALURL() . "organizations/orgDetail.php?organizationID=";
 	}
 
+
+	public function getLoginCookie(){
+
+		if(array_key_exists('CORALLoginID', $_COOKIE)){
+			return $_COOKIE['CORALLoginID'];
+		}
+
+	}
+
+	public function getSessionCookie(){
+
+		if(array_key_exists('CORALSessionID', $_COOKIE)){
+			return $_COOKIE['CORALSessionID'];
+		}
+
+	}
+
 }
 
 ?>

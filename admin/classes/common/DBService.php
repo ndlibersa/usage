@@ -56,10 +56,12 @@ class DBService extends Object {
 		//mysql_close($this->db);
 	}
 
+	public function escapeString($value) {
+		return mysql_real_escape_string($value);
+	}
+
 	public function processQuery($sql, $type = NULL) {
-
-		//echo date('h:i:s') . " " . $sql . "<br />";
-
+    	//echo $sql. "\n\n";
 		$result = mysql_query($sql, $this->db);
 		$this->checkForError();
 		$data = array();
@@ -80,7 +82,6 @@ class DBService extends Object {
 		} else if ($result) {
 			$data = mysql_insert_id($this->db);
 		}
-
 
 		return $data;
 	}

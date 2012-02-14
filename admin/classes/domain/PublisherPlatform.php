@@ -227,7 +227,7 @@ class PublisherPlatform extends DatabaseObject {
 	public function getFullStatsDetails(){
 
 		//now formulate query
-		$query = "SELECT DISTINCT year, GROUP_CONCAT(DISTINCT concat(month, '|', if(ignoreOutlierInd=0,outlierID,0)) ORDER BY month, 1 SEPARATOR ',') months, archiveInd, MAX(month) max_month, MIN(month) min_month, MAX(IF(ignoreOutlierInd=0,outlierID,null)) outlierID
+		$query = "SELECT DISTINCT year, GROUP_CONCAT(DISTINCT concat(month, '|', if(ignoreOutlierInd=0,ifnull(outlierID,0),0)) ORDER BY month, 1 SEPARATOR ',') months, archiveInd, MAX(month) max_month, MIN(month) min_month, MAX(IF(ignoreOutlierInd=0,outlierID,null)) outlierID
 					FROM MonthlyUsageSummary tsm
 					WHERE tsm.publisherPlatformID = '" . $this->publisherPlatformID . "'
 					GROUP BY year, archiveInd

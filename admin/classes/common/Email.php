@@ -46,13 +46,15 @@ class EmailHeader extends DynamicObject {
 
 class Email extends Object {
 
+
 	protected $to;
 	protected $subject;
 	protected $message;
 	protected $headers = array();
 
-	protected $from = "";
-	protected $replyTo = "";
+	protected $from = "CORAL Usage";
+	protected $replyTo;
+
 
 	protected function nameIsBasic($name) {
 		return preg_match('/^(to)|(subject)|(message)$/', $name);
@@ -67,6 +69,7 @@ class Email extends Object {
 		//append from and reply to
 		$output .= "From: " . $this->from . "\r\n";
 		$output .= "Reply-To: " . $this->replyTo . "\r\n";
+		$output .= "Content-Type: text/plain; charset=UTF-8" . "\r\n";
 
 		return $output;
 	}
@@ -78,6 +81,7 @@ class Email extends Object {
 			$this->headers[$key] = new EmailHeader(new NamedArguments(array('name' => $key, 'body' => $value)));
 		}
 	}
+
 
 	public function fullMessage() {
 		return $this->getHeaders() . "\n" . $this->to . "\n" . $this->subject . "\n" . $this->message;
