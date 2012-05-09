@@ -58,7 +58,7 @@ $pageTitle='Not Available';
 if ($_GET['errorMessage']){
 	echo "<h3>" . $_GET['errorMessage'] . "</h3>";
 }else{
-	echo "<h3>You have not been set up to have access to the Usage Statistics Module.  Please contact <a href='mailto:Benjamin.J.Heet.2@nd.edu' style='font-size:105%'>Ben Heet</a> to be added.</h3>";
+	echo "<h3>You have not been set up to have access to the Usage Statistics Module.  Please contact your CORAL administrator.</h3>";
 }
 ?>
 
