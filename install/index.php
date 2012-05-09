@@ -342,7 +342,7 @@ if ($step == "3"){
 		<li>Know your host, username and password for MySQL with permissions to create tables</li>
 		<li>It is recommended for security to have a different username and password for CORAL with only select, insert, update and delete privileges to CORAL schemas</li>
 		<li>If you are using the CORAL Authentication module, you will need to have it installed and your admin user set up before you can use Usage Statistics</li>
-		<li>If you are not using CORAL Authentication, the server variable name to access your external auth system via PHP - for example $HTTP_SERVER_VARS['REMOTE_USER'] or $SERVER['AUTH_USER']</li>
+		<li>If you are not using CORAL Authentication, the server variable name to access your external auth system via PHP - for example $_SERVER['REMOTE_USER'] or $SERVER['AUTH_USER']</li>
 		<li>Know what other systems you will be using operating with - you will be asked whether you are using the Usage Statistics Reporting Module or the Organizations Module.  If you are using the Organizations module you will need to provide the name of the database/schema used for Organizations for inter-operability.  Recommended name is coral_organizations_prod.  For more information about inter-operability refer to the user guide.</li>
 		<li>Verify that your /admin/ directory is writable by server during the installation process (chmod 777).  After installation you should chmod it back.</li>
 		<li>Verify that your /archive/ and /log/ directories are writable by the server - the CORAL Usage Statistics Module will write files to these directories.</li>
@@ -517,7 +517,7 @@ if ($step == "3"){
 <?php
 //fourth step - ask for other settings in configuration.ini
 } else if ($step == '4') {
-	if (!$remoteAuthVariableName) $remoteAuthVariableName = "HTTP_SERVER_VARS['REMOTE_USER']";
+	if (!$remoteAuthVariableName) $remoteAuthVariableName = "_SERVER['REMOTE_USER']";
 	if ($_POST['organizationsModule']) $organizationsChecked = "checked";
 	if ($_POST['cancellationModule']) $cancellationChecked = "checked";
 	if ($_POST['licensingModule']) $licensingChecked = "checked";
