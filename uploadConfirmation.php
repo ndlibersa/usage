@@ -23,28 +23,39 @@ include_once 'user.php';
 //First, move the uploaded file
 // Where the file is going to be placed
 
+$archive_path = "archive";
+$log_path = "logs";
+
+if (!is_writable($archive_path) || !is_writable($log_path)) {
+  header( 'Location: index.php?error=4' ) ;
+  break;
+}
+
 if (count(explode (".", basename( $_FILES['usageFile']['name']))) == "2"){
 	list ($fileNameStart, $fileNameExt) = explode (".", basename( $_FILES['usageFile']['name']));
 }else if (count(explode (".", basename( $_FILES['usageFile']['name']))) == "3"){
 	list ($dateStamp, $fileNameStart, $fileNameExt) = explode (".", basename( $_FILES['usageFile']['name']));
 }else{
 	header( 'Location: index.php?error=3' ) ;
+  exit;
 }
 
 $orgFileName = $_FILES['usageFile']['name'];
 
 $ts = date("Ymd");
-$target_path = "archive/" . $ts . "." . $fileNameStart .  "." . $fileNameExt;
+$target_path = $archive_path . "/" . $ts . "." . $fileNameStart .  "." . $fileNameExt;
 $checkYear = '';
 
 if ($fileNameExt != "txt") {
 	header( 'Location: index.php?error=1' ) ;
+  exit;
 }else{
 
   if(move_uploaded_file($_FILES['usageFile']['tmp_name'], $target_path)) {
 	  $uploadConfirm = "The file ".  basename( $_FILES['usageFile']['name'])." has been uploaded successfully.<br />Please confirm the following data:<br />";
   } else{
 	  header( 'Location: index.php?error=2' ) ;
+    exit;
   }
 }
 

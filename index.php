@@ -30,6 +30,9 @@ include 'templates/header.php';
 			case 3:
 				echo "<font color='red'>File has an incorrectly formatted name - try filename.txt!</font><br /><br />";
 				break;
+      case 4:
+        echo "<font color='red'>The 'archive' and 'logs' directories must both be writable by the web server in order to upload usage statistics files.</font><br /><br />";
+        break;
 		}
 	}
 
