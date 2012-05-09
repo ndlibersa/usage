@@ -20,6 +20,7 @@
 set_time_limit(300);
 
 include_once 'directory.php';
+include_once 'user.php';
 
 $pageTitle = 'Upload Process Complete';
 

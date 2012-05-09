@@ -18,6 +18,7 @@
 
 
 include_once 'directory.php';
+include_once 'user.php';
 
 //First, move the uploaded file
 // Where the file is going to be placed

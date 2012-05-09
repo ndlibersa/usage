@@ -1,5 +1,6 @@
 <?php
 include_once 'directory.php';
+include_once 'user.php';
 
 $year = $_GET['year'];
 $publisherPlatformID = $_GET['publisherPlatformID'];
