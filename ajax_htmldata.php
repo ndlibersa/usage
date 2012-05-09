@@ -24,6 +24,7 @@
 
 
 include_once 'directory.php';
+include_once 'user.php';
 include "common.php";
 
 $action = $_REQUEST['action'];
