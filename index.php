@@ -39,7 +39,7 @@ include 'templates/header.php';
   <font color='red'>Save file as .txt files in tab delimited format</font><br /><br />
     <form id="form1" name="form1" enctype="multipart/form-data" onsubmit="return validateForm()" method="post" action="uploadConfirmation.php">
 
-      <b>Choose File:</b><span id='span_error' style='color:red'></span><br /><input type="file" name="usageFile" id="usageFile" accept="text/html" class='bigger' /><br /><br />
+      <b>Choose File:</b><span id='span_error' style='color:red'></span><br /><input type="file" name="usageFile" id="usageFile" class='bigger' /><br /><br />
       <input type="checkbox" name="archiveInd" id="archiveInd" />&nbsp;This is an Archive Report (JR1a)<br />
       <input type="checkbox" name="overrideInd" id="overrideInd" />&nbsp;Override previous month verification<br /><br />
       <input type="submit" name="submitFile" id="submitFile" value="Upload" />
