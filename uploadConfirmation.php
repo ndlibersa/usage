@@ -75,51 +75,65 @@ function updateSubmit(){
   $startFlag = "N";
   $formatCorrectFlag = "N";
   $errorFlag = "N";
+  $reportType = "";
 
 
   #read layouts ini file to get the available layouts
   $layoutsArray = parse_ini_file("layouts.ini", true);
 
-
+  #read this file
   $file_handle = fopen($target_path, "r");
-
-  #get column values from layouts array for test - checking columns 2 through 6 (column 1 - Journal - is not always entered, column 7 - Feb - on may not be included)
-  for ($i = 2;$i <= 6;$i++){
-  	$columnCheck[$i] = $layoutsArray['layout1']['column' . $i];
-  }
 
 
   echo $uploadConfirm;
   echo "<table class='dataTable' style='width:895px;'>";
 
   while (!feof($file_handle)) {
-	//get each line out of the file handler
+     //get each line out of the file handler
      $line = fgets($file_handle);
 
+     //if report type hasn't been figured out, check for it in the first row / column
+     if ($reportType == ""){
+	foreach ($layoutsArray[reportTypes] as $reportTypeKey => $layoutKey){
+		list($report,$release) = explode("_",$reportTypeKey);
+		if ((strpos($line, $report) !== false) && (strpos($line, $report) !== false)){
+			$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
+			$reportType = $line;
+			$columnListing = $layoutsArray[$layoutKey][columns];
+		}	
+	}
 
-	 #check column formats if the format correct flag has not been set yet
-     if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= 6)){
-		 list ($column1, $column2, $column3, $column4, $column5, $column6) = explode("\t",$line);
-		 $column1 = trim($column1);
-		 $column2 = trim($column2);
-		 $column3 = trim($column3);
-		 $column4 = trim($column4);
-		 $column5 = trim($column5);
-		 $column6 = trim($column6);
+	if ($reportType == ""){
+		//$reportType = "Default Set - " . $line;
+		//$columnsToCheck
+	}
+
+     }
+
+     //check column formats if the format correct flag has not been set yet
+     if (($formatCorrectFlag == "N") && ($reportType) && ($(count(explode("\t",$line)) >= count($columnsToCheck))){
+		//positive unless proven negative
+		$formatCorrectFlag = "Y";
+		$lineArray = explode("\t",$line);
+
+		foreach ($columnsToCheck as $key => $colCheckName){
+			$fileColName = lower(trim($lineArray[$key]));	
+			
+			if (strpos($fileColName, lower($colCheckName)) === false){
+				$formatCorrectFlag='N';
+			}	
+
+		}
 
 
-		 #also get the full line in an array to print out the headers
-		 $lineArray = explode("\t",$line);
-
-		 //remove white spaces for comparison
-		 $column6 = trim($column6);
-
-		 if ((strpos($column2,$columnCheck[2]) === 0) && (strpos($column3,$columnCheck[3]) === 0) && (strpos($column4,$columnCheck[4]) === 0) && (strpos($column5,$columnCheck[5]) === 0) && (strpos($column6,$columnCheck[6]) === 0) ){
-			$formatCorrectFlag = "Y";
+		 if ($formatCorrectFlag == 'Y'){
 			$numberOfColumns = count($lineArray);
 
-			list ($checkMonth,$checkYear) = preg_split("/[-\/.]/",$column6);
+			list ($checkMonth,$checkYear) = preg_split("/[-\/.]/",$fileColName);
 			if ($checkYear < 100) $checkYear = 2000 + $checkYear;
+
+			//print out report type and year
+			echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportName . " for year: " . $checkYear . "</td></tr>";
 
 			#also print out column headers
 			echo "<tr>";
