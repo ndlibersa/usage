@@ -29,8 +29,9 @@ $layoutsArray = parse_ini_file("layouts.ini", true);
 
 $uploadedFile = $_POST['upFile'];
 $orgFileName = $_POST['orgFileName'];
-$archiveInd = $_POST['archiveInd'];
 $overrideInd = $_POST['overrideInd'];
+$layout = $_POST['layout'];
+$reportTypeDisplay = $_POST['reportTypeDisplay'];
 $printISSNArray = array();
 
 $file_handle = fopen($uploadedFile, "r");
@@ -38,13 +39,14 @@ $file_handle = fopen($uploadedFile, "r");
 $topLogOutput = "";
 $logOutput = "Process started on " . date('l jS \of F Y h:i A') . "<br />";
 $logOutput.= "File: " . $uploadedFile . "<br /><br />";
+$logOutput.= "Report Format: " . $reportTypeDisplay . "<br /><br />";
 $monthlyInsert='';
 $screenOutput = '';
 
 $startFlag = "N";
-$formatFlag = "N";
+$formatCorrectFlag = "N";
 
-
+$archiveInd='N';
 //determine config settings for outlier usage
 $config = new Configuration();
 $outlier = array();
@@ -70,9 +72,8 @@ if ($config->settings->useOutliers == "Y"){
 $logOutput .="<br /><br />";
 
 //get column values from layouts array to determine layout - checking columns 2 through 20 (column 1 - Journal - is not always entered, column 7 - Feb - on may not be included)
-for ($i = 2;$i <= 20;$i++){
-	$columnCheck[$i] = $layoutsArray['layout1']['column' . $i];
-}
+$columnsToCheck = $layoutsArray[$layout]['columnToCheck'];
+$layoutColumns = $layoutsArray[$layout]['columns'];
 
 
 //initialize some variables
@@ -86,100 +87,82 @@ $startMonth = '';
 //loop through each line of file
 while (!feof($file_handle)) {
 
-	//get each line out of the file handler
- 	$line = fgets($file_handle);
+     //get each line out of the file handler
+     $line = fgets($file_handle);
 
- 	//check column formats if the format correct flag has not been set yet
-	if ($formatFlag == "N"){
-		$columnArray = explode("\t",$line);
+     //check column formats if the format correct flag has not been set yet
+     if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= count($columnsToCheck))){
+                //positive unless proven negative
+                $formatCorrectFlag = "Y";
+                $lineArray = explode("\t",$line);
 
-	 	//strip spaces
-	 	foreach ($columnArray as $key => $value){
-			$columnArray[$key] = trim($value);
-	 	}
+                foreach ($columnsToCheck as $key => $colCheckName){
+                        $fileColName = strtolower(trim($lineArray[$key]));
 
-	 	//this is the header column
-	 	if ((strpos($columnArray[1],$columnCheck[2]) === 0) && (strpos($columnArray[2],$columnCheck[3]) === 0) && (strpos($columnArray[3],$columnCheck[4]) === 0) && (strpos($columnArray[4],$columnCheck[5]) === 0) && (strpos($columnArray[5],$columnCheck[6]) === 0) && (isset($columnArray[5])) ){
-			$formatFlag = "Y";
-
-			list ($month,$year) = preg_split("/[-\/. ]/",$columnArray[5]);
-			if ($year < 100) $year = 2000 + $year;
-
-			//loop through each month and the 3 ytd columns to determine which column number we should refer to when getting data below
-			for ($i=5;$i<20;$i++){
-				//convert to lowercase for comparison
-				if (isset($columnArray[$i])){
-					$columnArray[$i] = strtolower($columnArray[$i]);
-
-					//strip the 'ytd ' since not all spreadsheets have it
-					if (strpos($columnArray[$i], 'ytd ') === 0){
-						$columnArray[$i] = substr($columnArray[$i], 4, strlen($columnArray[$i]));
-					}
-
-					//dont care about the year (after the "-")
-					if (strpos($columnArray[$i],'-') > 0){
-						$month=substr($columnArray[$i], 0, strpos($columnArray[$i],'-'));
-					}elseif (strpos($columnArray[$i],' ') > 0){
-						$month=substr($columnArray[$i], 0, strpos($columnArray[$i],' '));
-					}else{
-						$month=$columnArray[$i];
-					}
-
-					if ($month == 'jan'){$columnNumberArray['1']=$i;
-					}elseif ($month == 'feb') {$columnNumberArray['2']=$i;
-					}elseif ($month == 'mar') {$columnNumberArray['3']=$i;
-					}elseif ($month == 'apr') {$columnNumberArray['4']=$i;
-					}elseif ($month == 'may') {$columnNumberArray['5']=$i;
-					}elseif ($month == 'jun') {$columnNumberArray['6']=$i;
-					}elseif ($month == 'jul') {$columnNumberArray['7']=$i;
-					}elseif ($month == 'aug') {$columnNumberArray['8']=$i;
-					}elseif ($month == 'sep') {$columnNumberArray['9']=$i;
-					}elseif ($month == 'oct') {$columnNumberArray['10']=$i;
-					}elseif ($month == 'nov') {$columnNumberArray['11']=$i;
-					}elseif ($month == 'dec') {$columnNumberArray['12']=$i;
-					}elseif ($month == 'total') {$columnNumberArray['ytd']=$i;
-					}elseif ($month == 'html') {$columnNumberArray['ytdHTML']=$i;
-					}elseif ($month == 'pdf') {$columnNumberArray['ytdPDF']=$i;}
-
-				}//end column isset
-
-			//end for loop
-			}
-
-		//end if column checking
-		}
-
-	//end if format flag checked
-	}
+                        if (strpos($fileColName, strtolower($colCheckName)) === false){
+                                $formatCorrectFlag='N';
+                        }
 
 
+                }
+
+
+                 if ($formatCorrectFlag == 'Y'){
+
+			//at this point, $fileColName has the last column check value, Jan
+			//determine the year
+                        list ($checkMonth,$year) = preg_split("/[-\/.]/",$fileColName);
+                        if ($year < 100) $year = 2000 + $year;
+
+			// determine the latest month
+			// since months may not all exist
+			$jan_i = array_search('jan',$layoutColumns);
+
+			for($i=$jan_i;$i<12+$jan_i;$i++){
+				$month = $i - $jan_i + 1;
+				$monthName = date("M", mktime(0,0,0,$month,10));
+				if (strpos(strtolower($lineArray[$i]), strtolower($monthName)) === false){
+					unset($layoutColumns[$i]);
+
+				}
+			} 
+
+
+			$layoutColumns = array_values($layoutColumns);
+
+                 }
+         }
 
 	//as long as the flags are set to print out then we can continue
-	if (($startFlag == "Y")  && !(strpos($line,"\t") == "0")) {
+	if (($startFlag == "Y") && ($formatCorrectFlag == "Y")  && !(strpos($line,"\t") == "0")) {
 
 		$lineArray = explode("\t",$line);
-		$month = array();
-		$journalTitle = $lineArray[$layoutsArray['layout1']['journal']];
-		$platformName = $lineArray[$layoutsArray['layout1']['platform']];
-		$publisherName = $lineArray[$layoutsArray['layout1']['publisher']];
-		$printISSN = $lineArray[$layoutsArray['layout1']['printISSN']];
-		$onlineISSN = $lineArray[$layoutsArray['layout1']['onlineISSN']];
-		$month['1'] = $lineArray[$columnNumberArray['1']];
-		if (isset($columnNumberArray['2'])) $month['2'] = $lineArray[$columnNumberArray['2']];
-		if (isset($columnNumberArray['3'])) $month['3'] = $lineArray[$columnNumberArray['3']];
-		if (isset($columnNumberArray['4'])) $month['4'] = $lineArray[$columnNumberArray['4']];
-		if (isset($columnNumberArray['5'])) $month['5'] = $lineArray[$columnNumberArray['5']];
-		if (isset($columnNumberArray['6'])) $month['6'] = $lineArray[$columnNumberArray['6']];
-		if (isset($columnNumberArray['7'])) $month['7'] = $lineArray[$columnNumberArray['7']];
-		if (isset($columnNumberArray['8'])) $month['8'] = $lineArray[$columnNumberArray['8']];
-		if (isset($columnNumberArray['9'])) $month['9'] = $lineArray[$columnNumberArray['9']];
-		if (isset($columnNumberArray['10'])) $month['10'] = $lineArray[$columnNumberArray['10']];
-		if (isset($columnNumberArray['11'])) $month['11'] = $lineArray[$columnNumberArray['11']];
-		if (isset($columnNumberArray['12'])) $month['12'] = $lineArray[$columnNumberArray['12']];
-		if (isset($columnNumberArray['ytd'])) $ytd = $lineArray[$columnNumberArray['ytd']];
-		if (isset($columnNumberArray['ytdHTML'])) $ytdHTML = $lineArray[$columnNumberArray['ytdHTML']];
-		if (isset($columnNumberArray['ytdPDF'])) $ytdPDF = $lineArray[$columnNumberArray['ytdPDF']];
+		$columnValues = array();
 
+		//match column titles in layout.ini to columns in file
+		foreach ($layoutColumns as $i => $col){
+			$columnValues[$col] = $lineArray[$i];
+		}
+
+		$journalTitle = $columnValues['journal'];
+		$platformName = $columnValues['platform'];
+		$publisherName = $columnValues['publisher'];
+
+		$printISSN = $columnValues['printISSN'];
+		$onlineISSN = $columnValues['onlineISSN'];
+
+		$ytd = $columnValues['ytd'];
+		$ytdHTML = $columnValues['ytdHTML'];
+		$ytdPDF = $columnValues['ytdPDF'];
+
+		
+		// loop through each month to assign month array
+		$month=array();
+		for($i=1;$i<=12;$i++){
+			if(isset($columnValues[strtolower(date("M", mktime(0,0,0,$i,10)))])){
+				$month[$i] = $columnValues[strtolower(date("M", mktime(0,0,0,$i,10)))];
+			}
+		} 
 
 		################################################################
 		// PLATFORM

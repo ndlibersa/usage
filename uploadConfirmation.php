@@ -1,7 +1,7 @@
 <?php
 /*
 **************************************************************************************************************************
-** CORAL Usage Statistics Module v. 1.0
+** CORAL Usage Statistics Module v. 1.1
 **
 ** Copyright (c) 2010 University of Notre Dame
 **
@@ -75,7 +75,7 @@ function updateSubmit(){
   $startFlag = "N";
   $formatCorrectFlag = "N";
   $errorFlag = "N";
-  $reportType = "";
+  $reportTypeSet = "";
 
 
   #read layouts ini file to get the available layouts
@@ -88,39 +88,47 @@ function updateSubmit(){
   echo $uploadConfirm;
   echo "<table class='dataTable' style='width:895px;'>";
 
+
+  //set report type default - JR1 R3 since this is the first, only report that used to be accepted
+  $layout = $layoutsArray[ReportTypes]['default'];
+  $reportTypeDisplay = $layout . " (default)";
+  $columnsToCheck = $layoutsArray[$layout]['columnToCheck'];
+
   while (!feof($file_handle)) {
      //get each line out of the file handler
      $line = fgets($file_handle);
 
      //if report type hasn't been figured out, check for it in the first row / column
-     if ($reportType == ""){
-	foreach ($layoutsArray[reportTypes] as $reportTypeKey => $layoutKey){
-		list($report,$release) = explode("_",$reportTypeKey);
-		if ((strpos($line, $report) !== false) && (strpos($line, $report) !== false)){
-			$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
-			$reportType = $line;
-			$columnListing = $layoutsArray[$layoutKey][columns];
-		}	
-	}
+     if ($reportTypeSet == ""){
 
-	if ($reportType == ""){
-		//$reportType = "Default Set - " . $line;
-		//$columnsToCheck
-	}
+		foreach ($layoutsArray[ReportTypes] as $reportTypeKey => $layoutKey){
+			list($report,$release) = explode("_",$reportTypeKey);
+			if ((strpos($line, $report) !== false) && (strpos($line, $release) !== false)){
+				$reportTypeSet = 'Y'; 
+				$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
+				$reportTypeDisplay = $line; 
+				$layout = $layoutKey;
+			}	
+		}
+
 
      }
 
      //check column formats if the format correct flag has not been set yet
-     if (($formatCorrectFlag == "N") && ($reportType) && ($(count(explode("\t",$line)) >= count($columnsToCheck))){
+     if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= count($columnsToCheck))){
 		//positive unless proven negative
 		$formatCorrectFlag = "Y";
 		$lineArray = explode("\t",$line);
 
 		foreach ($columnsToCheck as $key => $colCheckName){
-			$fileColName = lower(trim($lineArray[$key]));	
-			
-			if (strpos($fileColName, lower($colCheckName)) === false){
+			print $key;
+			$fileColName = strtolower(trim($lineArray[$key]));	
+			// echo "Col Check: " . strtolower($colCheckName) . ":   ";
+			// echo "File Name: " . $fileColName . "<br />";
+
+			if (strpos($fileColName, strtolower($colCheckName)) === false){
 				$formatCorrectFlag='N';
+				// echo $formatCorrectFlag . "<br /><br />";
 			}	
 
 		}
@@ -185,7 +193,7 @@ function updateSubmit(){
   $errrorFlag="N";
 
   if (($formatCorrectFlag == "N")){
-   	echo "<br /><font color='red'>Error with Format:  File must hold column names listed in layouts.ini.  At least one month must exist.  Please confirm layout.</font><br />";
+   	echo "<br /><font color='red'><b>Error with Format</b>:  Report format is set to <b>" . $reportTypeDisplay . "</b> but does not match the column names listed in layouts.ini for this format.  Also, the month of January must exist.  <br /><br />Expecting columns: " . implode(", ", $columnsToCheck) . "</font><br />";
    	$errorFlag="Y";
   }
 
@@ -200,27 +208,25 @@ function updateSubmit(){
   	$errorFlag="Y";
   }
 
-  if (isset($_POST['archiveInd'])){
-  	echo "<br /><font color='red'>File is flagged as an Archive.  If this is incorrect use 'Cancel' to fix.</font><br />";
-  	$archiveInd = 1;
-  }else{
-  	$archiveInd = 0;
-  }
-
   if (isset($_POST['overrideInd'])){
   	echo "<br /><font color='red'>File is flagged to override verifications of previous month data.  If this is incorrect use 'Cancel' to fix.</font><br />";
   	$overrideInd = 1;
   }else{
   	$overrideInd = 0;
   }
+
+  if ($errorFlag != "Y"){
+  	echo "<br />Report Format: <b>" . $reportTypeDisplay . "</b><br />If this is incorrect, please use 'Cancel' to go back and fix the headers of the file.<br />";
+  }
+
 ?>
 
 	<br />
     <form id="confirmForm" name="confirmForm" enctype="multipart/form-data" method="post" action="uploadComplete.php">
     <input type="hidden" name="upFile" value="<?php echo $target_path; ?>">
-    <input type="hidden" name="archiveInd" value="<?php echo $archiveInd; ?>">
     <input type="hidden" name="overrideInd" value="<?php echo $overrideInd; ?>">
     <input type="hidden" name="orgFileName" value="<?php echo $orgFileName; ?>">
+    <input type="hidden" name="layout" value="<?php echo $layout; ?>">
 	<table>
 	<tr valign="center">
 	<td>
