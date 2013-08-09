@@ -40,6 +40,7 @@ include 'templates/header.php';
     <form id="form1" name="form1" enctype="multipart/form-data" onsubmit="return validateForm()" method="post" action="uploadConfirmation.php">
 
       <b>Choose File:</b><span id='span_error' style='color:red'></span><br /><input type="file" name="usageFile" id="usageFile" class='bigger' /><br /><br />
+      <input type="checkbox" name="archiveInd" id="archiveInd" />&nbsp;This is an Archive Report (JR1a)<br />
       <input type="checkbox" name="overrideInd" id="overrideInd" />&nbsp;Override previous month verification<br /><br />
       <input type="submit" name="submitFile" id="submitFile" value="Upload" />
       <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
