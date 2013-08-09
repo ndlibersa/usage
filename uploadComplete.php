@@ -46,7 +46,7 @@ $screenOutput = '';
 $startFlag = "N";
 $formatCorrectFlag = "N";
 
-$archiveInd='N';
+$archiveInd='0';
 //determine config settings for outlier usage
 $config = new Configuration();
 $outlier = array();
