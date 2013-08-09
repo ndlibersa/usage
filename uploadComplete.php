@@ -30,6 +30,7 @@ $layoutsArray = parse_ini_file("layouts.ini", true);
 $uploadedFile = $_POST['upFile'];
 $orgFileName = $_POST['orgFileName'];
 $overrideInd = $_POST['overrideInd'];
+$archiveInd = $_POST['archiveInd'];
 $layout = $_POST['layout'];
 $reportTypeDisplay = $_POST['reportTypeDisplay'];
 $printISSNArray = array();
@@ -46,7 +47,6 @@ $screenOutput = '';
 $startFlag = "N";
 $formatCorrectFlag = "N";
 
-$archiveInd='0';
 //determine config settings for outlier usage
 $config = new Configuration();
 $outlier = array();

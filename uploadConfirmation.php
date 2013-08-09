@@ -121,7 +121,6 @@ function updateSubmit(){
 		$lineArray = explode("\t",$line);
 
 		foreach ($columnsToCheck as $key => $colCheckName){
-			print $key;
 			$fileColName = strtolower(trim($lineArray[$key]));	
 			// echo "Col Check: " . strtolower($colCheckName) . ":   ";
 			// echo "File Name: " . $fileColName . "<br />";
@@ -141,7 +140,7 @@ function updateSubmit(){
 			if ($checkYear < 100) $checkYear = 2000 + $checkYear;
 
 			//print out report type and year
-			echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportName . " for year: " . $checkYear . "</td></tr>";
+			echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . " for " . $checkYear . "</td></tr>";
 
 			#also print out column headers
 			echo "<tr>";
@@ -208,6 +207,13 @@ function updateSubmit(){
   	$errorFlag="Y";
   }
 
+  if ((isset($_POST['archiveInd'])) || (strpos("a",$layout) > 0)){
+        echo "<br /><font color='red'>File is flagged as an Archive.  If this is incorrect use 'Cancel' to fix.</font><br />";
+        $archiveInd = 1;
+  }else{
+        $archiveInd = 0;
+  }
+
   if (isset($_POST['overrideInd'])){
   	echo "<br /><font color='red'>File is flagged to override verifications of previous month data.  If this is incorrect use 'Cancel' to fix.</font><br />";
   	$overrideInd = 1;
@@ -224,6 +230,7 @@ function updateSubmit(){
 	<br />
     <form id="confirmForm" name="confirmForm" enctype="multipart/form-data" method="post" action="uploadComplete.php">
     <input type="hidden" name="upFile" value="<?php echo $target_path; ?>">
+    <input type="hidden" name="archiveInd" value="<?php echo $archiveInd; ?>">
     <input type="hidden" name="overrideInd" value="<?php echo $overrideInd; ?>">
     <input type="hidden" name="orgFileName" value="<?php echo $orgFileName; ?>">
     <input type="hidden" name="layout" value="<?php echo $layout; ?>">
