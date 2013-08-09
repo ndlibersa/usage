@@ -114,6 +114,7 @@ while (!feof($file_handle)) {
                         list ($checkMonth,$year) = preg_split("/[-\/.]/",$fileColName);
                         if ($year < 100) $year = 2000 + $year;
 
+			$missingMonths = array();
 			// determine the latest month
 			// since months may not all exist
 			$jan_i = array_search('jan',$layoutColumns);
@@ -123,12 +124,17 @@ while (!feof($file_handle)) {
 				$monthName = date("M", mktime(0,0,0,$month,10));
 				if (strpos(strtolower($lineArray[$i]), strtolower($monthName)) === false){
 					unset($layoutColumns[$i]);
-
+					$missingMonths[] = $monthName;
 				}
+				
 			} 
 
-
 			$layoutColumns = array_values($layoutColumns);
+
+			$logSummary = "\nYear: $year";
+			if (count($missingMonths) > 0){
+				$logSummary.="\nMonths not included: " . implode(", ",$missingMonths);
+			}
 
                  }
          }
@@ -159,10 +165,12 @@ while (!feof($file_handle)) {
 		// loop through each month to assign month array
 		$month=array();
 		for($i=1;$i<=12;$i++){
-			if(isset($columnValues[strtolower(date("M", mktime(0,0,0,$i,10)))])){
-				$month[$i] = $columnValues[strtolower(date("M", mktime(0,0,0,$i,10)))];
+			$monthName = date("M", mktime(0,0,0,$i,10));
+			if(isset($columnValues[strtolower($monthName)])){
+				$month[$i] = $columnValues[strtolower($monthName)];
 			}
 		} 
+
 
 		################################################################
 		// PLATFORM
@@ -758,10 +766,11 @@ include 'templates/header.php';
 $importLog = new ImportLog();
 $importLog->importLogID = '';
 $importLog->loginID = $user->loginID;
+$importLog->layoutCode = $layout;
 $importLog->fileName = $orgFileName;
 $importLog->archiveFileURL = $uploadedFile;
 $importLog->logFileURL = $logfile;
-$importLog->details = $rownumber . " titles processed.";
+$importLog->details = $rownumber . " titles processed.\n" . $logSummary;
 
 try {
 	$importLog->save();
@@ -781,6 +790,8 @@ try {
     <p>File archived as <?php echo $Base_URL . $uploadedFile; ?>.</p>
     <p>Log file available at: <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
     <p>Process completed.  <?php echo $mailOutput; ?></p>
+    <br />
+    Summary:<?php echo $rownumber . " titles processed.<br />" . nl2br($logSummary); ?><br />
     <br />
     <?php echo $screenOutput; ?><br />
     <p>&nbsp; </p>

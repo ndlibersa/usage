@@ -899,10 +899,11 @@ switch ($action) {
 			//making table larger so it fills the page more
 			echo "<table class='dataTable'>";
 			echo "<tr>";
-			echo "<th style='padding:3px;'>Import Time</th>";
+			echo "<th style='padding:3px;'>Import Date</th>";
 			echo "<th style='padding:3px;'>File</th>";
+			echo "<th style='padding:3px;'>Layout</th>";
 			echo "<th style='padding:3px;'>Imported By</th>";
-			echo "<th style='padding:3px;'>&nbsp;</th>";
+			echo "<th style='padding:3px;'>Import Summary</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "</tr>";
@@ -920,8 +921,9 @@ switch ($action) {
 				echo "<tr>";
 				echo "<td $classAdd style='padding:3px;'>" . format_date($importLog['dateTime']) . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $importLog['fileName'] . "</td>";
+				echo "<td $classAdd style='padding:3px;'>" . $importLog['layoutCode'] . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $importLog['loginID'] . "</td>";
-				echo "<td $classAdd style='padding:3px;'>" . $importLog['details'] . "</td>";
+				echo "<td $classAdd style='padding:3px;'>" . nl2br($importLog['details']) . "</td>";
 				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog['logFileURL'] . "'>view log</a></td>";
 				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog['archiveFileURL'] . "'>view archive</a></td>";
 				echo "</tr>";
