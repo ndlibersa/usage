@@ -80,4 +80,46 @@ function format_date($mysqlDate) {
 }
 
 
+
+function usage_sidemenu($selected_link = '') {
+  global $user;
+  $links = array(
+    'imports' => 'seahorseicon',
+    'titles' => 'acquisitions',
+    'statistics' => 'cataloging',
+    'logins' => 'lock',
+  );
+  
+  foreach ($links as $key => $icon) {
+    $name = ucfirst($key);
+    if ($selected_link == $key) {
+      $class = 'sidemenuselected';
+      $image = "images/".$icon;
+      $icon_id = "icon_$key";
+    } else {
+      $class = 'sidemenuunselected';
+      $image = "images/".$icon."_bw";
+      $icon_id = "";
+    }
+    if ($key == 'imports') {
+      $image .= '.jpg';
+    } else {
+      $image .= '.gif';
+    }
+    if ($key != 'accounts' || $user->accountTabIndicator == '1') {
+    ?>
+    <div class="<?php echo $class; ?>" style='position: relative; width: 105px'>
+    	<span class='icon' id='<?php echo $icon_id; ?>'><img src='<?php echo $image; ?>'></span><span class='link'><a href='javascript:void(0)' class='show<?php echo $name; ?>'><?php echo $name; ?></a></span>
+    </div>
+    <?php
+    }
+  }
+}
+
+function debug($value) {
+  echo '<pre>'.print_r($value, true).'</pre>';
+}
+
+
+
 ?>

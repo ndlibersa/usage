@@ -256,15 +256,9 @@ switch ($action) {
 
 		}
 
+		echo "<br /><br /><br />";
 
-        break;
-
-
-
-
-
-    case 'getNotesDetails':
-
+		//Notes
 		if (isset($_GET['publisherPlatformID']) && ($_GET['publisherPlatformID'] != '')){
 	    	$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $_GET['publisherPlatformID'])));
 
@@ -393,20 +387,57 @@ switch ($action) {
         break;
 
 
+
+	case 'getSushiDetails':
+
+		$publisherPlatformID = $_GET['publisherPlatformID'];
+		$platformID = $_GET['platformID'];
+
+		if (!$platformID){
+			echo "SUSHI services are only allowed on Platform records.";
+		}else{
+
+			echo "<h3>SUSHI Connection</h3>";
+			$sushiService = new SushiService();
+			$sushiService->getByPlatformID($platformID);
+
+			if ($sushiService->platformID != ''){
+				echo "<table class='verticalFormTable' style='width:350px;'>";
+				echo "<tr><td>Service URL</td><td>" . $sushiService->serviceURL . "</td></tr>";
+				echo "<tr><td>WSDL URL</td><td>" . $sushiService->wsdlURL . "</td></tr>";
+				echo "<tr><td>Requestor ID</td><td>" . $sushiService->requestorID . "</td></tr>";
+				echo "<tr><td>Customer ID</td><td>" . $sushiService->customerID . "</td></tr>";
+				echo "<tr><td>Security</td><td>" . $sushiService->security . "</td></tr>";
+				echo "<tr><td>Login</td><td>" . $sushiService->login . "</td></tr>";
+				echo "<tr><td>Password</td><td>" . $sushiService->password . "</td></tr>";
+				echo "<tr><td>Day of Month</td><td>" . $sushiService->serviceDayOfMonth . "</td></tr>";
+				echo "<tr><td>Notes</td><td>" . $sushiService->noteText . "</td></tr>";
+				echo "</table>";
+				echo" <br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=" . $sushiService->sushiServiceID . "&platformID=" . $platformID . "&height=340&width=458&modal=true' class='thickbox'>Edit SUSHI Connection Info</a><br />";
+			}else{
+				echo "\n(none found)<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=&platformID=" . $platformID . "&height=340&width=458&modal=true' class='thickbox'>Add SUSHI Connection</a><br />";
+
+			}
+		}
+
+        break;
+
+
 	case 'getStatsTable':
 
 		$publisherPlatformID = $_GET['publisherPlatformID'];
 		$platformID = $_GET['platformID'];
 		$year = $_GET['year'];
 		$archiveInd = $_GET['archiveInd'];
+		$resourceType = $_GET['resourceType'];
 
 		$monthArray = array();
 		if ($publisherPlatformID){
 			$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $publisherPlatformID)));
-			$monthArray = $publisherPlatform->getAvailableMonths($archiveInd, $year);
+			$monthArray = $publisherPlatform->getAvailableMonths($resourceType, $archiveInd, $year);
 		}else{
 			$platform = new Platform(new NamedArguments(array('primaryKey' => $platformID)));
-			$monthArray = $platform->getAvailableMonths($archiveInd, $year);
+			$monthArray = $platform->getAvailableMonths($resourceType, $archiveInd, $year);
 		}
 
 		foreach($monthArray as $month){
@@ -418,14 +449,14 @@ switch ($action) {
 
 			//monthly ouliers
 			if ($publisherPlatformID){
-				$outlierCount = count($publisherPlatform->getMonthlyOutliers($month['archiveInd'], $month['year'], $month['month']));
+				$outlierCount = count($publisherPlatform->getMonthlyOutliers($month['resourceType'], $month['archiveInd'], $month['year'], $month['month']));
 			}else{
-				$outlierCount = count($platform->getMonthlyOutliers($month['archiveInd'], $month['year'], $month['month']));
+				$outlierCount = count($platform->getMonthlyOutliers($month['resourceType'], $month['archiveInd'], $month['year'], $month['month']));
 			}
 
 
 			if ($outlierCount != 0) {
-				echo "<label for='outliers' class='outliers'><a href=\"javascript:popUp('outliers.php?publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $month['archiveInd'] . "&month=" . $month['month'] . "&year=" . $month['year'] . "');\">view outliers for this month</a></label>";
+				echo "<label for='outliers' class='outliers'><a href=\"javascript:popUp('outliers.php?publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $month['archiveInd'] . "&month=" . $month['month'] . "&year=" . $month['year'] . "&resourceType=" . $month['resourceType'] . "');\">view outliers for this month</a></label>";
 			}else{
 				echo "<label for='outliers' class='outliers'>&nbsp;</label>";
 			}
@@ -467,8 +498,8 @@ switch ($action) {
 			if ($statArray['archiveInd'] == "1") {$archive = '&nbsp;(archive)';}else{$archive='';}
 
 			echo "<tr>";
-			echo "<th><span style='font-weight:bold; font-size:120%;'>" . $statArray['year'] . $archive . "</span></td>";
-			echo "<th><a target='_blank' href='spreadsheet.php?publisherPlatformID=" .  $publisherPlatformID . "&platformID=" . $platformID . "&year=" . $statArray['year'] . "&archiveInd=" . $statArray['archiveInd'] . "' style='font-size:110%;'>view spreadsheet</a></td>";
+			echo "<th><span style='font-weight:bold; font-size:120%;'>" . $statArray['year'] . $archive . "<br />" . $statArray['resourceType'] . "s</span></td>";
+			echo "<th><a target='_blank' href='spreadsheet.php?publisherPlatformID=" .  $publisherPlatformID . "&platformID=" . $platformID . "&year=" . $statArray['year'] . "&archiveInd=" . $statArray['archiveInd'] . "&resourceType=" . $statArray['resourceType'] . "' style='font-size:110%;'>view spreadsheet</a></td>";
 			echo "</tr>";
 
 			//loop through each month
@@ -493,11 +524,11 @@ switch ($action) {
 				echo "<table class='noBorderTable' style='width:340px;'>";
 				echo "<tr>";
 				echo "<td style='width:70px;font-weight:bold;'>" . numberToMonth($month) . " " . $statArray['year'] . "</td>";
-				echo "<td><a href=\"javascript:deleteMonth('" . $month . "','" . $statArray['year'] . "','" . $statArray['archiveInd'] . "', '" . $publisherPlatformID . "', '" . $platformID . "')\" style='font-size:100%;'>delete entire month</a>";
+				echo "<td><a href=\"javascript:deleteMonth('" . $statArray['resourceType'] . "','" . $month . "','" . $statArray['year'] . "','" . $statArray['archiveInd'] . "', '" . $publisherPlatformID . "', '" . $platformID . "')\" style='font-size:100%;'>delete entire month</a>";
 
 				//print out prompt for outliers if outlierID is > 0
 				if ($outlier > 0){
-					echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getMonthlyOutlierForm&publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $statArray['archiveInd'] . "&month=" . $month . "&year=" . $statArray['year'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>view outliers for this month</a>";
+					echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getMonthlyOutlierForm&publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $statArray['archiveInd'] . "&month=" . $month . "&year=" . $statArray['year'] . "&resourceType=" . $statArray['resourceType'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>view outliers for this month</a>";
 				}
 
 				echo "</td></tr>";
@@ -515,7 +546,7 @@ switch ($action) {
 
 
 				if ($statArray['outlierID'] > 0){
-					echo "&nbsp;&nbsp;&nbsp;&nbsp;<a href='ajax_forms.php?action=getYearlyOverrideForm&publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $statArray['archiveInd'] . "&year=" . $statArray['year'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>update overrides for this year</a>";
+					echo "&nbsp;&nbsp;&nbsp;&nbsp;<a href='ajax_forms.php?action=getYearlyOverrideForm&resourceType=" . $statArray['resourceType'] . "publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $statArray['archiveInd'] . "&year=" . $statArray['year'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>update overrides for this year</a>";
 				}else{
 					echo "&nbsp;&nbsp;&nbsp;&nbsp;(no outliers found for this year)";
 				}
@@ -533,42 +564,50 @@ switch ($action) {
 
 		break;
 
+
     case 'getTitleDetails':
 		$titleArray = array();
 
 		if (isset($_GET['publisherPlatformID']) && ($_GET['publisherPlatformID'] != '')){
 			$publisherPlatformID = $_GET['publisherPlatformID'];
 			$platformID = '';
-			$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $_GET['publisherPlatformID'])));
-			$titleArray = $publisherPlatform->getTitles();
+			$obj = new PublisherPlatform(new NamedArguments(array('primaryKey' => $_GET['publisherPlatformID'])));
 		}else{
 			$platformID = $_GET['platformID'];
 			$publisherPlatformID = '';
-			$platform = new Platform(new NamedArguments(array('primaryKey' => $_GET['platformID'])));
-			$titleArray = $platform->getTitles();
+			$obj = new Platform(new NamedArguments(array('primaryKey' => $_GET['platformID'])));
 		}
 
+		$journalTitleArray = $obj->getJournalTitles;
+		$bookTitleArray = $obj->getBookTitles;
+		$databaseTitleArray = $obj->getDatabaseTitles;
+
+		if ((count($journalTitleArray) == '0') && (count($bookTitleArray) == '0') && (count($databaseTitleArray) == '0')){
+			echo "(none found)";
+		}
+
+
+		/////////////////////////////////
+		// JOURNAL
+		/////////////////////////////////
+		$titleArray = $journalTitleArray;
 
 		//determine config settings for link resolver
 		$config = new Configuration();
 		$baseURL = $config->settings->baseURL;
 
-		if (count($titleArray) == '0'){
-			echo "(none found)";
-		}else{
+		if (count($titleArray) >0 ){
 			?>
-
-			<h3>Associated Titles and ISSNs</h3>
+			<h3>Journals - Associated Titles and ISSNs</h3>
 
 			<table class='verticalFormTable'>
 			<tr>
-				<th style='max-width:350px;'><b>Title</b></th>
-				<th style='width:90px;'><b>Print ISSN</b></th>
-				<th style='width:90px;'><b>Online ISSN</b></th>
+				<th style='max-width:440px;'><b>Title</b></th>
+				<th style='width:90px;'><b>DOI</b></th>
+				<th style='width:90px;'><b>ISSN</b></th>
+				<th style='width:90px;'><b>eISSN</b></th>
 				<th style='width:110px;'>&nbsp;</th>
 			</tr>
-
-
 
 			<?php
 			foreach($titleArray as $title) {
@@ -577,21 +616,100 @@ switch ($action) {
 
 				echo "\n<td>" . $title['title'] . "</td>";
 
-				//get the first ISSN to use for the terms tool lookup
-				$printISSN = $title['print_issn'];
-				$onlineISSN = $title['online_issn'];
+				//get the first Identifier to use for the terms tool lookup
+				$doi = $title['doi'];
+				$issn = $title['issn'];
+				$eissn = $title['eissn'];
 
-				echo "\n<td>" . $printISSN . "</td>";
-				echo "\n<td>" . $onlineISSN . "</td>";
+				echo "\n<td>" . $doi . "</td>";
+				echo "\n<td>" . $issn . "</td>";
+				echo "\n<td>" . $eissn . "</td>";
 
 
-				if ((($printISSN) || ($onlineISSN)) && ($baseURL)){
-					if (($printISSN) && !($onlineISSN)){
-						$urlAdd = "&rft.issn=" . $printISSN;
-					}else if (($printISSN) && ($onlineISSN)){
-						$urlAdd = "&rft.issn=" . $printISSN . "&rft.eissn=" . $onlineISSN;
+				if ((($issn) || ($eissn)) && ($baseURL)){
+					if (($issn) && !($eissn)){
+						$urlAdd = "&rft.issn=" . $issn;
+					}else if (($issn) && ($eissn)){
+						$urlAdd = "&rft.issn=" . $issn . "&rft.eissn=" . $eissn;
 					}else{
-						$urlAdd = "&rft.eissn=" . $onlineISSN;
+						$urlAdd = "&rft.eissn=" . $eissn;
+					}
+
+
+					$resolverURL = $config->settings->baseURL;
+
+					//check if there is already a ? in the URL so that we don't add another when appending the parms
+					if (strpos($resolverURL, "?") > 0){
+						$resolverURL .= "&";
+					}else{
+						$resolverURL .= "?";
+					}
+
+					$resolverURL .= $urlAdd;
+					echo "\n<td><span style='float:left;'><a href='ajax_forms.php?action=getRelatedTitlesForm&titleID=" . $title['titleID'] . "&height=240&width=258&modal=true' class='thickbox'>view related titles</a><br /><a href='" . $resolverURL  . "' target='_blank'>view in link resolver</a></span></td>";
+					
+				}else{
+					echo "\n<td>&nbsp;</td>";
+				}
+
+				
+
+				echo "</tr>";
+
+			#end Title loop
+			}
+			echo "</table>";
+			echo "<br /><br />";
+		}
+
+
+		/////////////////////////////////
+		// BOOKS
+		/////////////////////////////////
+		$titleArray = array();
+
+		$titleArray = $bookTitleArray;
+
+		//determine config settings for link resolver
+		$baseURL = $config->settings->baseURL;
+
+		if (count($titleArray) >0 ){
+			?>
+			<h3>Books - Associated Titles and ISBNs</h3>
+
+			<table class='verticalFormTable'>
+			<tr>
+				<th style='max-width:440px;'><b>Title</b></th>
+				<th style='width:90px;'><b>DOI</b></th>
+				<th style='width:90px;'><b>ISBN</b></th>
+				<th style='width:90px;'><b>ISSN</b></th>
+				<th style='width:110px;'>&nbsp;</th>
+			</tr>
+
+			<?php
+			foreach($titleArray as $title) {
+
+				echo "\n<tr>";
+
+				echo "\n<td>" . $title['title'] . "</td>";
+
+				//get the first Identifier to use for the terms tool lookup
+				$doi = $title['doi'];
+				$isbn = $title['isbn'];
+				$issn = $title['issn'];
+
+				echo "\n<td>" . $doi . "</td>";
+				echo "\n<td>" . $isbn . "</td>";
+				echo "\n<td>" . $issn . "</td>";
+
+
+				if ((($isbn) || ($eisbn)) && ($baseURL)){
+					if (($isbn) && !($eisbn)){
+						$urlAdd = "&rft.isbn=" . $isbn;
+					}else if (($isbn) && ($issn)){
+						$urlAdd = "&rft.isbn=" . $isbn . "&rft.eisbn=" . $eisbn;
+					}else{
+						$urlAdd = "&rft.eisbn=" . $eisbn;
 					}
 
 
@@ -613,32 +731,49 @@ switch ($action) {
 
 				echo "</tr>";
 
-				//////////////////////////////////////////////////////////////////////////////////////////////////////////
-				//The following code is for modifying ISSNs - we decided against it but keep the code here in case we re-add it
-				//echo "<td colspan='4'>";
-				//echo "<table class='noBorderTable'>";
-				//$titleISSN = new TitleISSN();
-				//foreach($title->getISSNs as $titleISSN) {
-				//	$displayISSN = substr($titleISSN->issn, 0, 4) . "-" . substr($titleISSN->issn, 4, 4);
-				//	echo "<tr id='tr_" . $titleISSN->titleISSNID . "'>";
-				//	echo "\n<td style='width:90px;' class='rightBorder'>" . $titleISSN->issnType . "</td>";
-				//	echo "\n<td style='width:90px;' class='rightBorder'>" . $displayISSN . "</td>";
-				//	echo "\n<td style='width:105px;' class='rightBorder'><a href=\"javascript:deleteISSN('" . $titleISSN->titleISSNID . "');\" style='font-size:100%;'>remove this issn</a></td>";
-				//	echo "\n</tr>";
-				//}
-				//echo "\n<tr><td colspan='3'><a href='ajax_forms.php?action=getAddISSNForm&publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&titleID=" . $title->titleID . "&height=140&width=205&modal=true' class='thickbox' style='font-size:100%;'>add issn</a>&nbsp;</td></tr>";
-				//echo "</table></td></tr>";
-				//////////////////////////////////////////////////////////////////////////////////////////////////////////
+			#end Title loop
+			}
+			echo "</table>";
+			echo "<br /><br />";
+		}
+
+
+		
+
+		/////////////////////////////////
+		// DATABASE
+		/////////////////////////////////
+		$titleArray = array();
+
+		$titleArray = $databaseTitleArray;
+
+		if (count($titleArray) > 0){
+			?>
+			<h3>Database Titles</h3>
+
+			<table class='verticalFormTable'>
+			<tr>
+				<th style='max-width:440px;'><b>Title</b></th>
+			</tr>
+
+			<?php
+			foreach($titleArray as $title) {
+
+				echo "\n<tr>";
+
+				echo "\n<td>" . $title['title'] . "</td>";
+
+				echo "</tr>";
 
 			#end Title loop
 			}
 			echo "</table>";
+			echo "<br /><br />";
 		}
 
 
-		echo "<br /><br />";
+		
 		break;
-
 
 
 
@@ -897,11 +1032,9 @@ switch ($action) {
 			}
 
 			//making table larger so it fills the page more
-			echo "<table class='dataTable'>";
+			echo "<table class='dataTable' style='width:630px; max-width:630px;'>";
 			echo "<tr>";
 			echo "<th style='padding:3px;'>Import Date</th>";
-			echo "<th style='padding:3px;'>File</th>";
-			echo "<th style='padding:3px;'>Layout</th>";
 			echo "<th style='padding:3px;'>Imported By</th>";
 			echo "<th style='padding:3px;'>Import Summary</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
@@ -919,9 +1052,7 @@ switch ($action) {
 				}
 
 				echo "<tr>";
-				echo "<td $classAdd style='padding:3px;'>" . format_date($importLog['dateTime']) . "</td>";
-				echo "<td $classAdd style='padding:3px;'>" . $importLog['fileName'] . "</td>";
-				echo "<td $classAdd style='padding:3px;'>" . $importLog['layoutCode'] . "</td>";
+				echo "<td $classAdd style='padding:3px;'>" . format_date($importLog['dateTime'], "%m/%e/%y %I:%i %p") . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $importLog['loginID'] . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . nl2br($importLog['details']) . "</td>";
 				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog['logFileURL'] . "'>view log</a></td>";
@@ -1015,6 +1146,195 @@ switch ($action) {
 		}
 
 		break;
+
+
+
+
+	//display platform search on front page
+	case 'getPlatformSearch':
+
+		$pageStart = $_GET['pageStart'];
+		$numberOfRecords = $_GET['numberOfRecords'];
+		$whereAdd = array();
+
+		//get where statements together (and escape single quotes)
+		if ($_GET['platformName']) $whereAdd[] = "(UPPER(P.name) LIKE UPPER('%" . str_replace("'","''",$_GET['platformName']) . "%') OR UPPER(P.reportDisplayName) LIKE UPPER('%" . str_replace("'","''",$_GET['platformName']) . "%'))";
+		if ($_GET['startWith']) $whereAdd[] = "TRIM(LEADING 'THE ' FROM UPPER(p.name)) LIKE UPPER('" . $_GET['startWith'] . "%')";
+
+		$orderBy = $_GET['orderBy'];
+		$limit = ($pageStart-1) . ", " . $numberOfRecords;
+
+		//get total number of records to print out and calculate page selectors
+		$totalPObj = new Platform();
+		$totalRecords = count($totalPObj->search($whereAdd, $orderBy, ""));
+
+		//reset pagestart to 1 - happens when a new search is run but it kept the old page start
+		if ($totalRecords < $pageStart){
+			$pageStart=1;
+		}
+
+		$limit = ($pageStart-1) . ", " . $numberOfRecords;
+
+		$platformObj = new Platform();
+		$platformArray = array();
+		$platformArray = $platformObj->search($whereAdd, $orderBy, $limit);
+
+		if (count($platformArray) == 0){
+			echo "<br /><br /><i>Sorry, no requests fit your query</i>";
+			$i=0;
+		}else{
+			$thisPageNum = count($platformArray) + $pageStart - 1;
+			echo "<span style='font-weight:bold;'>Displaying " . $pageStart . " to " . $thisPageNum . " of " . $totalRecords . " Platform Records</span><br />";
+
+			//print out page selectors
+			if ($totalRecords > $numberOfRecords){
+				if ($pageStart == "1"){
+					echo "<span class='smallerText'><<</span>&nbsp;";
+				}else{
+					echo "<a href='javascript:setPageStart(1);' class='smallLink'><<</a>&nbsp;";
+				}
+
+				//don't want to print out too many page selectors!!
+				$maxDisplay=41;
+				if ((($totalRecords/$numberOfRecords)+1) < $maxDisplay){
+					$maxDisplay = ($totalRecords/$numberOfRecords)+1;
+				}
+
+				for ($i=1; $i<$maxDisplay; $i++){
+
+					$nextPageStarts = ($i-1) * $numberOfRecords + 1;
+					if ($nextPageStarts == "0") $nextPageStarts = 1;
+
+
+					if ($pageStart == $nextPageStarts){
+						echo "<span class='smallerText'>" . $i . "</span>&nbsp;";
+					}else{
+						echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'>" . $i . "</a>&nbsp;";
+					}
+				}
+
+				if ($pageStart == $nextPageStarts){
+					echo "<span class='smallerText'>>></span>&nbsp;";
+				}else{
+					echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'>>></a>&nbsp;";
+				}
+			}else{
+				echo "<br />";
+			}
+
+
+			?>
+			<table class='dataTable' style='width:727px'>
+			<tr>
+				<th style='width:200px'><table class='noBorderTable'><tr><td>Platform Name</td><td class='arrow'><a href='javascript:setOrder("P.name","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("P.name","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th style='width:320px'><table class='noBorderTable' style='width:320px'><tr><td style='width:280px'>Publishers</td><td class='arrow'><a href='javascript:setOrder("publishers","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("publishers","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>Last Import</td><td class='arrow'><a href='javascript:setOrder("importDateTime","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("ImportDateTime","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				
+			</tr>
+
+			<?php
+
+			$i=0;
+			foreach ($platformArray as $platform){
+				$i++;
+				if ($i % 2 == 0){
+					$classAdd="";
+				}else{
+					$classAdd="class='alt'";
+				}
+				echo "<tr>";
+				echo "<td $classAdd><a href='publisherPlatform.php?platformID=" . $platform['platformID'] . "'>" . $platform['name'] . "</a></td>";
+				echo "<td $classAdd>";
+					if (strpos($platform['publishers'], "br") == "0"){
+						echo "(none found)";
+					}else if (substr_count($platform['publishers'], "br") > 5){
+						echo "<a href=\"javascript:showPublisherList('" . $platform['platformID'] . "');\"><img src='images/arrowright.gif' style='border:0px' alt='show publisher list' id='image_" . $platform['platformID'] . "'></a>&nbsp;<a href=\"javascript:showPublisherList('" . $platform['platformID'] . "');\" id='link_" . $platform['platformID'] . "'>show publisher list</a><br />";
+						echo "<div id='div_" . $platform['platformID'] . "' style='display:none;width:300px;margin-left:5px'>";
+						echo $platform['publishers'];
+						echo "</div>";
+					}else{
+						echo $platform['publishers'];
+					}				
+				echo "</td>";
+
+
+				echo "<td $classAdd>" . $platform['latest_import'] . "</td>";
+				echo "</tr>";
+			}
+
+			?>
+			</table>
+
+			<table style='width:100%;margin-top:4px'>
+			<tr>
+			<td style='text-align:left'>
+			<?php
+			//print out page selectors
+			if ($totalRecords > $numberOfRecords){
+				if ($pageStart == "1"){
+					echo "<span class='smallerText'><<</span>&nbsp;";
+				}else{
+					echo "<a href='javascript:setPageStart(1);' class='smallLink'><<</a>&nbsp;";
+				}
+
+				$maxDisplay=41;
+				if ((($totalRecords/$numberOfRecords)+1) < $maxDisplay){
+					$maxDisplay = ($totalRecords/$numberOfRecords)+1;
+				}
+
+				for ($i=1; $i<$maxDisplay; $i++){
+
+					$nextPageStarts = ($i-1) * $numberOfRecords + 1;
+					if ($nextPageStarts == "0") $nextPageStarts = 1;
+
+
+					if ($pageStart == $nextPageStarts){
+						echo "<span class='smallerText'>" . $i . "</span>&nbsp;";
+					}else{
+						echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'>" . $i . "</a>&nbsp;";
+					}
+				}
+
+				if ($pageStart == $nextPageStarts){
+					echo "<span class='smallerText'>>></span>&nbsp;";
+				}else{
+					echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'>>></a>&nbsp;";
+				}
+			}
+			?>
+			</td>
+			<td style="text-align:right">
+			<select id='numberOfRecords' name='numberOfRecords' onchange='javascript:setNumberOfRecords();' style='width:50px;'>
+				<?php
+				for ($i=5; $i<=50; $i=$i+5){
+					if ($i == $numberOfRecords){
+						echo "<option value='" . $i . "' selected>" . $i . "</option>";
+					}else{
+						echo "<option value='" . $i . "'>" . $i . "</option>";
+					}
+				}
+				?>
+			</select>
+			<span class='smallText'>records per page</span>
+			</td>
+			</tr>
+			</table>
+
+			<?php
+		}
+
+		//set everything in sessions to make form "sticky"
+		$_SESSION['plat_pageStart'] = $_GET['pageStart'];
+		$_SESSION['plat_numberOfRecords'] = $_GET['numberOfRecords'];
+		$_SESSION['plat_platformName'] = $_GET['platformName'];
+		$_SESSION['plat_startWith'] = $_GET['startWith'];
+		$_SESSION['plat_orderBy'] = $_GET['orderBy'];
+
+		break;
+
+
+
+
 
 
 

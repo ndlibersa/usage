@@ -47,7 +47,7 @@ if ($publisherPlatformID) {
 
 <?php
 
-if (count($obj->getTitles()) == '0'){
+if ((count($obj->getJournalTitles()) == '0') && (count($obj->getBookTitles()) == '0') && (count($obj->getDatabaseTitles()) == '0')){
 	if ($publisherPlatformID) {
 		echo "No titles found for this Publisher / Platform combination";
 	}else if ($platformID){
@@ -59,86 +59,77 @@ if (count($obj->getTitles()) == '0'){
 	<input type='hidden' name='platformID' id='platformID' value='<?php echo $platformID; ?>'>
 	<input type='hidden' name='publisherPlatformID' id='publisherPlatformID' value='<?php echo $publisherPlatformID; ?>'>
 
-	<div style="width: 781px;" id ='div_displayLogins'>
-		<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
-			<tr>
-				<td class="sidemenu">
-					<div class="sidemenuselected" style='position: relative; width: 91px'><a href='javascript:void(0)' class='showLogins'>Logins</a></div>
-					<div class='sidemenuunselected'><a href='javascript:void(0)' class='showNotes'>Notes</a></div>
-					<div class='sidemenuunselected'><a href='javascript:void(0)' class='showStats'>Statistics</a></div>
-					<div class='sidemenuunselected'><a href='javascript:void(0)' class='showTitles'>Titles</a></div>
-				</td>
-				<td class='mainContent'>
 
-					<div id='div_loginDetails'>
-					<img src = "images/circle.gif">Loading...
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
+	<div style='width:900px;'>
+	<div style='float:left; width:597px;vertical-align:top;margin:0; padding:0;'>
+		<div style="width: 597px;" id ='div_imports' class="usage_tab_content">
+			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
+				<tr>
+					<td class="sidemenu">
+						<?php echo usage_sidemenu('imports'); ?>
+					</td>
+					<td class='mainContent'>
+						<div class='div_mainContent'>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
 
-
-
-	<div style="display:none; width: 781px;" id ='div_displayNotes'>
-		<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
-			<tr>
-				<td class="sidemenu">
-					<div class="sidemenuunselected"><a href='javascript:void(0)' class='showLogins'>Logins</a></div>
-					<div class="sidemenuselected" style='position: relative; width: 91px'><a href='javascript:void(0)' class='showNotes'>Notes</a></div>
-					<div class='sidemenuunselected'><a href='javascript:void(0)' class='showStats'>Statistics</a></div>
-					<div class='sidemenuunselected'><a href='javascript:void(0)' class='showTitles'>Titles</a></div>
-				</td>
-				<td class='mainContent'>
-
-					<div id='div_noteTextDetails'>
-					<img src = "images/circle.gif">Loading...
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-
-
-
-	<div id ='div_displayStats' style='display:none;width:781px;'>
-		<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
-			<tr>
-				<td class="sidemenu">
-					<div class="sidemenuunselected"><a href='javascript:void(0)' class='showLogins'>Logins</a></div>
-					<div class='sidemenuunselected'><a href='javascript:void(0)' class='showNotes'>Notes</a></div>
-					<div class='sidemenuselected' style='position: relative; width: 91px'><a href='javascript:void(0)' class='showStats'>Statistics</a></div>
-					<div class='sidemenuunselected'><a href='javascript:void(0)' class='showTitles'>Titles</a></div>
-				</td>
-				<td class='mainContent'>
-
-					<div id='div_statsDetails'>
-					<img src = "images/circle.gif">Loading...
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-
-
-	<div id ='div_displayTitles' style='display:none;width:781px;'>
-		<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
-			<tr>
-				<td class="sidemenu">
-					<div class="sidemenuunselected"><a href='javascript:void(0)' class='showLogins'>Logins</a></div>
-					<div class='sidemenuunselected'><a href='javascript:void(0)' class='showNotes'>Notes</a></div>
-					<div class='sidemenuunselected'><a href='javascript:void(0)' class='showStats'>Statistics</a></div>
-					<div class='sidemenuselected' style='position: relative; width: 91px'><a href='javascript:void(0)' class='showTitles'>Titles</a></div>
-				</td>
-				<td class='mainContent'>
-					<div id='div_titleDetails'>
-						<img src = "images/circle.gif">Loading...
-					</div>
-				</td>
-			</tr>
-		</table>
-	</div>
-
+		<div style="display:none;width: 597px;" id ='div_titles' class="usage_tab_content">
+			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
+				<tr>
+					<td class="sidemenu">
+						<?php echo usage_sidemenu('titles'); ?>
+					</td>
+					<td class='mainContent'>
+						<div class='div_mainContent'>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style="display:none;width: 597px;" id ='div_statistics' class="usage_tab_content">
+			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
+				<tr>
+					<td class="sidemenu">
+						<?php echo usage_sidemenu('statistics'); ?>
+					</td>
+					<td class='mainContent'>
+						<div class='div_mainContent'>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style="display:none;width: 597px;" id ='div_logins' class="usage_tab_content">
+			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
+				<tr>
+					<td class="sidemenu">
+						<?php echo usage_sidemenu('logins'); ?>
+					</td>
+					<td class='mainContent'>
+						<div class='div_mainContent'>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>	
+		</div>	
+		<div style="display:none;width: 597px;" id ='div_sushi' class="usage_tab_content">
+			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
+				<tr>
+					<td class="sidemenu">
+						<?php echo usage_sidemenu('sushi'); ?>
+					</td>
+					<td class='mainContent'>
+						<div class='div_mainContent'>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>	
+		</div>			
 
 </td></tr>
 </table>

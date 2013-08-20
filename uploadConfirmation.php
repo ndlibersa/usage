@@ -16,7 +16,7 @@
 **************************************************************************************************************************
 */
 
-
+ini_set("auto_detect_line_endings", true);
 include_once 'directory.php';
 
 //First, move the uploaded file
@@ -30,7 +30,7 @@ if (count(explode (".", basename( $_FILES['usageFile']['name']))) == "2"){
 	header( 'Location: index.php?error=3' ) ;
 }
 
-$orgFileName = $_FILES['usageFile']['name'];
+$orgFileName = $fileNameStart .  "." . $fileNameExt;
 
 $ts = date("Ymd");
 $target_path = "archive/" . $ts . "." . $fileNameStart .  "." . $fileNameExt;
@@ -70,16 +70,33 @@ function updateSubmit(){
 
   <?php
 
-
-  #file upload was OK, now we can read the file to output for confirmation
-  $startFlag = "N";
-  $formatCorrectFlag = "N";
-  $errorFlag = "N";
-  $reportTypeSet = "";
-
-
   #read layouts ini file to get the available layouts
   $layoutsArray = parse_ini_file("layouts.ini", true);
+
+  //set report type default - JR1 R3 since this is the first, only report that used to be accepted
+  $layout = $layoutsArray[ReportTypes]['default'];
+  $reportTypeDisplay = $layout . " (default)";
+  $columnsToCheck = $layoutsArray[$layout]['columnToCheck'];
+
+
+
+  #file upload was OK, now we can read the file to output for confirmation
+  $formatCorrectFlag = "N";
+  $foundColumns = "";
+  $errorFlag = "N";
+  $startFlag = "N";
+  $unmatched = "";
+  $del = ""; //delimiter
+  $layoutID = $_POST['layoutID'];
+
+  if ($layoutID != ""){
+  	$reportTypeSet = 'Y';
+	$layout = new Layout(new NamedArguments(array('primaryKey' => $_POST['layoutID'])));
+	$layoutKey = $layoutsArray[ReportTypes][$layout->layoutCode];
+	$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
+	$reportTypeDisplay = $layout->name;
+  }
+
 
   #read this file
   $file_handle = fopen($target_path, "r");
@@ -88,11 +105,6 @@ function updateSubmit(){
   echo $uploadConfirm;
   echo "<table class='dataTable' style='width:895px;'>";
 
-
-  //set report type default - JR1 R3 since this is the first, only report that used to be accepted
-  $layout = $layoutsArray[ReportTypes]['default'];
-  $reportTypeDisplay = $layout . " (default)";
-  $columnsToCheck = $layoutsArray[$layout]['columnToCheck'];
 
   while (!feof($file_handle)) {
      //get each line out of the file handler
@@ -114,24 +126,29 @@ function updateSubmit(){
 
      }
 
+     //set delimiter
+	$del = "\t";
+
+
      //check column formats if the format correct flag has not been set yet
-     if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= count($columnsToCheck))){
+     if (($formatCorrectFlag == "N") && (count(explode($del,$line)) >= count($columnsToCheck)) && (strlen($line) > 20)){
 		//positive unless proven negative
 		$formatCorrectFlag = "Y";
 		$lineArray = explode("\t",$line);
 
-		foreach ($columnsToCheck as $key => $colCheckName){
-			$fileColName = strtolower(trim($lineArray[$key]));	
-			// echo "Col Check: " . strtolower($colCheckName) . ":   ";
-			// echo "File Name: " . $fileColName . "<br />";
+		if ($columnsToCheck){
+			foreach ($columnsToCheck as $key => $colCheckName){
+				$fileColName = strtolower(trim($lineArray[$key]));	
 
-			if (strpos($fileColName, strtolower($colCheckName)) === false){
-				$formatCorrectFlag='N';
-				// echo $formatCorrectFlag . "<br /><br />";
+				if (strpos($fileColName, strtolower($colCheckName)) === false){
+					if (!$unmatched){
+						$unmatched = "Looking for \"$colCheckName\" in column $key but found \"$fileColName\"";
+					}
+					$formatCorrectFlag='N';
+				}	
+
 			}	
-
 		}
-
 
 		 if ($formatCorrectFlag == 'Y'){
 			$numberOfColumns = count($lineArray);
@@ -148,14 +165,19 @@ function updateSubmit(){
 				echo "<th>" . $value . "</th>";
 			}
 			echo "</tr>";
-		 }
+		 }else{
+			if (!$foundColumns){
+				$foundColumns = implode(", ", $lineArray);
+			}
+		}
 	 }
 
 	//as long as the flags are set to print out, and the line exists, print the line formatted in table
 	//(strpos($line,"\t\t\t\t") === false)
-	 if (($formatCorrectFlag == "Y") && ($startFlag == "Y")  && (strpos($line,"\t") != "0" )) {
+//if (($startFlag == "Y") && ($formatCorrectFlag == "Y")  && !(strpos($line,"\t") == "0") && (substr($line,0,5) != "Total") && (count(explode("\t",$line)) > 5)) {
+	 if (($formatCorrectFlag == "Y") && (substr($line,0,5) != "Total") && ($startFlag == "Y")  && (strpos($line,$del) != "0" ) && (count(explode("\t",$line)) > 5)) {
 	 	 echo "<tr>";
-		 $lineArray = explode("\t",$line);
+		 $lineArray = explode($del,$line);
 
 		 foreach($lineArray as $value){
 
@@ -179,7 +201,7 @@ function updateSubmit(){
 
 
 	 #check "Total for all" is in first column  - set flag to start import after this
-     if (strpos($line,"Total for all") !== false){
+     if ((substr($line,0,5) == "Total") || ($formatCorrectFlag == "Y")){
      	$startFlag = "Y";
      }
 
@@ -192,26 +214,23 @@ function updateSubmit(){
   $errrorFlag="N";
 
   if (($formatCorrectFlag == "N")){
-   	echo "<br /><font color='red'><b>Error with Format</b>:  Report format is set to <b>" . $reportTypeDisplay . "</b> but does not match the column names listed in layouts.ini for this format.  Also, the month of January must exist.  <br /><br />Expecting columns: " . implode(", ", $columnsToCheck) . "</font><br />";
+   	echo "<br /><font color='red'><b>Error with Format</b>:  Report format is set to <b>" . $reportTypeDisplay . "</b> but does not match the column names listed in layouts.ini for this format - $unmatched.<br /><br />Expecting columns: " . implode(", ", $columnsToCheck) . "<br /><br />Found columns: " . $foundColumns . "</font><br /><br />If problems persist you can copy an existing header that works into this file.";
+   	$errorFlag="Y";
+  }
+
+  if (!$layoutKey){
+   	echo "<br /><font color='red'>Error with Setup:  This report format is not set up in layouts.ini.</font><br />";
    	$errorFlag="Y";
   }
 
   if (($startFlag == "N")){
-   	echo "<br /><font color='red'>Error with Format:  The line preceding the first should start with 'Total for all'.</font><br />";
+   	echo "<br /><font color='red'>Error with Format:  The line preceding the first should start with 'Total'.</font><br />";
    	$errorFlag="Y";
   }
-
 
   if ($checkYear > date('Y')){
   	echo "<br /><font color='red'>Error with Year:  Year listed in header (" . $checkYear . ") may not be ahead of current year.  Please correct and submit again.</font><br />";
   	$errorFlag="Y";
-  }
-
-  if ((isset($_POST['archiveInd'])) || (strpos("a",$layout) > 0)){
-        echo "<br /><font color='red'>File is flagged as an Archive.  If this is incorrect use 'Cancel' to fix.</font><br />";
-        $archiveInd = 1;
-  }else{
-        $archiveInd = 0;
   }
 
   if (isset($_POST['overrideInd'])){
@@ -230,10 +249,9 @@ function updateSubmit(){
 	<br />
     <form id="confirmForm" name="confirmForm" enctype="multipart/form-data" method="post" action="uploadComplete.php">
     <input type="hidden" name="upFile" value="<?php echo $target_path; ?>">
-    <input type="hidden" name="archiveInd" value="<?php echo $archiveInd; ?>">
     <input type="hidden" name="overrideInd" value="<?php echo $overrideInd; ?>">
     <input type="hidden" name="orgFileName" value="<?php echo $orgFileName; ?>">
-    <input type="hidden" name="layout" value="<?php echo $layout; ?>">
+    <input type="hidden" name="layoutID" value="<?php echo $layoutID; ?>">
 	<table>
 	<tr valign="center">
 	<td>
@@ -244,10 +262,3 @@ function updateSubmit(){
     </td>
     </tr>
     </table>
-    </form>
-</td>
-</tr>
-</table>
-
-
-<?php include 'templates/footer.php'; ?>

@@ -351,7 +351,6 @@ switch ($action) {
 
 
 
-
 	case 'getLoginForm':
 		if (isset($_GET['externalLoginID'])) $externalLoginID = $_GET['externalLoginID']; else $externalLoginID = '';
  		if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
@@ -410,6 +409,89 @@ switch ($action) {
 		</div>
 
 		<script type="text/javascript" src="js/forms/externalLoginSubmitForm.js?random=<?php echo rand(); ?>"></script>
+
+		<?php
+
+		break;
+
+
+
+	case 'getSushiForm':
+		$sushiServiceID = $_GET['sushiServiceID'];
+ 		$platformID = $_GET['platformID'];
+ 		
+
+		if ($sushiServiceID){
+			$addUpdate = 'Update';
+			$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $sushiServiceID)));
+
+		}else{
+			$addUpdate = 'Add';
+			$sushiService = new SushiService();
+		}
+
+		?>
+		<div id='div_updateForm'>
+		<input type='hidden' id='editSushiServiceID' name='editSushiServiceID' value='<?php echo $sushiServiceID; ?>'>
+		<input type='hidden' id='platformID' name='platformID' value='<?php echo $platformID; ?>'>
+		<table class="thickboxTable" style="width:420px;padding:2px;">
+			<tr>
+				<td colspan='2'><span class='headerText'><?php echo $addUpdate; ?> SUSHI Connection</span><span id='span_errors' style='color:red;'><br /></span><br /></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='serviceURL'><b>Service URL:</b></label</td>
+				<td><input type='text' id='serviceURL' name='serviceURL' value="<?php if ($sushiServiceID) echo $sushiService->serviceURL; ?>" style='width:300px;' /><span id='span_error_serviceURL' style='color:red'></span></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='wsdlURL'><b>WSDL URL:</b></label</td>
+				<td><input type='text' id='wsdlURL' name='wsdlURL' value="<?php if ($sushiServiceID) echo $sushiService->wsdlURL; ?>" style='width:300px;' /></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='requestorID'><b>Requestor ID:</b></label</td>
+				<td><input type='text' id='requestorID' name='requestorID' value="<?php if ($sushiServiceID) echo $sushiService->requestorID; ?>" style='width:300px;' /></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='customerID'><b>Customer ID:</b></label</td>
+				<td><input type='text' id='customerID' name='customerID' value="<?php if ($sushiServiceID) echo $sushiService->customerID; ?>" style='width:300px;' /></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='security'><b>Security:</b></label</td>
+				<td><input type='text' id='security' name='security' value="<?php if ($sushiServiceID) echo $sushiService->security; ?>" style='width:300px;' /><span id='span_error_security' style='color:red'></span></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;'><label for='login'><b>Login:</b></label</td>
+				<td><input type='text' id='login' name='login' value="<?php if ($sushiServiceID) echo $sushiService->login; ?>" style='width:300px;' /><span id='span_error_login' style='color:red'></span></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;'><label for='password'><b>Password:</b></label</td>
+				<td><input type='text' id='password' name='password' value="<?php if ($sushiServiceID) echo $sushiService->password; ?>" style='width:300px;' /><span id='span_error_password' style='color:red'></span></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;'><label for='serviceDayOfMonth'><b>Service Day:</b></label</td>
+				<td><input type='text' id='serviceDayOfMonth' name='serviceDayOfMonth' value="<?php if ($sushiServiceID) echo $sushiService->serviceDayOfMonth; ?>" style='width:300px;' /><span id='span_error_serviceDay' style='color:red'></span></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;'><label for='noteText'><b>Login Notes:</b></label></td>
+				<td><textarea cols='46' rows='4' id='noteText' name='noteText' style='width:300px;'><?php if ($sushiServiceID) echo $sushiService->noteText; ?></textarea></td>
+			</tr>
+
+			<tr style="vertical-align:middle;">
+				<td style="padding-top:8px;text-align:right;">&nbsp;</td>
+				<td style="padding-top:8px;padding-right:8px;">
+					<table class='noBorderTable' style='width:100%;'>
+						<tr>
+							<td style='text-align:left'><input type='button' value='submit' name='submitSushiForm' id ='submitSushiForm'></td>
+							<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+		</table>
+
+		</div>
+
+		<script type="text/javascript" src="js/forms/sushiSubmitForm.js?random=<?php echo rand(); ?>"></script>
 
 		<?php
 
@@ -644,27 +726,27 @@ switch ($action) {
 
 
 
-	//Add ISSNs
-	case 'getAddISSNForm':
+	//Add Identifiers
+	case 'getAddIdentifierForm':
 		if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
  		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
  		if (isset($_GET['titleID'])) $titleID = $_GET['titleID'];
 
 
 		?>
-		<div id='div_addISSNForm'>
+		<div id='div_addIdentifierForm'>
 		<table class="thickboxTable" style="width:200px;padding:2px;">
-		<tr><td colspan='2'><span class='headerText'>Add ISSN</span><br /><br /></td></tr>
-		<tr><td style='vertical-align:top;text-align:right;'><label for='issnType'><b>ISSN Type</b></label</td>
+		<tr><td colspan='2'><span class='headerText'>Add Identifier</span><br /><br /></td></tr>
+		<tr><td style='vertical-align:top;text-align:right;'><label for='identifierType'><b>Identifier Type</b></label</td>
 			<td>
-			<select id='issnType' name='issnType' style='width:90px;'>
+			<select id='identifierType' name='identifierType' style='width:90px;'>
 			<option value='alt'>alt</option>
 			<option value='print'>print</option>
 			<option value='online'>online</option>
 			</select>
 			</td>
 		</tr>
-		<tr><td style='vertical-align:top;text-align:right;'><label for='issn'><b>ISSN</b></label</td><td><input type='text' id='issn' name='issn' value="" style='width:90px;' /><span id='span_error_ISSN' style='color:red'></span></td></tr>
+		<tr><td style='vertical-align:top;text-align:right;'><label for='identifier'><b>Identifier</b></label</td><td><input type='text' id='identifier' name='identifier' value="" style='width:90px;' /><span id='span_error_Identifier' style='color:red'></span></td></tr>
 
 
 		<tr style="vertical-align:middle;">
@@ -672,7 +754,7 @@ switch ($action) {
 			<td style="padding-top:8px;padding-right:8px;">
 				<table class='noBorderTable' style='width:100%;'>
 					<tr>
-						<td style='text-align:left'><input type='button' value='submit' name='submitISSNForm' id ='submitISSNForm'></td>
+						<td style='text-align:left'><input type='button' value='submit' name='submitIdentifierForm' id ='submitIdentifierForm'></td>
 						<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
 					</tr>
 				</table>
@@ -687,7 +769,7 @@ switch ($action) {
 		<input type="hidden" id='platformID' name='platformID' value='<?php echo $platformID; ?>'>
 		<input type="hidden" id='publisherPlatformID' name='publisherPlatformID' value='<?php echo $publisherPlatformID; ?>'>
 
-		<script type="text/javascript" src="js/forms/issnSubmitForm.js?random=<?php echo rand(); ?>"></script>
+		<script type="text/javascript" src="js/forms/identifierSubmitForm.js?random=<?php echo rand(); ?>"></script>
 
 
 		<?php
@@ -706,7 +788,7 @@ switch ($action) {
 		?>
 		<div id='div_relatedTitles'>
 		<table class="thickboxTable" style="width:250px;padding:2px;">
-		<tr><td><span class='headerText'>Associated Titles and ISSNs</span><br /></td></tr>
+		<tr><td><span class='headerText'>Associated Titles and Identifiers</span><br /></td></tr>
 		<tr>
 		<td>
 
@@ -722,12 +804,12 @@ switch ($action) {
 				echo "<td colspan = '2' style='width:250px'><b>" . $relatedTitle->title . "</b></td>";
 				echo "</tr>";
 
-				foreach($relatedTitle->getISSNs as $relatedTitleISSN) {
-					$displayISSN = substr($relatedTitleISSN->issn,0,4) . "-" . substr($relatedTitleISSN->issn,4,4);
+				foreach($relatedTitle->getIdentifiers as $relatedTitleIdentifier) {
+					$displayIdentifier = substr($relatedTitleIdentifier->identifier,0,4) . "-" . substr($relatedTitleIdentifier->identifier,4,4);
 
 					echo "<tr>";
-					echo "<td style='width:40px'>" . $relatedTitleISSN->issnType . "</td>";
-					echo "<td style='width:210px'>" . $displayISSN . "</td>";
+					echo "<td style='width:40px'>" . $relatedTitleIdentifier->identifierType . "</td>";
+					echo "<td style='width:210px'>" . $displayIdentifier . "</td>";
 					echo "</tr>";
 
 				}
