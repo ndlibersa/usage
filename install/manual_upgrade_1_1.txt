@@ -1,0 +1,31 @@
+Manual Installation Coral Usage Upgrade moving to 1.1
+
+Update the usage module codebase
+
+	-When performing upgrades your configuration file (/admin/configuration.ini) 
+	should always be backed up first so that when you check out the new usage module you are sure to not overwrite it. 
+	-Check out the new code through GitHub https://github.com/ndlibersa/usage/
+	-If needed manually copy and overwrite all the files into the existing usage directory.
+	-Do not replace the existing directory.  This will cause you to loose any settings, documents, etc. That you may have.  Copying the new files over the existing files and replacing them will ensure you get the changes needed but not removing additional files.
+	-Ensure that your your configuration file (/admin/configuration.ini) is still correct.
+	
+Update the database schema
+
+    -Open SQL file in /coral/usage/install/protected/update_1.1.sql and replace 
+	_DATABASE_NAME_ with your database schema name
+    -Run SQL file
+
+Update /admin/configuration.ini
+
+	-No changes are required to be made in the /admin/configuration.ini
+
+
+Additional CORAL updates for enabling SUSHI harvesting
+
+	-Make sure the "sushistore" directory is writeable
+	-Make sure your php installation has the soap client installed (to verify, visit your php.ini file or view phpinfo)
+		- For more info on php info:  http://php.net/manual/en/function.phpinfo.php
+		- For more info on soap client: http://php.net/manual/en/class.soapclient.php
+
+	-If you wish to use the sushi scheduler to automatically run sushi imports you will need a scheduler (cron) to run:
+		sushiSchedule.php
