@@ -98,8 +98,8 @@ function usage_sidemenu($selected_link = '') {
     'imports' => 'seahorseicon',
     'titles' => 'acquisitions',
     'statistics' => 'xls',
-    'logins' => 'lock',
-    'sushi' => 'arrow_down',
+    'logins' => 'key',
+    'sushi' => 'arrow_sides',
   );
   
   foreach ($links as $key => $icon) {

@@ -339,15 +339,6 @@ class SushiService extends DatabaseObject {
 		}
 
 
-		//if report layout is BR and Release is 3, change it to 1
-		if((preg_match('/BR/i', $reportLayout)) && ($this->releaseNumber == "3")){
-			$releaseNumber = '1';
-		}else{
-			$releaseNumber = $this->releaseNumber;
-		}
-			
-		
-
 		$layoutCode = "";
 		$countArray = array();
 
@@ -359,13 +350,13 @@ class SushiService extends DatabaseObject {
 
 				$layoutCode = $name;	
 
-				if (($version == "3") || ($version =="4") || ($version == "1")){
+				if (($version == "3") || ($version =="4")){
 					$version = "R" . $version;
 				}
 				if ($version != ''){
 					$layoutCode .= "_" . $version;		
 				}else{
-					$layoutCode .= "_R" . $releaseNumber; 
+					$layoutCode .= "_R" . $this->releaseNumber; 
 				}
 
 				//At this point, determine the format of the report to port to csv from the layouts.ini file
@@ -375,7 +366,7 @@ class SushiService extends DatabaseObject {
 
 	  			//if this way of determining layout was unsuccessful, just use the layout sent in
 	  			if (count($layoutColumns) == "0"){
-	  				$layoutCode = $reportLayout . "_R" . $releaseNumber;
+	  				$layoutCode = $reportLayout . "_R" . $this->releaseNumber;
 
 					$layoutKey = $layoutsArray[ReportTypes][$layoutCode];
 		  			$layoutColumns = $layoutsArray[$layoutKey]['columns'];
