@@ -106,6 +106,28 @@ switch ($action) {
         break;
 
 
+
+
+    case 'addPlatform':
+
+    	$platform = new Platform();
+
+		$platform->name = $_POST['platformName'];
+		$platform->reportDisplayName = $_POST['platformName'];
+
+		try {
+			$platform->save();
+			echo $platform->primaryKey;
+
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+
+
+        break;
+
+
+
     case 'deletePlatformNote':
 
 		$platformNote = new PlatformNote(new NamedArguments(array('primaryKey' => $_GET['platformNoteID'])));
@@ -205,6 +227,8 @@ switch ($action) {
 		$sushiService->requestorID = $_POST['requestorID'];
 		$sushiService->customerID = $_POST['customerID'];
 		$sushiService->security = $_POST['security'];
+		$sushiService->reportLayouts = $_POST['reportLayouts'];
+		$sushiService->releaseNumber = $_POST['releaseNumber'];
 		$sushiService->login = $_POST['login'];
 		$sushiService->password = $_POST['password'];
 		$sushiService->serviceDayOfMonth = $_POST['serviceDayOfMonth'];
@@ -218,6 +242,30 @@ switch ($action) {
 		}
 
         break;
+
+
+
+
+    case 'runSushiService':
+
+
+    	//update
+    	if ((isset($_GET['sushiServiceID'])) && ($_GET['sushiServiceID'] != '')){
+ 			$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $_GET['sushiServiceID'])));
+
+ 			//try to run!
+			try {
+				$sushiService->runAll();
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
+
+    	}
+
+		
+
+        break;
+
 
 
 
@@ -457,6 +505,25 @@ switch ($action) {
 
 
  		break;
+
+
+
+     case 'deleteImportLog':
+
+ 		$importLogID = $_GET['importLogID'];
+
+		$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $importLogID)));
+
+		echo "<font color='red'>";
+		try {
+			$importLog->delete();
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		echo "</font>";
+
+ 		break;
+
 
 
 

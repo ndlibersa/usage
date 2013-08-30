@@ -17,6 +17,9 @@
 **************************************************************************************************************************
 */
 
+ini_set('max_execution_time', 1000); 
+ini_set("default_socket_timeout", 1000);
+ini_set('memory_limit', '256M');
 
 // Useful directory constants, ending with |/|.
 define('ADMIN_DIR', dirname(__FILE__) . '/admin/');
@@ -75,10 +78,18 @@ function format_date($mysqlDate) {
 
 	//SUGGESTED: "m/d/Y" or "d-m-Y"
 
-	return date("m/d/Y", strtotime($mysqlDate));
+  if ($mysqlDate != ""){
+   if (date("hi") > 0){
+    return date("m/d/Y h:i a", strtotime($mysqlDate));
+   }else{
+    return date("m/d/Y", strtotime($mysqlDate)); 
+   }
+	 
+  }else{
+    return "";
+  }
 
 }
-
 
 
 function usage_sidemenu($selected_link = '') {
@@ -86,8 +97,9 @@ function usage_sidemenu($selected_link = '') {
   $links = array(
     'imports' => 'seahorseicon',
     'titles' => 'acquisitions',
-    'statistics' => 'cataloging',
+    'statistics' => 'xls',
     'logins' => 'lock',
+    'sushi' => 'arrow_down',
   );
   
   foreach ($links as $key => $icon) {
@@ -102,7 +114,7 @@ function usage_sidemenu($selected_link = '') {
       $icon_id = "";
     }
     if ($key == 'imports') {
-      $image .= '.jpg';
+      $image .= '.png';
     } else {
       $image .= '.gif';
     }

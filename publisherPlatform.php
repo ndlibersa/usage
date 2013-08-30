@@ -43,26 +43,14 @@ if ($publisherPlatformID) {
 	</table>
 
 
-
-
-<?php
-
-if ((count($obj->getJournalTitles()) == '0') && (count($obj->getBookTitles()) == '0') && (count($obj->getDatabaseTitles()) == '0')){
-	if ($publisherPlatformID) {
-		echo "No titles found for this Publisher / Platform combination";
-	}else if ($platformID){
-		echo "No titles found for this Platform";
-	}
-}else{
-?>
-
 	<input type='hidden' name='platformID' id='platformID' value='<?php echo $platformID; ?>'>
 	<input type='hidden' name='publisherPlatformID' id='publisherPlatformID' value='<?php echo $publisherPlatformID; ?>'>
 
 
 	<div style='width:900px;'>
-	<div style='float:left; width:597px;vertical-align:top;margin:0; padding:0;'>
-		<div style="width: 597px;" id ='div_imports' class="usage_tab_content">
+	
+		<div style='float:left; width:597px;vertical-align:top;margin:0; padding:0;'>
+		<div style="width: 797px;" id ='div_imports' class="usage_tab_content">
 			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
 				<tr>
 					<td class="sidemenu">
@@ -76,7 +64,7 @@ if ((count($obj->getJournalTitles()) == '0') && (count($obj->getBookTitles()) ==
 			</table>
 		</div>
 
-		<div style="display:none;width: 597px;" id ='div_titles' class="usage_tab_content">
+		<div style="display:none;width: 797px;" id ='div_titles' class="usage_tab_content">
 			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
 				<tr>
 					<td class="sidemenu">
@@ -102,7 +90,7 @@ if ((count($obj->getJournalTitles()) == '0') && (count($obj->getBookTitles()) ==
 				</tr>
 			</table>
 		</div>
-		<div style="display:none;width: 597px;" id ='div_logins' class="usage_tab_content">
+		<div style="display:none;width: 797px;" id ='div_logins' class="usage_tab_content">
 			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
 				<tr>
 					<td class="sidemenu">
@@ -114,9 +102,9 @@ if ((count($obj->getJournalTitles()) == '0') && (count($obj->getBookTitles()) ==
 					</td>
 				</tr>
 			</table>
-		</div>	
-		</div>	
-		<div style="display:none;width: 597px;" id ='div_sushi' class="usage_tab_content">
+		</div>
+			<div style="display:none;width: 797px;" id ='div_sushi' class="usage_tab_content">
+
 			<table cellpadding="0" cellspacing="0" style="width: 100%; table-layout: fixed;">
 				<tr>
 					<td class="sidemenu">
@@ -129,19 +117,26 @@ if ((count($obj->getJournalTitles()) == '0') && (count($obj->getBookTitles()) ==
 				</tr>
 			</table>
 		</div>	
-		</div>			
-
+	</div>			
+	</div>
 </td></tr>
 </table>
 
 
 
 <script type="text/javascript" src="js/publisherPlatform.js"></script>
+    <script>
+      $(document).ready(function() {
+		<?php if ((isset($_GET['showTab'])) && ($_GET['showTab'] == 'sushi')){ ?>
+        	$('a.showSushi').click();
+        <?php }else{ ?>
+        	$('a.showImports').click();
+        <?php } ?>
+      });
+    </script>
 
+	<?php
 
-<?php
-
-}
 include 'templates/footer.php';
 
 ?>

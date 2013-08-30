@@ -23,94 +23,58 @@ session_start();
 include_once 'directory.php';
 
 //print header
-$pageTitle='SUSHI';
+$pageTitle='SUSHI Import';
 include 'templates/header.php';
 
-
-?>
-
-<div style='text-align:left;'>
-<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-<tr style='vertical-align:top;'>
-<td style="width:155px;padding-right:10px;">
-
-	<table class='noBorder'>
-	<tr><td style='text-align:left;width:75px;' align='left'>
-	<span style='font-size:130%;font-weight:bold;'>Search</span><br />
-	<a href='javascript:void(0)' class='newSearch'>new search</a>
-	</td>
-	<td><div id='div_feedback'>&nbsp;</div>
-	</td></tr>
-	</table>
-
-	<table class='borderedFormTable' style="width:150px">
-
-	<tr>
-	<td class='searchRow'><label for='searchName'><b>Name (contains)</b></label>
-	<br />
-	<input type='text' name='searchPlatformName' id='searchPlatformName' style='width:145px' value="<?php if ($reset != 'Y') echo $_SESSION['plat_platformName']; ?>" /><br />
-	<div id='div_searchName' style='<?php if ((!$_SESSION['plat_platformName']) || ($reset == 'Y')) echo "display:none;"; ?>margin-left:118px;margin-top:5px'><input type='button' name='btn_searchPlatformName' value='go!' class='searchButton' /></div>
-	<br />
-	</td>
-	</tr>
-
-
-	<tr>
-	<td class='searchRow'><label for='searchFirstLetter'><b>Starts with</b></label>
-	<br />
-	<?php
-	$platform = new Platform();
-
-	$alphArray = range('A','Z');
-	$pAlphArray = $platform->getAlphabeticalList;
-
-	foreach ($alphArray as $letter){
-		if ((isset($pAlphArray[$letter])) && ($pAlphArray[$letter] > 0)){
-			echo "<span class='searchLetter' id='span_letter_" . $letter . "'><a href='javascript:setStartWith(\"" . $letter . "\")'>" . $letter . "</a></span>";
-			if ($letter == "N") echo "<br />";
-		}else{
-			echo "<span class='searchLetter'>" . $letter . "</span>";
-			if ($letter == "N") echo "<br />";
-		}
-	}
 	?>
-	<br />
-	</td>
-	</tr>
 
+	<script type="text/javascript" src="js/sushi.js"></script>
+
+	<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
+		<tr><td>
+			<table style='width:897px;'>
+			<tr style='vertical-align:top'>
+			<td><span class="headerText">SUSHI Administration</span><br /></td>
+			<td style='text-align:right;'>&nbsp;</td>
+			</tr>
+			</table>
+
+
+			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'><img src="images/plus.gif" / > Add new platform for SUSHI</a>
+			<br /><br /><div id="div_run_feedback"></div><br />
+
+			<div class="headerText" style='margin-bottom:9px;'>Outstanding Import Queue&nbsp;&nbsp;&nbsp;<span id='span_outstanding_feedback'></span></div>
+
+			<div id="div_OutstandingSushiImports"></div>
+
+			<br /><br /><br />
+
+			<div class="headerText" style='margin-bottom:9px;'>Upcoming SUSHI Imports&nbsp;&nbsp;&nbsp;<span id='span_upcoming_feedback'></span></div>
+			
+
+			<div id="div_UpcomingSushiImports"></div>
+
+
+
+			<br /><br /><br />
+
+			<div class="headerText" style='margin-bottom:9px;'>Unscheduled SUSHI Imports&nbsp;&nbsp;&nbsp;<span id='span_unscheduled_feedback'></span></div>
+			<div id="div_run_feedback"></div>
+
+			<div id="div_UnscheduledSushiImports"></div>
+
+
+
+
+
+
+		</td></tr>
 	</table>
 
-</td>
-<td>
-<div id='div_searchResults'></div>
-</td></tr>
-</table>
-</div>
-<br />
-<script type="text/javascript" src="js/index.js"></script>
-<script type='text/javascript'>
+
+
 <?php
-  //used to default to previously selected values when back button is pressed
-  //if the startWith is defined set it so that it will default to the first letter picked
-  if ((isset($_SESSION['plat_startWith'])) && ($reset != 'Y')){
-	  echo "startWith = '" . $_SESSION['plat_startWith'] . "';";
-	  echo "$(\"#span_letter_" . $_SESSION['plat_startWith'] . "\").removeClass('searchLetter').addClass('searchLetterSelected');";
-  }
-
-  if ((isset($_SESSION['plat_pageStart'])) && ($reset != 'Y')){
-	  echo "pageStart = '" . $_SESSION['plat_pageStart'] . "';";
-  }
-
-  if ((isset($_SESSION['plat_recordsPerPage'])) && ($reset != 'Y')){
-	  echo "recordsPerPage = '" . $_SESSION['plat_recordsPerPage'] . "';";
-  }
-
-  if ((isset($_SESSION['plat_orderBy'])) && ($reset != 'Y')){
-	  echo "orderBy = \"" . $_SESSION['plat_orderBy'] . "\";";
-  }
-
-  echo "</script>";
-
   //print footer
   include 'templates/footer.php';
+
 ?>

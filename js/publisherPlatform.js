@@ -16,12 +16,8 @@
 */
 
  $(document).ready(function(){
-	updateLoginDetails();
-	updateFullStatsDetails();
-	updateTitleDetails();
-  updateImportDetails();
-  updateSUSHIDetails();
-	    
+
+
  });
 
  viewAll=0;
@@ -87,7 +83,7 @@
           type:       "GET",
           url:        "ajax_htmldata.php",
           cache:      false,
-          data:       "action=getSushiDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
+          data:       "action=getImportDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) { 
           	$(".div_mainContent").html(html);
           	tb_reinit();
@@ -141,7 +137,7 @@
           type:       "GET",
           url:        "ajax_htmldata.php",
           cache:      false,
-          data:       "action=getTitleDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
+          data:       "action=getTitleSpreadsheets&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) { 
           	$(".div_mainContent").html(html);
           	tb_reinit();
@@ -252,4 +248,9 @@
 
 
 	}
+  }
+
+  function toggle(el, dID){
+    console.log($(el));
+    $(el).find('#' + dID).show();
   }

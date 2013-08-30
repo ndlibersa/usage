@@ -21,7 +21,7 @@
   updateSearch();      
       
   //perform search if enter is hit
-  $('#searchPlatformName').keyup(function(e) {
+  $('#searchName').keyup(function(e) {
         if(e.keyCode == 13) {
           updateSearch();
         }
@@ -44,7 +44,7 @@ function updateSearch(){
          type:       "GET",
          url:        "ajax_htmldata.php",
          cache:      false,
-         data:       "action=getPlatformSearch&platformName=" + $("#searchPlatformName").val() + "&orderBy=" + orderBy + "&pageStart=" + pageStart + "&numberOfRecords=" + numberOfRecords + "&startWith=" + startWith,
+         data:       "action=getSearch&searchName=" + $("#searchName").val() + "&orderBy=" + orderBy + "&pageStart=" + pageStart + "&numberOfRecords=" + numberOfRecords + "&startWith=" + startWith,
          success:    function(html) { 
           $("#div_feedback").html("&nbsp;");
           $('#div_searchResults').html(html);  
@@ -99,7 +99,7 @@ function updateSearch(){
  
   $(".newSearch").click(function () {
     //reset fields
-    $("#searchPlatformName").val("");
+    $("#searchName").val("");
     
     //reset startwith background color
     $("#span_letter_" + startWith).removeClass('searchLetterSelected').addClass('searchLetter');
@@ -111,7 +111,7 @@ function updateSearch(){
   });
   
    
-  $("#searchPlatformName").focus(function () {
+  $("#searchName").focus(function () {
     $("#div_searchName").css({'display':'block'}); 
   });
   

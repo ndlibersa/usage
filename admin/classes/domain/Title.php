@@ -53,13 +53,12 @@ class Title extends DatabaseObject {
 
 
 	//find out if there is an existing identifier for a title
-	public function getExistingOnlineISSN($testISSN){
+	public function getExistingIdentifier($identifier){
 
 		$query = "SELECT distinct identifier
 					FROM TitleIdentifier ti
 					WHERE ti.titleID = '" . $this->titleID . "'
-					AND identifier = '" . $testISSN . "'
-					AND identifierType='online'
+					AND identifier = '" . $identifier . "'
 					ORDER BY identifierType DESC
 					LIMIT 1;";
 
@@ -151,7 +150,7 @@ class Title extends DatabaseObject {
 					AND archiveInd ='" . $archiveInd . "'
 					AND year='" . $year . "'" . $addWhere . "
 					AND publisherPlatformID = '" . $publisherPlatformID . "';";
-
+echo $query;
 		$result = $this->db->processQuery($query, 'assoc');
 
 		$allArray = array();
@@ -179,31 +178,29 @@ class Title extends DatabaseObject {
 
 
 	//returns array of the first listed identifier objects
-	public function getByTitle($resourceTitle, $pISSN, $eISSN, $pISBN, $eISBN, $publisherPlatformID){
+	public function getByTitle($resourceType, $resourceTitle, $pISSN, $eISSN, $pISBN, $eISBN, $publisherPlatformID){
 
 		//default search to print ISBN only - we're confident that's the same title
 		if ($pISBN) {
-			$query = "SELECT DISTINCT ti.titleID as titleID FROM TitleIdentifier ti, Title t WHERE t.titleID = ti.titleID AND identifierType = 'ISBN' AND identifier = '" . $pISBN . "' LIMIT 1;";
+			$query = "SELECT DISTINCT ti.titleID as titleID FROM TitleIdentifier ti, Title t WHERE t.titleID = ti.titleID AND identifierType = 'ISBN' AND identifier = '" . $pISBN . "' AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
 
 		//Otherwise try ISSN
-		} else if ($pISSN) {
-			$query = "SELECT DISTINCT ti.titleID as titleID FROM TitleIdentifier ti, Title t WHERE t.titleID = ti.titleID AND identifierType = 'ISSN' AND identifier = '" . $pISSN . "' LIMIT 1;";
+		} else if (($pISSN) && ($resourceType == "Journal")) {
+			$query = "SELECT DISTINCT ti.titleID as titleID FROM TitleIdentifier ti, Title t WHERE t.titleID = ti.titleID AND identifierType = 'ISSN' AND identifier = '" . $pISSN . "' AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
 
 		//not so confident about online identifier so we also search on common platform / publisher
 		}else if ((!$pISBN) && ($eISBN)){
-			$query = "SELECT DISTINCT t.titleID as titleID FROM TitleIdentifier ti, Title t, MonthlyUsageSummary mus WHERE t.titleID = ti.titleID AND identifierType = 'eISBN' AND identifier = '" . $eISBN . "' AND t.titleID = mus.titleID AND publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') LIMIT 1;";
+			$query = "SELECT DISTINCT t.titleID as titleID FROM TitleIdentifier ti, Title t, MonthlyUsageSummary mus WHERE t.titleID = ti.titleID AND identifierType = 'eISBN' AND identifier = '" . $eISBN . "' AND t.titleID = mus.titleID AND publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
 
 
 		//not so confident about online identifier so we also search on common platform / publisher
-		}else if ((!$pISSN) && ($eISSN)){
-			$query = "SELECT DISTINCT t.titleID as titleID FROM TitleIdentifier ti, Title t, MonthlyUsageSummary mus WHERE t.titleID = ti.titleID AND identifierType = 'eISSN' AND identifier = '" . $eISSN . "' AND t.titleID = mus.titleID AND publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') LIMIT 1;";
+		}else if ((!$pISSN) && ($eISSN) && ($resourceType == "Journal")){
+			$query = "SELECT DISTINCT t.titleID as titleID FROM TitleIdentifier ti, Title t, MonthlyUsageSummary mus WHERE t.titleID = ti.titleID AND identifierType = 'eISSN' AND identifier = '" . $eISSN . "' AND t.titleID = mus.titleID AND publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
 
-		//this is a title search so we're also searching on common platform / publisher
+		//this is a title search so we're also searching on common platform / publisher (used for Databases probably primarily)
 		}else if ((!$pISSN) && (!$eISSN) && (!$pISBN) && (!$eISBN)){
-			$query = "SELECT DISTINCT t.titleID as titleID FROM Title t, MonthlyUsageSummary mus WHERE t.titleID = mus.titleID AND publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') LIMIT 1;";
+			$query = "SELECT DISTINCT t.titleID as titleID FROM Title t, MonthlyUsageSummary mus WHERE t.titleID = mus.titleID AND publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
 		}
-
-
 
 		$result = $this->db->processQuery($query, 'assoc');
 

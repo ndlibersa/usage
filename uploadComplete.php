@@ -1,7 +1,7 @@
 <?php
 /*
 **************************************************************************************************************************
-** CORAL Usage Statistics Module v. 1.0
+** CORAL Usage Statistics Module v. 1.1
 **
 ** Copyright (c) 2010 University of Notre Dame
 **
@@ -16,8 +16,6 @@
 **************************************************************************************************************************
 */
 
-//600 seconds = 10 minutes
-set_time_limit(600);
 
 ini_set("auto_detect_line_endings", true); //sometimes with macs...
 include_once 'directory.php';
@@ -32,8 +30,12 @@ $uploadedFile = $_POST['upFile'];
 $orgFileName = $_POST['orgFileName'];
 $overrideInd = $_POST['overrideInd'];
 $layoutID = $_POST['layoutID'];
+$importLogID = $_POST['importLogID'];
+$year = $_POST['checkYear'];
 $pISSNArray = array();
 $platformArray = array();
+
+
 
 $layout = new Layout(new NamedArguments(array('primaryKey' => $_POST['layoutID'])));
 $layoutKey = $layoutsArray[ReportTypes][$layout->layoutCode];
@@ -90,6 +92,15 @@ $columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
 $layoutColumns = $layoutsArray[$layoutKey]['columns'];
 
 
+if ($importLogID > 0){
+	$formatCorrectFlag = "Y";
+	$startFlag = "Y";
+	$logSummary .= " $reportTypeDisplay";
+	$logSummary .= "\n$year for ";
+	$overrideInd="1";
+}
+
+
 //initialize some variables
 $rownumber=0;
 $holdPlatform = '';
@@ -116,28 +127,28 @@ while (!feof($file_handle)) {
      }
 
      //check column formats to get the year and months
-     if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= count($columnsToCheck))){
-                //positive unless proven negative
-                $formatCorrectFlag = "Y";
-                $lineArray = explode("\t",$line);
+    if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= count($columnsToCheck))){
+        //positive unless proven negative
+        $formatCorrectFlag = "Y";
+        $lineArray = explode("\t",$line);
 
-                foreach ($columnsToCheck as $key => $colCheckName){	
-                        $fileColName = strtolower(trim($lineArray[$key]));
+        foreach ($columnsToCheck as $key => $colCheckName){	
+                $fileColName = strtolower(trim($lineArray[$key]));
 
-                        if (strpos($fileColName, strtolower($colCheckName)) === false){
-                                $formatCorrectFlag='N';
-                        }
-
-
+                if (strpos($fileColName, strtolower($colCheckName)) === false){
+                        $formatCorrectFlag='N';
                 }
 
 
-                 if ($formatCorrectFlag == 'Y'){
+        }
+
+
+	     if ($formatCorrectFlag == 'Y'){
 
 			//at this point, $fileColName has the last column check value, Jan
 			//determine the year
-                        list ($checkMonth,$year) = preg_split("/[-\/.]/",$fileColName);
-                        if ($year < 100) $year = 2000 + $year;
+	        list ($checkMonth,$year) = preg_split("/[-\/.]/",$fileColName);
+	        if ($year < 100) $year = 2000 + $year;
 
 			$missingMonths = array();
 			// determine the latest month
@@ -150,11 +161,11 @@ while (!feof($file_handle)) {
 				if (strpos(strtolower($lineArray[$i]), strtolower($monthName)) === false){
 					unset($layoutColumns[$i]);
 				}
-				
+		
 			} 
 
 			$layoutColumns = array_values($layoutColumns);
-			$logSummary .= " ($reportTypeDisplay)";
+			$logSummary .= " $reportTypeDisplay";
 			$logSummary .= "\n$year for ";
 
         }
@@ -207,6 +218,9 @@ while (!feof($file_handle)) {
 		//check it against the previous row - no need to do another lookup if we've already figured out the platform
 		//strip out double quotes
 		$platformName = trim(str_replace ('"','',$platformName));
+		if ($platformName == ""){
+			$platformName = $holdPlatform;
+		}
 
 		if (!($platformID) || ($platformName != $holdPlatform)){
 			//get the platformID if available
@@ -306,7 +320,10 @@ while (!feof($file_handle)) {
 		//check it against the previous row - no need to do another lookup if we've already figured out the platform
 		//strip out double quotes
 		$publisherName = trim(str_replace ('"','',$publisherName));
-
+		if ($publisherName == ""){
+			$publisherName = $holdPublisher;
+		}
+		
 		if (!($publisherID) || ($publisherName != $holdPublisher)){
 			//get the publisher object
 			$publisherTestObj = new Publisher();
@@ -385,6 +402,7 @@ while (!feof($file_handle)) {
 		if (strpos(strtoupper($pISSN),'N/A') !== false) $pISSN = '';
 		if ($pISSN == '00000000') $pISSN = '';
 		if (strtoupper($pISSN) == 'XXXXXXXX') $pISSN = '';
+		if (strtoupper($pISSN) == '.') $pISSN = '';
 
 		$eISSN = strtoupper(trim(str_replace ('-','',$eISSN)));
 		//remove blank
@@ -392,6 +410,7 @@ while (!feof($file_handle)) {
 		if (strpos(strtoupper($eISSN),'N/A') !== false) $eISSN = '';
 		if ($eISSN == '00000000') $eISSN = '';
 		if (strtoupper($eISSN) == 'XXXXXXXX') $eISSN = '';
+		if (strtoupper($eISSN) == '.') $eISSN = '';
 
 		$pISBN = strtoupper(trim(str_replace ('-','',$pISBN)));
 		//remove blank
@@ -421,7 +440,7 @@ while (!feof($file_handle)) {
 
 
 		$titleObj = new Title();
-		$titleID = $titleObj->getByTitle($resourceTitle, $pISSN, $eISSN, $pISBN, $eISBN, $publisherPlatformID);
+		$titleID = $titleObj->getByTitle($resourceType, $resourceTitle, $pISSN, $eISSN, $pISBN, $eISBN, $publisherPlatformID);
 
 		if ($titleID) $newTitle=0;
 
@@ -535,19 +554,30 @@ while (!feof($file_handle)) {
 
 			if (($resourceTitle && ((strlen($pISSN) == "8") || !$pISSN))){
 
-				//If Title already existed
 				//still should check for new online ISSN since they can be added in later spreadsheets
 				if (strlen($eISSN) == "8") {
-					//try to avoid doing this
-					//$titleObj = new Title(new NamedArguments(array('primaryKey' => $titleID)));
-
-					//if this online identifier already isn''t in the DB
-					if (!$titleObj->getExistingOnlineISSN($eISSN)) {
+					if (!$titleObj->getExistingIdentifier($eISSN)) {
 						$titleIdentifier = new TitleIdentifier();
 						$titleIdentifier->titleIdentifierID = '';
 						$titleIdentifier->titleID = $titleID;
 						$titleIdentifier->identifier = $eISSN;
 						$titleIdentifier->identifierType = 'eISSN';
+
+						try {
+							$titleIdentifier->save();
+						} catch (Exception $e) {
+							echo $e->getMessage();
+						}
+					}
+				}
+
+				if ($doi) {
+					if (!$titleObj->getExistingIdentifier($doi)) {
+						$titleIdentifier = new TitleIdentifier();
+						$titleIdentifier->titleIdentifierID = '';
+						$titleIdentifier->titleID = $titleID;
+						$titleIdentifier->identifier = $doi;
+						$titleIdentifier->identifierType = 'doi';
 
 						try {
 							$titleIdentifier->save();
@@ -869,31 +899,42 @@ $logSummary .= date("M", mktime(0,0,0,$startMonth,10)) . "-" . date("M", mktime(
 include 'templates/header.php';
 
 //Log import in database
-$importLog = new ImportLog();
-$importLog->importLogID = '';
+if ($importLogID != ""){
+	$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $importLogID)));
+	$importLog->fileName = $importLog->fileName;
+	$importLog->archiveFileURL = $importLog->fileName;
+	$importLog->details = $importLog->details . "\n" . $rownumber . " titles processed." . $logSummary;
+
+}else{
+	$importLog = new ImportLog();	
+	$importLog->importLogID = '';
+	$importLog->fileName = $orgFileName;
+	$importLog->archiveFileURL = $uploadedFile;
+	$importLog->details = $rownumber . " titles processed." . $logSummary;
+}
+
 $importLog->loginID = $user->loginID;
 $importLog->layoutCode = $layoutCode;
-$importLog->fileName = $orgFileName;
-$importLog->archiveFileURL = $uploadedFile;
 $importLog->logFileURL = $logfile;
-$importLog->details = $rownumber . " titles processed." . $logSummary;
 
 try {
 	$importLog->save();
+	$importLogID = $importLog->primaryKey;
 } catch (Exception $e) {
 	echo $e->getMessage();
 }
 
 
-
+//only get unique platforms
+$platformArray = array_unique($platformArray, SORT_REGULAR);
 foreach ($platformArray AS $platformID){
 	$importLogPlatformLink = new ImportLogPlatformLink();
-	$importLogPlatformLink->importLogID = $importLog->importLogID;
+	$importLogPlatformLink->importLogID = $importLogID;
 	$importLogPlatformLink->platformID = $platformID;
 
 
 	try {
-		$importLog->save();
+		$importLogPlatformLink->save();
 	} catch (Exception $e) {
 		echo $e->getMessage();
 	}

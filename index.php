@@ -59,8 +59,8 @@ $_SESSION['ref_script']=$currentPage;
 	<tr>
 	<td class='searchRow'><label for='searchName'><b>Name (contains)</b></label>
 	<br />
-	<input type='text' name='searchPlatformName' id='searchPlatformName' style='width:145px' value="<?php if ($reset != 'Y') echo $_SESSION['plat_platformName']; ?>" /><br />
-	<div id='div_searchName' style='<?php if ((!$_SESSION['plat_platformName']) || ($reset == 'Y')) echo "display:none;"; ?>margin-left:118px;margin-top:5px'><input type='button' name='btn_searchPlatformName' value='go!' class='searchButton' /></div>
+	<input type='text' name='searchName' id='searchName' style='width:145px' value="<?php if ($reset != 'Y') echo $_SESSION['plat_searchName']; ?>" /><br />
+	<div id='div_searchName' style='<?php if ((!$_SESSION['plat_searchName']) || ($reset == 'Y')) echo "display:none;"; ?>margin-left:118px;margin-top:5px'><input type='button' name='btn_searchName' value='go!' class='searchButton' /></div>
 	<br />
 	</td>
 	</tr>

@@ -24,6 +24,21 @@ class Layout extends DatabaseObject {
 	protected function overridePrimaryKeyName() {}
 
 
+
+	public function getByLayoutCode($layoutCode){
+		if (isset($layoutCode)) {
+			$query = "SELECT * FROM `$this->tableName` WHERE `layoutCode` = '$layoutCode'";
+			$result = $this->db->processQuery($query, 'assoc');
+
+			foreach (array_keys($result) as $attributeName) {
+				$this->addAttribute($attributeName);
+				$this->attributes[$attributeName] = $result[$attributeName];
+			}
+		}
+	}
+
+
+
 	//returns array of layouts
 	public function getLayouts(){
 

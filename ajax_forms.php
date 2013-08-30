@@ -439,12 +439,12 @@ switch ($action) {
 				<td colspan='2'><span class='headerText'><?php echo $addUpdate; ?> SUSHI Connection</span><span id='span_errors' style='color:red;'><br /></span><br /></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='serviceURL'><b>Service URL:</b></label</td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='serviceURL'><b>Service URL:</b></label></td>
 				<td><input type='text' id='serviceURL' name='serviceURL' value="<?php if ($sushiServiceID) echo $sushiService->serviceURL; ?>" style='width:300px;' /><span id='span_error_serviceURL' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='wsdlURL'><b>WSDL URL:</b></label</td>
-				<td><input type='text' id='wsdlURL' name='wsdlURL' value="<?php if ($sushiServiceID) echo $sushiService->wsdlURL; ?>" style='width:300px;' /></td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='wsdlURL'><b>WSDL URL *:</b></label></td>
+				<td><input type='text' id='wsdlURL' name='wsdlURL' value="<?php if ($sushiServiceID) echo $sushiService->wsdlURL; ?>" style='width:300px;' /><br /><span class="smallDarkRedText">*if not using COUNTER</span></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='requestorID'><b>Requestor ID:</b></label</td>
@@ -455,10 +455,6 @@ switch ($action) {
 				<td><input type='text' id='customerID' name='customerID' value="<?php if ($sushiServiceID) echo $sushiService->customerID; ?>" style='width:300px;' /></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='security'><b>Security:</b></label</td>
-				<td><input type='text' id='security' name='security' value="<?php if ($sushiServiceID) echo $sushiService->security; ?>" style='width:300px;' /><span id='span_error_security' style='color:red'></span></td>
-			</tr>
-			<tr>
 				<td style='vertical-align:top;text-align:right;'><label for='login'><b>Login:</b></label</td>
 				<td><input type='text' id='login' name='login' value="<?php if ($sushiServiceID) echo $sushiService->login; ?>" style='width:300px;' /><span id='span_error_login' style='color:red'></span></td>
 			</tr>
@@ -467,11 +463,33 @@ switch ($action) {
 				<td><input type='text' id='password' name='password' value="<?php if ($sushiServiceID) echo $sushiService->password; ?>" style='width:300px;' /><span id='span_error_password' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='serviceDayOfMonth'><b>Service Day:</b></label</td>
-				<td><input type='text' id='serviceDayOfMonth' name='serviceDayOfMonth' value="<?php if ($sushiServiceID) echo $sushiService->serviceDayOfMonth; ?>" style='width:300px;' /><span id='span_error_serviceDay' style='color:red'></span></td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='reportLayouts'><b>Report Type *:</b></label</td>
+				<td><input type='text' id='reportLayouts' name='reportLayouts' value="<?php if ($sushiServiceID) echo $sushiService->reportLayouts; ?>" style='width:300px;' />
+					<br /><span class="smallDarkRedText">*separate report types with semi-colon, e.g. JR1;BR1</span>
+					<span id='span_error_reportLayouts' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='noteText'><b>Login Notes:</b></label></td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='releaseNumber'><b>COUNTER Release:</b></label</td>
+				<td>
+					<select id='releaseNumber' name='releaseNumber' style='width:90px;'>
+					<option value='3' <?php if (!$sushiServiceID){ echo "selected"; } else if ($sushiService->releaseNumber == "3"){ echo "selected"; } ?>>3</option>
+					<option value='4' <?php if ($sushiService->releaseNumber == "4"){ echo "selected"; } ?>>4</option>
+					</select>
+				</td>
+			</tr>						
+			<tr>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='security'><b>Security Type *:</b></label</td>
+				<td><input type='text' id='security' name='security' value="<?php if ($sushiServiceID) echo $sushiService->security; ?>" style='width:300px;' />
+					<br /><span class="smallDarkRedText">*Not required - can be: HTTP Basic, WSSE Authentication or pre-programmed Extention in the sushiincludes directory, e.g. (Extension=Elsevier;PlatformCode=SD)</span>
+					<span id='span_error_security' style='color:red'></span></td>
+			</tr>			
+			<tr>
+				<td style='vertical-align:top;text-align:right;'><label for='serviceDayOfMonth'><b>Service Day *:</b></label</td>
+				<td><input type='text' id='serviceDayOfMonth' name='serviceDayOfMonth' value="<?php if ($sushiServiceID) echo $sushiService->serviceDayOfMonth; ?>" style='width:300px;' />
+					<span class="smallDarkRedText">* number indicating the day of month the service should run (e.g. 27 will run 27th of every month)</span><span id='span_error_serviceDay' style='color:red'></span></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;'><label for='noteText'><b>Sushi Notes:</b></label></td>
 				<td><textarea cols='46' rows='4' id='noteText' name='noteText' style='width:300px;'><?php if ($sushiServiceID) echo $sushiService->noteText; ?></textarea></td>
 			</tr>
 
@@ -724,6 +742,43 @@ switch ($action) {
 
 
 
+	//Add Platforms for sushi
+	case 'getAddPlatformForm':
+
+
+		?>
+		<div id='div_addPlatformForm'>
+		<table class="thickboxTable" style="width:300px;padding:2px;">
+		<tr><td colspan='2'><span class='headerText'>Add New Platform for SUSHI Connection</span><br /><br /></td></tr>
+		<tr><td style='vertical-align:top;text-align:right;'><label for='platformName'><b>Platform Name</b></label</td><td><input type='text' id='platformName' name='platformName' value="" style='width:200px;' /><span id='span_error_Platform' style='color:red'></span></td></tr>
+
+
+		<tr style="vertical-align:middle;">
+			<td style="padding-top:8px;text-align:right;">&nbsp;</td>
+			<td style="padding-top:8px;padding-right:8px;">
+				<table class='noBorderTable' style='width:100%;'>
+					<tr>
+						<td style='text-align:left'><input type='button' value='submit' name='submitPlatformForm' id ='submitPlatformForm'></td>
+						<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+		</table>
+
+		</div>
+
+		<script type="text/javascript" src="js/forms/platformSubmitForm.js?random=<?php echo rand(); ?>"></script>
+
+
+		<?php
+
+		break;
+
+
+
+
 
 
 	//Add Identifiers
@@ -740,9 +795,12 @@ switch ($action) {
 		<tr><td style='vertical-align:top;text-align:right;'><label for='identifierType'><b>Identifier Type</b></label</td>
 			<td>
 			<select id='identifierType' name='identifierType' style='width:90px;'>
-			<option value='alt'>alt</option>
-			<option value='print'>print</option>
-			<option value='online'>online</option>
+			<option value='ISSN'>ISSN</option>
+			<option value='eISSN'>eISSN</option>
+			<option value='ISBN'>ISBN</option>
+			<option value='eISBN'>eISBN</option>
+			<option value='doi'>DOI</option>
+			<option value='pi'>Proprietary ID</option>
 			</select>
 			</td>
 		</tr>

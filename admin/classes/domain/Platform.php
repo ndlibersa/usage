@@ -85,7 +85,7 @@ class Platform extends DatabaseObject {
 		return $objects;
 	}
 
-//returns array of importlog objects
+	//returns array of importlog objects
 	public function getImportLogs(){
 
 		$query = "SELECT *
@@ -448,7 +448,7 @@ class Platform extends DatabaseObject {
 					FROM PublisherPlatform pp, MonthlyUsageSummary tsm INNER JOIN Title t USING (titleID)
 					WHERE pp.platformID = '" . $this->platformID . "'
 					AND pp.publisherPlatformID = tsm.publisherPlatformID " . $addWhere . "
-					GROUP BY year, archiveInd
+					GROUP BY resourceType, year, archiveInd
 					ORDER BY resourceType desc, year desc, archiveInd, month;";
 
 		$result = $this->db->processQuery(stripslashes($query), 'assoc');
@@ -621,6 +621,8 @@ class Platform extends DatabaseObject {
 					AND t.resourceType = '" . $resourceType . "'
 					AND mus.month = '1'
 					GROUP BY pp.platformID;";
+
+
 
 		$result = $this->db->processQuery(stripslashes($query), 'assoc');
 
@@ -922,7 +924,9 @@ class Platform extends DatabaseObject {
 	}
 
 
-		//used for A-Z on search (index)
+
+
+	//used for A-Z on search (index)
 	public function getAlphabeticalList(){
 		$alphArray = array();
 		$result = mysql_query("SELECT DISTINCT UPPER(SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)) letter, COUNT(SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)) letter_count
@@ -956,7 +960,7 @@ class Platform extends DatabaseObject {
 
 		//now actually execute query
 		$query = "SELECT P.platformID, P.name, P.reportDisplayName,
-						GROUP_CONCAT(DISTINCT Publisher.name ORDER BY Publisher.name DESC SEPARATOR '<br />') publishers,
+						GROUP_CONCAT(DISTINCT PP.publisherPlatformID ORDER BY PP.reportDisplayName DESC SEPARATOR ':') publishers,
 						MAX(importDateTime) latest_import
 								FROM Platform P
 									LEFT JOIN (PublisherPlatform PP INNER JOIN Publisher USING (publisherID)) ON P.PlatformID = PP.PlatformID
