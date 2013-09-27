@@ -150,7 +150,7 @@ class Title extends DatabaseObject {
 					AND archiveInd ='" . $archiveInd . "'
 					AND year='" . $year . "'" . $addWhere . "
 					AND publisherPlatformID = '" . $publisherPlatformID . "';";
-echo $query;
+
 		$result = $this->db->processQuery($query, 'assoc');
 
 		$allArray = array();

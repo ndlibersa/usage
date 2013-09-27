@@ -41,10 +41,10 @@ $display_name = $obj->reportDisplayName;
 $excelfile = $display_name . "_" . $resourceType . "_" . $year;
 
 
-$excelfile = str_replace (' ','_',$excelfile);
+$excelfile = str_replace (' ','_',$excelfile) . '.xls';
 
 header("Content-type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename='" . $excelfile . "'");
+header("Content-Disposition: attachment; filename=" . $excelfile);
 
 ?>
 
