@@ -21,6 +21,11 @@ INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('DB
 
 ALTER TABLE `_DATABASE_NAME_`.`ImportLog` ADD COLUMN `layoutCode` VARCHAR(45) NULL  AFTER `importDateTime` ;
 ALTER TABLE `_DATABASE_NAME_`.`ImportLog` ADD COLUMN `sushiServiceID` INT NULL  AFTER `loginID` ;
+ALTER TABLE `_DATABASE_NAME_`.`ImportLog` CHANGE COLUMN `fileName` `fileName` VARCHAR(145) NULL  ;
+ALTER TABLE `_DATABASE_NAME_`.`ImportLog` CHANGE COLUMN `archiveFileURL` `archiveFileURL` VARCHAR(145) NULL  ;
+ALTER TABLE `_DATABASE_NAME_`.`ImportLog` CHANGE COLUMN `logFileURL` `logFileURL` VARCHAR(145) NULL  ;
+ALTER TABLE `_DATABASE_NAME_`.`ImportLog` CHANGE COLUMN `details` `details` VARCHAR(245) NULL  ;
+
 
 ALTER TABLE `_DATABASE_NAME_`.`Title` 
 ADD COLUMN `resourceType` VARCHAR(45) NULL AFTER `title` ;
