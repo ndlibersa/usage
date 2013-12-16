@@ -19,6 +19,9 @@
 ini_set("auto_detect_line_endings", true);
 include_once 'directory.php';
 
+$util = new Utility();
+
+
 //this file has been created from SUSHI
 if ($_GET['importLogID'] > 0){
 	$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $_GET['importLogID'])));
@@ -124,7 +127,7 @@ function updateSubmit(){
 
 
   #read this file
-  $file_handle = fopen($target_path, "r");
+  $file_handle = $util->utf8_fopen_read($target_path, "r");
 
 
   echo $uploadConfirm;
@@ -150,7 +153,7 @@ function updateSubmit(){
 
   while (!feof($file_handle)) {
      //get each line out of the file handler
-     $line = fgets($file_handle);
+     $line = stream_get_line($file_handle, 10000000, "\n");
 
      //if report type hasn't been figured out, check for it in the first row / column
      if ($reportTypeSet == ""){

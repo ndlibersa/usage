@@ -20,6 +20,8 @@
 ini_set("auto_detect_line_endings", true); //sometimes with macs...
 include_once 'directory.php';
 
+$util = new Utility();
+
 $pageTitle = 'Upload Process Complete';
 
 //read layouts ini file to get the layouts to map to columns in the database
@@ -49,7 +51,7 @@ if (strpos($reportTypeDisplay,'archive') > 1){
 	$archiveInd = "1";
 }
 
-$file_handle = fopen($uploadedFile, "r");
+$file_handle = $util->utf8_fopen_read($uploadedFile, "r");
 
 $logSummary = "\n" . $orgFileName;
 
@@ -113,7 +115,7 @@ $startMonth = '';
 while (!feof($file_handle)) {
 
      //get each line out of the file handler
-     $line = fgets($file_handle);
+     $line = stream_get_line($file_handle, 10000000, "\n"); 
 
      //set delimiter
      if ($del == ""){
