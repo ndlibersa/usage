@@ -60,7 +60,6 @@ $(function(){
 	$("#organizationName").autocomplete('ajax_processing.php?action=getOrganizations', {
 		minChars: 2,
 		max: 50,
-		autoFill: true,
 		mustMatch: false,
 		width: 233,
 		delay: 20,

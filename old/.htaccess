@@ -1,0 +1,10 @@
+# CAS authentication
+AuthType CAS
+AuthGroupFile /data/web_root/htdocs/main/admin/scripts/ersa_cas_group
+Require group ersa
+SSLRequireSSL
+SSLOptions +StdEnvVars +StrictRequire
+
+# Other restrictions
+Order Allow,Deny
+Allow from all

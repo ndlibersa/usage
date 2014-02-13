@@ -1,0 +1,402 @@
+html {
+ height: 100%;
+ margin: 0;
+ padding: 0;
+}
+
+body {
+ height: 100%;
+ text-decoration: none;
+ color:  #2c3c42;
+ font-family: "arial";
+ font-size: 10pt;
+ font-weight: heavy;
+ background: #FFFFFF;
+ margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+ padding: 0;
+ text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+ 
+}
+
+a {color:#3D545D;font-size:92%;border:none;outline: none;-moz-outline-style: none;}
+a:active {color:#94a9be;}
+a:focus {color:#94a9be;}
+
+a.smallLink {font-size:95%; }
+
+span.smallText{font-size:90%;}
+
+
+table#titleTable {padding:0px; background-image:url('../images/usagetitle.gif');background-repeat:no-repeat;height:87px;width:900px;}
+table.headerTable {padding:1px;width:900px;min-height:40px;background-image:url('../images/header.gif');background-repeat:no-repeat;}
+table.headerTable td {text-align:left;}
+.headerText {font-size:135%;font-weight:bold; }
+
+.platformText {font-size:105%;font-weight:500;}
+.largeText {font-size:110%;font-weight:bold;}
+
+td.ytd {border-top: 1px solid #3D545D;}
+
+img {border:0;}
+
+
+h2 { font-size: 1.5em;margin: 0;padding: 0;}
+h3 { font-size: 1.2em;margin: 0;padding: 0;}
+
+
+
+
+/* Coral Change Module Menu  -  tabs
+*************************/
+
+ul.tabs{
+	display: table;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+}
+
+ul.tabs li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: table-cell;
+	float: left;
+	position: relative;
+	width:130px;
+	height: 19px;
+}
+
+ul.tabs a{
+	position: relative;
+	display: block;
+	text-decoration: none;
+}
+
+/* Coral Change Module  -  coraldropdowns
+*************************/
+
+ul.coraldropdown{
+	margin: 0;
+	padding: 0;
+	display: block;
+	position: absolute;
+	z-index: 999;
+	top: 100%;
+	width: 130px;
+	display: none;
+	left: 0;
+	border: 1px solid #b8cee4; 
+	-moz-border-radius: 1px;
+	-webkit-border-radius: 1px;
+}
+
+ul.coraldropdown ul.coraldropdown{
+	top: 0;
+	left: 95%;
+}
+
+ul.coraldropdown li{
+	margin: 0;
+	padding: 0;
+	float: left;
+	position: relative;
+	list-style: none;
+	display: block;
+	height: 23px;
+	border-top: 1px solid #e2ebf4;
+}
+
+ul.coraldropdown li a{
+	display: block;
+	line-height:23px;
+	background-color:#f6f9fb;
+	background-repeat:no-repeat;
+}
+
+
+ul.coraldropdown li a:hover{
+background-color:white;
+}
+
+
+
+/* More Custom classes...
+*************************/
+
+table.dataTable {	
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+	border-color: #e0dfe3;
+	border-collapse: collapse;
+	border-spacing: 0;
+	max-width:895px;
+	font-size:90%;
+	text-align:left;
+}
+
+table.dataTable td {
+	margin: 0;
+	padding: 2px 3px 2px 2px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	background-color: white;
+	-moz-border-radius: 0px;
+}
+
+table.dataTable td.alt {
+	margin: 0;
+	padding: 2px 3px 2px 2px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	background-color: #f5f8fa;
+	-moz-border-radius: 0px;
+}
+
+table.dataTable th {
+	margin: 0;
+	padding: 2px 3px 2px 2px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	background-color: white;
+	-moz-border-radius: 0px;
+}
+
+
+table.dataTable tr {vertical-align: top;}
+
+
+
+
+.sidemenu{
+    background-color: white;
+    border-right: 1px solid #dad5c9;
+    border-top: 1px solid #dad5c9;
+    width: 99px;
+    vertical-align: top;
+    text-align: left;
+}
+.sidemenu div{
+    padding: 8px 0px 8px 8px;
+    border-bottom: 1px solid #dad5c9;
+    font-weight:bold;
+}
+.sidemenuselected{
+    padding: 8px 0px 8px 8px;
+    border-bottom: 1px solid #dad5c9;
+    border-left: 1px solid #dad5c9;
+    background-color: white;
+}
+.sidemenuunselected{
+    padding: 8px 0px 8px 8px;
+    border-bottom: 1px solid #dad5c9;
+    border-left: 1px solid #dad5c9;
+    background-color: #f2f5f7;
+}
+.mainContent{
+    padding: 8px; 
+    background-color: white; 
+    text-align:left;
+    border-top: 1px solid #dad5c9;
+    border-right: 1px solid #dad5c9;
+    border-bottom: 1px solid #dad5c9;
+    background-color: white;
+    vertical-align: top;
+    
+}
+
+
+
+table.verticalFormTable {	
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+	border-color: #e0dfe3;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size:90%;
+	width:666px;
+}
+
+table.verticalFormTable td {
+	margin: 0;
+	padding: 3px 3px 3px 3px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	background-color: white;
+	-moz-border-radius: 0px;
+}
+
+
+table.verticalFormTable td.alt {
+	margin: 0;
+	padding: 3px 3px 3px 3px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	background-color: #f5f8fa;
+	-moz-border-radius: 0px;
+}
+
+
+
+
+table.verticalFormTable th {
+	margin: 0;
+	padding: 2px 3px 2px 2px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	background-color: #e5ebef;
+	-moz-border-radius: 0px;
+}
+
+
+table.verticalFormTable tr {	
+	vertical-align:top;
+}
+
+
+table.verticalFormTable td.agreement {	
+	background-color:#fdf2e7;
+}
+
+table.verticalFormTable td.archive {	
+	background-color:#ebecec;
+}
+
+
+
+
+table.borderedFormTable {	
+	border-width: 0 0 1px 1px;
+	border-style: solid;
+	border-color: #e0dfe3;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table.borderedFormTable td {
+	margin:3px;
+	padding:3px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	background-color: white;
+	-moz-border-radius: 0px;
+}
+
+table.borderedFormTable td.alt {
+	margin:3px;
+	padding:3px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	background-color: #f4f8fc;
+	-moz-border-radius: 0px;
+}
+
+
+table.borderedFormTable td.searchRow {
+	margin:3px;
+	padding:3px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	background-image:url('../images/searchbar.gif');
+	background-repeat:no-repeat;
+	background-color: white;
+	-moz-border-radius: 0px;
+}
+
+
+table.borderedFormTable th {
+	margin:3px;
+	padding:3px;
+	border-width: 1px 1px 0 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	background-color: white;
+	-moz-border-radius: 0px;
+}
+
+table.borderedFormTable tr {vertical-align: top;}
+
+
+table.noBorder td { border:0; }
+
+.formText {font-weight:bold;}
+
+div.thickboxDiv{display:none;}
+
+table.thickboxTable{
+ background-image:url('../images/title.gif');
+ background-repeat:no-repeat;
+ padding:6px; 
+ text-decoration: none;
+ color:  #2c3c42;
+ font-family: "arial";
+ font-size: 8pt;
+ font-weight: heavy;
+}
+
+table.thickboxTable td{
+  padding:1px;
+}
+ 
+ 
+.smallText{font-size:small;}
+
+.arrowContainer{text-align:right;}
+
+.arrow{float: right;}
+
+table.noBorderTable {padding:0px; width:100%; border-style:none;}
+table.noBorderTable td {padding:0px; border-style:none;}
+table.noBorderTable td.arrow {padding:0px; border-style:none;text-align:right;}
+table.noBorderTable td.alt {padding:0px; border-style:none;background-color: #f5f8fa;}
+table.noBorderTable td.rightBorder {
+	border-width: 0 1px 1px 0;
+	border-style: solid;
+	border-color: #e0dfe3;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+ul.moved li {	margin-left: 1.5em;}
+
+
+
+
+
+.wrapper {
+ min-height: 100%;
+ height: auto !important;
+ height: 100%;
+ margin: 0 auto -2em;
+}
+
+.push {
+ height: 2em;
+}
+
+.footer {
+height: 2em;
+font-size:80%;
+color:#526972;
+text-align:center;
+width:100%;
+} 
+
+
+select option { color: #3D545D; font-family: "arial"; font-size: 8pt; font-weight: medium; }
+.optionStyle { color: #3D545D; font-family: "arial"; font-size: 8pt; font-weight: medium; }
+
+input, select, multiple, textarea{color: #3D545D; font-family: "arial"; font-size: 8pt; font-weight: medium;}
+
+input.bigger {font-size: 10pt;}

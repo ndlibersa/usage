@@ -1,11 +1,11 @@
 <?php
 include_once 'directory.php';
-include_once 'user.php';
 
 $year = $_GET['year'];
 $publisherPlatformID = $_GET['publisherPlatformID'];
 $platformID = $_GET['platformID'];
 $archiveInd = $_GET['archiveInd'];
+$resourceType = $_GET['resourceType'];
 
 if ($archiveInd == '1') {
 	$archive='Archive';
@@ -38,13 +38,13 @@ if ($publisherPlatformID){
 $display_name = $obj->reportDisplayName;
 
 
-$excelfile = $display_name . "_" . $year;
+$excelfile = $display_name . "_" . $resourceType . "_" . $year;
 
 
-$excelfile = str_replace (' ','_',$excelfile);
+$excelfile = str_replace (' ','_',$excelfile) . '.xls';
 
 header("Content-type: application/vnd.ms-excel");
-header("Content-Disposition: attachment; filename='" . $excelfile . "'");
+header("Content-Disposition: attachment; filename=" . $excelfile);
 
 ?>
 
@@ -53,48 +53,101 @@ header("Content-Disposition: attachment; filename='" . $excelfile . "'");
 </head>
 <body>
 
-<h2><?php echo $display_name . " " . $archive . " - " . $year; ?></h2>
+<h2> <?php echo $display_name . " " . $resourceType . " " . $archive . " - " . $year; ?> </h2>
 <table border='1'>
 <tr>
 <th>&nbsp;</th>
 <th>Publisher</th>
 <th>Platform</th>
-<th>Print ISSN</th>
-<th>Online ISSN</th>
-<th>Jan-<?php echo $year; ?></th>
-<th>Feb-<?php echo $year; ?></th>
-<th>Mar-<?php echo $year; ?></th>
-<th>Apr-<?php echo $year; ?></th>
-<th>May-<?php echo $year; ?></th>
-<th>Jun-<?php echo $year; ?></th>
-<th>Jul-<?php echo $year; ?></th>
-<th>Aug-<?php echo $year; ?></th>
-<th>Sep-<?php echo $year; ?></th>
-<th>Oct-<?php echo $year; ?></th>
-<th>Nov-<?php echo $year; ?></th>
-<th>Dec-<?php echo $year; ?></th>
-<th>YTD Total</th>
-<th>YTD HTML</th>
-<th>YTD PDF</th>
-</tr>
+<?php if ($resourceType == "Journal"){ ?>
+	<th>DOI</th>
+	<th>Proprietary ID</th>
+	<th>Print ISSN</th>
+	<th>Online ISSN</th>
+	<th>YTD Total</th>
+	<th>YTD HTML</th>
+	<th>YTD PDF</th>
+	<th>Jan-<?php echo $year; ?></th>
+	<th>Feb-<?php echo $year; ?></th>
+	<th>Mar-<?php echo $year; ?></th>
+	<th>Apr-<?php echo $year; ?></th>
+	<th>May-<?php echo $year; ?></th>
+	<th>Jun-<?php echo $year; ?></th>
+	<th>Jul-<?php echo $year; ?></th>
+	<th>Aug-<?php echo $year; ?></th>
+	<th>Sep-<?php echo $year; ?></th>
+	<th>Oct-<?php echo $year; ?></th>
+	<th>Nov-<?php echo $year; ?></th>
+	<th>Dec-<?php echo $year; ?></th>
+<?php } else if ($resourceType == "Book") {?>
+	<th>DOI</th>
+	<th>Proprietary ID</th>
+	<th>ISBN</th>
+	<th>ISSN</th>
+	<th>YTD Total</th>
+	<th>Jan-<?php echo $year; ?></th>
+	<th>Feb-<?php echo $year; ?></th>
+	<th>Mar-<?php echo $year; ?></th>
+	<th>Apr-<?php echo $year; ?></th>
+	<th>May-<?php echo $year; ?></th>
+	<th>Jun-<?php echo $year; ?></th>
+	<th>Jul-<?php echo $year; ?></th>
+	<th>Aug-<?php echo $year; ?></th>
+	<th>Sep-<?php echo $year; ?></th>
+	<th>Oct-<?php echo $year; ?></th>
+	<th>Nov-<?php echo $year; ?></th>
+	<th>Dec-<?php echo $year; ?></th>
+<?php } else if ($resourceType == "Database") {?>
+	<th>User Activity</th>
+	<th>YTD Total</th>
+	<th>Jan-<?php echo $year; ?></th>
+	<th>Feb-<?php echo $year; ?></th>
+	<th>Mar-<?php echo $year; ?></th>
+	<th>Apr-<?php echo $year; ?></th>
+	<th>May-<?php echo $year; ?></th>
+	<th>Jun-<?php echo $year; ?></th>
+	<th>Jul-<?php echo $year; ?></th>
+	<th>Aug-<?php echo $year; ?></th>
+	<th>Sep-<?php echo $year; ?></th>
+	<th>Oct-<?php echo $year; ?></th>
+	<th>Nov-<?php echo $year; ?></th>
+	<th>Dec-<?php echo $year; ?></th>
+<?php 
+}
 
-<?php
+echo "</tr>";
 
 
 //Add a line for totals at top (to mimic counter compliant reports)
+echo "<tr>";
+if ($resourceType == 'Journal'){
+	echo "<td colspan = '7'><b>Total for all Journals</b></td>";
+}else if ($resourceType == 'Book'){
+	echo "<td colspan = '7'><b>Total for all Books</b></td>";
+}else if ($resourceType == 'Database'){
+	echo "<td colspan = '4'><b>Total for all Databases</b></td>";
+}
+
+//get ytd data if available
 $totalArray = array();
-$totalArray = $obj->getStatMonthlyTotals($archiveInd, $year);
+$totalArray = $obj->getStatYearlyTotals($resourceType, $archiveInd, $year);
 
+if (isset($totalArray['totalCount'])) $totalCount = $totalArray['totalCount']; else $totalCount = '';
+if (isset($totalArray['ytdHTMLCount'])) $ytdHTMLCount = $totalArray['ytdHTMLCount']; else $ytdHTMLCount = '';
+if (isset($totalArray['ytdPDFCount'])) $ytdPDFCount = $totalArray['ytdPDFCount']; else $ytdPDFCount = '';
 
-?>
+if ($resourceType == 'Journal'){
+	echo "<td><b>" . $totalCount . "</b></td>";
+	echo "<td><b>" . $ytdHTMLCount . "</b></td>";
+	echo "<td><b>" . $ytdPDFCount . "</b></td>";
+}else if (strpos($resourceType,'Book') == "1"){
+	echo "<td><b>" . $totalCount . "</b></td>";
+}else{
+	echo "<td><b>" . $totalCount . "</b></td>";
+}
 
-<tr>
-<td><b>Total for all journals</b></td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
-<?php
+$totalArray = array();
+$totalArray = $obj->getStatMonthlyTotals($resourceType, $archiveInd, $year);
 
 echo "<td><b>" . $totalArray['january'] . "</b></td>";
 echo "<td><b>" . $totalArray['february'] . "</b></td>";
@@ -111,24 +164,24 @@ echo "<td><b>" . $totalArray['december'] . "</b></td>";
 
 
 
-//get ytd data if available
-$totalArray = array();
-$totalArray = $obj->getStatYearlyTotals($archiveInd, $year);
-
-if (isset($totalArray['totalCount'])) $totalCount = $totalArray['totalCount']; else $totalCount = '';
-if (isset($totalArray['ytdHTMLCount'])) $ytdHTMLCount = $totalArray['ytdHTMLCount']; else $ytdHTMLCount = '';
-if (isset($totalArray['ytdPDFCount'])) $ytdPDFCount = $totalArray['ytdPDFCount']; else $ytdPDFCount = '';
-
-echo "<td><b>" . $totalCount . "</b></td>";
-echo "<td><b>" . $ytdHTMLCount . "</b></td>";
-echo "<td><b>" . $ytdPDFCount . "</b></td>";
-
 
 
 
 $titleStatArray = array();
-foreach($obj->getMonthlyStats($archiveInd, $year) as $titleStatArray) {
+foreach($obj->getMonthlyStats($resourceType, $archiveInd, $year) as $titleStatArray) {
 	$title = new Title(new NamedArguments(array('primaryKey' => $titleStatArray['titleID'])));
+
+	//get ytd data if available
+	$totalCount='';
+	$ytdHTMLCount='';
+	$ytdPDFCount='';
+
+	$titleYearlyStatArray = array();
+	foreach($title->getYearlyStats($archiveInd, $year, $titleStatArray['publisherPlatformID'], $titleStatArray['activityType']) as $titleYearlyStatArray) {
+		$totalCount = $titleYearlyStatArray['totalCount'];
+		$ytdHTMLCount = $titleYearlyStatArray['ytdHTMLCount'];
+		$ytdPDFCount = $titleYearlyStatArray['ytdPDFCount'];
+	}
 
 	if ($titleStatArray['mergeInd'] == "1") {
 		echo "<tr bgcolor='lightgrey'>";
@@ -139,12 +192,24 @@ foreach($obj->getMonthlyStats($archiveInd, $year) as $titleStatArray) {
 	echo "<td>" . $titleStatArray['Publisher'] . "</td>";
 	echo "<td>" . $titleStatArray['Platform'] . "</td>";
 
-	//get print issn
-	echo "<td>" . $title->getPrintISSN() . "</td>";
-
-	//get online issn
-	echo "<td>" . $title->getOnlineISSN() . "</td>";
-
+	if ($resourceType == 'Journal'){
+		echo "<td>" . $title->getIdentifier('DOI') . "</td>";
+		echo "<td>" . $title->getIdentifier('Proprietary Identifier') . "</td>";
+		echo "<td>" . $title->getIdentifier('ISSN') . "</td>";
+		echo "<td>" . $title->getIdentifier('eISSN') . "</td>";
+		echo "<td>" . $totalCount . "</td>";
+		echo "<td>" . $ytdHTMLCount . "</td>";
+		echo "<td>" . $ytdPDFCount . "</td>";
+	}else if ($resourceType == 'Book'){
+		echo "<td>" . $title->getIdentifier('DOI') . "</td>";
+		echo "<td>" . $title->getIdentifier('Proprietary Identifier') . "</td>";
+		echo "<td>" . $title->getIdentifier('ISBN') . "</td>";
+		echo "<td>" . $title->getIdentifier('ISSN') . "</td>";
+		echo "<td>" . $totalCount . "</td>";
+	}else if ($resourceType == 'Database'){
+		echo "<td>" . $titleStatArray['activityType'] . "</td>";
+		echo "<td>" . $totalCount . "</td>";
+	}
 
 	echo "<td bgcolor='" . $outlier[$titleStatArray['january_outlier']]['color'] . "'>" . $titleStatArray['january'] . "</td>";
 	echo "<td bgcolor='" . $outlier[$titleStatArray['february_outlier']]['color'] . "'>" . $titleStatArray['february'] . "</td>";
@@ -158,26 +223,6 @@ foreach($obj->getMonthlyStats($archiveInd, $year) as $titleStatArray) {
 	echo "<td bgcolor='" . $outlier[$titleStatArray['october_outlier']]['color'] . "'>" . $titleStatArray['october'] . "</td>";
 	echo "<td bgcolor='" . $outlier[$titleStatArray['november_outlier']]['color'] . "'>" . $titleStatArray['november'] . "</td>";
 	echo "<td bgcolor='" . $outlier[$titleStatArray['december_outlier']]['color'] . "'>" . $titleStatArray['december'] . "</td>";
-
-
-
-	//get ytd data if available
-	$totalCount='';
-	$ytdHTMLCount='';
-	$ytdPDFCount='';
-
-
-	$titleYearlyStatArray = array();
-	foreach($title->getYearlyStats($archiveInd, $year, $titleStatArray['publisherPlatformID']) as $titleYearlyStatArray) {
-		$totalCount = $titleYearlyStatArray['totalCount'];
-		$ytdHTMLCount = $titleYearlyStatArray['ytdHTMLCount'];
-		$ytdPDFCount = $titleYearlyStatArray['ytdPDFCount'];
-	}
-
-	echo "<td>" . $totalCount . "</td>";
-	echo "<td>" . $ytdHTMLCount . "</td>";
-	echo "<td>" . $ytdPDFCount . "</td>";
-
 
 	echo "</tr>";
 }

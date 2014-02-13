@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+body {
+	font: 80% Verdana, Arial, Helvetica, sans-serif;
+	background: #666666;
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000000;
+}
+.oneColElsCtr #container {
+	width: 56em;
+	background: #FFFFFF;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	border: 1px solid #000000;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+}
+.oneColElsCtr #mainContent {
+	padding: 0 20px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+}
+-->
+</style></head>
+
+<body class="oneColElsCtr">
+
+<div id="container">
+  <div id="mainContent">
+    <h2>Highwire Press / Sage Publications</h2>
+	<h3>General Information</h3>
+    <table border="1">
+    <tr>
+    <th>Start Year</th>
+    <th>End Year</th>
+    <th>Counter<br />Compliant?</th>
+    <th>Multiplies<br />HTML?</th>
+    <th>Interface Notes</th>
+    </tr>
+    <tr>
+    <td><input name="startDate" type="text" size="10" value="2005" /></td>
+    <td><input name="endDate" type="text" size="10" value="2008" /></td>
+    <td align="center"><input type="checkbox" name="counter2" /></td>
+    <td align="center"><input type="checkbox" name="multiplies" /></td>
+    <td><textarea name="text" cols="35" rows="2"></textarea></td>
+    </tr>
+    <tr>
+    <td><input name="startDate" type="text" size="10" value="2009" /></td>
+    <td><input name="endDate" type="text" size="10" value="" /></td>
+    <td align="center"><input type="checkbox" name="counter" checked/></td>
+    <td align="center"><input type="checkbox" name="multiplies" /></td>
+    <td><textarea name="text" cols="35" rows="2"></textarea></td>
+    </tr>
+    </table>
+
+
+    <h3>Statistics</h3>
+    <table>
+    <tr><td>+</td><td><b>Oct 2007</b></font></td><td><a href="delete">delete entire month</a></td></tr>
+    <tr><td>+</td><td><b>Nov 2007</b></td><td><a href="delete">delete entire month</a></td></tr>
+    <tr><td>-</td><td><b>Dec 2007</b></td><td><a href="delete">delete entire month</a></td></tr>
+    <tr><td colspan="3">
+    	<table border="0" style="margin-left:25px;margin-top:5px;margin-bottom:10px">
+        <tr>
+        <td width="149">Acta Sociologica</td>
+        <td width="40" bgcolor="orange">1343</td>
+        <td width="40"><input name="test" type="text"value="<Enter Override>" size="15" maxlength="6"/></td>
+        <td width="40"><a href="update">update</a></td>
+        </tr>
+
+    	</table>
+    </td></tr>
+    <tr><td>-</td><td><b>YTD 2007</b></td><td>&nbsp;</td></tr>
+    <tr><td colspan="3">
+    	<table border="0" style="margin-left:25px;margin-top:5px;margin-bottom:10px">
+        <tr>
+        <td width="149">Acta Sociologica</td>
+        <td width="40">Total<td>
+        <td width="40" bgcolor="orange">1343</td>
+        <td width="40"><input name="test" type="text"value="<Enter Override>" size="15" maxlength="6"/></td>
+        <td width="40"><a href="update">update</a></td>
+        </tr>
+        <tr>
+        <td width="149">&nbsp;</td>
+        <td width="40">PDF<td>
+        <td width="40" bgcolor="orange">643</td>
+        <td width="40"><input name="test" type="text"value="<Enter Override>" size="15" maxlength="6"/></td>
+        <td width="40"><a href="update">update</a></td>
+        </tr>
+        <tr>
+        <td width="149">&nbsp;</td>
+        <td width="40">HTML<td>
+        <td width="40" bgcolor="orange">243</td>
+        <td width="40"><input name="test" type="text"value="" size="15" maxlength="6"/></td>
+        <td width="40"><a href="update">update</a></td>
+        </tr>
+    	</table>
+    </td></tr>
+    <tr><td>-</td><td><b>Jan 2008</b></td><td><a href="delete">delete entire month</a></td></tr>
+    <tr><td colspan="3">
+    	<table border="0" style="margin-left:25px;margin-top:5px;margin-bottom:10px">
+        <tr>
+        <td width="149">Adaptive Behavior</td>
+        <td width="40" bgcolor="red">5343</td>
+        <td width="40"><input name="test" type="text" value="<Enter Override>" size="15" maxlength="6"/></td>
+        <td width="40"><a href="update">update</a></td>
+        </tr>
+
+    	</table>
+     </td></tr>
+	</table>
+    <h3>Associated Titles</h3>
+    <table>
+    <tr><td>Title</td><td>ISSN</td></tr>
+    <tr><td><input type="text" value="Acta Sociologica" size="40"/></td><td><input type="text" value="4324-0003" /></td><td><a href="update">update</a></td></tr>
+    <tr><td colspan="3">&nbsp;&nbsp;<a href="add">add related ISSNs</a>  <a href="add">view related titles</a></td></tr>
+    <tr><td><input type="text" value="Adaptive Behavior" size="40" /></td><td><input type="text" value="4324-0003" /></td><td><a href="update">update</a></td></tr>
+    <tr><td colspan="3">&nbsp;&nbsp;<a href="add">add related ISSNs</a>  <a href="add">view related titles</a></td></tr>
+    <tr><td><input type="text" value="Administration & Society" size="40" /></td><td><input type="text" value="4324-0003" /></td><td><a href="update">update</a></td></tr>
+    <tr><td colspan="3">&nbsp;&nbsp;<a href="add">add related ISSNs</a>  <a href="add">view related titles</a></td></tr>
+    <tr><td><input type="text" value="American Behavioral Scientist" size="40" /></td><td><input type="text" value="4324-0003" /></td><td><a href="update">update</a></td></tr>
+    <tr><td colspan="3">&nbsp;&nbsp;<a href="add">add related ISSNs</a>  <a href="add">view related titles</a></td></tr>
+    <tr><td><input type="text" value="American Educational Research Journal" size="40" /></td><td><input type="text" value="4324-0003" /></td><td><a href="update">update</a></td></tr>
+    <tr><td colspan="3">&nbsp;&nbsp;<a href="add">add related ISSNs</a>  <a href="add">view related titles</a></td></tr>
+    <tr><td><input type="text" value="American Journal of Botany" size="40" /></td><td><input type="text" value="4324-0003" /></td><td><a href="update">update</a></td></tr>
+    <tr><td colspan="3">&nbsp;&nbsp;<a href="add">add related ISSNs</a>  <a href="add">view related titles</a></td></tr>
+	</table>
+	<br />
+	<br />
+    <!-- end #mainContent --></div>
+<!-- end #container --></div>
+</body>
+</html>
