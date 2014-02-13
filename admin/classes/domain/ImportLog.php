@@ -24,6 +24,47 @@ class ImportLog extends DatabaseObject {
 	protected function overridePrimaryKeyName() {}
 
 
+
+	//returns array of Platform records
+	public function getPlatforms(){
+
+		//now formulate query
+		$query = "SELECT platformID
+					FROM ImportLogPlatformLink
+					WHERE importLogID = '" . $this->importLogID . "'";
+
+
+		$result = $this->db->processQuery(stripslashes($query), 'assoc');
+
+
+		$searchArray = array();
+		$resultArray = array();
+
+		//need to do this since it could be that there's only one result and this is how the dbservice returns result
+		if (isset($result['platformID'])){
+
+			foreach (array_keys($result) as $attributeName) {
+				$resultArray[$attributeName] = $result[$attributeName];
+			}
+
+			array_push($searchArray, $resultArray);
+		}else{
+			foreach ($result as $row) {
+				$resultArray = array();
+				foreach (array_keys($row) as $attributeName) {
+					$resultArray[$attributeName] = $row[$attributeName];
+				}
+				array_push($searchArray, $resultArray);
+			}
+		}
+
+		return $searchArray;
+
+
+	}
+
+
+
 	//returns array of import log records
 	public function getImportLogRecords($limit){
 
@@ -71,6 +112,44 @@ class ImportLog extends DatabaseObject {
 
 
 
+	//returns array of import log records from user "sushi"
+	public function getSushiImports(){
+
+		//now formulate query
+		$query = "SELECT importLogID, loginID, importDateTime, fileName, archiveFileURL, logFileURL, details
+					FROM ImportLog
+					WHERE loginID = 'sushi'
+					ORDER BY importDateTime DESC";
+
+
+		$result = $this->db->processQuery(stripslashes($query), 'assoc');
+
+
+		$searchArray = array();
+		$resultArray = array();
+
+		//need to do this since it could be that there's only one result and this is how the dbservice returns result
+		if (isset($result['importLogID'])){
+
+			foreach (array_keys($result) as $attributeName) {
+				$resultArray[$attributeName] = $result[$attributeName];
+			}
+
+			array_push($searchArray, $resultArray);
+		}else{
+			foreach ($result as $row) {
+				$resultArray = array();
+				foreach (array_keys($row) as $attributeName) {
+					$resultArray[$attributeName] = $row[$attributeName];
+				}
+				array_push($searchArray, $resultArray);
+			}
+		}
+
+		return $searchArray;
+
+
+	}
 
 
 }

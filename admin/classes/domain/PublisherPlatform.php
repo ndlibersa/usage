@@ -86,16 +86,97 @@ class PublisherPlatform extends DatabaseObject {
 		return $objects;
 	}
 
-
-	//returns array of titles and issns
-	public function getTitles(){
+	//returns array of titles and identifiers
+	public function getJournalTitles(){
 
 		$query = "SELECT DISTINCT t.titleID titleID, t.title title,
-					MAX(IF(ti.issnType='print', concat(substr(ti.issn,1,4), '-', substr(ti.issn,5,4)),null)) print_issn,
-					MAX(IF(ti.issnType='online', concat(substr(ti.issn,1,4), '-', substr(ti.issn,5,4)),null)) online_issn
-					FROM MonthlyUsageSummary mus, Title t LEFT JOIN TitleISSN ti ON t.titleID = ti.titleID
+					MAX(IF(ti.identifierType='DOI',identifier,null)) doi,
+					MAX(IF(ti.identifierType='Proprietary Identifier',identifier,null)) pi,
+					MAX(IF(ti.identifierType='ISSN', concat(substr(ti.identifier,1,4), '-', substr(ti.identifier,5,4)),null)) issn,
+					MAX(IF(ti.identifierType='eISSN', concat(substr(ti.identifier,1,4), '-', substr(ti.identifier,5,4)),null)) eissn
+					FROM MonthlyUsageSummary mus, Title t LEFT JOIN TitleIdentifier ti ON t.titleID = ti.titleID
 					WHERE mus.titleID = t.titleID
 					AND publisherPlatformID = '" . $this->publisherPlatformID . "'
+					AND resourceType = 'Journal'
+					GROUP BY t.titleID, t.title
+					ORDER BY title;";
+
+		$result = $this->db->processQuery($query, 'assoc');
+
+		$allArray = array();
+		$resultArray = array();
+
+		//need to do this since it could be that there's only one result and this is how the dbservice returns result
+		if (isset($result['titleID'])){
+
+			foreach (array_keys($result) as $attributeName) {
+				$resultArray[$attributeName] = $result[$attributeName];
+			}
+
+			array_push($allArray, $resultArray);
+		}else{
+			foreach ($result as $row) {
+				$resultArray = array();
+				foreach (array_keys($row) as $attributeName) {
+					$resultArray[$attributeName] = $row[$attributeName];
+				}
+				array_push($allArray, $resultArray);
+			}
+		}
+
+		return $allArray;
+	}
+	//returns array of titles and identifiers
+	public function getBookTitles(){
+
+		$query = "SELECT DISTINCT t.titleID titleID, t.title title,
+					MAX(IF(ti.identifierType='DOI', identifier, null)) doi,
+					MAX(IF(ti.identifierType='Proprietary Identifier', identifier, null)) pi,
+					MAX(IF(ti.identifierType='ISBN', identifier, null)) isbn,
+					MAX(IF(ti.identifierType='ISSN', concat(substr(ti.identifier,1,4), '-', substr(ti.identifier,5,4)),null)) issn
+					FROM MonthlyUsageSummary mus, Title t LEFT JOIN TitleIdentifier ti ON t.titleID = ti.titleID
+					WHERE mus.titleID = t.titleID
+					AND publisherPlatformID = '" . $this->publisherPlatformID . "'
+					AND resourceType = 'Book'
+					GROUP BY t.titleID, t.title
+					ORDER BY title;";
+
+		$result = $this->db->processQuery($query, 'assoc');
+
+		$allArray = array();
+		$resultArray = array();
+
+		//need to do this since it could be that there's only one result and this is how the dbservice returns result
+		if (isset($result['titleID'])){
+
+			foreach (array_keys($result) as $attributeName) {
+				$resultArray[$attributeName] = $result[$attributeName];
+			}
+
+			array_push($allArray, $resultArray);
+		}else{
+			foreach ($result as $row) {
+				$resultArray = array();
+				foreach (array_keys($row) as $attributeName) {
+					$resultArray[$attributeName] = $row[$attributeName];
+				}
+				array_push($allArray, $resultArray);
+			}
+		}
+
+		return $allArray;
+	}
+
+
+
+	//returns array of titles
+	public function getDatabaseTitles(){
+
+		$query = "SELECT DISTINCT t.titleID titleID, t.title title
+					FROM MonthlyUsageSummary mus, Title t
+					WHERE mus.titleID = t.titleID
+					AND publisherPlatformID = '" . $this->publisherPlatformID . "'
+					AND resourceType='Database'
 					GROUP BY t.titleID, t.title
 					ORDER BY title;";
 
@@ -130,7 +211,7 @@ class PublisherPlatform extends DatabaseObject {
 
 
 	//returns array of monthly outlier records
-	public function getMonthlyOutliers($archiveInd, $year, $month){
+	public function getMonthlyOutliers($resourceType, $archiveInd, $year, $month){
 
 
 		//now formulate query
@@ -142,6 +223,7 @@ class PublisherPlatform extends DatabaseObject {
 					AND archiveInd='" . $archiveInd . "'
 					AND year='" . $year . "'
 					AND month='" . $month . "'
+					AND resourceType='" . $resourceType . "'
 					AND ignoreOutlierInd = 0;";
 
 
@@ -177,7 +259,7 @@ class PublisherPlatform extends DatabaseObject {
 
 
 	//returns array of yearly override records
-	public function getYearlyOverrides($archiveInd, $year){
+	public function getYearlyOverrides($resourceType,$archiveInd, $year){
 
 		//now formulate query
 		$query = "SELECT DISTINCT yearlyUsageSummaryID, Title, totalCount, ytdHTMLCount, ytdPDFCount, overrideTotalCount, overrideHTMLCount, overridePDFCount
@@ -189,6 +271,7 @@ class PublisherPlatform extends DatabaseObject {
 					AND tsm.archiveInd = tsy.archiveInd
 					AND tsm.outlierID > 0
 					AND tsy.publisherPlatformID='" . $this->publisherPlatformID . "'
+					AND t.resourceType='" . $resourceType . "'
 					AND tsy.archiveInd='" . $archiveInd . "'
 					AND tsy.year='" . $year . "' and ignoreOutlierInd = 0;";
 
@@ -224,12 +307,19 @@ class PublisherPlatform extends DatabaseObject {
 
 
 	//returns array of full statistics info for display
-	public function getFullStatsDetails(){
+	public function getFullStatsDetails($resourceType = null){
+
+
+		if ($resourceType){
+			$addWhere = "AND t.resourceType = '" . $resourceType . "'";
+		}
+
 
 		//now formulate query
-		$query = "SELECT DISTINCT year, GROUP_CONCAT(DISTINCT concat(month, '|', if(ignoreOutlierInd=0,ifnull(outlierID,0),0)) ORDER BY month, 1 SEPARATOR ',') months, archiveInd, MAX(month) max_month, MIN(month) min_month, MAX(IF(ignoreOutlierInd=0,outlierID,null)) outlierID
-					FROM MonthlyUsageSummary tsm
+		$query = "SELECT DISTINCT resourceType, year, GROUP_CONCAT(DISTINCT concat(month, '|', if(ignoreOutlierInd=0,ifnull(outlierID,0),0)) ORDER BY month, 1 SEPARATOR ',') months, archiveInd, MAX(month) max_month, MIN(month) min_month, MAX(IF(ignoreOutlierInd=0,outlierID,null)) outlierID
+					FROM MonthlyUsageSummary tsm INNER JOIN Title t USING (titleID)
 					WHERE tsm.publisherPlatformID = '" . $this->publisherPlatformID . "'
+					" . $addWhere . "
 					GROUP BY year, archiveInd
 					ORDER BY year desc, archiveInd, month;";
 
@@ -265,7 +355,7 @@ class PublisherPlatform extends DatabaseObject {
 
 
 	//returns array of months available for a given year
-	public function getAvailableMonths($archiveInd, $year){
+	public function getAvailableMonths($resourceType, $archiveInd, $year){
 
 		//now formulate query
 		if ($year){
@@ -274,9 +364,12 @@ class PublisherPlatform extends DatabaseObject {
 		if ($archiveInd){
 			$addWhere .= " AND archiveInd = '" . $archiveInd . "'";
 		}
+		if ($resourceType){
+			$addWhere .= " AND resourceType = '" . $resourceType . "'";
+		}
 
 		$query = "SELECT DISTINCT year, month, archiveInd
-					FROM MonthlyUsageSummary
+					FROM MonthlyUsageSummary INNER JOIN Title t USING (titleID)
 					WHERE publisherPlatformID='" . $this->publisherPlatformID . "'" . $addWhere . "
 					ORDER BY year, archiveInd, month;";
 
@@ -314,13 +407,14 @@ class PublisherPlatform extends DatabaseObject {
 
 
 	//remove an entire month for this publisher
-	public function deleteMonth($archiveInd, $year, $month){
+	public function deleteMonth($resourceType, $archiveInd, $year, $month){
 
 		//now formulate query
 		$query = "DELETE FROM MonthlyUsageSummary
 					WHERE archiveInd = '" . $archiveInd . "'
 					AND publisherPlatformID = '" . $this->publisherPlatformID . "'
 					AND year = '"  . $year . "'
+					AND titleID IN (select titleID from Title where resourceType = '"  . $resourceType . "')
 					AND month = '" . $month . "';";
 
 		return $this->db->processQuery($query);
@@ -336,7 +430,7 @@ class PublisherPlatform extends DatabaseObject {
 
 
 	//returns array total stats devided by month
-	public function getStatMonthlyTotals($archiveInd, $year){
+	public function getStatMonthlyTotals($resourceType, $archiveInd, $year){
 
 		//now formulate query
 		$query = "SELECT pp.publisherPlatformID,
@@ -359,6 +453,7 @@ class PublisherPlatform extends DatabaseObject {
 			AND mus.publisherPlatformID = '" . $this->publisherPlatformID . "'
 			AND mus.year='" . $year . "'
 			AND mus.archiveInd = '" . $archiveInd . "'
+			AND t.resourceType = '" . $resourceType . "'
 			GROUP BY pp.publisherPlatformID;";
 
 		$result = $this->db->processQuery(stripslashes($query), 'assoc');
@@ -382,14 +477,15 @@ class PublisherPlatform extends DatabaseObject {
 
 
 	//returns array total stats devided by month
-	public function getStatYearlyTotals($archiveInd, $year){
+	public function getStatYearlyTotals($resourceType, $archiveInd, $year){
 
 		//now formulate query
 		$query = "SELECT pp.publisherPlatformID, SUM(totalCount) totalCount, SUM(ytdHTMLCount) ytdHTMLCount, SUM(ytdPDFCount) ytdPDFCount
-					FROM YearlyUsageSummary tsy, PublisherPlatform pp
+					FROM YearlyUsageSummary tsy INNER JOIN Title t USING (titleID), PublisherPlatform pp
 					WHERE pp.publisherPlatformID = tsy.publisherPlatformID
 					AND tsy.publisherPlatformID = '" . $this->publisherPlatformID . "'
 					AND archiveInd ='" . $archiveInd . "'
+					AND resourceType ='" . $resourceType . "'
 					AND year='" . $year . "'
 					GROUP BY pp.publisherPlatformID;";
 
@@ -413,13 +509,8 @@ class PublisherPlatform extends DatabaseObject {
 
 
 
-
-
-
-
-
 	//returns arrays of monthly statistics by title
-	public function getMonthlyStats($archiveInd, $year){
+	public function getMonthlyStats($resourceType, $archiveInd, $year){
 
 		//now formulate query
 		$query = "SELECT pp.publisherPlatformID, t.titleID, t.Title, Publisher.name Publisher, Platform.name Platform,
@@ -447,7 +538,7 @@ class PublisherPlatform extends DatabaseObject {
 					MAX(IF(month='10',outlierID,0)) october_outlier,
 					MAX(IF(month='11',outlierID,0)) november_outlier,
 					MAX(IF(month='12',outlierID,0)) december_outlier,
-					MAX(mergeInd) mergeInd
+					MAX(mergeInd) mergeInd, activityType
 					FROM Title t, MonthlyUsageSummary mus, PublisherPlatform pp, Publisher, Platform
 					WHERE t.titleID = mus.titleID
 					AND mus.publisherPlatformID = pp.publisherPlatformID
@@ -456,7 +547,8 @@ class PublisherPlatform extends DatabaseObject {
 					AND mus.publisherPlatformID = '" . $this->publisherPlatformID . "'
 					AND mus.year='" . $year . "'
 					AND mus.archiveInd = '" . $archiveInd . "'
-					GROUP BY t.titleID, t.Title
+					AND t.resourceType = '" . $resourceType . "'
+					GROUP BY t.titleID, t.Title, activityType
 					ORDER BY t.Title;";
 
 		$result = $this->db->processQuery(stripslashes($query), 'assoc');
@@ -491,7 +583,7 @@ class PublisherPlatform extends DatabaseObject {
 
 
 
-	//returns array of the first listed issn objects
+	//returns array of the first listed identifier objects
 	public function getPublisherPlatform($publisherID, $platformID){
 
 		$query = "SELECT publisherPlatformID FROM PublisherPlatform WHERE publisherID='" . $publisherID . "' AND platformID = '" . $platformID . "' LIMIT 1;";

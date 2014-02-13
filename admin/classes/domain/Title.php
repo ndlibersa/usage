@@ -26,24 +26,23 @@ class Title extends DatabaseObject {
 	protected function defineAttributes() {
 		$this->addAttribute('titleID');
 		$this->addAttribute('title');
+		$this->addAttribute('resourceType');
 	}
 
-	//returns issn only of the first print issn found for this title
-	public function getPrintISSN(){
-
-		$query = "SELECT *
-					FROM TitleISSN ti
+	//returns identifier (issn, isbn, etc) only of the first print identifier found for this title
+	public function getIdentifier($idType){
+		$query = "SELECT * FROM TitleIdentifier ti
 					WHERE ti.titleID = '" . $this->titleID . "'
-					AND ISSNType='print'
-					ORDER BY issnType DESC
+					AND identifierType='" . $idType . "'
+					ORDER BY 1
 					LIMIT 1;";
 
 		$result = $this->db->processQuery($query, 'assoc');
 
 		//need to do this since it could be that there's only one request and this is how the dbservice returns result
-		if (isset($result['titleISSNID'])){
-			$issn =  $result['issn'];
-			return substr($issn, 0, 4) . "-" . substr($issn, 4, 4);
+		if (isset($result['titleIdentifierID'])){
+			$identifier =  $result['identifier'];
+			return substr($identifier, 0, 4) . "-" . substr($identifier, 4, 4);
 		}else{
 			return;
 		}
@@ -53,47 +52,20 @@ class Title extends DatabaseObject {
 
 
 
-	//returns issn only of the first online issn found for this title
-	public function getOnlineISSN(){
+	//find out if there is an existing identifier for a title
+	public function getExistingIdentifier($identifier){
 
-		$query = "SELECT *
-					FROM TitleISSN ti
+		$query = "SELECT distinct identifier
+					FROM TitleIdentifier ti
 					WHERE ti.titleID = '" . $this->titleID . "'
-					AND ISSNType='online'
-					ORDER BY issnType DESC
+					AND identifier = '" . $identifier . "'
+					ORDER BY identifierType DESC
 					LIMIT 1;";
 
 		$result = $this->db->processQuery($query, 'assoc');
 
-		//need to do this since it could be that there's only one request and this is how the dbservice returns result
-		if (isset($result['titleISSNID'])){
-			$issn =  $result['issn'];
-			return substr($issn, 0, 4) . "-" . substr($issn, 4, 4);
-		}else{
-			return;
-		}
-
-
-	}
-
-
-
-
-	//find out if there is an existing issn for a title
-	public function getExistingOnlineISSN($testISSN){
-
-		$query = "SELECT distinct issn
-					FROM TitleISSN ti
-					WHERE ti.titleID = '" . $this->titleID . "'
-					AND issn = '" . $testISSN . "'
-					AND ISSNType='online'
-					ORDER BY issnType DESC
-					LIMIT 1;";
-
-		$result = $this->db->processQuery($query, 'assoc');
-
-		//only one issn will be returned
-		if (isset($result['issn'])){
+		//only one identifier will be returned
+		if (isset($result['identifier'])){
 			return true;
 		}else{
 			return false;
@@ -103,25 +75,29 @@ class Title extends DatabaseObject {
 	}
 
 
-	//returns array of issn objects
-	public function getISSNs(){
+	//returns array of identifier objects
+	public function getIdentifiers($idType = null){
 
+		if($idType){
+			$addWhere = " AND identifierType='" . $idType . "'";
+		}
+		
 		$query = "SELECT *
-					FROM TitleISSN ti
-					WHERE ti.titleID = '" . $this->titleID . "'
-					ORDER BY issnType DESC;";
+					FROM TitleIdentifier ti
+					WHERE ti.titleID = '" . $this->titleID . "' " . $addWhere . "
+					ORDER BY identifierType DESC;";
 
 		$result = $this->db->processQuery($query, 'assoc');
 
 		$objects = array();
 
 		//need to do this since it could be that there's only one request and this is how the dbservice returns result
-		if (isset($result['titleISSNID'])){
-			$object = new TitleISSN(new NamedArguments(array('primaryKey' => $result['titleISSNID'])));
+		if (isset($result['titleIdentifierID'])){
+			$object = new TitleIdentifier(new NamedArguments(array('primaryKey' => $result['titleIdentifierID'])));
 			array_push($objects, $object);
 		}else{
 			foreach ($result as $row) {
-				$object = new TitleISSN(new NamedArguments(array('primaryKey' => $row['titleISSNID'])));
+				$object = new TitleIdentifier(new NamedArguments(array('primaryKey' => $row['titleIdentifierID'])));
 				array_push($objects, $object);
 			}
 		}
@@ -134,9 +110,10 @@ class Title extends DatabaseObject {
 	public function getRelatedTitles(){
 
 		$query = "SELECT DISTINCT t.titleID
-					FROM TitleISSN ti, Title t, TitleISSN ti2
+					FROM TitleIdentifier ti, Title t, TitleIdentifier ti2
 					WHERE ti.titleID = t.titleID
-					AND ti.issn = ti2.issn
+					AND ti.identifier = ti2.identifier
+					AND ti.identifierType = ti2.identifierType
 					AND ti2.titleID = '" . $this->titleID . "';";
 
 		$result = $this->db->processQuery($query, 'assoc');
@@ -161,13 +138,17 @@ class Title extends DatabaseObject {
 
 
 	//returns array of yearly stats for this title
-	public function getYearlyStats($archiveInd, $year, $publisherPlatformID){
+	public function getYearlyStats($archiveInd, $year, $publisherPlatformID, $activityType){
 
+		$addWhere = '';
+		if ($activityType){
+			$addWhere=" AND activityType='" . $activityType . "'";
+		}
 		$query = "SELECT titleID, totalCount, ytdHTMLCount, ytdPDFCount
 					FROM YearlyUsageSummary
 					WHERE titleID = '" . $this->titleID . "'
 					AND archiveInd ='" . $archiveInd . "'
-					AND year='" . $year . "'
+					AND year='" . $year . "'" . $addWhere . "
 					AND publisherPlatformID = '" . $publisherPlatformID . "';";
 
 		$result = $this->db->processQuery($query, 'assoc');
@@ -196,21 +177,30 @@ class Title extends DatabaseObject {
 	}
 
 
-	//returns array of the first listed issn objects
-	public function getByTitle($journalTitle, $printISSN, $onlineISSN, $publisherPlatformID){
+	//returns array of the first listed identifier objects
+	public function getByTitle($resourceType, $resourceTitle, $pISSN, $eISSN, $pISBN, $eISBN, $publisherPlatformID){
 
-		//default search to print ISSN only - we're confident that's the same title
-		if ($printISSN) {
-			$query = "SELECT DISTINCT ti.titleID as titleID FROM TitleISSN ti, Title t WHERE t.titleID = ti.titleID AND issnType = 'print' AND issn = '" . $printISSN . "' LIMIT 1;";
-		//not so confident about online issn so we also search on common platform / publisher
-		}else if ((!$printISSN) && ($onlineISSN)){
-			$query = "SELECT DISTINCT t.titleID as titleID FROM TitleISSN ti, Title t, MonthlyUsageSummary mus WHERE t.titleID = ti.titleID AND issnType = 'online' AND issn = '" . $onlineISSN . "' AND t.titleID = mus.titleID AND publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $journalTitle . "') LIMIT 1;";
-		//this is a title search so we're also searching on common platform / publisher
-		}else if ((!$printISSN) && (!$onlineISSN)){
-			$query = "SELECT DISTINCT t.titleID as titleID FROM Title t, MonthlyUsageSummary mus WHERE t.titleID = mus.titleID AND publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $journalTitle . "') LIMIT 1;";
+		//default search to print ISBN only - we're confident that's the same title
+		if ($pISBN) {
+			$query = "SELECT DISTINCT ti.titleID as titleID FROM TitleIdentifier ti INNER JOIN Title t USING (titleID) WHERE identifierType = 'ISBN' AND identifier = '" . $pISBN . "' AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
+
+		//Otherwise try ISSN if it's a journal or there's no p-isbn
+		} else if (($pISSN) && (($resourceType == "Journal") || (!$pISBN))) {
+			$query = "SELECT DISTINCT ti.titleID as titleID FROM TitleIdentifier ti INNER JOIN Title t USING (titleID) WHERE identifierType = 'ISSN' AND identifier = '" . $pISSN . "' AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
+
+		//not so confident about online identifier so we also search on common platform / publisher
+		}else if ((!$pISBN) && ($eISBN)){
+			$query = "SELECT DISTINCT t.titleID as titleID FROM TitleIdentifier ti INNER JOIN Title t ON (ti.titleID = t.titleID) INNER JOIN MonthlyUsageSummary mus ON (mus.titleID = t.titleID)  WHERE identifierType = 'eISBN' AND identifier = '" . $eISBN . "' AND publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
+
+
+		//not so confident about online identifier so we also search on common platform / publisher
+		}else if ((!$pISSN) && ($eISSN) && ($resourceType == "Journal")){
+			$query = "SELECT DISTINCT t.titleID as titleID FROM TitleIdentifier ti INNER JOIN Title t ON (ti.titleID = t.titleID) INNER JOIN MonthlyUsageSummary mus ON (mus.titleID = t.titleID) WHERE identifierType = 'eISSN' AND identifier = '" . $eISSN . "' AND  publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
+
+		//this is a title search so we're also searching on common platform / publisher (used for Databases probably primarily)
+		}else if ((!$pISSN) && (!$eISSN) && (!$pISBN) && (!$eISBN)){
+			$query = "SELECT DISTINCT t.titleID as titleID FROM Title t INNER JOIN MonthlyUsageSummary mus ON (mus.titleID = t.titleID) WHERE publisherPlatformID = '" . $publisherPlatformID . "' AND ucase(title) = ucase('" . $resourceTitle . "') AND t.resourceType = '" . $resourceType . "' LIMIT 1;";
 		}
-
-
 
 		$result = $this->db->processQuery($query, 'assoc');
 
@@ -243,13 +233,17 @@ class Title extends DatabaseObject {
 
 
 	//remove an entire month for this title/publisher
-	public function deleteYearlyStats($archiveInd, $year, $publisherPlatformID){
+	public function deleteYearlyStats($archiveInd, $year, $publisherPlatformID, $activityType){
+
+		if ($activityType){
+			$addWhere = " AND activityType='" . $activityType . "'";
+		}
 
 		//now formulate query
 		$query = "DELETE FROM YearlyUsageSummary
 					WHERE archiveInd = '" . $archiveInd . "'
 					AND titleID = '" . $this->titleID . "'
-					AND publisherPlatformID = '" . $publisherPlatformID . "'
+					AND publisherPlatformID = '" . $publisherPlatformID . "' " . $addWhere . "
 					AND year = '"  . $year . "';";
 
 		return $this->db->processQuery($query);
@@ -284,7 +278,7 @@ class Title extends DatabaseObject {
 
 
 
-	//returns array of the first listed issn objects
+	//returns array of the first listed identifier objects
 	public function getTotalCountByYear($archiveInd, $year, $publisherPlatformID){
 
 		$query = "SELECT totalCount usageCount, ytdHTMLCount, ytdPDFCount FROM YearlyUsageSummary
@@ -336,12 +330,16 @@ class Title extends DatabaseObject {
 
 			array_push($allArray, $resultArray);
 		}else{
-			foreach ($result as $row) {
-				$resultArray = array();
-				foreach (array_keys($row) as $attributeName) {
-					$resultArray[$attributeName] = $row[$attributeName];
+			if ($result){
+				foreach ($result as $row) {
+					$resultArray = array();
+					if ($resultArray){
+						foreach (array_keys($row) as $attributeName) {
+							$resultArray[$attributeName] = $row[$attributeName];
+						}
+					}
+					array_push($allArray, $resultArray);
 				}
-				array_push($allArray, $resultArray);
 			}
 		}
 

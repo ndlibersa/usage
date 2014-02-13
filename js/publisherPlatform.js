@@ -16,45 +16,37 @@
 */
 
  $(document).ready(function(){
-	updateLoginDetails();
-	updateNotesDetails();
-	updateFullStatsDetails();
-	updateTitleDetails();
-	    
+
+
  });
 
  viewAll=0;
 
+ $(".showImports").click(function () {
+ 	if (viewAll == "0"){
+		$('.usage_tab_content').hide();
+    $('#div_imports').show();
+    updateImportDetails();
+	}
+	return false;
+ });
 
  $(".showLogins").click(function () {
  	if (viewAll == "0"){
-		$('#div_displayLogins').show();
-		$('#div_displayNotes').hide();
-		$('#div_displayStats').hide();
-		$('#div_displayTitles').hide();
-	}
-	return false;
- });
-
- $(".showNotes").click(function () {
- 	if (viewAll == "0"){
-		$('#div_displayLogins').hide();
-		$('#div_displayNotes').show();
-		$('#div_displayStats').hide();
-		$('#div_displayTitles').hide();
+    $('.usage_tab_content').hide();
+    $('#div_logins').show();
+    updateLoginDetails();
 	}
 	return false;
  });
  
  
- 
-  $(".showStats").click(function () {
+  $(".showStatistics").click(function () {
   
   	if (viewAll == "0"){
-		$('#div_displayLogins').hide();
- 		$('#div_displayNotes').hide();
- 		$('#div_displayStats').show();
- 		$('#div_displayTitles').hide();
+    $('.usage_tab_content').hide();
+    $('#div_statistics').show();
+    updateFullStatsDetails();
  	}
  	
  	return false;
@@ -63,11 +55,20 @@
  
  
   $(".showTitles").click(function () {
+    if (viewAll == "0"){
+    $('.usage_tab_content').hide();
+    $('#div_titles').show();
+    updateTitleDetails();
+  }
+  return false;
+ });
+
+ 
+  $(".showSushi").click(function () {
   	if (viewAll == "0"){
-		$('#div_displayLogins').hide();
- 		$('#div_displayNotes').hide();
- 		$('#div_displayStats').hide();
- 		$('#div_displayTitles').show();
+    $('.usage_tab_content').hide();
+    $('#div_sushi').show();
+    updateSushiDetails();
  	}
  	return false;
  });
@@ -76,15 +77,15 @@
 
 
 
- function updateNotesDetails(){
+ function updateImportDetails(){
 
        $.ajax({
           type:       "GET",
           url:        "ajax_htmldata.php",
           cache:      false,
-          data:       "action=getNotesDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
+          data:       "action=getImportDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) { 
-          	$('#div_noteTextDetails').html(html);
+          	$(".div_mainContent").html(html);
           	tb_reinit();
           }
       });
@@ -101,7 +102,7 @@
           cache:      false,
           data:       "action=getLoginDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) { 
-          	$('#div_loginDetails').html(html);
+          	$(".div_mainContent").html(html);
           	tb_reinit();
           }
       });
@@ -118,7 +119,7 @@
           cache:      false,
           data:       "action=getFullStatsDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) { 
-          	$('#div_statsDetails').html(html);
+          	$(".div_mainContent").html(html);
           	tb_reinit();
           }
       });
@@ -132,21 +133,35 @@
  	if (titleID != ''){
  		$('#span_' + titleID + '_feedback').html('&nbsp;&nbsp;<img src = "images/circle.gif">Loading...');
  	}
- 	
- 	
-
        $.ajax({
           type:       "GET",
           url:        "ajax_htmldata.php",
           cache:      false,
-          data:       "action=getTitleDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
+          data:       "action=getTitleSpreadsheets&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
           success:    function(html) { 
-          	$('#div_titleDetails').html(html);
+          	$(".div_mainContent").html(html);
           	tb_reinit();
           }
       });
 
  }
+
+ function updateSushiDetails(){
+
+       $.ajax({
+          type:       "GET",
+          url:        "ajax_htmldata.php",
+          cache:      false,
+          data:       "action=getSushiDetails&publisherPlatformID=" + $('#publisherPlatformID').val() + "&platformID=" + $('#platformID').val(),
+          success:    function(html) { 
+            $(".div_mainContent").html(html);
+            tb_reinit();
+          }
+      });
+
+ }
+
+
 
 
   function deletePlatformNote(platformNoteID){
@@ -158,7 +173,7 @@
           cache:      false,
           data:       "action=deletePlatformNote&platformNoteID=" + platformNoteID,
           success:    function(html) { 
-		  updateNotesDetails(); 
+		      updateNotesDetails(); 
           }
        });
      }
@@ -218,19 +233,24 @@
 	}
   }
 
-  function deleteISSN(titleISSNID){
-	if (confirm("Do you really want to delete this ISSN?") == true) {
+  function deleteIdentifier(titleIdentifierID, identifierType){
+	if (confirm("Do you really want to delete this " + identifierType + "?") == true) {
 
 		$.ajax({
 		  type:       "GET",
 		  url:        "ajax_processing.php",
 		  cache:      false,
-		  data:       "action=removeISSN&titleISSNID=" + titleISSNID,
+		  data:       "action=removeIdentifier&titleIdentifierID=" + titleIdentifierID,
 		  success:    function(html) { 
-			  $("#tr_" + titleISSNID).remove();
+			  $("#tr_" + titleIdentifierID).remove();
 		  }
 	         });
 
 
 	}
+  }
+
+  function toggle(el, dID){
+    console.log($(el));
+    $(el).find('#' + dID).show();
   }
