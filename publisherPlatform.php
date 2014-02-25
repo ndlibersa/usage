@@ -132,11 +132,6 @@ if ($publisherPlatformID) {
         <?php }else{ ?>
         	$('a.showImports').click().css("font-weight", "bold");
         <?php } ?>
-	updateImportDetails();
-    	updateLoginDetails();
-    	updateFullStatsDetails();
-    	updateTitleDetails();
-    	updateSushiDetails();
       });
     </script>
 
