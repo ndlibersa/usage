@@ -130,7 +130,7 @@ if ($publisherPlatformID) {
 		<?php if ((isset($_GET['showTab'])) && ($_GET['showTab'] == 'sushi')){ ?>
         	$('a.showSushi').click();
         <?php }else{ ?>
-        	$('a.showImports').click();
+//        	$('a.showImports').click();
         <?php } ?>
       });
     </script>
