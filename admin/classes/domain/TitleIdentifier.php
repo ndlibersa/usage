@@ -2,7 +2,7 @@
 
 /*
 **************************************************************************************************************************
-** CORAL Usage Statistics Module v. 1.0
+** CORAL Usage Statistics Module v. 1.1
 **
 ** Copyright (c) 2010 University of Notre Dame
 **
@@ -17,17 +17,17 @@
 **************************************************************************************************************************
 */
 
-class TitleISSN extends DatabaseObject {
+class TitleIdentifier extends DatabaseObject {
 
 	protected function defineRelationships() {}
 
 	protected function overridePrimaryKeyName() {}
 
 	protected function defineAttributes() {
-		$this->addAttribute('titleISSNID');
+		$this->addAttribute('titleIdentifierID');
 		$this->addAttribute('titleID');
-		$this->addAttribute('issn');
-		$this->addAttribute('issnType');
+		$this->addAttribute('identifier');
+		$this->addAttribute('identifierType');
 	}
 
 }

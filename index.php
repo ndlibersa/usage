@@ -1,69 +1,128 @@
+
 <?php
 
-$pageTitle='Home';
+/*
+**************************************************************************************************************************
+** CORAL Usage Statistics v. 1.1
+**
+** Copyright (c) 2010 University of Notre Dame
+**
+** This file is part of CORAL.
+**
+** CORAL is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+**
+** CORAL is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License along with CORAL.  If not, see <http://www.gnu.org/licenses/>.
+**
+**************************************************************************************************************************
+*/
 
+
+session_start();
+
+include_once 'directory.php';
+
+//print header
+$pageTitle='Home';
 include 'templates/header.php';
+
+//used for creating a "sticky form" for back buttons
+//except we don't want it to retain if they press the 'index' button
+//check what referring script is
+
+if ($_SESSION['ref_script'] != "publisherPlatform.php"){
+	$reset = "Y";
+}
+
+$_SESSION['ref_script']=$currentPage;
+
+
 
 ?>
 
-<table class="headerTable">
-
+<div style='text-align:left;'>
+<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
 <tr style='vertical-align:top;'>
-<td style="width:235px;padding-right:10px;">
+<td style="width:155px;padding-right:10px;">
 
-<div class="headerText" style='margin-bottom:9px;'>Usage Statistics File Upload</div>
+	<table class='noBorder'>
+	<tr><td style='text-align:left;width:75px;' align='left'>
+	<span style='font-size:130%;font-weight:bold;'>Search</span><br />
+	<a href='javascript:void(0)' class='newSearch'>new search</a>
+	</td>
+	<td><div id='div_feedback'>&nbsp;</div>
+	</td></tr>
+	</table>
+
+	<table class='borderedFormTable' style="width:150px">
+
+	<tr>
+	<td class='searchRow'><label for='searchName'><b>Name (contains)</b></label>
+	<br />
+	<input type='text' name='searchName' id='searchName' style='width:145px' value="<?php if ($reset != 'Y') echo $_SESSION['plat_searchName']; ?>" /><br />
+	<div id='div_searchName' style='<?php if ((!$_SESSION['plat_searchName']) || ($reset == 'Y')) echo "display:none;"; ?>margin-left:118px;margin-top:5px'><input type='button' name='btn_searchName' value='go!' class='searchButton' /></div>
+	<br />
+	</td>
+	</tr>
 
 
-  <?php
+	<tr>
+	<td class='searchRow'><label for='searchFirstLetter'><b>Starts with</b></label>
+	<br />
+	<?php
+	$platform = new Platform();
 
-	#print errors if passed in
+	$alphArray = range('A','Z');
+	$pAlphArray = $platform->getAlphabeticalList;
 
-	if (isset($_GET['error'])){
-		$errorNumber = $_GET['error'];
-		switch ($errorNumber){
-			case 1:
-				echo "<font color='red'>Incorrect File format, must be .txt!</font><br /><br />";
-				break;
-			case 2:
-				echo "<font color='red'>There was an error uploading the file.  Please verify the size is not over 5MB and try again!</font><br /><br />";
-				break;
-			case 3:
-				echo "<font color='red'>File has an incorrectly formatted name - try filename.txt!</font><br /><br />";
-				break;
-      case 4:
-        echo "<font color='red'>The 'archive' and 'logs' directories must both be writable by the web server in order to upload usage statistics files.</font><br /><br />";
-        break;
+	foreach ($alphArray as $letter){
+		if ((isset($pAlphArray[$letter])) && ($pAlphArray[$letter] > 0)){
+			echo "<span class='searchLetter' id='span_letter_" . $letter . "'><a href='javascript:setStartWith(\"" . $letter . "\")'>" . $letter . "</a></span>";
+			if ($letter == "N") echo "<br />";
+		}else{
+			echo "<span class='searchLetter'>" . $letter . "</span>";
+			if ($letter == "N") echo "<br />";
 		}
 	}
+	?>
+	<br />
+	</td>
+	</tr>
 
-
-  ?>
-
-  <font color='red'>Save file as .txt files in tab delimited format</font><br /><br />
-    <form id="form1" name="form1" enctype="multipart/form-data" onsubmit="return validateForm()" method="post" action="uploadConfirmation.php">
-
-      <b>Choose File:</b><span id='span_error' style='color:red'></span><br /><input type="file" name="usageFile" id="usageFile" accept="text/plain,text/tab-separated-values" class='bigger' /><br /><br />
-      <input type="checkbox" name="archiveInd" id="archiveInd" />&nbsp;This is an Archive Report (JR1a)<br />
-      <input type="checkbox" name="overrideInd" id="overrideInd" />&nbsp;Override previous month verification<br /><br />
-      <input type="submit" name="submitFile" id="submitFile" value="Upload" />
-      <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-    </form>
-    <h1>&nbsp;</h1>
-
-
+	</table>
 
 </td>
 <td>
-
-<div class="headerText" style='margin-bottom:9px;'>Recent Imports&nbsp;&nbsp;&nbsp;<span id='span_feedback'></span></div>
-<div id='div_recentImports'>
-</div>
-
+<div id='div_searchResults'></div>
 </td></tr>
-
 </table>
-
-
+</div>
+<br />
 <script type="text/javascript" src="js/index.js"></script>
+<script type='text/javascript'>
+<?php
+  //used to default to previously selected values when back button is pressed
+  //if the startWith is defined set it so that it will default to the first letter picked
+  if ((isset($_SESSION['plat_startWith'])) && ($reset != 'Y')){
+	  echo "startWith = '" . $_SESSION['plat_startWith'] . "';";
+	  echo "$(\"#span_letter_" . $_SESSION['plat_startWith'] . "\").removeClass('searchLetter').addClass('searchLetterSelected');";
+  }
 
-<?php include 'templates/footer.php'; ?>
+  if ((isset($_SESSION['plat_pageStart'])) && ($reset != 'Y')){
+	  echo "pageStart = '" . $_SESSION['plat_pageStart'] . "';";
+  }
+
+  if ((isset($_SESSION['plat_recordsPerPage'])) && ($reset != 'Y')){
+	  echo "recordsPerPage = '" . $_SESSION['plat_recordsPerPage'] . "';";
+  }
+
+  if ((isset($_SESSION['plat_orderBy'])) && ($reset != 'Y')){
+	  echo "orderBy = \"" . $_SESSION['plat_orderBy'] . "\";";
+  }
+
+  echo "</script>";
+
+  //print footer
+  include 'templates/footer.php';
+?>

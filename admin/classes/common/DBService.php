@@ -61,8 +61,9 @@ class DBService extends Object {
 	}
 
 	public function processQuery($sql, $type = NULL) {
-    	//echo $sql. "\n\n";
 		$result = mysql_query($sql, $this->db);
+		//echo $sql . "<br /><br />";
+
 		$this->checkForError();
 		$data = array();
 

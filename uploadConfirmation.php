@@ -1,7 +1,8 @@
+
 <?php
 /*
 **************************************************************************************************************************
-** CORAL Usage Statistics Module v. 1.0
+** CORAL Usage Statistics Module v. 1.1
 **
 ** Copyright (c) 2010 University of Notre Dame
 **
@@ -16,50 +17,77 @@
 **************************************************************************************************************************
 */
 
-
+ini_set("auto_detect_line_endings", true);
 include_once 'directory.php';
-include_once 'user.php';
 
-//First, move the uploaded file
-// Where the file is going to be placed
+$util = new Utility();
 
-$archive_path = "archive";
-$log_path = "logs";
 
-if (!is_writable($archive_path) || !is_writable($log_path)) {
-  header( 'Location: index.php?error=4' ) ;
-  break;
-}
+//this file has been created from SUSHI
+if ($_GET['importLogID'] > 0){
+	$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $_GET['importLogID'])));
+	
+	$layout = new Layout();
+	$layout->getByLayoutCode($importLog->layoutCode);
+	$layoutID = $layout->layoutID;
 
-if (count(explode (".", basename( $_FILES['usageFile']['name']))) == "2"){
-	list ($fileNameStart, $fileNameExt) = explode (".", basename( $_FILES['usageFile']['name']));
-}else if (count(explode (".", basename( $_FILES['usageFile']['name']))) == "3"){
-	list ($dateStamp, $fileNameStart, $fileNameExt) = explode (".", basename( $_FILES['usageFile']['name']));
-}else{
-	header( 'Location: index.php?error=3' ) ;
-  exit;
-}
+	$pageTitle = 'SUSHI Import Confirmation';
 
-$orgFileName = $_FILES['usageFile']['name'];
+	$target_path = $importLog->fileName;
+	$checkYear = date("Y");
+	$formatCorrectFlag = "Y";
+	$errorFlag = "N";
+	$startFlag = "Y";
+	$reportTypeDisplay = $layout->name;
+	
 
-$ts = date("Ymd");
-$target_path = $archive_path . "/" . $ts . "." . $fileNameStart .  "." . $fileNameExt;
-$checkYear = '';
 
-if ($fileNameExt != "txt") {
-	header( 'Location: index.php?error=1' ) ;
-  exit;
+//came from file import
 }else{
 
-  if(move_uploaded_file($_FILES['usageFile']['tmp_name'], $target_path)) {
-	  $uploadConfirm = "The file ".  basename( $_FILES['usageFile']['name'])." has been uploaded successfully.<br />Please confirm the following data:<br />";
-  } else{
-	  header( 'Location: index.php?error=2' ) ;
-    exit;
-  }
+	//First, move the uploaded file
+	// Where the file is going to be placed
+
+	if (count(explode (".", basename( $_FILES['usageFile']['name']))) == "2"){
+		list ($fileNameStart, $fileNameExt) = explode (".", basename( $_FILES['usageFile']['name']));
+	}else if (count(explode (".", basename( $_FILES['usageFile']['name']))) == "3"){
+		list ($dateStamp, $fileNameStart, $fileNameExt) = explode (".", basename( $_FILES['usageFile']['name']));
+	}else{
+		header( 'Location: index.php?error=3' ) ;
+	}
+
+	$orgFileName = $fileNameStart .  "." . $fileNameExt;
+
+	$ts = date("Ymd");
+	$target_path = "archive/" . $ts . "." . $fileNameStart .  "." . $fileNameExt;
+	$checkYear = '';
+
+	if ($fileNameExt != "txt") {
+		header( 'Location: index.php?error=1' ) ;
+	}else{
+
+	  if(move_uploaded_file($_FILES['usageFile']['tmp_name'], $target_path)) {
+		  $uploadConfirm = "The file ".  basename( $_FILES['usageFile']['name'])." has been uploaded successfully.<br />Please confirm the following data:<br />";
+	  } else{
+		  header( 'Location: index.php?error=2' ) ;
+	  }
+	}
+
+
+	  #file upload was OK, now we can read the file to output for confirmation
+	  $formatCorrectFlag = "N";
+	  $foundColumns = "";
+	  $errorFlag = "N";
+	  $startFlag = "N";
+	  $unmatched = "";
+	  $del = ""; //delimiter
+	  $layoutID = $_POST['layoutID'];
+
+
+	$pageTitle = 'Upload Process Confirmation';
 }
 
-$pageTitle = 'Upload Process Confirmation';
+
 include 'templates/header.php';
 
 ?>
@@ -78,60 +106,106 @@ function updateSubmit(){
 
 <table class="headerTable">
 <tr><td>
-<div class="headerText">Usage Statistics File Upload</div>
+<div class="headerText"><?php echo $pageTitle; ?></div>
+<br />
+
 
   <?php
-
-
-  #file upload was OK, now we can read the file to output for confirmation
-  $startFlag = "N";
-  $formatCorrectFlag = "N";
-  $errorFlag = "N";
 
 
   #read layouts ini file to get the available layouts
   $layoutsArray = parse_ini_file("layouts.ini", true);
 
-
-  $file_handle = fopen($target_path, "r");
-
-  #get column values from layouts array for test - checking columns 2 through 6 (column 1 - Journal - is not always entered, column 7 - Feb - on may not be included)
-  for ($i = 2;$i <= 6;$i++){
-  	$columnCheck[$i] = $layoutsArray['layout1']['column' . $i];
+  if ($layoutID != ""){
+  	$reportTypeSet = 'Y';
+	$layout = new Layout(new NamedArguments(array('primaryKey' => $layoutID)));
+	$layoutKey = $layoutsArray[ReportTypes][$layout->layoutCode];
+	$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
+	$reportTypeDisplay = $layout->name;
+	$layoutColumns = $layoutsArray[$layoutKey]['columns'];
+	$numberOfColumns = count($layoutColumns);
   }
+
+
+  #read this file
+  $file_handle = $util->utf8_fopen_read($target_path, "r");
 
 
   echo $uploadConfirm;
   echo "<table class='dataTable' style='width:895px;'>";
 
+
+
+ //print out headers automaticall if this was from sushi
+ if ($importLog->loginID == "sushi"){
+
+		//print out report type and year
+		echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . " for " . $checkYear . "</td></tr>";
+
+		#also print out column headers
+		echo "<tr>";
+		foreach ($layoutColumns as $value){
+			echo "<th>" . strtoupper($value) . "</th>";
+		}
+		echo "</tr>";
+
+ }
+
+
   while (!feof($file_handle)) {
-	//get each line out of the file handler
-     $line = fgets($file_handle);
+     //get each line out of the file handler
+     $line = stream_get_line($file_handle, 10000000, "\n");
+
+     //if report type hasn't been figured out, check for it in the first row / column
+     if ($reportTypeSet == ""){
+
+		foreach ($layoutsArray[ReportTypes] as $reportTypeKey => $layoutKey){
+			list($report,$release) = explode("_",$reportTypeKey);
+			if ((strpos($line, $report) !== false) && (strpos($line, $release) !== false)){
+				$reportTypeSet = 'Y'; 
+				$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
+				$reportTypeDisplay = $line; 
+				$layout = $layoutKey;
+			}	
+		}
 
 
-	 #check column formats if the format correct flag has not been set yet
-     if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= 6)){
-		 list ($column1, $column2, $column3, $column4, $column5, $column6) = explode("\t",$line);
-		 $column1 = trim($column1);
-		 $column2 = trim($column2);
-		 $column3 = trim($column3);
-		 $column4 = trim($column4);
-		 $column5 = trim($column5);
-		 $column6 = trim($column6);
+     }
+
+     //set delimiter
+	$del = "\t";
 
 
-		 #also get the full line in an array to print out the headers
-		 $lineArray = explode("\t",$line);
+     //check column formats if the format correct flag has not been set yet
+     if (($formatCorrectFlag == "N") && (count(explode($del,$line)) >= count($columnsToCheck)) && (strlen($line) > 20)){
+		//positive unless proven negative
+		$formatCorrectFlag = "Y";
+		$lineArray = explode("\t",$line);
 
-		 //remove white spaces for comparison
-		 $column6 = trim($column6);
+		if (($columnsToCheck) && (count($lineArray) >=5)){
+			foreach ($columnsToCheck as $key => $colCheckName){
+				$fileColName = strtolower(trim($lineArray[$key]));	
 
-		 if ((strpos($column2,$columnCheck[2]) === 0) && (strpos($column3,$columnCheck[3]) === 0) && (strpos($column4,$columnCheck[4]) === 0) && (strpos($column5,$columnCheck[5]) === 0) && (strpos($column6,$columnCheck[6]) === 0) ){
-			$formatCorrectFlag = "Y";
+				if (strpos($fileColName, strtolower($colCheckName)) === false){
+					if (!$unmatched){
+						$unmatched = "Looking for \"$colCheckName\" in column $key but found \"$fileColName\"";
+					}
+					$formatCorrectFlag='N';
+				}	
+
+			}	
+		}
+
+		 if ($formatCorrectFlag == 'Y'){
 			$numberOfColumns = count($lineArray);
 
-			list ($checkMonth,$checkYear) = preg_split("/[-\/.]/",$column6);
-			if ($checkYear < 100) $checkYear = 2000 + $checkYear;
+			if ($checkYear == ""){
+				list ($checkMonth,$checkYear) = preg_split("/[-\/.]/",$fileColName);
+				if ($checkYear < 100) $checkYear = 2000 + $checkYear;
+			}
+
+			//print out report type and year
+			echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . " for " . $checkYear . "</td></tr>";
 
 			#also print out column headers
 			echo "<tr>";
@@ -139,14 +213,20 @@ function updateSubmit(){
 				echo "<th>" . $value . "</th>";
 			}
 			echo "</tr>";
-		 }
+		 }else{
+			if (!$foundColumns){
+				$foundColumns = implode(", ", $lineArray);
+			}
+		}
 	 }
+
 
 	//as long as the flags are set to print out, and the line exists, print the line formatted in table
 	//(strpos($line,"\t\t\t\t") === false)
-	 if (($formatCorrectFlag == "Y") && ($startFlag == "Y")  && (strpos($line,"\t") != "0" )) {
+//if (($startFlag == "Y") && ($formatCorrectFlag == "Y")  && !(strpos($line,"\t") == "0") && (substr($line,0,5) != "Total") && (count(explode("\t",$line)) > 5)) {
+	 if (($formatCorrectFlag == "Y") && (substr($line,0,5) != "Total") && ($startFlag == "Y")  && (strpos($line,$del) != "0" ) && (count(explode("\t",$line)) > 5)) {
 	 	 echo "<tr>";
-		 $lineArray = explode("\t",$line);
+		 $lineArray = explode($del,$line);
 
 		 foreach($lineArray as $value){
 
@@ -170,7 +250,7 @@ function updateSubmit(){
 
 
 	 #check "Total for all" is in first column  - set flag to start import after this
-     if (strpos($line,"Total for all") !== false){
+     if ((substr($line,0,5) == "Total") || ($formatCorrectFlag == "Y")){
      	$startFlag = "Y";
      }
 
@@ -183,26 +263,23 @@ function updateSubmit(){
   $errrorFlag="N";
 
   if (($formatCorrectFlag == "N")){
-   	echo "<br /><font color='red'>Error with Format:  File must hold column names listed in layouts.ini.  At least one month must exist.  Please confirm layout.</font><br />";
+   	echo "<br /><font color='red'><b>Error with Format</b>:  Report format is set to <b>" . $reportTypeDisplay . "</b> but does not match the column names listed in layouts.ini for this format - $unmatched.<br /><br />Expecting columns: " . implode(", ", $columnsToCheck) . "<br /><br />Found columns: " . $foundColumns . "</font><br /><br />If problems persist you can copy an existing header that works into this file.";
+   	$errorFlag="Y";
+  }
+
+  if (!$layoutKey){
+   	echo "<br /><font color='red'>Error with Setup:  This report format is not set up in layouts.ini.</font><br />";
    	$errorFlag="Y";
   }
 
   if (($startFlag == "N")){
-   	echo "<br /><font color='red'>Error with Format:  The line preceding the first should start with 'Total for all'.</font><br />";
+   	echo "<br /><font color='red'>Error with Format:  The line preceding the first should start with 'Total'.</font><br />";
    	$errorFlag="Y";
   }
-
 
   if ($checkYear > date('Y')){
   	echo "<br /><font color='red'>Error with Year:  Year listed in header (" . $checkYear . ") may not be ahead of current year.  Please correct and submit again.</font><br />";
   	$errorFlag="Y";
-  }
-
-  if (isset($_POST['archiveInd'])){
-  	echo "<br /><font color='red'>File is flagged as an Archive.  If this is incorrect use 'Cancel' to fix.</font><br />";
-  	$archiveInd = 1;
-  }else{
-  	$archiveInd = 0;
   }
 
   if (isset($_POST['overrideInd'])){
@@ -211,14 +288,21 @@ function updateSubmit(){
   }else{
   	$overrideInd = 0;
   }
+
+  if ($errorFlag != "Y"){
+  	echo "<br />Report Format: <b>" . $reportTypeDisplay . "</b><br />If this is incorrect, please use 'Cancel' to go back and fix the headers of the file.<br />";
+  }
+
 ?>
 
 	<br />
     <form id="confirmForm" name="confirmForm" enctype="multipart/form-data" method="post" action="uploadComplete.php">
     <input type="hidden" name="upFile" value="<?php echo $target_path; ?>">
-    <input type="hidden" name="archiveInd" value="<?php echo $archiveInd; ?>">
     <input type="hidden" name="overrideInd" value="<?php echo $overrideInd; ?>">
     <input type="hidden" name="orgFileName" value="<?php echo $orgFileName; ?>">
+    <input type="hidden" name="importLogID" value="<?php echo $importLog->importLogID; ?>">
+    <input type="hidden" name="checkYear" value="<?php echo $checkYear; ?>">
+    <input type="hidden" name="layoutID" value="<?php echo $layoutID; ?>">
 	<table>
 	<tr valign="center">
 	<td>
@@ -229,10 +313,3 @@ function updateSubmit(){
     </td>
     </tr>
     </table>
-    </form>
-</td>
-</tr>
-</table>
-
-
-<?php include 'templates/footer.php'; ?>

@@ -1,6 +1,6 @@
 /*
 **************************************************************************************************************************
-** CORAL Usage Statistics Module v. 1.0
+** CORAL Usage Statistics Module v. 1.1
 **
 ** Copyright (c) 2010 University of Notre Dame
 **
@@ -18,19 +18,19 @@
  $(function(){
 
 
-	 $("#submitISSNForm").click(function () {
-	 	submitISSN();
+	 $("#submitSushiForm").click(function () {
+	 	submitSushiService();
 	 });
-	 
+
+
 
 	//do submit if enter is hit
-	$('#ISSN').keyup(function(e) {
+	$(':text').keyup(function(e) {
 	      if(e.keyCode == 13) {
-		submitISSN();
+		submitSushiService();
 	      }
 	}); 
-	
-	  	 
+
  });
  
 
@@ -38,44 +38,21 @@
 
 
 
-function submitISSN(){
+function submitSushiService(){
 
-  
-  if (validateForm() === true) {
-	  $('#span_' + $("#titleID").val() + '_feedback').html('');
-	  
+	$('#submitSushiForm').attr("disabled", "disabled"); 
 	  $.ajax({
 		 type:       "POST",
-		 url:        "ajax_processing.php?action=addISSN",
+		 url:        "ajax_processing.php?action=submitSushiService",
 		 cache:      false,
-		 data:       { issn: $("#issn").val(), issnType: $("#issnType").val(), titleID: $("#titleID").val() },
+		 data:       { sushiServiceID: $("#editSushiServiceID").val(), platformID: $("#platformID").val(), serviceURL: $("#serviceURL").val(), wsdlURL: $("#wsdlURL").val(), requestorID: $("#requestorID").val(), customerID: $("#customerID").val(), security: $("#security").val(), reportLayouts: $("#reportLayouts").val(), releaseNumber: $("#releaseNumber").val(), login: $("#login").val(), password: $("#password").val(), serviceDayOfMonth: $("#serviceDayOfMonth").val(), noteText: $("#noteText").val() },
 		 success:    function(html) {
-			window.parent.tb_remove();
-			window.parent.updateTitleDetails($("#titleID").val());
-			return false;		
+				window.parent.tb_remove();
+				window.parent.updateSushiDetails();
+				return false;
 		 }
 
 
 	 });
-	 
-   }
 
-}
-
-
-
-//validates fields
-function validateForm (){
-	myReturn=0;
-	if (!isISSN($("#issn").val())){
-		$('#span_error_ISSN').html('<br />ISSN must be valid format.');
-		myReturn=1;
-	}
-	
-	
-	if (myReturn == "1"){
-		return false;
-	}else{
-		return true;
-	}
 }

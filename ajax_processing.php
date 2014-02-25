@@ -107,6 +107,28 @@ switch ($action) {
         break;
 
 
+
+
+    case 'addPlatform':
+
+    	$platform = new Platform();
+
+		$platform->name = $_POST['platformName'];
+		$platform->reportDisplayName = $_POST['platformName'];
+
+		try {
+			$platform->save();
+			echo $platform->primaryKey;
+
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+
+
+        break;
+
+
+
     case 'deletePlatformNote':
 
 		$platformNote = new PlatformNote(new NamedArguments(array('primaryKey' => $_GET['platformNoteID'])));
@@ -185,6 +207,68 @@ switch ($action) {
 		}
 
         break;
+
+
+
+
+    case 'submitSushiService':
+
+
+    	//update
+    	if ((isset($_POST['sushiServiceID'])) && ($_POST['sushiServiceID'] != '')){
+ 			$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $_POST['sushiServiceID'])));
+    	}else{
+    		$sushiService = new SushiService();
+			$sushiService->platformID = $_POST['platformID'];
+    	}
+
+
+		$sushiService->serviceURL = $_POST['serviceURL'];
+		$sushiService->wsdlURL = $_POST['wsdlURL'];
+		$sushiService->requestorID = $_POST['requestorID'];
+		$sushiService->customerID = $_POST['customerID'];
+		$sushiService->security = $_POST['security'];
+		$sushiService->reportLayouts = $_POST['reportLayouts'];
+		$sushiService->releaseNumber = $_POST['releaseNumber'];
+		$sushiService->login = $_POST['login'];
+		$sushiService->password = $_POST['password'];
+		$sushiService->serviceDayOfMonth = $_POST['serviceDayOfMonth'];
+		$sushiService->noteText = $_POST['noteText'];
+
+
+		try {
+			$sushiService->save();
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+
+        break;
+
+
+
+
+    case 'runSushiService':
+
+
+    	//update
+    	if ((isset($_GET['sushiServiceID'])) && ($_GET['sushiServiceID'] != '')){
+ 			$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $_GET['sushiServiceID'])));
+
+ 			//try to run!
+			try {
+				$sushiService->runAll();
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
+
+    	}
+
+		
+
+        break;
+
+
+
 
 
 
@@ -307,16 +391,16 @@ switch ($action) {
 
 
 
-    case 'addISSN':
+    case 'addIdentifier':
 
-		$titleISSN = new TitleISSN();
-		$titleISSN->titleID = $_POST['titleID'];
-		$titleISSN->issn = trim(str_replace ('-','',$_POST['issn']));
-		$titleISSN->issnType = $_POST['issnType'];
+		$titleIdentifier = new TitleIdentifier();
+		$titleIdentifier->titleID = $_POST['titleID'];
+		$titleIdentifier->identifier = trim(str_replace ('-','',$_POST['identifier']));
+		$titleIdentifier->identifierType = $_POST['identifierType'];
 
 
 		try {
-			$titleISSN->save();
+			$titleIdentifier->save();
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
@@ -325,12 +409,12 @@ switch ($action) {
 
 
 
-    case 'removeISSN':
+    case 'removeIdentifier':
 
-		$titleISSN = new TitleISSN(new NamedArguments(array('primaryKey' => $_GET['titleISSNID'])));
+		$titleIdentifier = new TitleIdentifier(new NamedArguments(array('primaryKey' => $_GET['titleIdentifierID'])));
 
 		try {
-			$titleISSN->delete();
+			$titleIdentifier->delete();
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
@@ -422,6 +506,25 @@ switch ($action) {
 
 
  		break;
+
+
+
+     case 'deleteImportLog':
+
+ 		$importLogID = $_GET['importLogID'];
+
+		$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $importLogID)));
+
+		echo "<font color='red'>";
+		try {
+			$importLog->delete();
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+		echo "</font>";
+
+ 		break;
+
 
 
 

@@ -1,7 +1,7 @@
 <?php
 /*
 **************************************************************************************************************************
-** CORAL Usage Statistics Module v. 1.0
+** CORAL Usage Statistics Module v. 1.1
 **
 ** Copyright (c) 2010 University of Notre Dame
 **
@@ -17,10 +17,11 @@
 */
 
 
-set_time_limit(300);
-
+ini_set("auto_detect_line_endings", true); //sometimes with macs...
 include_once 'directory.php';
 include_once 'user.php';
+
+$util = new Utility();
 
 $pageTitle = 'Upload Process Complete';
 
@@ -30,21 +31,40 @@ $layoutsArray = parse_ini_file("layouts.ini", true);
 
 $uploadedFile = $_POST['upFile'];
 $orgFileName = $_POST['orgFileName'];
-$archiveInd = $_POST['archiveInd'];
 $overrideInd = $_POST['overrideInd'];
-$printISSNArray = array();
+$layoutID = $_POST['layoutID'];
+$importLogID = $_POST['importLogID'];
+$year = $_POST['checkYear'];
+$pISSNArray = array();
+$platformArray = array();
 
-$file_handle = fopen($uploadedFile, "r");
+
+
+$layout = new Layout(new NamedArguments(array('primaryKey' => $_POST['layoutID'])));
+$layoutKey = $layoutsArray[ReportTypes][$layout->layoutCode];
+
+$reportTypeDisplay = $layout->name;
+$resourceType = $layout->resourceType;
+$layoutCode = $layout->layoutCode;
+
+$archiveInd="0";
+if (strpos($reportTypeDisplay,'archive') > 1){
+	$archiveInd = "1";
+}
+
+$file_handle = $util->utf8_fopen_read($uploadedFile, "r");
+
+$logSummary = "\n" . $orgFileName;
 
 $topLogOutput = "";
 $logOutput = "Process started on " . date('l jS \of F Y h:i A') . "<br />";
 $logOutput.= "File: " . $uploadedFile . "<br /><br />";
+$logOutput.= "Report Format: " . $reportTypeDisplay . "<br /><br />";
 $monthlyInsert='';
 $screenOutput = '';
 
 $startFlag = "N";
-$formatFlag = "N";
-
+$formatCorrectFlag = "N";
 
 //determine config settings for outlier usage
 $config = new Configuration();
@@ -70,9 +90,17 @@ if ($config->settings->useOutliers == "Y"){
 
 $logOutput .="<br /><br />";
 
-//get column values from layouts array to determine layout - checking columns 2 through 20 (column 1 - Journal - is not always entered, column 7 - Feb - on may not be included)
-for ($i = 2;$i <= 20;$i++){
-	$columnCheck[$i] = $layoutsArray['layout1']['column' . $i];
+//get column values from layouts array to determine layout
+$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
+$layoutColumns = $layoutsArray[$layoutKey]['columns'];
+
+
+if ($importLogID > 0){
+	$formatCorrectFlag = "Y";
+	$startFlag = "Y";
+	$logSummary .= " $reportTypeDisplay";
+	$logSummary .= "\n$year for ";
+	$overrideInd="1";
 }
 
 
@@ -87,99 +115,103 @@ $startMonth = '';
 //loop through each line of file
 while (!feof($file_handle)) {
 
-	//get each line out of the file handler
- 	$line = fgets($file_handle);
+     //get each line out of the file handler
+     $line = stream_get_line($file_handle, 10000000, "\n"); 
 
- 	//check column formats if the format correct flag has not been set yet
-	if ($formatFlag == "N"){
-		$columnArray = explode("\t",$line);
-
-	 	//strip spaces
-	 	foreach ($columnArray as $key => $value){
-			$columnArray[$key] = trim($value);
-	 	}
-
-	 	//this is the header column
-	 	if ((strpos($columnArray[1],$columnCheck[2]) === 0) && (strpos($columnArray[2],$columnCheck[3]) === 0) && (strpos($columnArray[3],$columnCheck[4]) === 0) && (strpos($columnArray[4],$columnCheck[5]) === 0) && (strpos($columnArray[5],$columnCheck[6]) === 0) && (isset($columnArray[5])) ){
-			$formatFlag = "Y";
-
-			list ($month,$year) = preg_split("/[-\/. ]/",$columnArray[5]);
-			if ($year < 100) $year = 2000 + $year;
-
-			//loop through each month and the 3 ytd columns to determine which column number we should refer to when getting data below
-			for ($i=5;$i<20;$i++){
-				//convert to lowercase for comparison
-				if (isset($columnArray[$i])){
-					$columnArray[$i] = strtolower($columnArray[$i]);
-
-					//strip the 'ytd ' since not all spreadsheets have it
-					if (strpos($columnArray[$i], 'ytd ') === 0){
-						$columnArray[$i] = substr($columnArray[$i], 4, strlen($columnArray[$i]));
-					}
-
-					//dont care about the year (after the "-")
-					if (strpos($columnArray[$i],'-') > 0){
-						$month=substr($columnArray[$i], 0, strpos($columnArray[$i],'-'));
-					}elseif (strpos($columnArray[$i],' ') > 0){
-						$month=substr($columnArray[$i], 0, strpos($columnArray[$i],' '));
-					}else{
-						$month=$columnArray[$i];
-					}
-
-					if ($month == 'jan'){$columnNumberArray['1']=$i;
-					}elseif ($month == 'feb') {$columnNumberArray['2']=$i;
-					}elseif ($month == 'mar') {$columnNumberArray['3']=$i;
-					}elseif ($month == 'apr') {$columnNumberArray['4']=$i;
-					}elseif ($month == 'may') {$columnNumberArray['5']=$i;
-					}elseif ($month == 'jun') {$columnNumberArray['6']=$i;
-					}elseif ($month == 'jul') {$columnNumberArray['7']=$i;
-					}elseif ($month == 'aug') {$columnNumberArray['8']=$i;
-					}elseif ($month == 'sep') {$columnNumberArray['9']=$i;
-					}elseif ($month == 'oct') {$columnNumberArray['10']=$i;
-					}elseif ($month == 'nov') {$columnNumberArray['11']=$i;
-					}elseif ($month == 'dec') {$columnNumberArray['12']=$i;
-					}elseif ($month == 'total') {$columnNumberArray['ytd']=$i;
-					}elseif ($month == 'html') {$columnNumberArray['ytdHTML']=$i;
-					}elseif ($month == 'pdf') {$columnNumberArray['ytdPDF']=$i;}
-
-				}//end column isset
-
-			//end for loop
-			}
-
-		//end if column checking
-		}
-
-	//end if format flag checked
-	}
+     //set delimiter
+     if ($del == ""){
+        if(count(explode("\t",$line)) > 5){
+                $del = "\t";
+        }else if (count(explode(",",$line)) > 5){
+                $del = ",";
+        }
 
 
+     }
+
+     //check column formats to get the year and months
+    if (($formatCorrectFlag == "N") && (count(explode("\t",$line)) >= count($columnsToCheck))){
+        //positive unless proven negative
+        $formatCorrectFlag = "Y";
+        $lineArray = explode("\t",$line);
+
+        foreach ($columnsToCheck as $key => $colCheckName){	
+                $fileColName = strtolower(trim($lineArray[$key]));
+
+                if (strpos($fileColName, strtolower($colCheckName)) === false){
+                        $formatCorrectFlag='N';
+                }
+
+
+        }
+
+
+	     if ($formatCorrectFlag == 'Y'){
+
+			//at this point, $fileColName has the last column check value, Jan
+			//determine the year
+	        list ($checkMonth,$year) = preg_split("/[-\/.]/",$fileColName);
+	        if ($year < 100) $year = 2000 + $year;
+
+			$missingMonths = array();
+			// determine the latest month
+			// since months may not all exist
+			$jan_i = array_search('jan',$layoutColumns);
+
+			for($i=$jan_i;$i<12+$jan_i;$i++){
+				$month = $i - $jan_i + 1;
+				$monthName = date("M", mktime(0,0,0,$month,10));
+				if (strpos(strtolower($lineArray[$i]), strtolower($monthName)) === false){
+					unset($layoutColumns[$i]);
+				}
+		
+			} 
+
+			$layoutColumns = array_values($layoutColumns);
+			$logSummary .= " $reportTypeDisplay";
+			$logSummary .= "\n$year for ";
+
+        }
+    }
 
 	//as long as the flags are set to print out then we can continue
-	if (($startFlag == "Y")  && !(strpos($line,"\t") == "0")) {
+	if (($startFlag == "Y") && ($formatCorrectFlag == "Y")  && !(strpos($line,"\t") == "0") && (substr($line,0,5) != "Total") && (count(explode("\t",$line)) > 5)) {
 
 		$lineArray = explode("\t",$line);
-		$month = array();
-		$journalTitle = $lineArray[$layoutsArray['layout1']['journal']];
-		$platformName = $lineArray[$layoutsArray['layout1']['platform']];
-		$publisherName = $lineArray[$layoutsArray['layout1']['publisher']];
-		$printISSN = $lineArray[$layoutsArray['layout1']['printISSN']];
-		$onlineISSN = $lineArray[$layoutsArray['layout1']['onlineISSN']];
-		$month['1'] = $lineArray[$columnNumberArray['1']];
-		if (isset($columnNumberArray['2'])) $month['2'] = $lineArray[$columnNumberArray['2']];
-		if (isset($columnNumberArray['3'])) $month['3'] = $lineArray[$columnNumberArray['3']];
-		if (isset($columnNumberArray['4'])) $month['4'] = $lineArray[$columnNumberArray['4']];
-		if (isset($columnNumberArray['5'])) $month['5'] = $lineArray[$columnNumberArray['5']];
-		if (isset($columnNumberArray['6'])) $month['6'] = $lineArray[$columnNumberArray['6']];
-		if (isset($columnNumberArray['7'])) $month['7'] = $lineArray[$columnNumberArray['7']];
-		if (isset($columnNumberArray['8'])) $month['8'] = $lineArray[$columnNumberArray['8']];
-		if (isset($columnNumberArray['9'])) $month['9'] = $lineArray[$columnNumberArray['9']];
-		if (isset($columnNumberArray['10'])) $month['10'] = $lineArray[$columnNumberArray['10']];
-		if (isset($columnNumberArray['11'])) $month['11'] = $lineArray[$columnNumberArray['11']];
-		if (isset($columnNumberArray['12'])) $month['12'] = $lineArray[$columnNumberArray['12']];
-		if (isset($columnNumberArray['ytd'])) $ytd = $lineArray[$columnNumberArray['ytd']];
-		if (isset($columnNumberArray['ytdHTML'])) $ytdHTML = $lineArray[$columnNumberArray['ytdHTML']];
-		if (isset($columnNumberArray['ytdPDF'])) $ytdPDF = $lineArray[$columnNumberArray['ytdPDF']];
+		$columnValues = array();
+		//match column titles in layout.ini to columns in file
+		foreach ($layoutColumns as $i => $col){
+			$columnValues[$col] = trim($lineArray[$i]);
+		}
+
+		$resourceTitle = $columnValues['title'];
+		$platformName = $columnValues['platform'];
+		$publisherName = $columnValues['publisher'];
+
+		$pISSN = $columnValues['issn'];
+		$eISSN = $columnValues['eissn'];
+		$pISBN = $columnValues['isbn'];
+		$eISBN = $columnValues['eisbn'];
+
+		$doi = $columnValues['doi'];
+		$pi = $columnValues['pi'];
+
+		$activityType = $columnValues['activityType'];
+		$sectionType = $columnValues['sectionType'];
+
+		$ytd = $columnValues['ytd'];
+		$ytdHTML = $columnValues['ytdHTML'];
+		$ytdPDF = $columnValues['ytdPDF'];
+
+		
+		// loop through each month to assign month array
+		$month=array();
+		for($i=1;$i<=12;$i++){
+			$monthName = date("M", mktime(0,0,0,$i,10));
+			if(isset($columnValues[strtolower($monthName)])){
+				$month[$i] = $columnValues[strtolower($monthName)];
+			}
+		} 
 
 
 		################################################################
@@ -189,6 +221,9 @@ while (!feof($file_handle)) {
 		//check it against the previous row - no need to do another lookup if we've already figured out the platform
 		//strip out double quotes
 		$platformName = trim(str_replace ('"','',$platformName));
+		if ($platformName == ""){
+			$platformName = $holdPlatform;
+		}
 
 		if (!($platformID) || ($platformName != $holdPlatform)){
 			//get the platformID if available
@@ -203,7 +238,7 @@ while (!feof($file_handle)) {
 				if ($overrideInd == 1){
 					$logOutput .= "Override indicator set - all months will be imported.";
 				}else{
-					$monthArray = $platformObj->getTotalMonths($archiveInd, $year);
+					$monthArray = $platformObj->getTotalMonths($resourceType, $archiveInd, $year);
 					$count_months = $monthArray['count_months'];
 					$min_month = $monthArray['min_month'];
 					$max_month = $monthArray['max_month'];
@@ -277,6 +312,8 @@ while (!feof($file_handle)) {
 
 		}
 
+		$platformArray[] = $platformID;
+
 
 		#################################################################
 		// PUBLISHER
@@ -286,7 +323,10 @@ while (!feof($file_handle)) {
 		//check it against the previous row - no need to do another lookup if we've already figured out the platform
 		//strip out double quotes
 		$publisherName = trim(str_replace ('"','',$publisherName));
-
+		if ($publisherName == ""){
+			$publisherName = $holdPublisher;
+		}
+		
 		if (!($publisherID) || ($publisherName != $holdPublisher)){
 			//get the publisher object
 			$publisherTestObj = new Publisher();
@@ -359,44 +399,62 @@ while (!feof($file_handle)) {
 		// Query to see if the Title already exists, if so, get the ID
 		#################################################################
 		//first, remove the '-' from the ISSNs
-		$printISSN = strtoupper(trim(str_replace ('-','',$printISSN)));
+		$pISSN = strtoupper(trim(str_replace ('-','',$pISSN)));
 		//remove blank
-		$printISSN = strtoupper(trim(str_replace (' ','',$printISSN)));
-		if (strpos(strtoupper($printISSN),'N/A') !== false) $printISSN = '';
-		if ($printISSN == '00000000') $printISSN = '';
-		if (strtoupper($printISSN) == 'XXXXXXXX') $printISSN = '';
+		$pISSN = strtoupper(trim(str_replace (' ','',$pISSN)));
+		if (strpos(strtoupper($pISSN),'N/A') !== false) $pISSN = '';
+		if ($pISSN == '00000000') $pISSN = '';
+		if (strtoupper($pISSN) == 'XXXXXXXX') $pISSN = '';
+		if (strtoupper($pISSN) == '.') $pISSN = '';
 
-		$onlineISSN = strtoupper(trim(str_replace ('-','',$onlineISSN)));
+		$eISSN = strtoupper(trim(str_replace ('-','',$eISSN)));
 		//remove blank
-		$onlineISSN = strtoupper(trim(str_replace (' ','',$onlineISSN)));
-		if (strpos(strtoupper($onlineISSN),'N/A') !== false) $onlineISSN = '';
-		if ($onlineISSN == '00000000') $onlineISSN = '';
-		if (strtoupper($onlineISSN) == 'XXXXXXXX') $onlineISSN = '';
-		if (!$printISSN) { $searchISSN = trim($onlineISSN); }else{$searchISSN=trim($printISSN);}
+		$eISSN = strtoupper(trim(str_replace (' ','',$eISSN)));
+		if (strpos(strtoupper($eISSN),'N/A') !== false) $eISSN = '';
+		if ($eISSN == '00000000') $eISSN = '';
+		if (strtoupper($eISSN) == 'XXXXXXXX') $eISSN = '';
+		if (strtoupper($eISSN) == '.') $eISSN = '';
 
+		$pISBN = strtoupper(trim(str_replace ('-','',$pISBN)));
+		//remove blank
+		$pISBN = strtoupper(trim(str_replace (' ','',$pISBN)));
+		if (strpos(strtoupper($pISBN),'N/A') !== false) $pISBN = '';
+		if ($pISBN == '00000000') $pISBN = '';
+		if (strtoupper($pISBN) == 'XXXXXXXX') $pISBN = '';
+
+		$eISBN = strtoupper(trim(str_replace ('-','',$eISBN)));
+		//remove blank
+		$eISBN = strtoupper(trim(str_replace (' ','',$eISBN)));
+		if (strpos(strtoupper($eISBN),'N/A') !== false) $eISBN = '';
+		if ($eISBN == '00000000') $eISBN = '';
+		if (strtoupper($eISBN) == 'XXXXXXXX') $eISBN = '';
+
+		if ($doi == "0") $doi = "";
+		if ($pi == "0") $pi = "";
 
 		//strip everything after parenthesis from Title
-		if (strpos($journalTitle,' (Subs') !== false) $journalTitle = substr($journalTitle,0,strpos($journalTitle,' (Subs'));
-		if (strpos($journalTitle,'<BR>') !== false) $journalTitle = substr($journalTitle,0,strpos($journalTitle,'<BR>'));
+		if (strpos($resourceTitle,' (Subs') !== false) $resourceTitle = substr($resourceTitle,0,strpos($resourceTitle,' (Subs'));
+		if (strpos($resourceTitle,'<BR>') !== false) $resourceTitle = substr($resourceTitle,0,strpos($resourceTitle,'<BR>'));
 
 		//strip out double quotes, escape single quotes and fix &
-		$journalTitle = trim(str_replace ('"','',$journalTitle));
-		$journalTitle = trim(str_replace ("'","''",$journalTitle));
-		$journalTitle = trim(str_replace ("&amp;","&",$journalTitle));
+		$resourceTitle = trim(str_replace ('"','',$resourceTitle));
+		$resourceTitle = trim(str_replace ("'","''",$resourceTitle));
+		$resourceTitle = trim(str_replace ("&amp;","&",$resourceTitle));
 
 
 		$titleObj = new Title();
-		$titleID = $titleObj->getByTitle($journalTitle, $printISSN, $onlineISSN, $publisherPlatformID);
+		$titleID = $titleObj->getByTitle($resourceType, $resourceTitle, $pISSN, $eISSN, $pISBN, $eISBN, $publisherPlatformID);
 
 		if ($titleID) $newTitle=0;
 
 
-		//If it does not already exist, insert it into the Title and issn tables and get the new ID
-		if (!$titleID && $journalTitle && ((strlen($printISSN) == "8") || !$printISSN)){
+		//If it does not already exist, insert it into the Title and identifier tables and get the new ID
+		if (!$titleID && $resourceTitle && ((strlen($pISSN) == "8") || !$pISSN)){
 
 			$titleObj = new Title();
 			$titleObj->titleID = '';
-			$titleObj->title = $journalTitle;
+			$titleObj->title = $resourceTitle;
+			$titleObj->resourceType = $resourceType;
 
 			try {
 				$titleObj->save();
@@ -408,30 +466,86 @@ while (!feof($file_handle)) {
 			$newTitle=1;
 
 
-			#also insert into Title ISSN table
-			if (strlen($printISSN) == "8") {
-				$titleISSN = new TitleISSN();
-				$titleISSN->titleISSNID = '';
-				$titleISSN->titleID = $titleID;
-				$titleISSN->issn = $printISSN;
-				$titleISSN->issnType = 'print';
+			#also insert into Title Identifier table
+			if ((strlen($pISBN) == "10") || (strlen($pISBN) == "13")) {
+				$titleIdentifier = new TitleIdentifier();
+				$titleIdentifier->titleIdentifierID = '';
+				$titleIdentifier->titleID = $titleID;
+				$titleIdentifier->identifier = $pISBN;
+				$titleIdentifier->identifierType = 'ISBN';
 
 				try {
-					$titleISSN->save();
+					$titleIdentifier->save();
 				} catch (Exception $e) {
 					echo $e->getMessage();
 				}
 			}
 
-			if (strlen($onlineISSN) == "8") {
-				$titleISSN = new TitleISSN();
-				$titleISSN->titleISSNID = '';
-				$titleISSN->titleID = $titleID;
-				$titleISSN->issn = $onlineISSN;
-				$titleISSN->issnType = 'online';
+			if ((strlen($eISBN) == "10") || (strlen($eISBN) == "13")) {
+				$titleIdentifier = new TitleIdentifier();
+				$titleIdentifier->titleIdentifierID = '';
+				$titleIdentifier->titleID = $titleID;
+				$titleIdentifier->identifier = $eISBN;
+				$titleIdentifier->identifierType = 'eISBN';
 
 				try {
-					$titleISSN->save();
+					$titleIdentifier->save();
+				} catch (Exception $e) {
+					echo $e->getMessage();
+				}
+			}
+
+			if (strlen($pISSN) == "8") {
+				$titleIdentifier = new TitleIdentifier();
+				$titleIdentifier->titleIdentifierID = '';
+				$titleIdentifier->titleID = $titleID;
+				$titleIdentifier->identifier = $pISSN;
+				$titleIdentifier->identifierType = 'ISSN';
+
+				try {
+					$titleIdentifier->save();
+				} catch (Exception $e) {
+					echo $e->getMessage();
+				}
+			}
+
+			if (strlen($eISSN) == "8") {
+				$titleIdentifier = new TitleIdentifier();
+				$titleIdentifier->titleIdentifierID = '';
+				$titleIdentifier->titleID = $titleID;
+				$titleIdentifier->identifier = $eISSN;
+				$titleIdentifier->identifierType = 'eISSN';
+
+				try {
+					$titleIdentifier->save();
+				} catch (Exception $e) {
+					echo $e->getMessage();
+				}
+			}
+
+			if ($doi) {
+				$titleIdentifier = new TitleIdentifier();
+				$titleIdentifier->titleIdentifierID = '';
+				$titleIdentifier->titleID = $titleID;
+				$titleIdentifier->identifier = $doi;
+				$titleIdentifier->identifierType = 'DOI';
+
+				try {
+					$titleIdentifier->save();
+				} catch (Exception $e) {
+					echo $e->getMessage();
+				}
+			}
+
+			if ($pi) {
+				$titleIdentifier = new TitleIdentifier();
+				$titleIdentifier->titleIdentifierID = '';
+				$titleIdentifier->titleID = $titleID;
+				$titleIdentifier->identifier = $pi;
+				$titleIdentifier->identifierType = 'Proprietary Identifier';
+
+				try {
+					$titleIdentifier->save();
 				} catch (Exception $e) {
 					echo $e->getMessage();
 				}
@@ -441,24 +555,35 @@ while (!feof($file_handle)) {
 		}else{
 			$titleObj = new Title(new NamedArguments(array('primaryKey' => $titleID)));
 
-			if (($journalTitle && ((strlen($printISSN) == "8") || !$printISSN))){
+			if (($resourceTitle && ((strlen($pISSN) == "8") || !$pISSN))){
 
-				//If Title already existed
 				//still should check for new online ISSN since they can be added in later spreadsheets
-				if (strlen($onlineISSN) == "8") {
-					//try to avoid doing this
-					//$titleObj = new Title(new NamedArguments(array('primaryKey' => $titleID)));
-
-					//if this online issn already isn''t in the DB
-					if (!$titleObj->getExistingOnlineISSN($onlineISSN)) {
-						$titleISSN = new TitleISSN();
-						$titleISSN->titleISSNID = '';
-						$titleISSN->titleID = $titleID;
-						$titleISSN->issn = $onlineISSN;
-						$titleISSN->issnType = 'online';
+				if (strlen($eISSN) == "8") {
+					if (!$titleObj->getExistingIdentifier($eISSN)) {
+						$titleIdentifier = new TitleIdentifier();
+						$titleIdentifier->titleIdentifierID = '';
+						$titleIdentifier->titleID = $titleID;
+						$titleIdentifier->identifier = $eISSN;
+						$titleIdentifier->identifierType = 'eISSN';
 
 						try {
-							$titleISSN->save();
+							$titleIdentifier->save();
+						} catch (Exception $e) {
+							echo $e->getMessage();
+						}
+					}
+				}
+
+				if ($doi) {
+					if (!$titleObj->getExistingIdentifier($doi)) {
+						$titleIdentifier = new TitleIdentifier();
+						$titleIdentifier->titleIdentifierID = '';
+						$titleIdentifier->titleID = $titleID;
+						$titleIdentifier->identifier = $doi;
+						$titleIdentifier->identifierType = 'doi';
+
+						try {
+							$titleIdentifier->save();
 						} catch (Exception $e) {
 							echo $e->getMessage();
 						}
@@ -489,8 +614,8 @@ while (!feof($file_handle)) {
 		if ($titleID) {
 			$rownumber++;
 			//Add Title to log output
-			if (trim($journalTitle)){
-				$logOutput .="<br /><br />Title: " . $journalTitle;
+			if (trim($resourceTitle)){
+				$logOutput .="<br /><br />Title: " . $resourceTitle;
 			}
 
 
@@ -511,12 +636,12 @@ while (!feof($file_handle)) {
 					//skip if month is current month or in the future
 					if ( mktime(0,0,0,$i,1,$year) < mktime(0,0,0,date('m'),1,date('Y'))){
 
-						//if this is an override or the print ISSN already existed on the spreadsheet (value in array for each print issn is set to 1 later on)
+						//if this is an override or the print ISSN already existed on the spreadsheet (value in array for each print identifier is set to 1 later on)
 
-						//if (($overrideInd == 1) || ($printISSNArray[$printISSN] == 1)) {
+						//if (($overrideInd == 1) || ($pISSNArray[$pISSN] == 1)) {
 
 							//this is a merged title
-							if (($printISSN) && (isset($printISSNArray[$printISSN]) && $printISSNArray[$printISSN] == 1)) {
+							if (($resourceType == "Journal") && ($pISSN) && (isset($pISSNArray[$pISSN]) && $pISSNArray[$pISSN] == 1)) {
 								//add the other titles count in with this titles counts to merge the two together ($i = month)
 								$usageCount+=$titleObj->getUsageCountByMonth($archiveInd, $year, $i, $publisherPlatformID);
 
@@ -585,7 +710,7 @@ while (!feof($file_handle)) {
 							}
 
 							//if override and this is not a merged title delete original data so we don't have duplicates in system ($i = month)
-							if ((!isset($printISSNArray[$printISSN])) && ($overrideInd == 1)){
+							if ((!isset($pISSNArray[$pISSN])) && ($overrideInd == 1)){
 								$titleObj->deleteMonth($archiveInd, $year, $i, $publisherPlatformID);
 							}
 
@@ -600,6 +725,8 @@ while (!feof($file_handle)) {
 							$monthlyUsageSummary->mergeInd = $mergeInd;
 							$monthlyUsageSummary->ignoreOutlierInd = '0';
 							$monthlyUsageSummary->overrideUsageCount = null;
+							$monthlyUsageSummary->sectionType = $sectionType;
+							$monthlyUsageSummary->activityType = $activityType;
 
 							try {
 								$monthlyUsageSummary->save();
@@ -657,7 +784,7 @@ while (!feof($file_handle)) {
 					$ytdPDF = str_replace('"','',$ytdPDF);
 
 					//this is a merged title
-					if (($printISSN) && (isset($printISSNArray[$printISSN]) && $printISSNArray[$printISSN] == 1)) {
+					if (($resourceType == "Journal") && ($pISSN) && (isset($pISSNArray[$pISSN]) && $pISSNArray[$pISSN] == 1)) {
 
 						$yearCountArray = array();
 						$yearCountArray = $titleObj->getTotalCountByYear($archiveInd, $year, $publisherPlatformID);
@@ -670,7 +797,7 @@ while (!feof($file_handle)) {
 					}
 
 					//delete these yearly stats since we will next overwrite them
-					$titleObj->deleteYearlyStats($archiveInd, $year, $publisherPlatformID);
+					$titleObj->deleteYearlyStats($archiveInd, $year, $publisherPlatformID, $activityType);
 
 					$yearlyUsageSummary = new YearlyUsageSummary();
 					$yearlyUsageSummary->yearlyUsageSummaryID = '';
@@ -685,6 +812,8 @@ while (!feof($file_handle)) {
 					$yearlyUsageSummary->overrideTotalCount = '';
 					$yearlyUsageSummary->overrideHTMLCount = '';
 					$yearlyUsageSummary->overridePDFCount = '';
+					$yearlyUsageSummary->sectionType = $sectionType;
+					$yearlyUsageSummary->activityType = $activityType;
 
 					try {
 						$yearlyUsageSummary->save();
@@ -702,10 +831,10 @@ while (!feof($file_handle)) {
 			}
 
 			# add to array so we can determine if print ISSN already exists in this spreadsheet to add counts together
-			$printISSNArray[$printISSN] = 1;
+			$pISSNArray[$pISSN] = 1;
 
 		}else{ //end if for if Title match found
-			$topLogOutput .= "<font color='red'>Title match did not complete correctly, please check print ISSN to verify for Title:  " . $journalTitle . ".</font><br />";
+			$topLogOutput .= "<font color='red'>Title match did not complete correctly, please check ISBN / ISSN to verify for Title:  " . $resourceTitle . ".</font><br />";
 		}
 
 
@@ -713,11 +842,10 @@ while (!feof($file_handle)) {
 	}
 
 
-	//check "Total for all" is in first column  - set flag to start import after this
-	if (strpos($line,"Total for all") !== false){
-		$startFlag = "Y";
-	}
-
+        #check "Total for all" is in first column  - set flag to start import after this
+     	if ((substr($line,0,5) == "Total") || ($formatCorrectFlag == "Y")){
+        	$startFlag = "Y";
+     	}
 
 	//reset all ID variables that were just set
 	$titleID='';
@@ -769,22 +897,50 @@ if (count($emailAddresses) > 0){
 	}
 }
 
+$logSummary .= date("M", mktime(0,0,0,$startMonth,10)) . "-" . date("M", mktime(0,0,0,$endMonth,10));
 
 include 'templates/header.php';
 
 //Log import in database
-$importLog = new ImportLog();
-$importLog->importLogID = '';
+if ($importLogID != ""){
+	$importLog = new ImportLog(new NamedArguments(array('primaryKey' => $importLogID)));
+	$importLog->fileName = $importLog->fileName;
+	$importLog->archiveFileURL = $importLog->fileName;
+	$importLog->details = $importLog->details . "\n" . $rownumber . " titles processed." . $logSummary;
+
+}else{
+	$importLog = new ImportLog();	
+	$importLog->importLogID = '';
+	$importLog->fileName = $orgFileName;
+	$importLog->archiveFileURL = $uploadedFile;
+	$importLog->details = $rownumber . " titles processed." . $logSummary;
+}
+
 $importLog->loginID = $user->loginID;
-$importLog->fileName = $orgFileName;
-$importLog->archiveFileURL = $uploadedFile;
+$importLog->layoutCode = $layoutCode;
 $importLog->logFileURL = $logfile;
-$importLog->details = $rownumber . " titles processed.";
 
 try {
 	$importLog->save();
+	$importLogID = $importLog->primaryKey;
 } catch (Exception $e) {
 	echo $e->getMessage();
+}
+
+
+//only get unique platforms
+$platformArray = array_unique($platformArray, SORT_REGULAR);
+foreach ($platformArray AS $platformID){
+	$importLogPlatformLink = new ImportLogPlatformLink();
+	$importLogPlatformLink->importLogID = $importLogID;
+	$importLogPlatformLink->platformID = $platformID;
+
+
+	try {
+		$importLogPlatformLink->save();
+	} catch (Exception $e) {
+		echo $e->getMessage();
+	}
 }
 
 
@@ -799,6 +955,8 @@ try {
     <p>File archived as <?php echo $Base_URL . $uploadedFile; ?>.</p>
     <p>Log file available at: <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
     <p>Process completed.  <?php echo $mailOutput; ?></p>
+    <br />
+    Summary:<?php echo $rownumber . " titles processed.<br />" . nl2br($logSummary); ?><br />
     <br />
     <?php echo $screenOutput; ?><br />
     <p>&nbsp; </p>

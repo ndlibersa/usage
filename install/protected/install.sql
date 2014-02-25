@@ -12,16 +12,20 @@ CREATE TABLE  `_DATABASE_NAME_`.`ExternalLogin` (
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`ImportLog`;
+
+
 CREATE TABLE  `_DATABASE_NAME_`.`ImportLog` (
-  `importLogID` int(10) unsigned NOT NULL auto_increment,
+  `importLogID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `loginID` varchar(45) NOT NULL,
-  `importDateTime` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `fileName` varchar(45) NOT NULL,
-  `archiveFileURL` varchar(145) NOT NULL,
-  `logFileURL` varchar(145) NOT NULL,
-  `details` varchar(245) NOT NULL,
-  PRIMARY KEY  USING BTREE (`importLogID`)
+  `importDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `layoutCode` varchar(45) DEFAULT NULL,
+  `fileName` varchar(45) DEFAULT NULL,
+  `archiveFileURL` varchar(145) DEFAULT NULL,
+  `logFileURL` varchar(145) DEFAULT NULL,
+  `details` varchar(245) DEFAULT NULL,
+  PRIMARY KEY (`importLogID`) USING BTREE
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`LogEmailAddress`;
@@ -129,24 +133,25 @@ CREATE TABLE  `_DATABASE_NAME_`.`PublisherPlatformNote` (
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`Title`;
 CREATE TABLE  `_DATABASE_NAME_`.`Title` (
-  `titleID` int(11) NOT NULL auto_increment,
-  `title` varchar(100) default NULL,
-  PRIMARY KEY  (`titleID`),
+  `titleID` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) DEFAULT NULL,
+  `resourceType` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`titleID`),
   KEY `Index_title` (`title`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 
 
-DROP TABLE IF EXISTS `_DATABASE_NAME_`.`TitleISSN`;
-CREATE TABLE  `_DATABASE_NAME_`.`TitleISSN` (
-  `titleISSNID` int(11) NOT NULL auto_increment,
-  `titleID` int(11) default NULL,
-  `issn` varchar(10) default NULL,
-  `issnType` varchar(20) default NULL,
-  PRIMARY KEY  (`titleISSNID`),
+DROP TABLE IF EXISTS `_DATABASE_NAME_`.`TitleIdentifier`;
+CREATE TABLE  `_DATABASE_NAME_`.`TitleIdentifier` (
+  `titleIdentifierID` int(11) NOT NULL AUTO_INCREMENT,
+  `titleID` int(11) DEFAULT NULL,
+  `identifier` varchar(20) DEFAULT NULL,
+  `identifierType` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`titleIdentifierID`),
   KEY `Index_titleID` (`titleID`),
-  KEY `Index_issn` USING BTREE (`issn`),
-  KEY `Index_ISSNType` USING BTREE (`issnType`)
+  KEY `Index_issn` (`identifier`) USING BTREE,
+  KEY `Index_ISSNType` (`identifierType`) USING BTREE
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 
@@ -183,7 +188,64 @@ CREATE TABLE  `_DATABASE_NAME_`.`YearlyUsageSummary` (
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 
+ALTER TABLE `_DATABASE_NAME_`.`MonthlyUsageSummary` ADD COLUMN `activityType` VARCHAR(45) NULL  AFTER `mergeInd` ;
+ALTER TABLE `_DATABASE_NAME_`.`MonthlyUsageSummary` ADD COLUMN `sectionType` VARCHAR(45) NULL  AFTER `activityType` ;
+ALTER TABLE `_DATABASE_NAME_`.`YearlyUsageSummary` ADD COLUMN `activityType` VARCHAR(45) NULL  AFTER `mergeInd` ;
+ALTER TABLE `_DATABASE_NAME_`.`YearlyUsageSummary` ADD COLUMN `sectionType` VARCHAR(45) NULL  AFTER `activityType` ;
 
+DROP TABLE IF EXISTS `_DATABASE_NAME_`.`Layout`;
+CREATE TABLE `_DATABASE_NAME_`.`Layout` (
+  `layoutID` int(11) NOT NULL AUTO_INCREMENT,
+  `layoutCode` varchar(45) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `resourceType` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`layoutID`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `_DATABASE_NAME_`.`SushiService`;
+CREATE TABLE `_DATABASE_NAME_`.`SushiService` (
+  `sushiServiceID` int(11) NOT NULL AUTO_INCREMENT,
+  `platformID` int(11) DEFAULT NULL,
+  `publisherPlatformID` int(11) DEFAULT NULL,
+  `serviceURL` varchar(300) DEFAULT NULL,
+  `wsdlURL` varchar(300) DEFAULT NULL,
+  `requestorID` varchar(300) DEFAULT NULL,
+  `customerID` varchar(300) DEFAULT NULL,
+  `login` varchar(300) DEFAULT NULL,
+  `password` varchar(300) DEFAULT NULL,
+  `security` varchar(300) DEFAULT NULL,
+  `serviceDayOfMonth` varchar(300) DEFAULT NULL,
+  `noteText` varchar(300) DEFAULT NULL,
+  `releaseNumber` varchar(45) DEFAULT NULL,
+  `reportLayouts` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`sushiServiceID`),
+  KEY `Index_publisherPlatformID` (`publisherPlatformID`),
+  KEY `Index_platformID` (`platformID`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `_DATABASE_NAME_`.`ImportLogPlatformLink`;
+CREATE TABLE `_DATABASE_NAME_`.`ImportLogPlatformLink` (
+  `importLogPlatformLinkID` int(11) NOT NULL AUTO_INCREMENT,
+  `platformID` int(11) DEFAULT NULL,
+  `importLogID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`importLogPlatformLinkID`),
+  KEY `Index_platformID` (`platformID`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+
+
+
+INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('JR1_R3', 'Journals (JR1) R3', 'Journal');
+INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('JR1a_R3', 'Journals (JR1) R3 archive', 'Journal');
+INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('JR1_R4', 'Journals (JR1) R4', 'Journal');
+INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('JR1a_R4', 'Journals (JR1) R4 archive', 'Journal');
+INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('BR1_R3', 'Books (BR1) R3', 'Book');
+INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('BR1_R4', 'Books (BR1) R4', 'Book');
+INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('BR2_R3', 'Book Sections (BR2) R3', 'Book');
+INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('BR2_R4', 'Book Sections (BR2) R4', 'Book');
+INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('DB1_R3', 'Database (DB1) R3', 'Database');
+INSERT INTO `_DATABASE_NAME_`.Layout (layoutCode, name, resourceType) values('DB1_R4', 'Database (DB1) R4', 'Database');
 
 
 DELETE FROM `_DATABASE_NAME_`.Privilege;

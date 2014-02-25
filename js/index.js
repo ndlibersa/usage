@@ -18,56 +18,121 @@
  
  $(document).ready(function(){
 
-      updateImportTable();
+  updateSearch();      
       
-      
-      	//do submit if enter is hit
-      	$('#submitFile').keyup(function(e) {
-      	      if(e.keyCode == 13) {
-      		submitForm();
-      	      }
-	});
-      
+  //perform search if enter is hit
+  $('#searchName').keyup(function(e) {
+        if(e.keyCode == 13) {
+          updateSearch();
+        }
+  });
+   
+                   
  });
+ 
+ 
+var orderBy = "TRIM(LEADING 'THE ' FROM UPPER(P.name)) asc";
+var pageStart = '1';
+var numberOfRecords = 25;
+var startWith = '';
+
+function updateSearch(){
+      $("#div_feedback").html("<img src='images/circle.gif'>  <span style='font-size:90%'>Processing...</span>");
+      
+  
+      $.ajax({
+         type:       "GET",
+         url:        "ajax_htmldata.php",
+         cache:      false,
+         data:       "action=getSearch&searchName=" + $("#searchName").val() + "&orderBy=" + orderBy + "&pageStart=" + pageStart + "&numberOfRecords=" + numberOfRecords + "&startWith=" + startWith,
+         success:    function(html) { 
+          $("#div_feedback").html("&nbsp;");
+          $('#div_searchResults').html(html);  
+         }
 
 
-
- var pageStart = '1';
-
- function updateImportTable(){
-       $('#span_feedback').html('<img src = "images/circle.gif">&nbsp;&nbsp;Loading...');
-       $.ajax({
-          type:       "GET",
-          url:        "ajax_htmldata.php",
-          cache:      false,
-          data:       "action=getImportTable&pageStart=" + pageStart,
-          success:    function(html) { 
-          	$('#span_feedback').html('');
-          	$('#div_recentImports').html(html);
-          	tb_reinit();
-          }
-       });
-
- }
-
-
-
-function setPageStart(pageStartNumber){
- 	pageStart=pageStartNumber;
- 	updateImportTable();
+     });  
+  
 }
+ 
+ 
+ function setOrder(column, direction){
+  orderBy = column + " " + direction;
+  updateSearch();
+ }
+ 
+ 
+ function setPageStart(pageStartNumber){
+  pageStart=pageStartNumber;
+  updateSearch();
+ }
+ 
+ 
+ function setNumberOfRecords(numberOfRecordsNumber){
+  pageStart = '1';
+  numberOfRecords=$("#numberOfRecords").val();
+  updateSearch();
+ }
+ 
+ 
+ 
+  
+  function setStartWith(startWithLetter){
+    //first, set the previous selected letter (if any) to the regular class
+    if (startWith != ''){
+      $("#span_letter_" + startWith).removeClass('searchLetterSelected').addClass('searchLetter');
+    }
+    
+    //next, set the new start with letter to show selected
+    $("#span_letter_" + startWithLetter).removeClass('searchLetter').addClass('searchLetterSelected');
 
+    pageStart = '1';
+    startWith=startWithLetter;
+    updateSearch();
+  }
+ 
+ 
+ $(".searchButton").click(function () {
+  pageStart = '1';
+  updateSearch(); 
+ });
+ 
+  $(".newSearch").click(function () {
+    //reset fields
+    $("#searchName").val("");
+    
+    //reset startwith background color
+    $("#span_letter_" + startWith).removeClass('searchLetterSelected').addClass('searchLetter');
+    startWith='';
+  
+  orderBy = "TRIM(LEADING 'THE ' FROM UPPER(P.name)) asc";
+  pageStart = '1';
+    updateSearch();
+  });
+  
+   
+  $("#searchName").focus(function () {
+    $("#div_searchName").css({'display':'block'}); 
+  });
+  
 
+function showPublisherList(platformID){
+  divID = 'div_' + platformID;
+  
+  if (typeof displayInds[divID] == "undefined") displayInds[divID] = 1;
 
-function validateForm(){
+  toggleDivState(divID, displayInds[divID]);
 
-	  if ($("#usageFile").val() == '') {
-	  	$('#span_error').html('&nbsp;Please select a file.');
-	  	return false;
-	  }else{
-	  	$('#span_error').html('');
-	  	return true;
-	  }
-
-}	  
+  if (displayInds[divID] == 0) {
+    $('#image_' + platformID).attr('src', "images/arrowright.gif");
+    $('#link_' + platformID).text('show publisher list');
+    displayInds[divID]=1; 
+  } else {
+    $('#image_' + platformID).attr('src', "images/arrowdown.gif");
+    $('#link_' + platformID).text('hide publisher list');
+    displayInds[divID]=0;
+  }
+    
+  
+}
 
