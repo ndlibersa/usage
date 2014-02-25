@@ -22,8 +22,6 @@ include_once 'directory.php';
 
 $util = new Utility();
 
-$util = new Utility();
-
 $pageTitle = 'Upload Process Complete';
 
 //read layouts ini file to get the layouts to map to columns in the database
