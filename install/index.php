@@ -19,4 +19,3 @@ $installer->header('CORAL Maintenance');
   <p><a href="..">Go to Usage Module</a></p>
 <?php
 $installer->footer();
-?>

@@ -2,7 +2,11 @@
 
 /*
 **************************************************************************************************************************
+<<<<<<< HEAD:admin/classes/domain/TitleISSN.php
+** CORAL Organizations Module v. 1.0
+=======
 ** CORAL Usage Statistics Module v. 1.1
+>>>>>>> master:admin/classes/domain/TitleIdentifier.php
 **
 ** Copyright (c) 2010 University of Notre Dame
 **

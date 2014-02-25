@@ -1,6 +1,6 @@
 /*
 **************************************************************************************************************************
-** CORAL Organizations Module v. 1.0
+** CORAL Usage Statistics Module v. 1.0
 **
 ** Copyright (c) 2010 University of Notre Dame
 **
@@ -18,15 +18,15 @@
  $(function(){
 
 
-	 $("#submitISSNForm").click(function () {
-	 	submitISSN();
+	 $("#submitIdentifierForm").click(function () {
+	 	submitIdentifier();
 	 });
 	 
 
 	//do submit if enter is hit
-	$('#ISSN').keyup(function(e) {
+	$('#Identifier').keyup(function(e) {
 	      if(e.keyCode == 13) {
-		submitISSN();
+		submitIdentifier();
 	      }
 	}); 
 	
@@ -38,7 +38,7 @@
 
 
 
-function submitISSN(){
+function submitIdentifier(){
 
   
   if (validateForm() === true) {
@@ -46,9 +46,9 @@ function submitISSN(){
 	  
 	  $.ajax({
 		 type:       "POST",
-		 url:        "ajax_processing.php?action=addISSN",
+		 url:        "ajax_processing.php?action=addIdentifier",
 		 cache:      false,
-		 data:       { issn: $("#issn").val(), issnType: $("#issnType").val(), titleID: $("#titleID").val() },
+		 data:       { identifier: $("#identifier").val(), identifierType: $("#identifierType").val(), titleID: $("#titleID").val() },
 		 success:    function(html) {
 			window.parent.tb_remove();
 			window.parent.updateTitleDetails($("#titleID").val());
@@ -67,8 +67,8 @@ function submitISSN(){
 //validates fields
 function validateForm (){
 	myReturn=0;
-	if (!isISSN($("#issn").val())){
-		$('#span_error_ISSN').html('<br />ISSN must be valid format.');
+	if (!isIdentifier($("#identifier").val())){
+		$('#span_error_Identifier').html('<br />Identifier must be valid format.');
 		myReturn=1;
 	}
 	
