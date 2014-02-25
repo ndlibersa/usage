@@ -25,8 +25,8 @@
  $(".showImports").click(function () {
  	if (viewAll == "0"){
 		$('.usage_tab_content').hide();
-    $('#div_imports').show();
-    updateImportDetails();
+    		$('#div_imports').show();
+    		updateImportDetails();
 	}
 	return false;
  });
@@ -44,9 +44,9 @@
   $(".showStatistics").click(function () {
   
   	if (viewAll == "0"){
-    $('.usage_tab_content').hide();
-    $('#div_statistics').show();
-    updateFullStatsDetails();
+    		$('.usage_tab_content').hide();
+    		$('#div_statistics').show();
+    		updateFullStatsDetails();
  	}
  	
  	return false;
