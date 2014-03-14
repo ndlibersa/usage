@@ -29,7 +29,7 @@ $(function(){
 			 async:	     true,
 			 data:       "action=getExistingOrganizationName&shortName=" + $("#organizationName").val(),
 			 success:    function(exists) {
-				if ((exists == "0") && ($("#organizationName").val() != '')){
+				if ((exists == 0) && ($("#organizationName").val() != '')){
 					$("#organizationID").val("");
 					$("#span_error_organizationNameResult").html("<br />This organization doesn't exist in the CORAL Organizations module.");
 					$('#submitOrganization').attr("disabled", "disabled"); 
@@ -92,7 +92,7 @@ $(function(){
 				 async:	     true,
 				 data:       "action=getExistingOrganizationName&shortName=" + $("#organizationName").val(),
 				 success:    function(exists) {
-					if ((exists == "0") && ($("#organizationName").val() != '')){
+					if ((exists == 0) && ($("#organizationName").val() != '')){
 					        $("#organizationID").val("");
 					        $("#span_error_organizationNameResult").html("<br />This organization doesn't exist in the CORAL Organizations Module.");
 					        $('#submitOrganization').attr("disabled", "disabled"); 
