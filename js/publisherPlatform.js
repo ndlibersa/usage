@@ -225,7 +225,7 @@
 		  cache:      false,
 		  data:       "action=deleteMonth&publisherPlatformID=" + publisherPlatformID + "&platformID=" + platformID + "&resourceType=" + resourceType + "&month=" + month + "&year=" + year + "&archiveInd=" + archiveInd,
 		  success:    function(html) { 
-			  $("#tr_" + platformID + "_" + publisherPlatformID + "_" + year + "_" + month + "_" + archiveInd).remove();
+			  updateFullStatsDetails();
 		  }
 	         });
 
