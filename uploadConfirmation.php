@@ -58,7 +58,7 @@ if ($_GET['importLogID'] > 0){
 	$orgFileName = $fileNameStart .  "." . $fileNameExt;
 
 	$ts = date("Ymd");
-	$target_path = "archive/" . $ts . "." . $fileNameStart .  "." . $fileNameExt;
+	$target_path = BASE_DIR . "archive/" . $ts . "." . $fileNameStart .  "." . $fileNameExt;
 	$checkYear = '';
 
 	if ($fileNameExt != "txt") {

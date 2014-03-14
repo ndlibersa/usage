@@ -313,7 +313,7 @@ switch ($action) {
 
     case 'deleteMonth':
 
-    	if ($_GET['publisherPlatformID']){
+    	if ($_GET['publisherPlatformID'] && $_GET['publisherPlatformID'] != "0"){
 			$obj = new PublisherPlatform(new NamedArguments(array('primaryKey' => $_GET['publisherPlatformID'])));
 		}else{
 			$obj = new Platform(new NamedArguments(array('primaryKey' => $_GET['platformID'])));
@@ -321,7 +321,7 @@ switch ($action) {
 
 
 		try {
-			$obj->deleteMonth($_GET['archiveInd'], $_GET['year'], $_GET['month']);
+			$obj->deleteMonth($_GET['resourceType'], $_GET['archiveInd'], $_GET['year'], $_GET['month']);
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}

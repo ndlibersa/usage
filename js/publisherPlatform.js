@@ -216,14 +216,14 @@
   }
 
 
-  function deleteMonth(month, year, archiveInd, publisherPlatformID, platformID){
+  function deleteMonth(resourceType, month, year, archiveInd, publisherPlatformID, platformID){
 	if (confirm("Do you really want to delete this month?") == true) {
 
 		$.ajax({
 		  type:       "GET",
 		  url:        "ajax_processing.php",
 		  cache:      false,
-		  data:       "action=deleteMonth&publisherPlatformID=" + publisherPlatformID + "&platformID=" + platformID + "&month=" + month + "&year=" + year + "&archiveInd=" + archiveInd,
+		  data:       "action=deleteMonth&publisherPlatformID=" + publisherPlatformID + "&platformID=" + platformID + "&resourceType=" + resourceType + "&month=" + month + "&year=" + year + "&archiveInd=" + archiveInd,
 		  success:    function(html) { 
 			  $("#tr_" + platformID + "_" + publisherPlatformID + "_" + year + "_" + month + "_" + archiveInd).remove();
 		  }
