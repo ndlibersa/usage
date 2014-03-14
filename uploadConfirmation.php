@@ -53,7 +53,7 @@ if ($_GET['importLogID'] > 0){
 	}else if (count(explode (".", basename( $_FILES['usageFile']['name']))) == "3"){
 		list ($dateStamp, $fileNameStart, $fileNameExt) = explode (".", basename( $_FILES['usageFile']['name']));
 	}else{
-		header( 'Location: index.php?error=3' ) ;
+		header( 'Location: import.php?error=3' ) ;
 	}
 
 	$orgFileName = $fileNameStart .  "." . $fileNameExt;
@@ -63,13 +63,13 @@ if ($_GET['importLogID'] > 0){
 	$checkYear = '';
 
 	if ($fileNameExt != "txt") {
-		header( 'Location: index.php?error=1' ) ;
+		header( 'Location: import.php?error=1' ) ;
 	}else{
 
 	  if(move_uploaded_file($_FILES['usageFile']['tmp_name'], $target_path)) {
 		  $uploadConfirm = "The file ".  basename( $_FILES['usageFile']['name'])." has been uploaded successfully.<br />Please confirm the following data:<br />";
 	  } else{
-		  header( 'Location: index.php?error=2' ) ;
+		  header( 'Location: import.php?error=2' ) ;
 	  }
 	}
 

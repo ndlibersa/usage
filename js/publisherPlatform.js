@@ -23,7 +23,7 @@
  viewAll=0;
 
  $(".showImports").click(function () {
- 	if (viewAll == "0"){
+ 	if (viewAll == 0){
 		$('.usage_tab_content').hide();
     		$('#div_imports').show();
     		updateImportDetails();
@@ -32,7 +32,7 @@
  });
 
  $(".showLogins").click(function () {
- 	if (viewAll == "0"){
+ 	if (viewAll == 0){
     $('.usage_tab_content').hide();
     $('#div_logins').show();
     updateLoginDetails();
@@ -43,7 +43,7 @@
  
   $(".showStatistics").click(function () {
   
-  	if (viewAll == "0"){
+  	if (viewAll == 0){
     		$('.usage_tab_content').hide();
     		$('#div_statistics').show();
     		updateFullStatsDetails();
@@ -55,7 +55,7 @@
  
  
   $(".showTitles").click(function () {
-    if (viewAll == "0"){
+    if (viewAll == 0){
     $('.usage_tab_content').hide();
     $('#div_titles').show();
     updateTitleDetails();
@@ -65,7 +65,7 @@
 
  
   $(".showSushi").click(function () {
-  	if (viewAll == "0"){
+  	if (viewAll == 0){
     $('.usage_tab_content').hide();
     $('#div_sushi').show();
     updateSushiDetails();
