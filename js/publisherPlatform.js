@@ -78,6 +78,7 @@
 
 
  function updateImportDetails(){
+	$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
 
        $.ajax({
           type:       "GET",
@@ -95,6 +96,7 @@
 
 
  function updateLoginDetails(){
+	$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
 
        $.ajax({
           type:       "GET",
@@ -112,6 +114,7 @@
 
 
  function updateFullStatsDetails(){
+	$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
 
        $.ajax({
           type:       "GET",
@@ -130,6 +133,8 @@
 
 
  function updateTitleDetails(titleID){
+	$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
+
  	if (titleID != ''){
  		$('#span_' + titleID + '_feedback').html('&nbsp;&nbsp;<img src = "images/circle.gif">Loading...');
  	}
@@ -147,6 +152,7 @@
  }
 
  function updateSushiDetails(){
+	$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
 
        $.ajax({
           type:       "GET",
@@ -218,6 +224,7 @@
 
   function deleteMonth(resourceType, month, year, archiveInd, publisherPlatformID, platformID){
 	if (confirm("Do you really want to delete this month?") == true) {
+		$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
 
 		$.ajax({
 		  type:       "GET",

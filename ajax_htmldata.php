@@ -1432,7 +1432,7 @@ switch ($action) {
 
 		//get where statements together (and escape single quotes)
 		if ($_GET['searchName']) $whereAdd[] = "(UPPER(P.name) LIKE UPPER('%" . str_replace("'","''",$_GET['searchName']) . "%') OR UPPER(Publisher.name) LIKE UPPER('%" . str_replace("'","''",$_GET['searchName']) . "%') OR UPPER(P.reportDisplayName) LIKE UPPER('%" . str_replace("'","''",$_GET['searchName']) . "%'))";
-		if ($_GET['startWith']) $whereAdd[] = "TRIM(LEADING 'THE ' FROM UPPER(p.name)) LIKE UPPER('" . $_GET['startWith'] . "%')";
+		if ($_GET['startWith']) $whereAdd[] = "TRIM(LEADING 'THE ' FROM UPPER(P.name)) LIKE UPPER('" . $_GET['startWith'] . "%')";
 
 		$orderBy = $_GET['orderBy'];
 		$limit = ($pageStart-1) . ", " . $numberOfRecords;
