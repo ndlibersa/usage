@@ -128,7 +128,12 @@ function updateSubmit(){
 
   #read this file
   $file_handle = $util->utf8_fopen_read($target_path, "r");
-
+  if (!$file_handle) //check for correct file type. if it is not the correct file type lines 156 & 158 will write to apache error.log endlessly
+    {
+    echo "<br /><font color='red'><b>Error with Format</b>:  Make sure file is formatted as a .txt file.";
+   	$errorFlag="Y";
+    	}
+  else {
 
   echo $uploadConfirm;
   echo "<table class='dataTable' style='width:895px;'>";
@@ -291,7 +296,7 @@ function updateSubmit(){
   if ($errorFlag != "Y"){
   	echo "<br />Report Format: <b>" . $reportTypeDisplay . "</b><br />If this is incorrect, please use 'Cancel' to go back and fix the headers of the file.<br />";
   }
-
+} //end of check file type if/else statement
 ?>
 
 	<br />
