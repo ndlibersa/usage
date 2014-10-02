@@ -131,7 +131,7 @@ function updateSubmit(){
   if (!$file_handle) //check for correct file type. if it is not the correct file type lines 156 & 158 will write to apache error.log endlessly
     {
     echo ""<br /><font color='red'><b>Error with Format</b>:  Make sure file is formatted as a .txt file.";
-   	$errorFlag="Y";";
+   	$errorFlag="Y";
     	}
   else {
 
