@@ -102,7 +102,7 @@ class Email extends Object {
       if ($config->settings->testModeEmailAddress) {
         $testEmail = $config->settings->testModeEmailAddress;
       } else {
-        $testEmail = $config->settings->feedbackEmailAddress
+        $testEmail = $config->settings->feedbackEmailAddress;
       }
       if ($testEmail) {
         $updatedMessage = "Original To: ".$this->to."\n\n".$this->message;

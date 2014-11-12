@@ -26,7 +26,26 @@ include_once 'directory.php';
 $pageTitle='SUSHI Import';
 include 'templates/header.php';
 
-	?>
+
+
+//this a SUSHI Service ID has been passed in, it needs to be run
+if ($_POST['sushiServiceID'] > 0){
+	$sushiServiceID = $_POST['sushiServiceID'];
+ 	$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $sushiServiceID)));	
+
+ 	$sushiService->setImportDates($_POST['startDate'], $_POST['endDate']);
+
+ 	//try to run!
+	try {
+		$logText = $sushiService->runAll($_POST['overwritePlatform']);
+	} catch (Exception $e) {
+		$logText = $e->getMessage();
+	}
+
+	$logText = "<div class='headerText'>Sushi Output Log:</div>" . nl2br($logText) . "<br /><br />";
+}
+
+?>
 
 	<script type="text/javascript" src="js/sushi.js"></script>
 
@@ -41,30 +60,19 @@ include 'templates/header.php';
 
 
 			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'><img src="images/plus.gif" / > Add new platform for SUSHI</a>
-			<br /><br /><div id="div_run_feedback"></div><br />
 
+			<br /><br /><div id="div_run_feedback"><?php echo $logText; ?></div><br />
 			<div class="headerText" style='margin-bottom:9px;'>Outstanding Import Queue&nbsp;&nbsp;&nbsp;<span id='span_outstanding_feedback'></span></div>
-
 			<div id="div_OutstandingSushiImports"></div>
 
-			<br /><br /><br />
-
-			<div class="headerText" style='margin-bottom:9px;'>Upcoming SUSHI Imports&nbsp;&nbsp;&nbsp;<span id='span_upcoming_feedback'></span></div>
-			
-
-			<div id="div_UpcomingSushiImports"></div>
-
-
 
 			<br /><br /><br />
+			<div class="headerText" style='margin-bottom:9px;'>Last Failed SUSHI Imports&nbsp;&nbsp;&nbsp;<span id='span_failed_feedback'></span></div>
+			<div id="div_FailedSushiImports"></div>
 
-			<div class="headerText" style='margin-bottom:9px;'>Unscheduled SUSHI Imports&nbsp;&nbsp;&nbsp;<span id='span_unscheduled_feedback'></span></div>
-			<div id="div_run_feedback"></div>
-
-			<div id="div_UnscheduledSushiImports"></div>
-
-
-
+			<br /><br /><br />
+			<div class="headerText" style='margin-bottom:9px;'>All SUSHI Services&nbsp;&nbsp;&nbsp;<span id='span_upcoming_feedback'></span></div>
+			<div id="div_AllSushiServices"></div>
 
 
 

@@ -35,7 +35,7 @@ class DBService extends Object {
 	}
 
 	protected function checkForError() {
-		if ($this->error = mysql_error($this->db)) {
+		if ($this->error = mysqli_error($this->db)) {
 			throw new Exception("There was a problem with the database: " . $this->error);
 		}
 	}
@@ -44,43 +44,43 @@ class DBService extends Object {
 		$host = $this->config->database->host;
 		$username = $this->config->database->username;
 		$password = $this->config->database->password;
-		$this->db = mysql_connect($host, $username, $password);
+		$this->db = mysqli_connect($host, $username, $password);
 		$this->checkForError();
 
 		$databaseName = $this->config->database->name;
-		mysql_select_db($databaseName, $this->db);
+		$this->db->select_db($databaseName);
 		$this->checkForError();
 	}
 
 	protected function disconnect() {
-		//mysql_close($this->db);
+		$this->db->close();
 	}
 
     public function escapeString($value) {
-            return mysqli_real_escape_string($value);
+        return mysqli_real_escape_string($value);
     }
 
 	public function processQuery($sql, $type = NULL) {
 
-		$result = mysql_query($sql, $this->db);
+		$result = $this->db->query($sql);
 		$this->checkForError();
 		$data = array();
 
-		if (is_resource($result)) {
+		if ($result instanceof mysqli_result) {
 			$resultType = MYSQL_NUM;
 			if ($type == 'assoc') {
 				$resultType = MYSQL_ASSOC;
 			}
-			while ($row = mysql_fetch_array($result, $resultType)) {
-				if (mysql_affected_rows($this->db) > 1) {
+			while ($row = $result->fetch_array($resultType)) {
+				if ($this->db->affected_rows > 1) {
 					array_push($data, $row);
 				} else {
 					$data = $row;
 				}
 			}
-			mysql_free_result($result);
+			$result->free_result();
 		} else if ($result) {
-			$data = mysql_insert_id($this->db);
+			$data = $this->db->insert_id;
 		}
 
 		return $data;

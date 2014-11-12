@@ -245,10 +245,7 @@ switch ($action) {
         break;
 
 
-
-
     case 'runSushiService':
-
 
     	//update
     	if ((isset($_GET['sushiServiceID'])) && ($_GET['sushiServiceID'] != '')){
@@ -263,13 +260,27 @@ switch ($action) {
 
     	}
 
-		
-
         break;
 
 
 
 
+    case 'testSushiService':
+
+    	//update
+    	if ((isset($_GET['sushiServiceID'])) && ($_GET['sushiServiceID'] != '')){
+ 			$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $_GET['sushiServiceID'])));
+
+ 			//try to run!
+			try {
+				echo $sushiService->runTest();
+			} catch (Exception $e) {
+				echo $e->getMessage();
+			}
+
+    	}
+
+        break;
 
 
     case 'deleteExternalLogin':

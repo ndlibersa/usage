@@ -87,13 +87,27 @@ $coralURL = $util->getCORALURL();
 </td>
 </tr>
 
-<tr style='vertical-align:top'>
-<td style='width:870px;height:19px;'>
-<?php if ($user->isAdmin()){ ?>
-<a href='index.php'><img src="images/menu/menu-home<?php if ($currentPage == 'index.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-home-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='import.php'><img src="images/menu/menu-fileimport<?php if ($currentPage == 'import.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-fileimport-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='sushi.php'><img src="images/menu/menu-sushi<?php if ($currentPage == 'sushi.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-sushi-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='admin.php'><img src='images/menu/menu-admin<?php if ($currentPage == 'admin.php') { echo "-on"; } ?>.gif' hover="images/menu/menu-admin-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='reporting.php'><img src="images/menu/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-reportingoptions-over.gif" class="rollover" /></a><?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank'><img src='images/usage-reports-button.gif'></a>"; ?>
-<?php }else{ ?>
-<a href='index.php'><img src="images/menu/menu-home<?php if ($currentPage == 'index.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-home-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='import.php'><img src="images/menu/menu-fileimport<?php if ($currentPage == 'import.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-fileimport-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='reporting.php'><img src="images/menu/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-reportingoptions-over.gif" class="rollover" /></a><?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank'><img src='images/usage-reports-button.gif'></a>"; ?>
+<tr style='vertical-align:top;'>
+<td style='width:870px;height:19px;line-height:18px;vertical-align:top;'>
+
+
+
+<a href='index.php'><span class="menubtn<?php if ($currentPage == 'index.php') { echo " active"; } ?>" id="firstmenubtn">Home</span></a><!--
+-->
+<a href='import.php'><span class="menubtn<?php if ($currentPage == 'import.php') { echo " active"; } ?>">File Import</span></a><!--
+-->
+<a href='sushi.php'><span class="menubtn<?php if ($currentPage == 'sushi.php') { echo " active"; } ?>">SUSHI</span></a><!--
+-->
+<?php if ($user->isAdmin()) { ?>
+<a href='admin.php'><span class="menubtn<?php if ($currentPage == 'admin.php') { echo " active"; } ?>">Admin</span></a><!--
+-->
 <?php } ?>
+<a href='reporting.php'><span class="menubtn<?php if ($currentPage == 'reporting.php') { echo " active"; } ?>" id="lastmenubtn">Report Options</span></a><!--
+-->
+
+<?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank'><img src='images/usage-reports-button.gif' style='vertical-align:middle; height:100%;'></a>"; ?>
+
+
 </td>
 <td style='width:130px;height:19px;' align='right'>
 

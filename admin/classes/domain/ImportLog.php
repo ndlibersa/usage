@@ -24,6 +24,32 @@ class ImportLog extends DatabaseObject {
 	protected function overridePrimaryKeyName() {}
 
 
+	static public function shortStatusFromDetails($details){
+		//first, find if titles were processed
+		preg_match('/[0-9]+ titles processed/i', $details, $matches);
+		$titles = str_replace(" processed", "", $matches[0]);
+
+		if ($titles){
+			if (preg_match("/finished/i", $details)){
+				$status = $titles . " (via sushi)";
+			}else{
+				$status = $titles;	
+			}
+			
+		}else{
+
+			if (preg_match("/fail/i", $details)){
+				$status = "Failed";
+			}elseif (preg_match("/finished/i", $details)){
+				$status = "<i>awaiting import</i>";				
+			}
+
+		}
+
+		return $status;
+
+	}
+
 
 	//returns array of Platform records
 	public function getPlatforms(){
@@ -119,6 +145,8 @@ class ImportLog extends DatabaseObject {
 		$query = "SELECT importLogID, loginID, importDateTime, fileName, archiveFileURL, logFileURL, details
 					FROM ImportLog
 					WHERE loginID = 'sushi'
+					AND fileName is not null
+					AND ucase(details) not like '%FAIL%'
 					ORDER BY importDateTime DESC";
 
 
@@ -150,6 +178,8 @@ class ImportLog extends DatabaseObject {
 
 
 	}
+
+
 
 
 }

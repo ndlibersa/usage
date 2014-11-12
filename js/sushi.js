@@ -20,9 +20,10 @@ $(document).ready(function(){
 	
 	updateOutstandingSushiImports(); 
 
-  updateUpcomingSushiImports();    
+  updateFailedSushiImports(); 
 
-	updateUnscheduledSushiImports();     
+  updateAllSushiServices();    
+ 
                    
 });
 
@@ -42,34 +43,34 @@ $(document).ready(function(){
       
  }
 
- function updateUpcomingSushiImports(){
+ function updateFailedSushiImports(){
 
        $.ajax({
           type:       "GET",
           url:        "ajax_htmldata.php",
           cache:      false,
-          data:       "action=getUpcomingSushiImports",
-          success:    function(html) { $('#div_UpcomingSushiImports').html(html);
+          data:       "action=getFailedSushiImports",
+          success:    function(html) { $('#div_FailedSushiImports').html(html);
+            tb_reinit();
+          }
+      });
+      
+ }
+
+ function updateAllSushiServices(){
+
+       $.ajax({
+          type:       "GET",
+          url:        "ajax_htmldata.php",
+          cache:      false,
+          data:       "action=getAllSushiServices",
+          success:    function(html) { $('#div_AllSushiServices').html(html);
           	tb_reinit();
           }
       });
       
  }
  
-
- function updateUnscheduledSushiImports(){
-
-       $.ajax({
-          type:       "GET",
-          url:        "ajax_htmldata.php",
-          cache:      false,
-          data:       "action=getUnscheduledSushiImports",
-          success:    function(html) { $('#div_UnscheduledSushiImports').html(html);
-            tb_reinit();
-          }
-      });
-      
- }
 
 
  function deleteImportLog(importLogID){
@@ -97,8 +98,10 @@ $(document).ready(function(){
  }
 
 
-function runService(sushiServiceID){
-	$('#div_run_feedback').html('<img src = "images/circle.gif">&nbsp;&nbsp;Running...<br />');
+function runService(sushiServiceID, el){
+  //$("html, body").scrollTop($('#div_run_feedback').offset().top); 
+	
+  $(el).parent().html('<img src = "images/circle.gif">&nbsp;&nbsp;Running...<br />');
 
 	$.ajax({
           type:       "GET",
@@ -106,11 +109,14 @@ function runService(sushiServiceID){
           cache:      false,
           data:       "action=runSushiService&sushiServiceID=" + sushiServiceID,
           success:    function(html) { 
-		    
-		    $('#div_run_feedback').html("<br />" + html + "<br />");      
 
-			updateOutstandingSushiImports(); 
-			updateUpcomingSushiImports(); 
+            if (html.indexOf("Queue") !=-1){
+              $("html, body").scrollTop($('#div_run_feedback').offset().top); 
+              $('#div_run_feedback').html(html);
+            }
+
+      			updateOutstandingSushiImports(); 
+      			updateAllSushiServices(); 
           }
        });
 		

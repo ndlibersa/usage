@@ -69,7 +69,6 @@ switch ($action) {
 		</table>
 		</div>
 
-
 		<script type="text/javascript">
 		   //attach enter key event to new input and call add data when hit
 		   $('#emailAddress').keyup(function(e) {
@@ -85,6 +84,70 @@ switch ($action) {
 		<?php
 
 		break;
+
+
+
+
+
+
+	//prompt for running sushi, posts to sushi.php
+	case 'getSushiRunForm':
+
+		if ((isset($_GET['sushiServiceID'])) && ($_GET['sushiServiceID'] != '')){
+			$sushiServiceID = $_GET['sushiServiceID'];
+ 			$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $sushiServiceID)));
+
+ 			$sushiService->setDefaultImportDates();
+
+			?>
+			<div id='div_sushiRunForm'>
+			<form name="input" action="sushi.php" method="post">
+			<input type='hidden' id='sushiServiceID' name='sushiServiceID' value='<?php echo $sushiServiceID; ?>'>
+			<table class="thickboxTable" style="width:300px;padding:2px;">
+				<tr>
+					<td colspan='2'><span class='headerText'>SUSHI Service for <?php echo $sushiService->getServiceProvider; ?></span><br /> Optional Parameters<span id='span_errors' style='color:red;'><br /></span><br /></td>
+				</tr>
+				<tr>
+					<td style='vertical-align:top;text-align:right;width:85px;'><label for='startDate'><b>Start Date:</b></label</td>
+					<td><input type='text' id='startDate' name='startDate' value="<?php echo $sushiService->startDate; ?>" style='width:90px;' /> (yyyy-mm-dd)<span id='span_error_startDate' style='color:red'></span></td>
+				</tr>
+				<tr>
+					<td style='vertical-align:top;text-align:right;'><label for='endDate'><b>End Date:</b></label</td>
+					<td><input type='text' id='endDate' name='endDate' value="<?php echo $sushiService->endDate; ?>" style='width:90px;' /> (yyyy-mm-dd)<span id='span_error_endDate' style='color:red'></span></td>
+				</tr>
+				<tr>
+					<td style='vertical-align:top;text-align:right;'><input type='checkbox' id='overwritePlatform' name='overwritePlatform' value='1' checked /></td>
+					<td>
+					&nbsp;Ensure platform name stays CORAL's Platform Name: "<?php echo $sushiService->getServiceProvider; ?>"
+					</td>
+				</tr>
+
+				<tr style="vertical-align:middle;">
+					<td style="padding-top:8px;text-align:right;">&nbsp;</td>
+					<td style="padding-top:8px;padding-right:8px;">
+						<table class='noBorderTable' style='width:100%;'>
+							<tr>
+								<td style='text-align:left'><input type='submit' value='submit for processing' name='submitSushiRun' id ='submitSushiRun'></td>
+								<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+			</table>
+			</form>
+			</div>
+
+			<?php
+
+		}else{
+			echo "No Sushi Service passed in!";
+		}
+
+		break;
+
+
+
 
 	case 'getOutlierForm':
 
@@ -416,7 +479,7 @@ switch ($action) {
 		break;
 
 
-
+	//sushi service information
 	case 'getSushiForm':
 		$sushiServiceID = $_GET['sushiServiceID'];
  		$platformID = $_GET['platformID'];
@@ -435,63 +498,71 @@ switch ($action) {
 		<div id='div_updateForm'>
 		<input type='hidden' id='editSushiServiceID' name='editSushiServiceID' value='<?php echo $sushiServiceID; ?>'>
 		<input type='hidden' id='platformID' name='platformID' value='<?php echo $platformID; ?>'>
-		<table class="thickboxTable" style="width:420px;padding:2px;">
+		<table class="thickboxTable" style="width:500px;padding:2px;">
 			<tr>
 				<td colspan='2'><span class='headerText'><?php echo $addUpdate; ?> SUSHI Connection</span><span id='span_errors' style='color:red;'><br /></span><br /></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='serviceURL'><b>Service URL:</b></label></td>
-				<td><input type='text' id='serviceURL' name='serviceURL' value="<?php if ($sushiServiceID) echo $sushiService->serviceURL; ?>" style='width:300px;' /><span id='span_error_serviceURL' style='color:red'></span></td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='serviceURL'><b>Service/Endpoint URL:</b></label></td>
+				<td><input type='text' id='serviceURL' name='serviceURL' value="<?php if ($sushiServiceID) echo $sushiService->serviceURL; ?>" style='width:330px;' />
+					<br /><span class="smallDarkRedText"> - if using COUNTER's WSDL</span>
+					<span id='span_error_serviceURL' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='wsdlURL'><b>WSDL URL *:</b></label></td>
-				<td><input type='text' id='wsdlURL' name='wsdlURL' value="<?php if ($sushiServiceID) echo $sushiService->wsdlURL; ?>" style='width:300px;' /><br /><span class="smallDarkRedText">*if not using COUNTER</span></td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='wsdlURL'><b> - or - WSDL URL:</b></label></td>
+				<td><input type='text' id='wsdlURL' name='wsdlURL' value="<?php if ($sushiServiceID) echo $sushiService->wsdlURL; ?>" style='width:330px;' />
+					<br /><span class="smallDarkRedText"> - if not using COUNTER's WSDL</span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='requestorID'><b>Requestor ID:</b></label</td>
-				<td><input type='text' id='requestorID' name='requestorID' value="<?php if ($sushiServiceID) echo $sushiService->requestorID; ?>" style='width:300px;' /></td>
-			</tr>
-			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='customerID'><b>Customer ID:</b></label</td>
-				<td><input type='text' id='customerID' name='customerID' value="<?php if ($sushiServiceID) echo $sushiService->customerID; ?>" style='width:300px;' /></td>
-			</tr>
-			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='login'><b>Login:</b></label</td>
-				<td><input type='text' id='login' name='login' value="<?php if ($sushiServiceID) echo $sushiService->login; ?>" style='width:300px;' /><span id='span_error_login' style='color:red'></span></td>
-			</tr>
-			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='password'><b>Password:</b></label</td>
-				<td><input type='text' id='password' name='password' value="<?php if ($sushiServiceID) echo $sushiService->password; ?>" style='width:300px;' /><span id='span_error_password' style='color:red'></span></td>
-			</tr>
-			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='reportLayouts'><b>Report Type *:</b></label</td>
-				<td><input type='text' id='reportLayouts' name='reportLayouts' value="<?php if ($sushiServiceID) echo $sushiService->reportLayouts; ?>" style='width:300px;' />
-					<br /><span class="smallDarkRedText">*separate report types with semi-colon, e.g. JR1;BR1</span>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='reportLayouts'><b>Report Type(s):</b></label</td>
+				<td><input type='text' id='reportLayouts' name='reportLayouts' value="<?php if ($sushiServiceID) echo $sushiService->reportLayouts; ?>" style='width:150px;' />
+					<br /><span class="smallDarkRedText">separate report types with semi-colon, e.g. JR1;BR1</span>
 					<span id='span_error_reportLayouts' style='color:red'></span></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='releaseNumber'><b>COUNTER Release:</b></label</td>
 				<td>
-					<select id='releaseNumber' name='releaseNumber' style='width:90px;'>
+					<select id='releaseNumber' name='releaseNumber' style='width:50px;'>
 					<option value='3' <?php if (!$sushiServiceID){ echo "selected"; } else if ($sushiService->releaseNumber == "3"){ echo "selected"; } ?>>3</option>
 					<option value='4' <?php if ($sushiService->releaseNumber == "4"){ echo "selected"; } ?>>4</option>
 					</select>
 				</td>
-			</tr>						
+			</tr>					
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='security'><b>Security Type *:</b></label</td>
-				<td><input type='text' id='security' name='security' value="<?php if ($sushiServiceID) echo $sushiService->security; ?>" style='width:300px;' />
-					<br /><span class="smallDarkRedText">*Not required - can be: HTTP Basic, WSSE Authentication or pre-programmed Extention in the sushiincludes directory, e.g. (Extension=Elsevier;PlatformCode=SD)</span>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='requestorID'><b>Requestor ID:</b></label</td>
+				<td><input type='text' id='requestorID' name='requestorID' value="<?php if ($sushiServiceID) echo $sushiService->requestorID; ?>" style='width:150px;' /></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='customerID'><b>Customer ID:</b></label</td>
+				<td><input type='text' id='customerID' name='customerID' value="<?php if ($sushiServiceID) echo $sushiService->customerID; ?>" style='width:150px;' /></td>
+			</tr>				
+			<tr>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='security'><b>Security Type:</b></label</td>
+				<td><input type='text' id='security' name='security' value="<?php if ($sushiServiceID) echo $sushiService->security; ?>" style='width:150px;' />
+					<span class="smallDarkRedText">(optional)<br />can be: HTTP Basic, WSSE Authentication</span>
 					<span id='span_error_security' style='color:red'></span></td>
-			</tr>			
+			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='serviceDayOfMonth'><b>Service Day *:</b></label</td>
-				<td><input type='text' id='serviceDayOfMonth' name='serviceDayOfMonth' value="<?php if ($sushiServiceID) echo $sushiService->serviceDayOfMonth; ?>" style='width:300px;' />
-					<span class="smallDarkRedText">* number indicating the day of month the service should run (e.g. 27 will run 27th of every month)</span><span id='span_error_serviceDay' style='color:red'></span></td>
+				<td style='vertical-align:top;text-align:right;'><label for='login'><b>Login:</b></label</td>
+				<td><input type='text' id='login' name='login' value="<?php if ($sushiServiceID) echo $sushiService->login; ?>" style='width:150px;' />
+					<span class="smallDarkRedText">(optional)<br /> -  only needed for HTTP or WSSE Authentication</span>
+					<span id='span_error_login' style='color:red'></span></td>
+			</tr>
+			<tr>
+				<td style='vertical-align:top;text-align:right;'><label for='password'><b>Password:</b></label</td>
+				<td><input type='text' id='password' name='password' value="<?php if ($sushiServiceID) echo $sushiService->password; ?>" style='width:150px;' />
+					<span class="smallDarkRedText">(optional)<br /> - only needed for HTTP or WSSE Authentication</span>
+					<span id='span_error_password' style='color:red'></span></td>
+			</tr>
+			
+			<tr>
+				<td style='vertical-align:top;text-align:right;'><label for='serviceDayOfMonth'><b>Service Day:</b></label</td>
+				<td><input type='text' id='serviceDayOfMonth' name='serviceDayOfMonth' value="<?php if ($sushiServiceID) echo $sushiService->serviceDayOfMonth; ?>" style='width:50px;' />
+					<span class="smallDarkRedText">(optional)<br /> - number indicating the day of month the service should run <br />(e.g. 27 will run 27th of every month)</span><span id='span_error_serviceDay' style='color:red'></span></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;'><label for='noteText'><b>Sushi Notes:</b></label></td>
-				<td><textarea cols='46' rows='4' id='noteText' name='noteText' style='width:300px;'><?php if ($sushiServiceID) echo $sushiService->noteText; ?></textarea></td>
+				<td><textarea cols='46' rows='4' id='noteText' name='noteText' style='width:330px;'><?php if ($sushiServiceID) echo $sushiService->noteText; ?></textarea></td>
 			</tr>
 
 			<tr style="vertical-align:middle;">

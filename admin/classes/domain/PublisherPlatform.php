@@ -86,6 +86,23 @@ class PublisherPlatform extends DatabaseObject {
 		return $objects;
 	}
 
+
+	//returns most recent date of the last month of imports for any titles under this platform
+	public function getLastImportDate(){
+
+		$query = "SELECT max(concat(year,'-',month,'-01')) max_month
+					FROM MonthlyUsageSummary tsm INNER JOIN Title USING (titleID), PublisherPlatform pp
+					WHERE pp.publisherPlatformID = tsm.publisherPlatformID
+					AND pp.publisherPlatformID = '" . $this->publisherPlatformID . "';";
+
+		$result = $this->db->processQuery(stripslashes($query), 'assoc');
+
+		if (isset($result['max_month'])){
+			return $result['max_month'];
+		}
+
+	}
+
 	//returns array of titles and identifiers
 	public function getJournalTitles(){
 
