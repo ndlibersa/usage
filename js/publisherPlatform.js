@@ -257,6 +257,24 @@
 	}
   }
 
+
+
+function testService(sushiServiceID){
+  $('.div_mainContent').find('#div_test_service').html('<img src = "images/circle.gif">&nbsp;&nbsp;Running...<br />');
+
+  $.ajax({
+          type:       "GET",
+          url:        "ajax_processing.php",
+          cache:      false,
+          data:       "action=testSushiService&sushiServiceID=" + sushiServiceID,
+          success:    function(html) {
+            $('.div_mainContent').find('#div_test_service').html(html + "<br />");      
+          }
+       });
+    
+}
+
+
   function toggle(el, dID){
     console.log($(el));
     $(el).find('#' + dID).show();

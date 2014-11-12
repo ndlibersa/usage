@@ -461,25 +461,26 @@ switch ($action) {
 			echo "<table class='verticalFormTable' style='width:100%;'>";
 			echo "<tr><td>Service URL</td><td>" . $sushiService->serviceURL . "</td></tr>";
 			echo "<tr><td>WSDL URL</td><td>" . $sushiService->wsdlURL . "</td></tr>";
+			echo "<tr><td>COUNTER Release</td><td>" . $sushiService->releaseNumber . "</td></tr>";
+			echo "<tr><td>Report Layouts</td><td>" . $sushiService->reportLayouts . "</td></tr>";
 			echo "<tr><td>Requestor ID</td><td>" . $sushiService->requestorID . "</td></tr>";
 			echo "<tr><td>Customer ID</td><td>" . $sushiService->customerID . "</td></tr>";
-			echo "<tr><td>Report Layouts</td><td>" . $sushiService->reportLayouts . "</td></tr>";
-			echo "<tr><td>COUNTER Release</td><td>" . $sushiService->releaseNumber . "</td></tr>";
 			echo "<tr><td>Security</td><td>" . $sushiService->security . "</td></tr>";
 			echo "<tr><td>Login</td><td>" . $sushiService->login . "</td></tr>";
 			echo "<tr><td>Password</td><td>" . $sushiService->password . "</td></tr>";
-			echo "<tr><td>Run Day</td><td>" . $sushiService->serviceDayOfMonth . " (day of month)</td></tr>";
+			echo "<tr><td>Service Day</td><td>" . $sushiService->serviceDayOfMonth . " (day of month)</td></tr>";
 			echo "<tr><td>Notes</td><td>" . $sushiService->noteText . "</td></tr>";
 			echo "</table>";
-			echo" <br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=" . $sushiService->sushiServiceID . "&platformID=" . $platformID . "&height=490&width=458&modal=true' class='thickbox'>Edit SUSHI Connection Info</a><br />";
+			echo "<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=" . $sushiService->sushiServiceID . "&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>Edit SUSHI Connection Info</a><br />";
+			echo "<br /><div id='div_test_service'><a href='javascript:testService(" . $sushiService->sushiServiceID . ")'>Test SUSHI Connection</a></div><br />";
 		}else{
-			echo "\n(none found)<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=&platformID=" . $platformID . "&height=490&width=458&modal=true' class='thickbox'>Add SUSHI Connection</a><br />";
+			echo "\n(none found)<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>Add SUSHI Connection</a><br />";
 
 		}
 		
 
 		echo "<br /><br /><img src='images/help.gif' style='float:left;'>&nbsp;&nbsp;";
-		echo "Visit the <a href='https://sites.google.com/site/sushiserverregistry/' target='_blank'>SUSHI Server Registry</a> for information about adding your provider.";
+		echo "Visit the <a href='http://www.niso.org/workrooms/sushi/registry_server/' target='_blank'>SUSHI Server Registry</a> for information about adding your provider.";
 
         break;
 
@@ -1265,22 +1266,21 @@ switch ($action) {
 
 
 
+
 	//display sushi outstanding approval queue
-	case 'getUpcomingSushiImports':
+	case 'getFailedSushiImports':
 
 		$sushiService = new SushiService();
 
 		$sushiArray = array();
-		$sushiArray = $sushiService->upcomingImports();
+		$sushiArray = $sushiService->failedImports();
 
 		if (count($sushiArray) > 0){
 			echo "<table class='dataTable' style='width:830px; max-width:830px;'>";
 			echo "<tr>";
 			echo "<th style='padding:3px;'>Platform/Publisher</th>";
-			echo "<th style='padding:3px;'>Next Scheduled Import</th>";
-			echo "<th style='padding:3px;'>Service URL</th>";
-			echo "<th style='padding:3px;'>Reports</th>";
-			echo "<th style='padding:3px;'>Release</th>";
+			echo "<th style='padding:3px;'>Latest Run</th>";
+			echo "<th style='padding:3px;'>Latest Status</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "</tr>";
@@ -1295,14 +1295,20 @@ switch ($action) {
 					$obj = new PublisherPlatform(new NamedArguments(array('primaryKey' => $sushi['publisherPlatformID'])));
 				}
 
+				if ($obj->getImportLogs[0]){
+					$lastImportObj = $obj->getImportLogs[0];
+					$lastImportDate = format_date($lastImportObj->importDateTime);
+					$lastImportDetails = nl2br($lastImportObj->details);
+					$logFileURL = $lastImportObj->logFileURL;
+				}
+
+
 				echo "<tr>";
 				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "'>" . $obj->name . "</a></td>";
-				echo "<td $classAdd style='padding:3px;'>" . format_date($sushi['next_import']) . "</td>";
-				echo "<td $classAdd style='padding:3px;'>" . $sushi['serviceURL'] . "</td>";
-				echo "<td $classAdd style='padding:3px;'>" . $sushi['reportLayouts'] . "</td>";
-				echo "<td $classAdd style='padding:3px;'>" . $sushi['releaseNumber'] . "</td>";
-				echo "<td $classAdd style='padding:3px;'><a href='javascript:runService(" . $sushi['sushiServiceID'] . ")'>run now</a></td>";
-				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "&showTab=sushi'>change connection info</a></td>";
+				echo "<td $classAdd style='padding:3px;'>" . $lastImportDate . "</td>";
+				echo "<td $classAdd style='padding:3px;'>" . $lastImportDetails . "<br /><a href='" . $logFileURL . "'>view full log</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='ajax_forms.php?action=getSushiRunForm&sushiServiceID=" . $sushi['sushiServiceID'] . "&height=216&width=348&modal=true' class='thickbox'>run now</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "&showTab=sushi'>change/test connection</a></td>";
 				echo "</tr>";
 			}
 			echo "</table>";
@@ -1318,22 +1324,22 @@ switch ($action) {
 
 
 
-
-	//display sushi unscheduled approval queue
-	case 'getUnscheduledSushiImports':
+	//display sushi outstanding approval queue
+	case 'getAllSushiServices':
 
 		$sushiService = new SushiService();
 
 		$sushiArray = array();
-		$sushiArray = $sushiService->unscheduledImports();
+		$sushiArray = $sushiService->allServices();
 
 		if (count($sushiArray) > 0){
 			echo "<table class='dataTable' style='width:830px; max-width:830px;'>";
 			echo "<tr>";
 			echo "<th style='padding:3px;'>Platform/Publisher</th>";
-			echo "<th style='padding:3px;'>Service URL</th>";
-			echo "<th style='padding:3px;'>Reports</th>";
-			echo "<th style='padding:3px;'>Release</th>";
+			echo "<th style='padding:3px;'>Report(s)</th>";
+			echo "<th style='padding:3px;'>Next Run</th>";
+			echo "<th style='padding:3px;'>Latest Run</th>";
+			echo "<th style='padding:3px;'>Latest Status</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "</tr>";
@@ -1348,31 +1354,36 @@ switch ($action) {
 					$obj = new PublisherPlatform(new NamedArguments(array('primaryKey' => $sushi['publisherPlatformID'])));
 				}
 
+				if ($obj->getImportLogs[0]){
+					$lastImportObj = $obj->getImportLogs[0];
+					$lastImportDate = format_date($lastImportObj->importDateTime);
+					$lastImportDetails = nl2br($lastImportObj->details);
+				}else{
+					$lastImportDate="";
+					$lastImportDetails = "";
+				}
+
+
 				echo "<tr>";
 				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "'>" . $obj->name . "</a></td>";
-				echo "<td $classAdd style='padding:3px;'>" . $sushi['serviceURL'] . "</td>";
-				echo "<td $classAdd style='padding:3px;'>" . $sushi['reportLayouts'] . "</td>";
-				echo "<td $classAdd style='padding:3px;'>" . $sushi['releaseNumber'] . "</td>";
-				echo "<td $classAdd style='padding:3px;'><a href='javascript:runService(" . $sushi['sushiServiceID'] . ")'>run now</a></td>";
-				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "&showTab=sushi'>change connection info</a></td>";
+				echo "<td $classAdd style='padding:3px;'>" . $sushi['releaseNumber'] . ":" . $sushi['reportLayouts'] . "</td>";
+				echo "<td $classAdd style='padding:3px;'>" . format_date($sushi['next_import']) . "</td>";
+				echo "<td $classAdd style='padding:3px;'>" . format_date($lastImportDate) . "</td>";
+				echo "<td $classAdd style='padding:3px;'>" . $lastImportDetails . "</td>";
+				echo "<td $classAdd style='padding:3px;'><a href='ajax_forms.php?action=getSushiRunForm&sushiServiceID=" . $sushi['sushiServiceID'] . "&height=216&width=348&modal=true' class='thickbox'>run now</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "&showTab=sushi'>change/test connection</a></td>";
 				echo "</tr>";
 			}
 			echo "</table>";
 
 
-
 		}else{
-			echo "(no unscheduled imports found)";
+			echo "(no sushi services set up)";
 
 		}	
 
 
 		break;
-
-
-
-
-
 
 
 
@@ -1432,7 +1443,10 @@ switch ($action) {
 
 		//get where statements together (and escape single quotes)
 		if ($_GET['searchName']) $whereAdd[] = "(UPPER(P.name) LIKE UPPER('%" . str_replace("'","''",$_GET['searchName']) . "%') OR UPPER(Publisher.name) LIKE UPPER('%" . str_replace("'","''",$_GET['searchName']) . "%') OR UPPER(P.reportDisplayName) LIKE UPPER('%" . str_replace("'","''",$_GET['searchName']) . "%'))";
+
 		if ($_GET['startWith']) $whereAdd[] = "TRIM(LEADING 'THE ' FROM UPPER(P.name)) LIKE UPPER('" . $_GET['startWith'] . "%')";
+		if ($_GET['startWith']) $whereAdd[] = "TRIM(LEADING 'THE ' FROM UPPER(p.name)) LIKE UPPER('" . $_GET['startWith'] . "%')";
+		if ($_GET['sushiEnabled']) $whereAdd[] = "((p.platformID in (select platformID from SushiService)) OR (pp.publisherPlatformID in (select publisherPlatformID from SushiService)))";
 
 		$orderBy = $_GET['orderBy'];
 		$limit = ($pageStart-1) . ", " . $numberOfRecords;
@@ -1499,10 +1513,12 @@ switch ($action) {
 			?>
 			<table class='dataTable' style='width:727px'>
 			<tr>
-				<th style='width:200px'><table class='noBorderTable'><tr><td>Platform Name</td><td class='arrow'><a href='javascript:setOrder("P.name","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("P.name","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th style='width:320px'><table class='noBorderTable' style='width:320px'><tr><td style='width:280px'>Publishers</td><td class='arrow'><a href='javascript:setOrder("publishers","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("publishers","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td>Last Import</td><td class='arrow'><a href='javascript:setOrder("importDateTime","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("ImportDateTime","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				
+				<th><table class='noBorderTable'><tr><td>Platform Name</td><td class='arrow'><a href='javascript:setOrder("P.name","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("P.name","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>Publishers</td><td class='arrow'><a href='javascript:setOrder("publishers","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("publishers","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>Next Run</td><td class='arrow'><a href='javascript:setOrder("serviceDayOfMonth","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("serviceDayOfMonth","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>Latest Run</td><td class='arrow'><a href='javascript:setOrder("importDateTime","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("ImportDateTime","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>Latest Status</td><td class='arrow'><a href='javascript:setOrder("details","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("details","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>By</td><td class='arrow'><a href='javascript:setOrder("loginID","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("loginID","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
 			</tr>
 
 			<?php
@@ -1543,7 +1559,10 @@ switch ($action) {
 				echo "</td>";
 
 
-				echo "<td $classAdd>" . format_date($platform['latest_import']) . "</td>";
+				echo "<td $classAdd>" . format_date($platform['next_import']) . "</td>";
+				echo "<td $classAdd>" . format_date($platform['last_import']) . "</td>";
+				echo "<td $classAdd>" . ImportLog::shortStatusFromDetails($platform['details']) . "</td>";
+				echo "<td $classAdd>" . $platform['loginID'] . "</td>";
 				echo "</tr>";
 			}
 

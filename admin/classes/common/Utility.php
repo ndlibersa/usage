@@ -19,7 +19,7 @@
 
 class Utility {
 
-	public function unixTimeFromMysqlTimestamp($timestamp) {
+	static public function unixTimeFromMysqlTimestamp($timestamp) {
 
 		// taken from Dan Green, and then modified to be correct
 		// http://www.weberdev.com/get_example-1427.html
@@ -36,11 +36,11 @@ class Utility {
 
 	}
 
-	public function secondsFromDays($days) {
+	static public function secondsFromDays($days) {
 		return $days * 24 * 60 * 60;
 	}
 
-	public function objectFromArray($array) {
+	static public function objectFromArray($array) {
 		$object = new DynamicObject;
 		foreach ($array as $key => $value) {
 			if (is_array($value)) {
@@ -53,7 +53,7 @@ class Utility {
 	}
 
 	//returns file path up to /coral/
-	public function getCORALPath(){
+	static public function getCORALPath(){
 		$pagePath = $_SERVER["DOCUMENT_ROOT"];
 
 		$currentFile = $_SERVER["SCRIPT_NAME"];
@@ -66,7 +66,7 @@ class Utility {
 	}
 
 	//returns page URL up to /coral/
-	public function getCORALURL(){
+	static public function getCORALURL(){
 		$pageURL = 'http';
 		if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
 		$pageURL .= "://";
@@ -85,22 +85,22 @@ class Utility {
 		return $pageURL;
 	}
 
-	//returns page URL up to /organizations/
-	public function getPageURL(){
-		return $this->getCORALURL() . "organizations/";
+	//returns page URL up to /usage/
+	static public function getPageURL(){
+		return self::getCORALURL() . "usage/";
 	}
 
-	public function getLicensingURL(){
-		return $this->getCORALURL() . "licensing/license.php?licenseID=";
-	}
-
-
-	public function getOrganizationURL(){
-		return $this->getCORALURL() . "organizations/orgDetail.php?organizationID=";
+	static public function getLicensingURL(){
+		return self::getCORALURL() . "licensing/license.php?licenseID=";
 	}
 
 
-	public function getLoginCookie(){
+	static public function getOrganizationURL(){
+		return self::getCORALURL() . "organizations/orgDetail.php?organizationID=";
+	}
+
+
+	static public function getLoginCookie(){
 
 		if(array_key_exists('CORALLoginID', $_COOKIE)){
 			return $_COOKIE['CORALLoginID'];
@@ -108,7 +108,7 @@ class Utility {
 
 	}
 
-	public function getSessionCookie(){
+	static public function getSessionCookie(){
 
 		if(array_key_exists('CORALSessionID', $_COOKIE)){
 			return $_COOKIE['CORALSessionID'];
@@ -116,7 +116,7 @@ class Utility {
 
 	}
 
-	public function utf8_fopen_read($fileName) {
+	static public function utf8_fopen_read($fileName) {
     	$fc = iconv('windows-1250', 'utf-8', file_get_contents($fileName));
     	$handle=fopen("php://memory", "rw");
     	fwrite($handle, $fc);

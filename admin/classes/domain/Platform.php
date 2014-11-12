@@ -112,6 +112,40 @@ class Platform extends DatabaseObject {
 	}
 
 
+	//returns most recent date of the last month of imports for any titles under this platform
+	public function getLastImportDate(){
+
+		$query = "SELECT max(concat(year,'-',month,'-01')) max_month
+					FROM MonthlyUsageSummary tsm INNER JOIN Title USING (titleID), PublisherPlatform pp
+					WHERE pp.publisherPlatformID = tsm.publisherPlatformID
+					AND pp.platformID = '" . $this->platformID . "';";
+
+		$result = $this->db->processQuery(stripslashes($query), 'assoc');
+
+		if (isset($result['max_month'])){
+			return $result['max_month'];
+		}
+
+	}
+
+
+
+
+	//returns array of import log records from user "sushi"
+	public function removeFailedSushiImports(){
+
+		//now formulate query
+		$query = "DELETE FROM ImportLog
+					WHERE loginID = 'sushi'
+					AND importLogID IN (SELECT importLogID FROM ImportLogPlatformLink WHERE platformID = '" . $this->platformID . "')
+					AND ucase(details) like '%FAIL%'";
+
+
+		return $this->db->processQuery($query);
+
+	}
+
+
 
 
 
@@ -498,7 +532,7 @@ class Platform extends DatabaseObject {
 		}
 
 		$query = "SELECT DISTINCT year, month, archiveInd
-					FROM MonthlyUsageSummary tsm INNER JOIN Title USING (titleID), Publisher_Platform pp
+					FROM MonthlyUsageSummary tsm INNER JOIN Title USING (titleID), PublisherPlatform pp
 					WHERE pp.publisherPlatformID = tsm.publisherPlatformID
 					AND pp.platformID = '" . $this->platformID . "'" . $addWhere . "
 					ORDER BY year, archiveInd, month;";
@@ -928,17 +962,24 @@ class Platform extends DatabaseObject {
 
 	//used for A-Z on search (index)
 	public function getAlphabeticalList(){
-		$alphArray = array();
-		$result = mysql_query("SELECT DISTINCT UPPER(SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)) letter, COUNT(SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)) letter_count
+		$allArray = array();
+		$result = $this->db->processQuery("SELECT DISTINCT UPPER(SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)) letter, COUNT(SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)) letter_count
 								FROM Platform
 								GROUP BY SUBSTR(TRIM(LEADING 'The ' FROM name),1,1)
-								ORDER BY 1;");
+								ORDER BY 1;", "assoc");
 
-		while ($row = mysql_fetch_assoc($result)){
-			$alphArray[$row['letter']] = $row['letter_count'];
+
+
+		//need to do this since it could be that there's only one result and this is how the dbservice returns result
+		if (isset($result['letter'])){
+			$allArray = $result;
+		}else{
+			foreach ($result as $row) {
+				$allArray[$row['letter']] = $row['letter_count'];
+			}
 		}
 
-		return $alphArray;
+		return $allArray;
 	}
 
 
@@ -961,10 +1002,17 @@ class Platform extends DatabaseObject {
 		//now actually execute query
 		$query = "SELECT P.platformID, P.name, P.reportDisplayName,
 						GROUP_CONCAT(DISTINCT PP.publisherPlatformID ORDER BY PP.reportDisplayName DESC SEPARATOR ':') publishers,
-						MAX(importDateTime) latest_import
-								FROM Platform P
-									LEFT JOIN (PublisherPlatform PP INNER JOIN Publisher USING (publisherID)) ON P.PlatformID = PP.PlatformID
-									LEFT JOIN (ImportLogPlatformLink ILPL INNER JOIN ImportLog IL USING (importLogID)) ON P.platformID = ILPL.platformID
+						date(importDateTime) last_import,
+						loginID,
+						details,
+						if(serviceDayOfMonth > day(now()), str_to_date(concat(EXTRACT(YEAR_MONTH FROM NOW()), lpad(serviceDayOfMonth,2,'0')), '%Y%m%d'), str_to_date(concat(EXTRACT(YEAR_MONTH FROM NOW()) + 1, lpad(serviceDayOfMonth,2,'0')), '%Y%m%d') ) next_import
+								FROM 
+									Platform P
+									LEFT JOIN (PublisherPlatform PP 
+										INNER JOIN Publisher USING (publisherID)) 
+									ON P.PlatformID = PP.PlatformID
+									LEFT JOIN (SELECT platformID, mil.importLogID, max(importDateTime) importDateTime, loginID, details FROM ImportLog mil INNER JOIN ImportLogPlatformLink mipl USING (ImportLogID) GROUP BY platformID) mil ON p.platformID = mil.platformID
+									LEFT JOIN SushiService SS ON P.PlatformID = SS.PlatformID
 									" . $whereStatement . "
 								GROUP By P.platformID
 								ORDER BY " . $orderBy . $limitStatement;

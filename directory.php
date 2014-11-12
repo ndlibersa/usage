@@ -18,8 +18,9 @@
 */
 
 ini_set('max_execution_time', 1000); 
-ini_set("default_socket_timeout", 1000);
+ini_set("default_socket_timeout", 120);
 ini_set('memory_limit', '256M');
+
 
 // Useful directory constants, ending with |/|.
 define('ADMIN_DIR', dirname(__FILE__) . '/admin/');
@@ -58,7 +59,12 @@ if (false === function_exists('lcfirst')) {
 
 //fix default timezone for PHP > 5.3
 if(function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get")){
-	@date_default_timezone_set(@date_default_timezone_get());
+  if (@date_default_timezone_get()){
+	   date_default_timezone_set(@date_default_timezone_get());
+  }else{
+      date_default_timezone_set('UTC');  
+  }
+  
 }
 
 
@@ -79,7 +85,7 @@ function format_date($mysqlDate) {
 	//SUGGESTED: "m/d/Y" or "d-m-Y"
 
   if ($mysqlDate != ""){
-   if (date("hi") > 0){
+   if ((date("Hi", strtotime($mysqlDate)) > 0)){
     return date("m/d/Y h:i a", strtotime($mysqlDate));
    }else{
     return date("m/d/Y", strtotime($mysqlDate)); 

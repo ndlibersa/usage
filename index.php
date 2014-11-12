@@ -38,7 +38,6 @@ if ($_SESSION['ref_script'] != "publisherPlatform.php"){
 $_SESSION['ref_script']=$currentPage;
 
 
-
 ?>
 
 <div style='text-align:left;'>

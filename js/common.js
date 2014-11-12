@@ -22,34 +22,6 @@
 
 $(function(){
 	
-	//preload images
-	jQuery.preLoadImages("images/menu/menu-home-over.gif", "images/menu/menu-publisherplatform-over.gif", "images/menu/menu-reportingoptions-over.gif", "images/menu/menu-admin-over.gif", "images/menu/menu-end-over.gif");
-	 
-	 //for swapping menu images
-	$('.rollover').hover(function() {
-		var currentImg = $(this).attr('src');
-		$(this).attr('src', $(this).attr('hover'));
-		$(this).attr('hover', currentImg);
-		
-		if ($(this).attr('id') == 'menu-last'){
-			var endImg = $("#menu-end").attr('src');
-			$('#menu-end').attr('src', $("#menu-end").attr('hover'));
-			$('#menu-end').attr('hover', endImg);
-		}
-	    }, function() {
-		var currentImg = $(this).attr('src');
-		$(this).attr('src', $(this).attr('hover'));
-		$(this).attr('hover', currentImg);
-		
-		if ($(this).attr('id') == 'menu-last'){
-			var endImg = $("#menu-end").attr('src');
-			$('#menu-end').attr('src', $("#menu-end").attr('hover'));
-			$('#menu-end').attr('hover', endImg);
-		}
-		
-	 });
-	 
-	 
 	 //for the Change Module drop down
 	 $('.coraldropdown').each(function () {
 		$(this).parent().eq(0).hover(function () {
