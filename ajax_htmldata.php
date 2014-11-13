@@ -1445,8 +1445,6 @@ switch ($action) {
 		if ($_GET['searchName']) $whereAdd[] = "(UPPER(P.name) LIKE UPPER('%" . str_replace("'","''",$_GET['searchName']) . "%') OR UPPER(Publisher.name) LIKE UPPER('%" . str_replace("'","''",$_GET['searchName']) . "%') OR UPPER(P.reportDisplayName) LIKE UPPER('%" . str_replace("'","''",$_GET['searchName']) . "%'))";
 
 		if ($_GET['startWith']) $whereAdd[] = "TRIM(LEADING 'THE ' FROM UPPER(P.name)) LIKE UPPER('" . $_GET['startWith'] . "%')";
-		if ($_GET['startWith']) $whereAdd[] = "TRIM(LEADING 'THE ' FROM UPPER(p.name)) LIKE UPPER('" . $_GET['startWith'] . "%')";
-		if ($_GET['sushiEnabled']) $whereAdd[] = "((p.platformID in (select platformID from SushiService)) OR (pp.publisherPlatformID in (select publisherPlatformID from SushiService)))";
 
 		$orderBy = $_GET['orderBy'];
 		$limit = ($pageStart-1) . ", " . $numberOfRecords;
