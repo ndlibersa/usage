@@ -1011,7 +1011,7 @@ class Platform extends DatabaseObject {
 									LEFT JOIN (PublisherPlatform PP 
 										INNER JOIN Publisher USING (publisherID)) 
 									ON P.PlatformID = PP.PlatformID
-									LEFT JOIN (SELECT platformID, mil.importLogID, max(importDateTime) importDateTime, loginID, details FROM ImportLog mil INNER JOIN ImportLogPlatformLink mipl USING (ImportLogID) GROUP BY platformID) mil ON p.platformID = mil.platformID
+									LEFT JOIN (SELECT platformID, mil.importLogID, max(importDateTime) importDateTime, loginID, details FROM ImportLog mil INNER JOIN ImportLogPlatformLink mipl USING (ImportLogID) GROUP BY platformID) mil ON P.platformID = mil.platformID
 									LEFT JOIN SushiService SS ON P.PlatformID = SS.PlatformID
 									" . $whereStatement . "
 								GROUP By P.platformID
