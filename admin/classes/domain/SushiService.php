@@ -580,7 +580,7 @@ class SushiService extends DatabaseObject {
 		$layoutColumns = array();
 
 		$reader = new XMLReader();
-		if (!$reader->open($xmlFileName)) {
+		if (!$reader->open($xmlFileName, 'UTF-8')) {
 			$this->logStatus("Failed trying to open XML File: " . $xmlFileName . ".  This could be due to not having write access to the /sushistore/ directory.");
 			$this->saveLogAndExit($reportLayout);
 		}
