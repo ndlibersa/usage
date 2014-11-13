@@ -94,7 +94,7 @@ class SushiService extends DatabaseObject {
 
 
 	public function failedImports(){
-		$query = "SELECT ipl.platformID, sushiServiceID, date(il.importDateTime), details, il.importLogID
+		$query = "SELECT ipl.platformID, ss.sushiServiceID, date(il.importDateTime), details, il.importLogID
 		FROM ImportLog il
 			INNER JOIN ImportLogPlatformLink ipl USING (ImportLogID)
 				INNER JOIN SushiService ss ON (ss.platformID = ipl.platformID)
