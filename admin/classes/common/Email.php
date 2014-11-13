@@ -88,37 +88,34 @@ class Email extends Object {
 	}
 
 	public function send(){
-<<<<<<< HEAD
-		return mail($this->to, $this->subject, $this->message, rtrim($this->getHeaders()));
-=======
+
 		$config = new Configuration();
 
-    //add on feedback email address if it exists
-    if ($config->settings->feedbackEmailAddress){
-      $this->replyTo = $config->settings->feedbackEmailAddress;
-      if (!$this->to){
-        $this->to = $config->settings->feedbackEmailAddress;
-      }
-    }
-    
-    if ($config->settings->testMode == 'Y') {
-      if ($config->settings->testModeEmailAddress) {
-        $testEmail = $config->settings->testModeEmailAddress;
-      } else {
-        $testEmail = $config->settings->feedbackEmailAddress;
-      }
-      if ($testEmail) {
-        $updatedMessage = "Original To: ".$this->to."\n\n".$this->message;
-        $updatedSubject = "CORAL Test Mode: ".$this->subject;
-        return mail($testEmail, $updatedSubject, $updatedMessage, rtrim($this->getHeaders()));
-      } else {
-        return false;
-      }
-    } else {
-      return mail($this->to, $this->subject, $this->message, rtrim($this->getHeaders()));
-    }
+	    //add on feedback email address if it exists
+	    if ($config->settings->feedbackEmailAddress){
+	      $this->replyTo = $config->settings->feedbackEmailAddress;
+	      if (!$this->to){
+	        $this->to = $config->settings->feedbackEmailAddress;
+	      }
+	    }
+	    
+	    if ($config->settings->testMode == 'Y') {
+	      if ($config->settings->testModeEmailAddress) {
+	        $testEmail = $config->settings->testModeEmailAddress;
+	      } else {
+	        $testEmail = $config->settings->feedbackEmailAddress;
+	      }
+	      if ($testEmail) {
+	        $updatedMessage = "Original To: ".$this->to."\n\n".$this->message;
+	        $updatedSubject = "CORAL Test Mode: ".$this->subject;
+	        return mail($testEmail, $updatedSubject, $updatedMessage, rtrim($this->getHeaders()));
+	      } else {
+	        return false;
+	      }
+	    } else {
+	      return mail($this->to, $this->subject, $this->message, rtrim($this->getHeaders()));
+	    }
 
->>>>>>> master
 	}
 
 }
