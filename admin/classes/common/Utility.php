@@ -129,9 +129,11 @@ class Utility {
 
 
 
-		echo "PRINTING FILE CONTENTS";
+		echo "PRINTING FILE CONTENTS<br />";
 		print_r ($fc);
-		echo "END FILE CONTENTS";
+		echo "PRINTING utf8 FILE CONTENTS<br />";
+		@iconv('utf-8', 'utf-8//IGNORE', $fc)
+		echo "<br />END FILE CONTENTS";
 
 
     	$handle=fopen("php://memory", "rw");
