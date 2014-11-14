@@ -232,6 +232,7 @@ class SushiService extends DatabaseObject {
   		//first, get this publisher/platform's last day of import
 		$lastImportDate = $this->getPublisherOrPlatform->getLastImportDate();
 		$lastImportDate = date_create_from_format("Y-m-d", $lastImportDate);
+		date_add($lastImportDate, date_interval_create_from_date_string('1 month'));
 
 		//if that date is set and it's sooner than the first of this year, default it to that date
 		if (($lastImportDate) && (date_format($lastImportDate, "Y-m-d") > date_format($endDate, "Y") . "-01-01")){
