@@ -122,6 +122,10 @@ class Utility {
 		//try to to test encoding
 		$fc = iconv('windows-1250', 'utf-8', $fc);
 
+		echo "PRINTING FILE CONTENTS";
+		print_r ($fc);
+		echo "END FILE CONTENTS";
+
         // The documentation says that iconv() returns false on failure but it returns ''
         if ($fc === '' || !is_string($fc)) {
             $fc = file_get_contents($fileName);
