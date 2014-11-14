@@ -119,8 +119,12 @@ class Utility {
 	static public function utf8_fopen_read($fileName) {
 		$fc = file_get_contents($fileName);
 
-		if (mb_detect_encoding($fc, 'UTF-8', true) === false) { 
-        	$fc = @iconv('windows-1250', 'utf-8', $fc);  	
+		//try to to test encoding
+		$fc = iconv('windows-1250', 'utf-8', $fc);
+
+        // The documentation says that iconv() returns false on failure but it returns ''
+        if ($fc === '' || !is_string($fc)) {
+            $fc = file_get_contents($fileName);
         }
 
     	$handle=fopen("php://memory", "rw");
