@@ -117,7 +117,7 @@ class Utility {
 	}
 
 	static public function utf8_fopen_read($fileName) {
-    	$fc = iconv('', 'utf-8', file_get_contents($fileName));
+    	$fc = iconv('', 'utf-8//TRANSLIT', file_get_contents($fileName));
     	$handle=fopen("php://memory", "rw");
     	fwrite($handle, $fc);
     	fseek($handle, 0);
