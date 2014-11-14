@@ -119,17 +119,20 @@ class Utility {
 	static public function utf8_fopen_read($fileName) {
 		$fc = file_get_contents($fileName);
 
-		//try to to test encoding
-		$fc = iconv('windows-1250', 'utf-8', $fc);
+
+		//if the string isn't already ut8
+		if (@iconv('utf-8', 'utf-8//IGNORE', $fc) == $fc){
+			$fc = iconv('windows-1250', 'utf-8', $fc);
+		}else{
+			$fc = file_get_contents($fileName);
+		}
+
+
 
 		echo "PRINTING FILE CONTENTS";
 		print_r ($fc);
 		echo "END FILE CONTENTS";
 
-        // The documentation says that iconv() returns false on failure but it returns ''
-        if ($fc === '' || !is_string($fc)) {
-            $fc = file_get_contents($fileName);
-        }
 
     	$handle=fopen("php://memory", "rw");
     	fwrite($handle, $fc);
