@@ -121,7 +121,6 @@ class Utility {
 		//if the string isn't already ut8
 		if ($isSushiFile){
 			$fc = file_get_contents($fileName);
-			
 		}else{
 			$fc = iconv('windows-1250', 'utf-8', file_get_contents($fileName));
 		}

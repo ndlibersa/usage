@@ -1315,7 +1315,7 @@ switch ($action) {
 
 
 		}else{
-			echo "(no upcoming imports found)";
+			echo "(no failed imports found)";
 
 		}	
 
