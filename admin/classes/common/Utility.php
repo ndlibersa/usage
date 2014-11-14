@@ -117,7 +117,12 @@ class Utility {
 	}
 
 	static public function utf8_fopen_read($fileName) {
-    	$fc = iconv('', 'utf-8//TRANSLIT', file_get_contents($fileName));
+		$fc = file_get_contents($fileName);
+
+        if (@iconv('windows-1250', 'utf-8', $fc)) {
+            $fc = iconv('windows-1250', 'utf-8', $string);
+        }    	
+
     	$handle=fopen("php://memory", "rw");
     	fwrite($handle, $fc);
     	fseek($handle, 0);
