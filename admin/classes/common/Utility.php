@@ -120,7 +120,7 @@ class Utility {
 		$fc = file_get_contents($fileName);
 
         //if (@iconv('windows-1250', 'utf-8', $fc)) {
-            $fc = @iconv('windows-1250', 'utf-8', $fc);
+        //    $fc = @iconv('windows-1250', 'utf-8', $fc);
         //}    	
 
     	$handle=fopen("php://memory", "rw");
