@@ -38,8 +38,9 @@ if ($_GET['importLogID'] > 0){
 	$errorFlag = "N";
 	$startFlag = "Y";
 	$reportTypeDisplay = $layout->name;
-	
 
+	#read this file
+	$file_handle = $util->utf8_fopen_read($target_path, true);
 
 //came from file import
 }else{
@@ -81,6 +82,9 @@ if ($_GET['importLogID'] > 0){
 	  $unmatched = "";
 	  $del = ""; //delimiter
 	  $layoutID = $_POST['layoutID'];
+
+	#read this file
+	$file_handle = $util->utf8_fopen_read($target_path, false);
 
 
 	$pageTitle = 'Upload Process Confirmation';
@@ -124,10 +128,6 @@ function updateSubmit(){
 	$layoutColumns = $layoutsArray[$layoutKey]['columns'];
 	$numberOfColumns = count($layoutColumns);
   }
-
-
-  #read this file
-  $file_handle = $util->utf8_fopen_read($target_path, "r");
 
 
   echo $uploadConfirm;

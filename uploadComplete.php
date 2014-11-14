@@ -51,7 +51,13 @@ if (strpos($reportTypeDisplay,'archive') > 1){
 	$archiveInd = "1";
 }
 
-$file_handle = $util->utf8_fopen_read($uploadedFile, "r");
+//if this came from sushi
+if ($importLogID > 0){
+	$file_handle = $util->utf8_fopen_read($uploadedFile, true);
+}else{
+	$file_handle = $util->utf8_fopen_read($uploadedFile, false);
+}
+
 
 $logSummary = "\n" . $orgFileName;
 

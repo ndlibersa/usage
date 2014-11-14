@@ -116,25 +116,15 @@ class Utility {
 
 	}
 
-	static public function utf8_fopen_read($fileName) {
-		$fc = file_get_contents($fileName);
-
+	static public function utf8_fopen_read($fileName, $isSushiFile) {
 
 		//if the string isn't already ut8
-		if (@iconv('utf-8', 'utf-8//IGNORE', $fc) == $fc){
-			$fc = iconv('windows-1250', 'utf-8', $fc);
-		}else{
+		if ($isSushiFile){
 			$fc = file_get_contents($fileName);
+			
+		}else{
+			$fc = iconv('windows-1250', 'utf-8', file_get_contents($fileName));
 		}
-
-
-
-		echo "PRINTING FILE CONTENTS<br />";
-		print_r ($fc);
-		echo "PRINTING utf8 FILE CONTENTS<br />";
-		@iconv('utf-8', 'utf-8//IGNORE', $fc);
-		echo "<br />END FILE CONTENTS";
-
 
     	$handle=fopen("php://memory", "rw");
     	fwrite($handle, $fc);
