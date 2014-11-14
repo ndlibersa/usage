@@ -132,7 +132,7 @@ class Utility {
 		echo "PRINTING FILE CONTENTS<br />";
 		print_r ($fc);
 		echo "PRINTING utf8 FILE CONTENTS<br />";
-		@iconv('utf-8', 'utf-8//IGNORE', $fc)
+		@iconv('utf-8', 'utf-8//IGNORE', $fc);
 		echo "<br />END FILE CONTENTS";
 
 
