@@ -118,12 +118,8 @@ class Utility {
 
 	static public function utf8_fopen_read($fileName, $isSushiFile) {
 
-		//if the string isn't already ut8
-		if ($isSushiFile){
-			$fc = file_get_contents($fileName);
-		}else{
-			$fc = iconv('windows-1250', 'utf-8', file_get_contents($fileName));
-		}
+        //checks first to see if already UTF-8
+		$fc = Encoding::toUTF8(file_get_contents($fileName));
 
     	$handle=fopen("php://memory", "rw");
     	fwrite($handle, $fc);
