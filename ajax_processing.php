@@ -392,7 +392,7 @@ switch ($action) {
 
 		try {
 			$yearlyUsageSummary->save();
-			echo "Override has been updated";
+			echo _("Override has been updated");
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
@@ -439,7 +439,7 @@ switch ($action) {
 
 		try {
 			$platform->save();
-			echo "Platform Reporting Display Name has been updated";
+			echo _("Platform Reporting Display Name has been updated");
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
@@ -455,7 +455,7 @@ switch ($action) {
 
 		try {
 			$platform->save();
-			echo "Default display list has been updated";
+			echo _("Default display list has been updated");
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
@@ -471,7 +471,7 @@ switch ($action) {
 
 		try {
 			$publisherPlatform->save();
-			echo "Publisher Reporting Display Name has been updated";
+			echo _("Publisher Reporting Display Name has been updated");
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
@@ -487,7 +487,7 @@ switch ($action) {
 
 		try {
 			$publisherPlatform->save();
-			echo "Default display list has been updated";
+			echo _("Default display list has been updated");
 		} catch (Exception $e) {
 			echo $e->getMessage();
 		}
@@ -595,7 +595,7 @@ switch ($action) {
 
 
 	default:
-       echo "Function " . $_REQUEST['function'] . " not set up!";
+       echo _("Function ") . $_REQUEST['function'] . _(" not set up!");
        break;
 
 

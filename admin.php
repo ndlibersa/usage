@@ -9,11 +9,11 @@ if ($user->isAdmin()){
 
 <table class="headerTable">
 <tr><td>
-<span class="headerText">Users</span>&nbsp;&nbsp;<span id='span_User_response' class='redText'></span>
-<br /><span id='span_newUser' class='adminAddInput'><a href='ajax_forms.php?action=getAdminUserUpdateForm&height=196&width=248&modal=true' class='thickbox' id='expression'>add new user</a></span>
+<span class="headerText"><?= _("Users");?></span>&nbsp;&nbsp;<span id='span_User_response' class='redText'></span>
+<br /><span id='span_newUser' class='adminAddInput'><a href='ajax_forms.php?action=getAdminUserUpdateForm&height=196&width=248&modal=true' class='thickbox' id='expression'><?= _("add new user");?></a></span>
 <br /><br />
 <div id='div_User'>
-<img src = "images/circle.gif">Loading...
+<img src = "images/circle.gif"><?= _("Loading...");?>
 </div>
 </td></tr>
 </table>
@@ -24,11 +24,11 @@ if ($user->isAdmin()){
 
 <table class="headerTable">
 <tr><td>
-<span class="headerText">Email addresses for logs</span>&nbsp;&nbsp;<span id='span_EmailAddress_response'></span>
-<br /><span id='span_newEmailAddress' class='adminAddInput'><a href='ajax_forms.php?action=getLogEmailAddressForm&height=122&width=238&modal=true' class='thickbox'>add new email address</a></span>
+<span class="headerText"><?= _("Email addresses for logs");?></span>&nbsp;&nbsp;<span id='span_EmailAddress_response'></span>
+<br /><span id='span_newEmailAddress' class='adminAddInput'><a href='ajax_forms.php?action=getLogEmailAddressForm&height=122&width=238&modal=true' class='thickbox'><?= _("add new email address");?></a></span>
 <br /><br />
 <div id='div_emailAddresses'>
-<img src = "images/circle.gif">Loading...
+<img src = "images/circle.gif"><?= _("Loading...");?>
 </div>
 </td></tr>
 </table>
@@ -40,10 +40,10 @@ if ($user->isAdmin()){
 
 <table class="headerTable">
 <tr><td>
-<span class="headerText">Outlier Parameters</span>&nbsp;&nbsp;<span id='span_Outlier_response'></span>
+<span class="headerText"><?= _("Outlier Parameters");?></span>&nbsp;&nbsp;<span id='span_Outlier_response'></span>
 <br /><br />
 <div id='div_outliers'>
-<img src = "images/circle.gif">Loading...
+<img src = "images/circle.gif"><?= _("Loading...");?>
 </div>
 </td></tr>
 </table>
