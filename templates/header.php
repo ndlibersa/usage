@@ -51,7 +51,7 @@ $coralURL = $util->getCORALURL();
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
-<noscript><font face=arial>JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then <a href="">try again</a>. </font></noscript>
+<noscript><font face='arial'><?= _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then ");?><a href=""><?= _("try again");?></a>. </font></noscript>
 <center>
 <div class="wrapper">
 <center>
@@ -70,7 +70,7 @@ $coralURL = $util->getCORALURL();
 <div style='margin-top:1px;'>
 <span class='smallText' style='color:#526972;'>
 <?php
-	echo "Hello, ";
+	echo _("Hello, ");
 	//user may not have their first name / last name set up
 	if ($user->lastName){
 		echo $user->firstName . " " . $user->lastName;
@@ -79,7 +79,7 @@ $coralURL = $util->getCORALURL();
 	}
 ?>
 </span>
-<br /><?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout'>logout</a>"; } ?>
+<br /><?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout'>"._("logout")."</a>"; } ?>
 </div>
 </td>
 </tr>
@@ -89,7 +89,7 @@ $coralURL = $util->getCORALURL();
 
 
 
-<a href='index.php'><span class="menubtn<?php if ($currentPage == 'index.php') { echo " active"; } ?>" id="firstmenubtn">Home</span></a><a href='import.php'><span class="menubtn<?php if ($currentPage == 'import.php') { echo " active"; } ?>">File Import</span></a><a href='sushi.php'><span class="menubtn<?php if ($currentPage == 'sushi.php') { echo " active"; } ?>">SUSHI</span></a><?php if ($user->isAdmin()) { ?><a href='admin.php'><span class="menubtn<?php if ($currentPage == 'admin.php') { echo " active"; } ?>">Admin</span></a><?php } ?><a href='reporting.php'><span class="menubtn<?php if ($currentPage == 'reporting.php') { echo " active"; } ?>" id="lastmenubtn">Report Options</span></a>
+<a href='index.php'><span class="menubtn<?php if ($currentPage == 'index.php') { echo " active"; } ?>" id="firstmenubtn"><?= _("Home");?></span></a><a href='import.php'><span class="menubtn<?php if ($currentPage == 'import.php') { echo " active"; } ?>"><?= _("File Import");?></span></a><a href='sushi.php'><span class="menubtn<?php if ($currentPage == 'sushi.php') { echo " active"; } ?>">SUSHI</span></a><?php if ($user->isAdmin()) { ?><a href='admin.php'><span class="menubtn<?php if ($currentPage == 'admin.php') { echo " active"; } ?>">Admin</span></a><?php } ?><a href='reporting.php'><span class="menubtn<?php if ($currentPage == 'reporting.php') { echo " active"; } ?>" id="lastmenubtn"><?= _("Report Options");?></span></a>
 
 <?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' class='menubtn' id='onlyButton'><img src='images/seahorse.png' style='vertical-align:middle; height:100%;'>&nbsp;&nbsp;<b>Usage</b> Reports</a>"; ?>
 
@@ -136,8 +136,8 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 		</ul>
         <select name="lang" id="lang" class="dropDownLang">
                <?php
-                $fr="<option value='fr' selected='selected'>Français</option><option value='en'>English</option>";
-                $en="<option value='fr'>Français</option><option value='en' selected='selected'>English</option>";
+                $fr="<option value='fr' selected='selected'>"._("French")."</option><option value='en'>"._("English")."</option>";
+                $en="<option value='fr'>"._("French")."</option><option value='en' selected='selected'>"._("English")."</option>";
                 if(isset($_COOKIE["lang"])){
                     if($_COOKIE["lang"]=='fr'){
                         echo $fr;

@@ -1,16 +1,808 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2015-04-10 17:10+0100\n"
-"PO-Revision-Date: 2015-04-10 17:26+0100\n"
+"POT-Creation-Date: 2015-04-13 17:23+0100\n"
+"PO-Revision-Date: 2015-12-21 14:28+0100\n"
 "Last-Translator: Cesar <hernandez.antonio.cesar19@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.7.5\n"
 "X-Poedit-Basepath: /var/www/Coral/usage\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: admin.php:12
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: admin.php:13
+msgid "add new user"
+msgstr "Ajouter utilisateur"
+
+#: admin.php:16 admin.php:31 admin.php:46
+msgid "Loading..."
+msgstr "Chargement..."
+
+#: admin.php:27
+msgid "Email addresses for logs"
+msgstr "Adresse email pour les logs"
+
+#: admin.php:28
+msgid "add new email address"
+msgstr "Ajouter adresse email"
+
+#: admin.php:43
+msgid "Outlier Parameters"
+msgstr "Paramètres aberrants"
+
+#: admin/classes/common/DBService.php:39
+msgid "There was a problem with the database: "
+msgstr "Problème avec la base de données: "
+
+#: admin/classes/common/LdapPerson.php:34
+msgid "Could not connect to "
+msgstr "Impossible de se connecter à "
+
+#: admin/classes/common/Object.php:63
+msgid "Cannot set value for undefined key ("
+msgstr "Impossible d'assigner une valeur indefinie ("
+
+#: admin/classes/common/Object.php:72
+msgid "Cannot get value for undefined key ("
+msgstr "Impossible de récupérer une valeur indéfinie ("
+
+#: admin/classes/domain/ImportLog.php:34
+msgid " (via sushi)"
+msgstr " (via SUSHI)"
+
+#: admin/classes/domain/ImportLog.php:42
+msgid "Failed"
+msgstr "Echec"
+
+#: admin/classes/domain/ImportLog.php:44
+msgid "awaiting import"
+msgstr "Attente import"
+
+#: ajax_forms.php:39 ajax_forms.php:170 ajax_forms.php:259 ajax_forms.php:356
+#: ajax_forms.php:423 ajax_forms.php:488 ajax_forms.php:980
+msgid "Update"
+msgstr "Mise à jour"
+
+#: ajax_forms.php:43 ajax_forms.php:259 ajax_forms.php:365 ajax_forms.php:429
+#: ajax_forms.php:492
+msgid "Add"
+msgstr "Ajouter"
+
+#: ajax_forms.php:55
+msgid "Email Address"
+msgstr "Adresse email"
+
+#: ajax_forms.php:66 ajax_forms.php:231
+msgid "close"
+msgstr "Fermer"
+
+#: ajax_forms.php:107
+msgid "SUSHI Service for"
+msgstr "SUSHI Service pour"
+
+#: ajax_forms.php:107
+msgid "Optional Parameters"
+msgstr "Paramètres optionnels"
+
+#: ajax_forms.php:110
+msgid "Start Date:"
+msgstr "Date de début:"
+
+#: ajax_forms.php:114
+msgid "End Date:"
+msgstr "Date de fin:"
+
+#: ajax_forms.php:120
+msgid "Ensure platform name stays CORAL's Platform Name:"
+msgstr ""
+"Vérifiez que le nom de la plate-forme reste celui de la plate-forme CORAL:"
+
+#: ajax_forms.php:129 ajax_forms.php:327 ajax_forms.php:396
+#: ajax_forms.php:463 ajax_forms.php:572 ajax_forms.php:626
+#: ajax_forms.php:832 ajax_forms.php:886
+msgid "submit"
+msgstr "Soumettre"
+
+#: ajax_forms.php:130 ajax_forms.php:170 ajax_forms.php:328
+#: ajax_forms.php:397 ajax_forms.php:464 ajax_forms.php:573
+#: ajax_forms.php:627 ajax_forms.php:833 ajax_forms.php:887
+#: ajax_forms.php:1025
+msgid "cancel"
+msgstr "Annuler"
+
+#: ajax_forms.php:143
+msgid "No Sushi Service passed in!"
+msgstr "Aucun Sushi Service transmis!"
+
+#: ajax_forms.php:164
+msgid "Update Outlier"
+msgstr "Mise à jour aberration"
+
+#: ajax_forms.php:164
+msgid "Level"
+msgstr "Niveau"
+
+#: ajax_forms.php:165
+msgid "Count Over"
+msgstr "Compte sur"
+
+#: ajax_forms.php:166
+msgid "Over prior 12 months"
+msgstr "Sur priorité de 12 mois"
+
+#: ajax_forms.php:219
+msgid "Update Report Display Name"
+msgstr "Modifier le nom du rapport"
+
+#: ajax_forms.php:224 ajax_forms.php:772 ajax_forms.php:779
+#: ajax_forms.php:786 ajax_htmldata.php:1013 ajax_htmldata.php:1020
+#: ajax_htmldata.php:1027 ajax_htmldata.php:1419
+msgid "update"
+msgstr "Modifier"
+
+#: ajax_forms.php:298 ajax_htmldata.php:397
+msgid "Interface Notes"
+msgstr "Notes de l'interface"
+
+#: ajax_forms.php:301 ajax_forms.php:379
+msgid "Start Year:"
+msgstr "Année de début:"
+
+#: ajax_forms.php:305 ajax_forms.php:383
+msgid "End Year:"
+msgstr "Année de fin:"
+
+#: ajax_forms.php:318
+msgid "Interface Notes:"
+msgstr "Notes de l'interface:"
+
+#: ajax_forms.php:376
+msgid "Publisher Notes"
+msgstr "Notes d'éditeur"
+
+#: ajax_forms.php:387
+msgid "Publisher Notes:"
+msgstr "Notes d'éditeur:"
+
+#: ajax_forms.php:440 ajax_htmldata.php:469
+msgid "Login"
+msgstr "Connexion"
+
+#: ajax_forms.php:443
+msgid "Username:"
+msgstr "Nom d'utilisateur:"
+
+#: ajax_forms.php:447 ajax_forms.php:551
+msgid "Password:"
+msgstr "Mot de passe:"
+
+#: ajax_forms.php:454
+msgid "Login Notes:"
+msgstr "Notes de connexion:"
+
+#: ajax_forms.php:502 ajax_htmldata.php:458
+msgid "SUSHI Connection"
+msgstr "Connexion SUSHI"
+
+#: ajax_forms.php:505
+msgid "Service/Endpoint URL:"
+msgstr "URL de Service/Endpoint"
+
+#: ajax_forms.php:507
+msgid "if using COUNTER's WSDL"
+msgstr "Si vous utlisez COUNTER WSDL"
+
+#: ajax_forms.php:511
+msgid "or - WSDL URL:"
+msgstr "ou - l'URL WSDL:"
+
+#: ajax_forms.php:513
+msgid "if not using COUNTER's WSDL"
+msgstr "Si vous n'utilisez pas COUNTER WSDL"
+
+#: ajax_forms.php:516
+msgid "Report Type(s):"
+msgstr "Types de rapport;"
+
+#: ajax_forms.php:518
+msgid "separate report types with semi-colon, e.g. JR1;BR1"
+msgstr "séparez les types des reports avec points-virgules, ex. JR1;BR1"
+
+#: ajax_forms.php:522
+msgid "COUNTER Release:"
+msgstr "Version de COUNTER:"
+
+#: ajax_forms.php:531
+msgid "Requestor ID:"
+msgstr "ID demandeur:"
+
+#: ajax_forms.php:535
+msgid "Customer ID:"
+msgstr "ID client:"
+
+#: ajax_forms.php:539
+msgid "Security Type:"
+msgstr "Type de sécurité:"
+
+#: ajax_forms.php:541 ajax_forms.php:547 ajax_forms.php:553
+#: ajax_forms.php:560
+msgid "(optional)"
+msgstr "(optionnel)"
+
+#: ajax_forms.php:541
+msgid "can be: HTTP Basic, WSSE Authentication"
+msgstr "peut être: HTTP Basique, Authentification WSSE"
+
+#: ajax_forms.php:545
+msgid "Login:"
+msgstr "Identification:"
+
+#: ajax_forms.php:547 ajax_forms.php:553
+msgid "only needed for HTTP or WSSE Authentication"
+msgstr "seulement nécessaire pour authentification HTTP ou WSSE"
+
+#: ajax_forms.php:558
+msgid "Service Day:"
+msgstr "Jour de service:"
+
+#: ajax_forms.php:560
+msgid "number indicating the day of month the service should run"
+msgstr "Le nombre indique le jour du mois ou le service doit être exécuté"
+
+#: ajax_forms.php:560
+msgid "(e.g. 27 will run 27th of every month)"
+msgstr "(ex. 27 sera exécuté le 27e de chaque mois)"
+
+#: ajax_forms.php:563
+msgid "Sushi Notes:"
+msgstr "Notes SUSHI:"
+
+#: ajax_forms.php:611
+msgid "Link Associated Organization"
+msgstr "Lien à une organisation"
+
+#: ajax_forms.php:615
+msgid "Organization:"
+msgstr "Organisation"
+
+#: ajax_forms.php:686 ajax_forms.php:763 ajax_htmldata.php:961
+msgid "None currently"
+msgstr "Aucun actuellement"
+
+#: ajax_forms.php:693 ajax_htmldata.php:969
+msgid "ignore outlier"
+msgstr "Ignorer aberration"
+
+#: ajax_forms.php:703 ajax_forms.php:798 ajax_forms.php:955
+msgid "Close"
+msgstr "Fermer"
+
+#: ajax_forms.php:754
+msgid "(showing only titles for which there were outliers during the year)"
+msgstr ""
+"(affiche seulement les titres pour lesquels il y avait des valeurs "
+"aberrantes au cours de l'année)"
+
+#: ajax_forms.php:769 ajax_htmldata.php:1010
+msgid "Total"
+msgstr "Total"
+
+#: ajax_forms.php:823
+msgid "Add New Platform for SUSHI Connection"
+msgstr "Ajouter une nouvelle plate-forme de connexion SUSHI"
+
+#: ajax_forms.php:824 ajax_htmldata.php:1515
+msgid "Platform Name"
+msgstr "Nom de la plateforme"
+
+#: ajax_forms.php:865
+msgid "Add Identifier"
+msgstr "Ajouter identifiant"
+
+#: ajax_forms.php:866
+msgid "Identifier Type"
+msgstr "Type d'identifiant"
+
+#: ajax_forms.php:874
+msgid "Proprietary ID"
+msgstr "ID du propietaire"
+
+#: ajax_forms.php:878
+msgid "Identifier"
+msgstr "Identifiant"
+
+#: ajax_forms.php:920
+msgid "Associated Titles and Identifiers"
+msgstr "Titres et identifiants associés"
+
+#: ajax_forms.php:983
+msgid "Add New"
+msgstr "Ajouter"
+
+#: ajax_forms.php:990
+msgid "User"
+msgstr "Utilisateur"
+
+#: ajax_forms.php:991 ajax_htmldata.php:1403
+msgid "Login ID"
+msgstr "Identifiant de connexion"
+
+#: ajax_forms.php:992 ajax_htmldata.php:1404
+msgid "First Name"
+msgstr "Prénom"
+
+#: ajax_forms.php:993 ajax_htmldata.php:1405
+msgid "Last Name"
+msgstr "Nom"
+
+#: ajax_forms.php:994 ajax_htmldata.php:1406
+msgid "Privilege"
+msgstr "Privilège"
+
+#: ajax_forms.php:998
+msgid "Add/Edit users have access to everything"
+msgstr "Ajouter/Modifier utilisateurs pour donner l'accès à tout"
+
+#: ajax_forms.php:998
+msgid "except the Admin tab and admin users"
+msgstr "à exception l'onglet Admin et les Admin utilisateurs"
+
+#: ajax_forms.php:998
+msgid "have access to everything"
+msgstr "ont l'accès à tout"
+
+#: ajax_forms.php:1044 ajax_htmldata.php:1640 ajax_processing.php:598
+msgid "Function "
+msgstr "Fonction "
+
+#: ajax_forms.php:1044 ajax_htmldata.php:1640 ajax_processing.php:598
+msgid " not set up!"
+msgstr "Non défini!"
+
+#: ajax_htmldata.php:61 ajax_htmldata.php:1148
+msgid "Import Date"
+msgstr "Date d'import"
+
+#: ajax_htmldata.php:62 ajax_htmldata.php:1149
+msgid "Imported By"
+msgstr "Importé par"
+
+#: ajax_htmldata.php:63 ajax_htmldata.php:1150
+msgid "Import Summary"
+msgstr "Résumé des imports"
+
+#: ajax_htmldata.php:75 ajax_htmldata.php:1169
+msgid "view log"
+msgstr "Voir le log"
+
+#: ajax_htmldata.php:76 ajax_htmldata.php:1170
+msgid "view archive"
+msgstr "Voir archive"
+
+#: ajax_htmldata.php:81
+msgid "(no imports found)"
+msgstr "(aucun import)"
+
+#: ajax_htmldata.php:112 ajax_htmldata.php:173
+msgid "Interface Login"
+msgstr "Interface de connexion"
+
+#: ajax_htmldata.php:113 ajax_htmldata.php:174 ajax_htmldata.php:241
+#: ajax_htmldata.php:470
+msgid "Password"
+msgstr "Mot de passe"
+
+#: ajax_htmldata.php:114 ajax_htmldata.php:175 ajax_htmldata.php:242
+msgid "URL"
+msgstr "URL: "
+
+#: ajax_htmldata.php:115 ajax_htmldata.php:176
+msgid "Login Notes"
+msgstr "Notes de connexion:"
+
+#: ajax_htmldata.php:127 ajax_htmldata.php:188 ajax_htmldata.php:350
+#: ajax_htmldata.php:419 ajax_htmldata.php:901 ajax_htmldata.php:925
+msgid "edit"
+msgstr "Modifier"
+
+#: ajax_htmldata.php:127 ajax_htmldata.php:188 ajax_htmldata.php:350
+#: ajax_htmldata.php:419 ajax_htmldata.php:1420
+msgid "remove"
+msgstr "Supprimer"
+
+#: ajax_htmldata.php:137 ajax_htmldata.php:198 ajax_htmldata.php:358
+#: ajax_htmldata.php:427 ajax_htmldata.php:477 ajax_htmldata.php:637
+#: ajax_htmldata.php:664 ajax_htmldata.php:698 ajax_htmldata.php:1429
+#: ajax_htmldata.php:1537
+msgid "(none found)"
+msgstr "(non trouvé)"
+
+#: ajax_htmldata.php:145 ajax_htmldata.php:206
+msgid "add new login"
+msgstr "Ajouter connexion"
+
+#: ajax_htmldata.php:216
+msgid "Organization Accounts"
+msgstr "Comptes d'organisation"
+
+#: ajax_htmldata.php:236 ajax_htmldata.php:260
+msgid "view organization"
+msgstr "Voir organisation"
+
+#: ajax_htmldata.php:239
+msgid "Login Type"
+msgstr "Type de connexion:"
+
+#: ajax_htmldata.php:240
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: ajax_htmldata.php:243 ajax_htmldata.php:337 ajax_htmldata.php:472
+msgid "Notes"
+msgstr "Notes"
+
+#: ajax_htmldata.php:260
+msgid "No login information stored for "
+msgstr "Pas d'information enregistré pour "
+
+#: ajax_htmldata.php:265
+msgid "change associated organization"
+msgstr "changer organisations associées"
+
+#: ajax_htmldata.php:299
+msgid "Login Credentials are also available for the following publishers:"
+msgstr ""
+"Les identifiants de connexion sont aussi disponibles pour les éditeurs "
+"suivants:"
+
+#: ajax_htmldata.php:335 ajax_htmldata.php:394
+msgid "Start Year"
+msgstr "Année de début"
+
+#: ajax_htmldata.php:336 ajax_htmldata.php:395
+msgid "End Year"
+msgstr "Année de fin"
+
+#: ajax_htmldata.php:363
+msgid "add new publisher notes"
+msgstr "Ajouter notes d'éditeur"
+
+#: ajax_htmldata.php:396
+msgid "Counter"
+msgstr "Counter"
+
+#: ajax_htmldata.php:396
+msgid "Compliant?"
+msgstr "Conforme?"
+
+#: ajax_htmldata.php:432
+msgid "add new interface note"
+msgstr "Ajouter une note d'interface"
+
+#: ajax_htmldata.php:462
+msgid "Service URL"
+msgstr "URL du service"
+
+#: ajax_htmldata.php:464
+msgid "COUNTER Release"
+msgstr "Version de COUNTER"
+
+#: ajax_htmldata.php:465
+msgid "Report Layouts"
+msgstr "Mise en page des Rapports"
+
+#: ajax_htmldata.php:466
+msgid "Requestor ID"
+msgstr "ID demandeur"
+
+#: ajax_htmldata.php:467
+msgid "Customer ID"
+msgstr "ID client"
+
+#: ajax_htmldata.php:468
+msgid "Security"
+msgstr "Sécurité"
+
+#: ajax_htmldata.php:471
+msgid "Service Day"
+msgstr "Jour de service"
+
+#: ajax_htmldata.php:471
+msgid " (day of month)"
+msgstr " (jour du mois)"
+
+#: ajax_htmldata.php:474
+msgid "Edit SUSHI Connection Info"
+msgstr "Modifier l'information de la connexion SUSHI"
+
+#: ajax_htmldata.php:475
+msgid "Test SUSHI Connection"
+msgstr "Vérifier la connexion SUSHI"
+
+#: ajax_htmldata.php:477
+msgid "Add SUSHI Connection"
+msgstr "Ajouter une connexion SUSHI"
+
+#: ajax_htmldata.php:483
+msgid "Visit the"
+msgstr "Visiter le"
+
+#: ajax_htmldata.php:483
+msgid "SUSHI Server Registry"
+msgstr "Registre du serveur SUSHI"
+
+#: ajax_htmldata.php:483
+msgid "for information about adding your provider."
+msgstr "pour information à propos d'ajoutant votre fornisseur."
+
+#: ajax_htmldata.php:510 ajax_htmldata.php:601
+msgid "delete entire month"
+msgstr "Supprimer le mois complet"
+
+#: ajax_htmldata.php:521 ajax_htmldata.php:605
+msgid "view outliers for this month"
+msgstr "regarder les valeurs aberrantes pour ce mois"
+
+#: ajax_htmldata.php:556 ajax_htmldata.php:637
+msgid "Statistics Management"
+msgstr "Gestion des statistiques"
+
+#: ajax_htmldata.php:567
+msgid "(archive)"
+msgstr "(archive)"
+
+#: ajax_htmldata.php:577
+msgid "View Spreadsheet"
+msgstr "Voir la feuille de calcul"
+
+#: ajax_htmldata.php:622
+msgid "update overrides for this year"
+msgstr "Modifier les surcharges de cette année"
+
+#: ajax_htmldata.php:624
+msgid "(no outliers found for this year)"
+msgstr "(pas des valeurs aberrantes pour cette année)"
+
+#: ajax_htmldata.php:660 ajax_htmldata.php:698
+msgid "Titles"
+msgstr "Titres"
+
+#: ajax_htmldata.php:668
+msgid "View Journal Spreadsheet"
+msgstr "Voir le journal sur feuille de calcul"
+
+#: ajax_htmldata.php:672
+msgid "View Books Spreadsheet"
+msgstr "Voir les livres sur feuilles de calcul"
+
+#: ajax_htmldata.php:713
+msgid "Journals - Associated Titles and ISSNs"
+msgstr "Journaux - Titres Associés et ISSNs"
+
+#: ajax_htmldata.php:717 ajax_htmldata.php:793
+msgid "Title"
+msgstr "Titre"
+
+#: ajax_htmldata.php:760 ajax_htmldata.php:838
+msgid "view related titles"
+msgstr "Voir les titres liés"
+
+#: ajax_htmldata.php:760 ajax_htmldata.php:838
+msgid "view in link resolver"
+msgstr "Voir dans le résolveur de liens"
+
+#: ajax_htmldata.php:789
+msgid "Books - Associated Titles and ISBNs"
+msgstr "Livres - Titres Associés et ISBNs"
+
+#: ajax_htmldata.php:896
+msgid "Current Email Addresses"
+msgstr "Adresses email actuelles"
+
+#: ajax_htmldata.php:902
+msgid "delete"
+msgstr "Supprimer"
+
+#: ajax_htmldata.php:921
+msgid "Current Outlier Parameters"
+msgstr "Paramètres actuels des valeurs aberrantes"
+
+#: ajax_htmldata.php:924
+msgid " over plus "
+msgstr " surplus "
+
+#: ajax_htmldata.php:924
+msgid "over - displayed "
+msgstr "Surplus - affiché"
+
+#: ajax_htmldata.php:929
+msgid ""
+"Outliers are currently disabled in the configuration file.  Contact your "
+"technical support to enable them."
+msgstr ""
+"Les valeurs aberrantes sont desactivées dans le fichier de configuration. "
+"Contactez au votre support technique pour les activer."
+
+#: ajax_htmldata.php:968
+msgid "update override"
+msgstr "Modifier la surcharge"
+
+#: ajax_htmldata.php:1055 ajax_htmldata.php:1081
+msgid "edit report display name"
+msgstr "Modifier le nom du rapport"
+
+#: ajax_htmldata.php:1107
+msgid "No imports found."
+msgstr "Pas d'import trouvé"
+
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
+msgid "Displaying "
+msgstr "Affichage "
+
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
+msgid " to "
+msgstr " à "
+
+#: ajax_htmldata.php:1113 ajax_htmldata.php:1473
+msgid " of "
+msgstr " de "
+
+#: ajax_htmldata.php:1113
+msgid " Records"
+msgstr "fiches"
+
+#: ajax_htmldata.php:1229 ajax_htmldata.php:1281 ajax_htmldata.php:1338
+msgid "Platform/Publisher"
+msgstr "Plateforme/Éditeur"
+
+#: ajax_htmldata.php:1230
+msgid "Import Run Date"
+msgstr "Date d'exécution de l'import"
+
+#: ajax_htmldata.php:1231
+msgid "Details"
+msgstr "Détails"
+
+#: ajax_htmldata.php:1255
+msgid "view to process"
+msgstr "Voir pour procéder"
+
+#: ajax_htmldata.php:1256
+msgid "delete import"
+msgstr "Supprimer l'import"
+
+#: ajax_htmldata.php:1261
+msgid "(no outstanding imports found)"
+msgstr "(pas d'import en attente)"
+
+#: ajax_htmldata.php:1282 ajax_htmldata.php:1341 ajax_htmldata.php:1518
+msgid "Latest Run"
+msgstr "Dernière exécution"
+
+#: ajax_htmldata.php:1283 ajax_htmldata.php:1342 ajax_htmldata.php:1519
+msgid "Latest Status"
+msgstr "Dernier statut"
+
+#: ajax_htmldata.php:1309
+msgid "view full log"
+msgstr "Voir le log complet"
+
+#: ajax_htmldata.php:1310 ajax_htmldata.php:1373
+msgid "run now"
+msgstr "Exécuter"
+
+#: ajax_htmldata.php:1311 ajax_htmldata.php:1374
+msgid "change/test connection"
+msgstr "Changer/Vérifier la connexion"
+
+#: ajax_htmldata.php:1318
+msgid "(no failed imports found)"
+msgstr "(pas d'import échoué)"
+
+#: ajax_htmldata.php:1339
+msgid "Report(s)"
+msgstr "Rapport(s)"
+
+#: ajax_htmldata.php:1340 ajax_htmldata.php:1517
+msgid "Next Run"
+msgstr "Prochaine exécution"
+
+#: ajax_htmldata.php:1381
+msgid "(no sushi services set up)"
+msgstr "(Pas de service SUSHI configuré)"
+
+#: ajax_htmldata.php:1469
+msgid "Sorry, no platforms or publishers fit your query"
+msgstr "Désolé, il n'y a pas de plate-forme/éditeur pour votre requête"
+
+#: ajax_htmldata.php:1473
+msgid " Platform Records"
+msgstr " Fiches plateforme"
+
+#: ajax_htmldata.php:1516
+msgid "Publishers"
+msgstr "Éditeurs"
+
+#: ajax_htmldata.php:1520
+msgid "By"
+msgstr "Par"
+
+#: ajax_htmldata.php:1542
+msgid "show publisher list"
+msgstr "Voir la liste des éditeurs"
+
+#: ajax_htmldata.php:1621
+msgid "records per page"
+msgstr "resultats par page"
+
+#: ajax_processing.php:395
+msgid "Override has been updated"
+msgstr "La surcharge a été mis à jour avec succès"
+
+#: ajax_processing.php:442
+msgid "Platform Reporting Display Name has been updated"
+msgstr "Le nom de la plate-forme des rapports a été modifié"
+
+#: ajax_processing.php:458 ajax_processing.php:490
+msgid "Default display list has been updated"
+msgstr "La liste d'affichage par défault a été modifié"
+
+#: ajax_processing.php:474
+msgid "Publisher Reporting Display Name has been updated"
+msgstr "Le nom d'affichage pour les rapports a été modifié"
+
+#: templates/header.php:54
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"JavaScript doit être activé pour utiliser CORAL. Cependant, il semble que "
+"JavaScript est désactivé ou n'est pas supporté par votre navigateur. Pour "
+"utiliser CORAL, activez JavaScript en modifiant la configuration de votre "
+"navigateur, puis "
+
+#: templates/header.php:54
+msgid "try again"
+msgstr "réessayez"
+
+#: templates/header.php:73
+msgid "Hello, "
+msgstr "Bonjour, "
+
+#: templates/header.php:82
+msgid "logout"
+msgstr "Se déconnecter"
+
+#: templates/header.php:92
+msgid "Home"
+msgstr "Accueil"
+
+#: templates/header.php:92
+msgid "File Import"
+msgstr "Importer un fichier"
+
+#: templates/header.php:92
+msgid "Report Options"
+msgstr "Options des rapports"
+
+#: templates/header.php:109
+msgid "Change Module"
+msgstr "Changer de module"
+
+#: templates/header.php:139 templates/header.php:140
+msgid "French"
+msgstr "Français"
+
+#: templates/header.php:139 templates/header.php:140
+msgid "English"
+msgstr "Anglais"

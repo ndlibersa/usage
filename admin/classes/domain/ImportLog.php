@@ -33,15 +33,15 @@ class ImportLog extends DatabaseObject {
 
 		if (isset($titles)){
 			if (preg_match("/finished/i", $details)){
-				$status = $titles . " (via sushi)";
+				$status = $titles . _(" (via sushi)");
 			}else{
 				$status = $titles;	
 			}
 		}else{
 			if (preg_match("/fail/i", $details)){
-				$status = "Failed";
+				$status = _("Failed");
 			}elseif (preg_match("/finished/i", $details)){
-				$status = "<i>awaiting import</i>";				
+				$status = "<i>"._("awaiting import")."</i>";				
 			} else {
 				$status = null;
 			}
