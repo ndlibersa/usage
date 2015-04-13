@@ -90,6 +90,9 @@ width:100%;
   background-image: linear-gradient(to bottom, #c7d3de, #e7eef5);
 }
 
+#onlyButton{
+    border-radius: 4px;
+}
 
 a {color:#3D545D;}
 a:active {color:#94a9be;}
@@ -101,14 +104,14 @@ a.helpfulLink {color:#526972;}
 
 .smallText{color:#3D545D;font-size:92%;}
 .smallerText{color:#3D545D;font-size:85%;}
-.redText{color:red}
+.redText{color:red;}
 .smallRedText{font-size:85%;color:red;}
 .darkRedText{color:#7a0026;}
 .bigDarkRedText{font-size:125%; color:#7a0026;}
 .smallDarkRedText{font-size:85%;color:#7a0026;}
-.normalText{color:#3D545D}
-.smallBlueText{font-size:85%;font-weight:normal; color:#526972}
-.smallGreyText{font-size:85%;font-weight:normal; color:gray}
+.normalText{color:#3D545D;}
+.smallBlueText{font-size:85%;font-weight:normal; color:#526972;}
+.smallGreyText{font-size:85%;font-weight:normal; color:gray;}
 .boldBlueText{font-weight:bold; color:#526972;}
 .boldText{font-weight:bold;}
 .bigBlueText{font-size:125%; color:#526972;}
@@ -1031,7 +1034,7 @@ input.dp-applied {
 }
 
 .adminAddInput{margin-top:5px;}
-.licenseAddInput{margin-top:5px;margin-bottom;5px;}
+.licenseAddInput{margin-top:5px;margin-bottom:5px;}
 
 
 
@@ -1080,3 +1083,30 @@ select option.changeSelect{
  border: solid 1px #a5acb2;  
  color: #526972;  
 } 
+
+/* Change Module */
+.changeMod{
+    position: absolute;
+    background: #e4f5fc; /* Old browsers */
+    background: linear-gradient(to bottom, #c8d8e9 3%,#e2f0ff 52%,#c7cefc 100%); /* W3C */  
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Change language */
+.dropDownLang{
+    float:right; 
+    position:absolute; 
+    margin-left:134px; 
+    margin-top:-22px;
+    color: #3D545D;
+    background: #e4f5fc; /* Old browsers */
+    background: linear-gradient(to bottom, #c8d8e9 3%,#e2f0ff 52%,#c7cefc 100%); /* W3C */
+    border: none;
+    border-radius: 5px;
+    font-weight: bolder;
+    height:20px;
+    cursor: pointer;
+}

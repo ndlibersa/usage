@@ -89,24 +89,13 @@ $coralURL = $util->getCORALURL();
 
 
 
-<a href='index.php'><span class="menubtn<?php if ($currentPage == 'index.php') { echo " active"; } ?>" id="firstmenubtn">Home</span></a><!--
--->
-<a href='import.php'><span class="menubtn<?php if ($currentPage == 'import.php') { echo " active"; } ?>">File Import</span></a><!--
--->
-<a href='sushi.php'><span class="menubtn<?php if ($currentPage == 'sushi.php') { echo " active"; } ?>">SUSHI</span></a><!--
--->
-<?php if ($user->isAdmin()) { ?>
-<a href='admin.php'><span class="menubtn<?php if ($currentPage == 'admin.php') { echo " active"; } ?>">Admin</span></a><!--
--->
-<?php } ?>
-<a href='reporting.php'><span class="menubtn<?php if ($currentPage == 'reporting.php') { echo " active"; } ?>" id="lastmenubtn">Report Options</span></a><!--
--->
+<a href='index.php'><span class="menubtn<?php if ($currentPage == 'index.php') { echo " active"; } ?>" id="firstmenubtn">Home</span></a><a href='import.php'><span class="menubtn<?php if ($currentPage == 'import.php') { echo " active"; } ?>">File Import</span></a><a href='sushi.php'><span class="menubtn<?php if ($currentPage == 'sushi.php') { echo " active"; } ?>">SUSHI</span></a><?php if ($user->isAdmin()) { ?><a href='admin.php'><span class="menubtn<?php if ($currentPage == 'admin.php') { echo " active"; } ?>">Admin</span></a><?php } ?><a href='reporting.php'><span class="menubtn<?php if ($currentPage == 'reporting.php') { echo " active"; } ?>" id="lastmenubtn">Report Options</span></a>
 
-<?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank'><img src='images/usage-reports-button.gif' style='vertical-align:middle; height:100%;'></a>"; ?>
+<?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' class='menubtn' id='onlyButton'><img src='images/seahorse.png' style='vertical-align:middle; height:100%;'>&nbsp;&nbsp;<b>Usage</b> Reports</a>"; ?>
 
 
 </td>
-<td style='width:130px;height:19px;' align='right'>
+<td style='width:230px;height:19px;' align='right'>
 
 <?php
 //only show the 'Change Module' if there are other modules installed or if there is an index to the main CORAL page
@@ -117,7 +106,7 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 
 	<div style='text-align:left;'>
 		<ul class="tabs">
-		<li style="background: url('images/change/coral-change.gif') no-repeat right;">&nbsp;
+		<li class="changeMod"><?= _("Change Module");?>&nbsp;▼
 			<ul class="coraldropdown">
 				<?php if (file_exists($util->getCORALPath() . "index.php")) {?>
 				<li><a href="<?php echo $coralURL; ?>" target='_blank'><img src='images/change/coral-main.gif'></a></li>
@@ -145,8 +134,42 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 			</ul>
 		</li>
 		</ul>
+        <select name="lang" id="lang" class="dropDownLang">
+               <?php
+                $fr="<option value='fr' selected='selected'>Français</option><option value='en'>English</option>";
+                $en="<option value='fr'>Français</option><option value='en' selected='selected'>English</option>";
+                if(isset($_COOKIE["lang"])){
+                    if($_COOKIE["lang"]=='fr'){
+                        echo $fr;
+                    }else{
+                        echo $en;
+                    }
+                }else{
+                    $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+                    if($defLang=='fr'){
+                        echo $fr;
+                    }else{
+                        echo $en;
+                    }
+                }
+                ?>
 
-	</div>
+            </select>
+        </div>
+        <script>
+            $("#lang").change(function() {
+                setLanguage($("#lang").val());
+                location.reload();
+            });
+
+            function setLanguage(lang) {
+                var wl = window.location, now = new Date(), time = now.getTime();
+                var cookievalid=86400000; // 1 jour (1000*60*60*24)
+                time += cookievalid;
+                now.setTime(time);
+                document.cookie ='lang='+lang+';path=/'+';domain='+wl.host+';expires='+now;
+            }
+        </script>
 	<?php
 
 } else {
