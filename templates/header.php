@@ -91,7 +91,7 @@ $coralURL = $util->getCORALURL();
 
 <a href='index.php'><span class="menubtn<?php if ($currentPage == 'index.php') { echo " active"; } ?>" id="firstmenubtn"><?= _("Home");?></span></a><a href='import.php'><span class="menubtn<?php if ($currentPage == 'import.php') { echo " active"; } ?>"><?= _("File Import");?></span></a><a href='sushi.php'><span class="menubtn<?php if ($currentPage == 'sushi.php') { echo " active"; } ?>">SUSHI</span></a><?php if ($user->isAdmin()) { ?><a href='admin.php'><span class="menubtn<?php if ($currentPage == 'admin.php') { echo " active"; } ?>">Admin</span></a><?php } ?><a href='reporting.php'><span class="menubtn<?php if ($currentPage == 'reporting.php') { echo " active"; } ?>" id="lastmenubtn"><?= _("Report Options");?></span></a>
 
-<?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' class='menubtn' id='onlyButton'><img src='images/seahorse.png' style='vertical-align:middle; height:100%;'>&nbsp;&nbsp;<b>Usage</b> Reports</a>"; ?>
+<?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' class='menubtn' id='onlyButton'><img src='images/seahorse.png' style='vertical-align:middle; height:100%;'>&nbsp;&nbsp;<b>"._("Usage")."</b> "._("Reports")."</a>"; ?>
 
 
 </td>

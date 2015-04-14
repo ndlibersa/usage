@@ -1305,7 +1305,7 @@ switch ($action) {
 				echo "<td $classAdd style='padding:3px;'>" . $lastImportDate . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $lastImportDetails . "<br /><a href='" . $logFileURL . "'>"._("view full log")."</a></td>";
 				echo "<td $classAdd style='padding:3px;'><a href='ajax_forms.php?action=getSushiRunForm&sushiServiceID=" . $sushi['sushiServiceID'] . "&height=216&width=348&modal=true' class='thickbox'>"._("run now")."</a></td>";
-				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "&showTab=sushi'>"._("change/test connection")."/a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "&showTab=sushi'>"._("change/test connection")."</a></td>";
 				echo "</tr>";
 			}
 			echo "</table>";

@@ -23,7 +23,7 @@ session_start();
 include_once 'directory.php';
 
 //print header
-$pageTitle='Home';
+$pageTitle=_('Home');
 include 'templates/header.php';
 
 //used for creating a "sticky form" for back buttons
@@ -46,8 +46,8 @@ $_SESSION['ref_script']=$currentPage;
 
 	<table class='noBorder'>
 	<tr><td style='text-align:left;width:75px;' align='left'>
-	<span style='font-size:130%;font-weight:bold;'>Search</span><br />
-	<a href='javascript:void(0)' class='newSearch'>new search</a>
+	<span style='font-size:130%;font-weight:bold;'><?= _("Search");?></span><br />
+	<a href='javascript:void(0)' class='newSearch'><?= _("new search");?></a>
 	</td>
 	<td><div id='div_feedback'>&nbsp;</div>
 	</td></tr>
@@ -56,17 +56,17 @@ $_SESSION['ref_script']=$currentPage;
 	<table class='borderedFormTable' style="width:150px">
 
 	<tr>
-	<td class='searchRow'><label for='searchName'><b>Name (contains)</b></label>
+	<td class='searchRow'><label for='searchName'><b><?= _("Name (contains)");?></b></label>
 	<br />
 	<input type='text' name='searchName' id='searchName' style='width:145px' value="<?php if ($reset != 'Y') echo $_SESSION['plat_searchName']; ?>" /><br />
-	<div id='div_searchName' style='<?php if ((!$_SESSION['plat_searchName']) || ($reset == 'Y')) echo "display:none;"; ?>margin-left:118px;margin-top:5px'><input type='button' name='btn_searchName' value='go!' class='searchButton' /></div>
+	<div id='div_searchName' style='<?php if ((!$_SESSION['plat_searchName']) || ($reset == 'Y')) echo "display:none;"; ?>margin-left:118px;margin-top:5px'><input type='button' name='btn_searchName' value='<?= _("go!");?>' class='searchButton' /></div>
 	<br />
 	</td>
 	</tr>
 
 
 	<tr>
-	<td class='searchRow'><label for='searchFirstLetter'><b>Starts with</b></label>
+	<td class='searchRow'><label for='searchFirstLetter'><b><?= _("Starts with");?></b></label>
 	<br />
 	<?php
 	$platform = new Platform();
