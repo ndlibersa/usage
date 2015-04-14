@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2015-04-13 17:23+0100\n"
-"PO-Revision-Date: 2015-04-13 17:23+0100\n"
+"POT-Creation-Date: 2015-04-14 15:17+0100\n"
+"PO-Revision-Date: 2015-04-14 15:17+0100\n"
 "Last-Translator: Cesar <hernandez.antonio.cesar19@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -309,7 +309,7 @@ msgstr "Ajouter un identifiant"
 msgid "Identifier Type"
 msgstr "Type d'identificateur"
 
-#: ajax_forms.php:874
+#: ajax_forms.php:874 spreadsheet.php:64 spreadsheet.php:84
 msgid "Proprietary ID"
 msgstr "ID du propietaire"
 
@@ -408,6 +408,7 @@ msgstr "Notes de connexion:"
 
 #: ajax_htmldata.php:127 ajax_htmldata.php:188 ajax_htmldata.php:350
 #: ajax_htmldata.php:419 ajax_htmldata.php:901 ajax_htmldata.php:925
+#: uploadComplete.php:315
 msgid "edit"
 msgstr "Modifier"
 
@@ -575,7 +576,7 @@ msgstr "Titres"
 
 #: ajax_htmldata.php:668
 msgid "View Journal Spreadsheet"
-msgstr "Regarder le journal su feuille de calcul"
+msgstr "Regarder la feuille de calcul du journal"
 
 #: ajax_htmldata.php:672
 msgid "View Books Spreadsheet"
@@ -583,7 +584,7 @@ msgstr "Regarder les livres des feuilles de calcul"
 
 #: ajax_htmldata.php:713
 msgid "Journals - Associated Titles and ISSNs"
-msgstr "Journals - Titres Associés et ISSNs"
+msgstr "Journaux - Titres Associés et ISSNs"
 
 #: ajax_htmldata.php:717 ajax_htmldata.php:793
 msgid "Title"
@@ -613,7 +614,7 @@ msgstr "Supprimer"
 msgid "Current Outlier Parameters"
 msgstr "Paramètres courantes des valeurs aberrantes"
 
-#: ajax_htmldata.php:924
+#: ajax_htmldata.php:924 uploadComplete.php:87
 msgid " over plus "
 msgstr " sur plus "
 
@@ -633,9 +634,10 @@ msgstr ""
 msgid "update override"
 msgstr "Mise à jour le remplacement"
 
-#: ajax_htmldata.php:1055 ajax_htmldata.php:1081
+#: ajax_htmldata.php:1055 ajax_htmldata.php:1081 reporting.php:36
+#: reporting.php:59
 msgid "edit report display name"
-msgstr "Mise à jour le nom du report"
+msgstr "Modifier le nom du report"
 
 #: ajax_htmldata.php:1107
 msgid "No imports found."
@@ -659,7 +661,7 @@ msgstr " Registres"
 
 #: ajax_htmldata.php:1229 ajax_htmldata.php:1281 ajax_htmldata.php:1338
 msgid "Platform/Publisher"
-msgstr "PLate-forme/Éditeur"
+msgstr "Plate-forme/Éditeur"
 
 #: ajax_htmldata.php:1230
 msgid "Import Run Date"
@@ -733,7 +735,7 @@ msgstr "Éditeurs"
 msgid "By"
 msgstr "Par"
 
-#: ajax_htmldata.php:1542
+#: ajax_htmldata.php:1542 publisherPlatformList.php:32 reporting.php:41
 msgid "show publisher list"
 msgstr "Afficher la liste des éditeurs"
 
@@ -751,11 +753,256 @@ msgstr "Le nom de la plate-forme des reports a été mise à jour avec succès"
 
 #: ajax_processing.php:458 ajax_processing.php:490
 msgid "Default display list has been updated"
-msgstr "La liste d'affichage par défault a été mis à jour avec succès"
+msgstr "La liste d'affichage par défaut a été mis à jour avec succès"
 
 #: ajax_processing.php:474
 msgid "Publisher Reporting Display Name has been updated"
 msgstr "Le nom d'affichage par les reports a été mise à jour avec succès"
+
+#: import.php:3 index.php:27 templates/header.php:92
+msgid "Home"
+msgstr "Accueil"
+
+#: import.php:14
+msgid "Usage Statistics Import"
+msgstr "Import Statistiques d'Usage"
+
+#: import.php:25
+msgid "Incorrect File format, must be .txt!"
+msgstr "Le format du fichier est incorrecte, doit-être .txt!"
+
+#: import.php:28
+msgid ""
+"There was an error uploading the file.  Please verify the size is not over "
+"5MB and try again!"
+msgstr ""
+"Il y avait un problème avec le téléchargement du fichier. S'il vous plaît, "
+"assurez-vous que la taille n'est pas supérieure de 5 Mo et réessayez!"
+
+#: import.php:31
+msgid "File has an incorrectly formatted name - try filename.txt!"
+msgstr "Le fichier a un format du nom incorrect - réessayez avec filename.txt!"
+
+#: import.php:43
+msgid "File:"
+msgstr "Fichier:"
+
+#: import.php:57
+msgid "Override previous month verification"
+msgstr "Remplacer la vérification du mois précédent"
+
+#: import.php:58
+msgid "Upload"
+msgstr "Télécharger"
+
+#: import.php:68
+msgid "Instructions:"
+msgstr "Mode d'emploi:"
+
+#: import.php:70
+msgid "Save file as .txt files in tab delimited format"
+msgstr "Enregistrez le fichier comme .txt dans l'onglet du format delimité"
+
+#: import.php:71
+msgid "File may not be larger than 5MB"
+msgstr "Le fichier ne doit pas supérieur de 5 Mo"
+
+#: import.php:72
+msgid ""
+"Ensure column headers conform to Counter's standards for the report type"
+msgstr ""
+"Assurez-vous l'entête des columnes sont d'accord aux Counters standards pour "
+"le type de rapport"
+
+#: import.php:73
+msgid "More info:"
+msgstr "Plus d'information:"
+
+#: import.php:82
+msgid "Recent Imports"
+msgstr "Importations récentes"
+
+#: index.php:50
+msgid "Search"
+msgstr "Recherche"
+
+#: index.php:51
+msgid "new search"
+msgstr "Nouvelle recherche"
+
+#: index.php:60
+msgid "Name (contains)"
+msgstr "Nom (contains)"
+
+#: index.php:63
+msgid "go!"
+msgstr "Valider!"
+
+#: index.php:70
+msgid "Starts with"
+msgstr "Commence avec"
+
+#: not_avail.php:21
+msgid "Not Available"
+msgstr "No disponible"
+
+#: not_avail.php:61
+msgid ""
+"You have not been set up to have access to the Usage Statistics Module.  "
+"Please contact"
+msgstr ""
+"Vous n'avez pas été la configuration pour accéder au Module Usage "
+"Statistics. S'il vous plaît contactez"
+
+#: not_avail.php:61
+msgid "to be added."
+msgstr "pour êtes-vous ajouté."
+
+#: publisherPlatform.php:20
+msgid "View or Edit Publisher / Platform"
+msgstr "Regarder ou Modifier Éditeur / Plate-forme"
+
+#: publisherPlatformList.php:4
+msgid "Edit Publishers / Platforms"
+msgstr "Modifier Éditeur / Plate-forme"
+
+#: publisherPlatformList.php:16
+msgid "Publisher / Platform Update"
+msgstr "Mise àa jour Éditeur / Plate-forme"
+
+#: publisherPlatformList.php:31 publisherPlatformList.php:42
+msgid "view / edit"
+msgstr "Regarder / Modifier"
+
+#: publisherPlatformList.php:50 reporting.php:71
+msgid "No publishers / platforms found."
+msgstr "Aucun Éditeur / plate-forme trouvé."
+
+#: reporting.php:2 templates/header.php:92
+msgid "Report Options"
+msgstr "Options des reports"
+
+#: reporting.php:10
+msgid "Publisher / Platform Reporting Administrative Update"
+msgstr "Éditeur / Mise à jour du Rapport Administrative de la Plate-forme"
+
+#: reporting.php:12
+msgid "Directions:"
+msgstr "Directions:"
+
+#: reporting.php:12
+msgid ""
+"Mark the checkboxes to add / remove specific Platforms or Publishers to the "
+"default report list."
+msgstr ""
+"Marquer les checkboxes por ajouter / supprimer Plate-formes specifiés ou "
+"Éditeurs par défaut dans la liste du rapport."
+
+#: reporting.php:12
+msgid ""
+"Click 'edit report display name' to change the display name in the reporting "
+"system for specific Platforms or Publishers."
+msgstr "Cliquez sur 'Modifier le nom du report'"
+
+#: reporting.php:25
+msgid "Available"
+msgstr "Disponible"
+
+#: reporting.php:25
+msgid "As Default"
+msgstr "Par Défaut"
+
+#: reporting.php:25
+msgid "Report"
+msgstr "Rapport"
+
+#: spreadsheet.php:60
+msgid "Publisher"
+msgstr "Éditeur"
+
+#: spreadsheet.php:61
+msgid "Platform"
+msgstr "Plate-forme"
+
+#: spreadsheet.php:65
+msgid "Print ISSN"
+msgstr "ISSN Imprimable"
+
+#: spreadsheet.php:66
+msgid "Online ISSN"
+msgstr "ISSN en ligne"
+
+#: spreadsheet.php:124
+msgid "Total for all Journals"
+msgstr "Total pour tous les journaux"
+
+#: spreadsheet.php:126
+msgid "Total for all Books"
+msgstr "Total pour tous les Livres"
+
+#: spreadsheet.php:128
+msgid "Total for all Databases"
+msgstr "Total pour toutes les bases de données"
+
+#: sushi.php:26
+msgid "SUSHI Import"
+msgstr "Importer sur SUSHI"
+
+#: sushi.php:45
+msgid "Sushi Output Log:"
+msgstr "Sortie du log de SUSHI"
+
+#: sushi.php:56
+msgid "SUSHI Administration"
+msgstr "SUSHI Administration"
+
+#: sushi.php:62
+msgid "Add new platform for SUSHI"
+msgstr "Ajouter une nouvelle plate-forme par SUSHI"
+
+#: sushi.php:65
+msgid "Outstanding Import Queue"
+msgstr "Importer queue exeptionnelle"
+
+#: sushi.php:70
+msgid "Last Failed SUSHI Imports"
+msgstr "Dérnieres importations SUSHI échouées"
+
+#: sushi.php:74
+msgid "All SUSHI Services"
+msgstr "Tous les services SUSHI"
+
+#: sushiSchedule.php:34
+msgid " SUSHI runs found for day: "
+msgstr " Éxecutions de SUSHI touvées pour aujourd'hui: "
+
+#: sushiSchedule.php:53
+msgid "Log in to"
+msgstr "Log dans"
+
+#: sushiSchedule.php:53
+msgid "Sushi Administration"
+msgstr "SUSHI Administration"
+
+#: sushiSchedule.php:53
+msgid "for more information."
+msgstr "pour plus d'information."
+
+#: sushiSchedule.php:71
+msgid "Run complete.  Log has been emailed to "
+msgstr "Éxecution complète. Le Log a été envoyé à "
+
+#: sushiSchedule.php:73
+msgid "Email to "
+msgstr "Email par "
+
+#: sushiSchedule.php:73
+msgid " Failed!"
+msgstr " a échoué!"
+
+#: sushiSchedule.php:78
+msgid "Nothing to see here!  (no sushi scheduled today)"
+msgstr "Il n'y a pas pour regarder ici! (pas de SUSHI prévue aujourd'hui)"
 
 #: templates/header.php:54
 msgid ""
@@ -781,16 +1028,16 @@ msgid "logout"
 msgstr "Se déconnecter"
 
 #: templates/header.php:92
-msgid "Home"
-msgstr "Accueil"
-
-#: templates/header.php:92
 msgid "File Import"
 msgstr "Importer un fichier"
 
-#: templates/header.php:92
-msgid "Report Options"
-msgstr "Options des reports"
+#: templates/header.php:94
+msgid "Usage"
+msgstr "Usage"
+
+#: templates/header.php:94
+msgid "Reports"
+msgstr "Reports"
 
 #: templates/header.php:109
 msgid "Change Module"
@@ -803,3 +1050,290 @@ msgstr "Français"
 #: templates/header.php:139 templates/header.php:140
 msgid "English"
 msgstr "Anglais"
+
+#: uploadComplete.php:25
+msgid "Upload Process Complete"
+msgstr "Processus de téléchargement complet"
+
+#: uploadComplete.php:65
+msgid "Process started on "
+msgstr "Processus commencé sur "
+
+#: uploadComplete.php:66
+msgid "File: "
+msgstr "Fichier: "
+
+#: uploadComplete.php:67
+msgid "Report Format: "
+msgstr "Format du Rapport:"
+
+#: uploadComplete.php:80
+msgid "Outlier Parameters:"
+msgstr "Paramètres des valeurs aberrantes:"
+
+#: uploadComplete.php:87
+msgid "Level "
+msgstr "Niveau"
+
+#: uploadComplete.php:87
+msgid "over"
+msgstr "sur"
+
+#: uploadComplete.php:244
+msgid "Override indicator set - all months will be imported."
+msgstr ""
+"Ensemble d'indicateurs de remplacement - tous les mois seront importés."
+
+#: uploadComplete.php:253
+msgid ""
+"Entire year already exists for this Platform / year.  No counts will be "
+"imported."
+msgstr ""
+"L'année est déjà existant pour cette Plate-forme / année. Pas des counts "
+"seront importés."
+
+#: uploadComplete.php:257
+msgid "Month Started at: "
+msgstr "Le mois commence à: "
+
+#: uploadComplete.php:259
+msgid ""
+"No records exist for this Platform / year.  Import will start with month 1."
+msgstr ""
+"Pas des registres existants pour cette Plate-forme / année. L'importation "
+"commencera avec le 1er mois."
+
+#: uploadComplete.php:262
+msgid ""
+"Partial year records exist for this Platform / year.  Import will start with "
+"month 1 and end with month"
+msgstr ""
+"Registres partielles existants de cet année par cette Plate-forme / année. "
+"L'importation commencera avec le 1er mois et finira avec le mois"
+
+#: uploadComplete.php:281
+msgid "Year: "
+msgstr "Année: "
+
+#: uploadComplete.php:315
+msgid "New Platform set up: "
+msgstr "Nouvelle Plate-forme configurée: "
+
+#: uploadComplete.php:397
+msgid "New Publisher / Platform set up: "
+msgstr "Nouveau Éditeur / Plate-forme configuré: "
+
+#: uploadComplete.php:614
+msgid "Publisher / Platform: "
+msgstr "Éditeur / Plate-forme: "
+
+#: uploadComplete.php:623
+msgid "Title: "
+msgstr "Titre: "
+
+#: uploadComplete.php:660
+msgid "Duplicate record for this Print ISSN in same spreadsheet: Month: "
+msgstr ""
+"Registre en double pour cet ISSN Imprimable dans la même feuille de calcul: "
+"Mois: "
+
+#: uploadComplete.php:660
+msgid "  New Count: "
+msgstr "  Nouveau comte: "
+
+#: uploadComplete.php:744
+msgid "New Usage Count Record Added: Month: "
+msgstr "Nouvelle comte de registre d'Usage ajouté: Mois: "
+
+#: uploadComplete.php:744 uploadComplete.php:746
+msgid "  Count: "
+msgstr "  Comte: "
+
+#: uploadComplete.php:746
+msgid "Usage Count Record is not numeric for month: "
+msgstr "Comte de registre d'Usage n'est pas numeric pour le mois: "
+
+#: uploadComplete.php:746
+msgid " imported as 0."
+msgstr " importé comme 0."
+
+#: uploadComplete.php:753
+msgid "Outlier found for this record: Level "
+msgstr "Valeur aberrante trouvé pour ce registre: Niveau "
+
+#: uploadComplete.php:762
+msgid "Current or future month will not be imported: "
+msgstr "Le mois actuelle ou le future ne sera pas importé: "
+
+#: uploadComplete.php:801
+msgid "YTD Already Exists for this Print ISSN, counts are added together."
+msgstr ""
+"YTD est déjà existant dans cet ISSN Imprimable, les comtes sont ajoutés."
+
+#: uploadComplete.php:825
+msgid "YTD Total Count: "
+msgstr "YTD Comte Totale: "
+
+#: uploadComplete.php:825
+msgid "YTD HTML Count: "
+msgstr "YTD Comte HTML: "
+
+#: uploadComplete.php:825
+msgid "YTD PDF Count: "
+msgstr "YTD Comte PDF: "
+
+#: uploadComplete.php:832
+msgid "No YTD import performed since monthly stats were not imported"
+msgstr ""
+"Aucune importation YTD réalisées depuis statistiques mensuelles ne ont pas "
+"été importées"
+
+#: uploadComplete.php:842
+msgid ""
+"Title match did not complete correctly, please check ISBN / ISSN to verify "
+"for Title:  "
+msgstr ""
+"La comparasion de titre n'a pas completé correctement, s'il vous plaît "
+"révisez l'ISBN / ISSN pour vérifier le titre: "
+
+#: uploadComplete.php:958
+msgid "Status"
+msgstr "Statut"
+
+#: uploadComplete.php:960
+msgid "File archived as"
+msgstr "Fichier enregistré comme"
+
+#: uploadComplete.php:961
+msgid "Log file available at:"
+msgstr "Le fichier Log est disponible dans:"
+
+#: uploadComplete.php:962
+msgid "Process completed."
+msgstr "Le processus est complet."
+
+#: uploadComplete.php:964
+msgid "Summary:"
+msgstr "Résume:"
+
+#: uploadComplete.php:964
+msgid " titles processed."
+msgstr " titres traités."
+
+#: uploadConfirmation.php:33
+msgid "SUSHI Import Confirmation"
+msgstr "Confirmation d'importation SUSHI"
+
+#: uploadConfirmation.php:70
+msgid "The file "
+msgstr "Le fichier "
+
+#: uploadConfirmation.php:70
+msgid " has been uploaded successfully."
+msgstr " a été téléchargé avec succès."
+
+#: uploadConfirmation.php:70
+msgid "Please confirm the following data:"
+msgstr "S'il vous plaît, confirmez les suivantes données:"
+
+#: uploadConfirmation.php:90
+msgid "Upload Process Confirmation"
+msgstr "Confirmation du Processus de Téléchargement"
+
+#: uploadConfirmation.php:142 uploadConfirmation.php:207
+msgid " for "
+msgstr " pour "
+
+#: uploadConfirmation.php:190
+msgid "Looking for"
+msgstr "À la recherche de"
+
+#: uploadConfirmation.php:190
+msgid "in column "
+msgstr "dans la colonne "
+
+#: uploadConfirmation.php:190
+msgid " but found"
+msgstr " mais trouvé"
+
+#: uploadConfirmation.php:265
+msgid "Error with Format"
+msgstr "Il y a un erreur avec le format"
+
+#: uploadConfirmation.php:265
+msgid "Report format is set to"
+msgstr "Le format du Rapport est établi pour"
+
+#: uploadConfirmation.php:265
+msgid ""
+"but does not match the column names listed in layouts.ini for this format"
+msgstr ""
+"mais il n'y a pas des noms des colonnes listées dans layouts.ini pour ce "
+"format"
+
+#: uploadConfirmation.php:265
+msgid "Expecting columns: "
+msgstr "Attendons colonnes: "
+
+#: uploadConfirmation.php:265
+msgid "Found columns: "
+msgstr "Colonnes trouvées"
+
+#: uploadConfirmation.php:265
+msgid ""
+"If problems persist you can copy an existing header that works into this "
+"file."
+msgstr ""
+"Si les problèmes continuent vous pouvez copier un entête déjà existant qui "
+"fonctionne dans ce fichier."
+
+#: uploadConfirmation.php:270
+msgid "Error with Setup:  This report format is not set up in layouts.ini."
+msgstr ""
+"Erreur avec la configuration: Le format de ce rapport n'est pas configuré "
+"dans layouts.ini."
+
+#: uploadConfirmation.php:275
+msgid ""
+"Error with Format:  The line preceding the first should start with 'Total'."
+msgstr ""
+"Erreur avec le format: La ligne précédant le premier devrait commencer avec "
+"'Total'."
+
+#: uploadConfirmation.php:280
+msgid "Error with Year:  Year listed in header ("
+msgstr "Erreur avec l'année: L'année listée dans l'entête ("
+
+#: uploadConfirmation.php:280
+msgid ") may not be ahead of current year.  Please correct and submit again."
+msgstr ""
+") ne devrait pas être devant l'année actuelle. S'il vous plaît corrigez là "
+"et réessayez."
+
+#: uploadConfirmation.php:285
+msgid ""
+"File is flagged to override verifications of previous month data.  If this "
+"is incorrect use 'Cancel' to fix."
+msgstr ""
+"Le fichier est marqué pour remplacer les vérifications de données des mois "
+"précédents. Si ça c'est incorrect utilisez 'Anuler' pour le réparer."
+
+#: uploadConfirmation.php:292
+msgid "Report Format:"
+msgstr "Format du Rapport:"
+
+#: uploadConfirmation.php:292
+msgid ""
+"If this is incorrect, please use 'Cancel' to go back and fix the headers of "
+"the file."
+msgstr ""
+"Si ça c'est incorrect utilisez 'Anuler' pour retourner et réparer les "
+"entêtes du fichier."
+
+#: uploadConfirmation.php:308
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: uploadConfirmation.php:311
+msgid "Cancel"
+msgstr "Annuler"
