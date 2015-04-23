@@ -43,7 +43,7 @@ switch ($action) {
 
 		?>
 
-		<h3>Import History for <?php echo $platform->name; ?></h3>
+		<h3><?= _("Import History for ").$platform->name; ?></h3>
 
 		<div id="div_imports">
 

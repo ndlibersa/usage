@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2015-04-23 15:46+0100\n"
-"PO-Revision-Date: 2015-04-23 15:46+0100\n"
+"POT-Creation-Date: 2015-04-23 16:24+0100\n"
+"PO-Revision-Date: 2015-04-23 16:24+0100\n"
 "Last-Translator: Cesar <hernandez.antonio.cesar19@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -369,6 +369,10 @@ msgstr "Fonction "
 #: ajax_forms.php:1044 ajax_htmldata.php:1640 ajax_processing.php:598
 msgid " not set up!"
 msgstr " ne pas etabli!"
+
+#: ajax_htmldata.php:46
+msgid "Import History for "
+msgstr "Histoire d'importation de "
 
 #: ajax_htmldata.php:61 ajax_htmldata.php:1148
 msgid "Import Date"
