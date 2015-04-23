@@ -126,7 +126,7 @@ switch ($action) {
 					<td style="padding-top:8px;padding-right:8px;">
 						<table class='noBorderTable' style='width:100%;'>
 							<tr>
-								<td style='text-align:left'><input type='<?= _("submit");?>' value='submit for processing' name='submitSushiRun' id ='submitSushiRun'></td>
+								<td style='text-align:left'><input type='submit' value='<?= _("submit for processing");?>' name='submitSushiRun' id ='submitSushiRun'></td>
 								<td style='text-align:right'><input type='button' value='<?= _("cancel");?>' onclick="tb_remove()"></td>
 							</tr>
 						</table>

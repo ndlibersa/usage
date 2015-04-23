@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2015-04-14 15:17+0100\n"
-"PO-Revision-Date: 2015-04-14 15:17+0100\n"
+"POT-Creation-Date: 2015-04-23 15:46+0100\n"
+"PO-Revision-Date: 2015-04-23 15:46+0100\n"
 "Last-Translator: Cesar <hernandez.antonio.cesar19@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -23,7 +23,8 @@ msgstr "Utilisateurs"
 msgid "add new user"
 msgstr "Ajouter un nouveau utilisateur"
 
-#: admin.php:16 admin.php:31 admin.php:46
+#: admin.php:16 admin.php:31 admin.php:46 js/import.js:38
+#: js/publisherPlatform.js:139
 msgid "Loading..."
 msgstr "Chargement..."
 
@@ -106,10 +107,9 @@ msgid "Ensure platform name stays CORAL's Platform Name:"
 msgstr ""
 "Vérifiez que le nom de la plate-forme reste comme la plate-forme CORAL:"
 
-#: ajax_forms.php:129 ajax_forms.php:327 ajax_forms.php:396 ajax_forms.php:463
-#: ajax_forms.php:572 ajax_forms.php:626 ajax_forms.php:832 ajax_forms.php:886
-msgid "submit"
-msgstr "Confirmer"
+#: ajax_forms.php:129
+msgid "submit for processing"
+msgstr "Valider pour l'exécuter"
 
 #: ajax_forms.php:130 ajax_forms.php:170 ajax_forms.php:328 ajax_forms.php:397
 #: ajax_forms.php:464 ajax_forms.php:573 ajax_forms.php:627 ajax_forms.php:833
@@ -131,7 +131,7 @@ msgstr "Niveau"
 
 #: ajax_forms.php:165
 msgid "Count Over"
-msgstr "Comte sur"
+msgstr "Count sur"
 
 #: ajax_forms.php:166
 msgid "Over prior 12 months"
@@ -162,6 +162,11 @@ msgstr "Année de fin:"
 #: ajax_forms.php:318
 msgid "Interface Notes:"
 msgstr "Notes de l'interface:"
+
+#: ajax_forms.php:327 ajax_forms.php:396 ajax_forms.php:463 ajax_forms.php:572
+#: ajax_forms.php:626 ajax_forms.php:832 ajax_forms.php:886
+msgid "submit"
+msgstr "Confirmer"
 
 #: ajax_forms.php:376
 msgid "Publisher Notes"
@@ -476,7 +481,7 @@ msgstr "Ajouter nouvelles notes d'éditeur"
 
 #: ajax_htmldata.php:396
 msgid "Counter"
-msgstr "Compteur"
+msgstr "Counter"
 
 #: ajax_htmldata.php:396
 msgid "Compliant?"
@@ -736,6 +741,7 @@ msgid "By"
 msgstr "Par"
 
 #: ajax_htmldata.php:1542 publisherPlatformList.php:32 reporting.php:41
+#: js/index.js:128
 msgid "show publisher list"
 msgstr "Afficher la liste des éditeurs"
 
@@ -759,7 +765,7 @@ msgstr "La liste d'affichage par défaut a été mis à jour avec succès"
 msgid "Publisher Reporting Display Name has been updated"
 msgstr "Le nom d'affichage par les reports a été mise à jour avec succès"
 
-#: import.php:3 index.php:27 templates/header.php:92
+#: import.php:3 index.php:27 templates/header.php:105
 msgid "Home"
 msgstr "Accueil"
 
@@ -878,7 +884,7 @@ msgstr "Regarder / Modifier"
 msgid "No publishers / platforms found."
 msgstr "Aucun Éditeur / plate-forme trouvé."
 
-#: reporting.php:2 templates/header.php:92
+#: reporting.php:2 templates/header.php:105
 msgid "Report Options"
 msgstr "Options des reports"
 
@@ -1004,7 +1010,7 @@ msgstr " a échoué!"
 msgid "Nothing to see here!  (no sushi scheduled today)"
 msgstr "Il n'y a pas pour regarder ici! (pas de SUSHI prévue aujourd'hui)"
 
-#: templates/header.php:54
+#: templates/header.php:67
 msgid ""
 "JavaScript must be enabled in order for you to use CORAL. However, it seems "
 "JavaScript is either disabled or not supported by your browser. To use "
@@ -1015,39 +1021,39 @@ msgstr ""
 "utiliser CORAL, activez JavaScript en modifiant la configuration de votre "
 "navigateur, après "
 
-#: templates/header.php:54
+#: templates/header.php:67
 msgid "try again"
 msgstr "réessayez"
 
-#: templates/header.php:73
+#: templates/header.php:86
 msgid "Hello, "
 msgstr "Bonjour, "
 
-#: templates/header.php:82
+#: templates/header.php:95
 msgid "logout"
 msgstr "Se déconnecter"
 
-#: templates/header.php:92
+#: templates/header.php:105
 msgid "File Import"
 msgstr "Importer un fichier"
 
-#: templates/header.php:94
+#: templates/header.php:107
 msgid "Usage"
 msgstr "Usage"
 
-#: templates/header.php:94
+#: templates/header.php:107
 msgid "Reports"
 msgstr "Reports"
 
-#: templates/header.php:109
+#: templates/header.php:122
 msgid "Change Module"
 msgstr "Changer le module"
 
-#: templates/header.php:139 templates/header.php:140
+#: templates/header.php:152 templates/header.php:153
 msgid "French"
 msgstr "Français"
 
-#: templates/header.php:139 templates/header.php:140
+#: templates/header.php:152 templates/header.php:153
 msgid "English"
 msgstr "Anglais"
 
@@ -1139,19 +1145,19 @@ msgstr ""
 
 #: uploadComplete.php:660
 msgid "  New Count: "
-msgstr "  Nouveau comte: "
+msgstr "  Nouveau count: "
 
 #: uploadComplete.php:744
 msgid "New Usage Count Record Added: Month: "
-msgstr "Nouvelle comte de registre d'Usage ajouté: Mois: "
+msgstr "Nouvelle Count de registre d'Usage ajouté: Mois: "
 
 #: uploadComplete.php:744 uploadComplete.php:746
 msgid "  Count: "
-msgstr "  Comte: "
+msgstr "  Count: "
 
 #: uploadComplete.php:746
 msgid "Usage Count Record is not numeric for month: "
-msgstr "Comte de registre d'Usage n'est pas numeric pour le mois: "
+msgstr "Count de registre d'Usage n'est pas numeric pour le mois: "
 
 #: uploadComplete.php:746
 msgid " imported as 0."
@@ -1168,19 +1174,19 @@ msgstr "Le mois actuelle ou le future ne sera pas importé: "
 #: uploadComplete.php:801
 msgid "YTD Already Exists for this Print ISSN, counts are added together."
 msgstr ""
-"YTD est déjà existant dans cet ISSN Imprimable, les comtes sont ajoutés."
+"YTD est déjà existant dans cet ISSN Imprimable, les counts sont ajoutés."
 
 #: uploadComplete.php:825
 msgid "YTD Total Count: "
-msgstr "YTD Comte Totale: "
+msgstr "YTD Count Totale: "
 
 #: uploadComplete.php:825
 msgid "YTD HTML Count: "
-msgstr "YTD Comte HTML: "
+msgstr "YTD Count HTML: "
 
 #: uploadComplete.php:825
 msgid "YTD PDF Count: "
-msgstr "YTD Comte PDF: "
+msgstr "YTD Count PDF: "
 
 #: uploadComplete.php:832
 msgid "No YTD import performed since monthly stats were not imported"
@@ -1337,3 +1343,109 @@ msgstr "Confirmer"
 #: uploadConfirmation.php:311
 msgid "Cancel"
 msgstr "Annuler"
+
+#: js/admin.js:62
+msgid "Do you really want to delete this user?"
+msgstr "Voulez-vous vraiment supprimer cet utilisateur?"
+
+#: js/admin.js:64 js/index.js:40 js/publisherPlatform.js:81
+#: js/publisherPlatform.js:99 js/publisherPlatform.js:117
+#: js/publisherPlatform.js:136 js/publisherPlatform.js:155
+#: js/publisherPlatform.js:227 js/sushi.js:80
+msgid "Processing..."
+msgstr "En traitement ..."
+
+#: js/admin.js:123
+msgid "Do you really want to delete this email address?"
+msgstr "Voulez-vous vraiment supprimer cette adress email?"
+
+#: js/admin.js:187
+msgid "Count over must be a number."
+msgstr "Count doit être un nombre."
+
+#: js/admin.js:188
+#, javascript-format
+msgid "% over must be a number."
+msgstr "% doit être un nombre."
+
+#: js/forms/identifierSubmitForm.js:71
+msgid "Identifier must be valid format."
+msgstr "L'identifiant doit être un format valide."
+
+#: js/forms/organizationForm.js:34
+msgid "This organization doesn't exist in the CORAL Organizations module."
+msgstr "Cette organisation n'existe pas dans le module Organizations de CORAL."
+
+#: js/forms/organizationForm.js:97
+msgid "This organization doesn't exist in the CORAL Organizations Module."
+msgstr "Cette organisation n'existe pas dans le module Organizations de CORAL."
+
+#: js/forms/outlierSubmitForm.js:94
+msgid ""
+"Count is required.  If you wish to remove the count the outlier should be "
+"ignored."
+msgstr ""
+"Count est nécessaire. Si vous souhaitez supprimer le comte la valeur "
+"aberrante doit être ignorée."
+
+#: js/forms/overrideSubmitForm.js:58
+msgid "Count is required."
+msgstr "Count est nécessaire."
+
+#: js/forms/platformNoteSubmitForm.js:54
+#: js/forms/publisherNoteSubmitForm.js:55
+msgid "Start Year must be 4 numbers and start with 19 or 20."
+msgstr "L'année de début doit être 4 nombres et commencer avec 19 ou 20."
+
+#: js/forms/platformNoteSubmitForm.js:55
+#: js/forms/publisherNoteSubmitForm.js:56
+msgid "End Year must be 4 numbers and start with 19 or 20."
+msgstr "L'année finale doit être 4 nombres et commencer avec 19 ou 20."
+
+#: js/forms/platformNoteSubmitForm.js:56
+msgid "Please choose Yes or No for Counter Compliant."
+msgstr "S'il vous plaît choisissez Yes ou No pour le Counter compilant "
+
+#: js/import.js:65
+msgid "Please select a file."
+msgstr "S'il vous plaît selectionnez un fichier."
+
+#: js/index.js:132
+msgid "hide publisher list"
+msgstr "Cacher la liste d'éditeur"
+
+#: js/publisherPlatform.js:175
+msgid "Do you really want to remove this interface note?"
+msgstr "Voulez-vous vraiment enlever cette note d'interface?"
+
+#: js/publisherPlatform.js:193
+msgid "Do you really want to remove this Publisher note?"
+msgstr "Voulez-vous vraiment enlever cette note d'éditeur?"
+
+#: js/publisherPlatform.js:211
+msgid "Do you really want to remove this login information?"
+msgstr "Voulez-vous vraiment enlever cette information de connexion?"
+
+#: js/publisherPlatform.js:226
+msgid "Do you really want to delete this month?"
+msgstr "Voulez-vous vraiment supprimer ce mois?"
+
+#: js/publisherPlatform.js:244
+msgid "Do you really want to delete this "
+msgstr "Voulez-vous vraiment supprimer ce "
+
+#: js/publisherPlatform.js:263 js/sushi.js:104
+msgid "Running..."
+msgstr "En exécution..."
+
+#: js/publisherPlatformList.js:35 js/reporting.js:35
+msgid "show Publisher list"
+msgstr "Afficher la liste des éditeurs"
+
+#: js/publisherPlatformList.js:39 js/reporting.js:39
+msgid "hide Publisher list"
+msgstr "Cacher la liste des éditeurs"
+
+#: js/sushi.js:78
+msgid "Do you really want to delete this import?"
+msgstr "Voulez-vous vraiment supprimer cette importation?"

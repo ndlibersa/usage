@@ -59,9 +59,9 @@
 
  function deleteUser(loginID){
  
- 	if (confirm("Do you really want to delete this user?") == true) {
+ 	if (confirm(_("Do you really want to delete this user?")) == true) {
 
-	       $('#span_User_response').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
+	       $('#span_User_response').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;"+_("Processing..."));
 	       $.ajax({
 		  type:       "GET",
 		  url:        "ajax_processing.php",
@@ -120,7 +120,7 @@
 
   function deleteLogEmailAddress(addressID){
 
-     if (confirm("Do you really want to delete this email address?") == true) {
+     if (confirm(_("Do you really want to delete this email address?")) == true) {
 	$.ajax({
           type:       "GET",
           url:        "ajax_processing.php",
@@ -184,8 +184,8 @@
  //validates fields for outlier form
  function validateForm (){
  	myReturn=0;
- 	if (!validateNumber('overageCount','Count over must be a number.')) myReturn="1";
- 	if (!validateNumber('overagePercent','% over must be a number.')) myReturn="1";
+ 	if (!validateNumber('overageCount',_("Count over must be a number."))) myReturn="1";
+ 	if (!validateNumber('overagePercent',_("% over must be a number."))) myReturn="1";
  
  	if (myReturn == "1"){
  		return false;

@@ -48,6 +48,19 @@ $coralURL = $util->getCORALURL();
 <script type="text/javascript" src="js/plugins/thickbox.js"></script>
 <script type="text/javascript" src="js/plugins/jquery.tooltip.js"></script>
 <script type="text/javascript" src="js/plugins/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="js/plugins/Gettext.js"></script>
+<?php
+   if(isset($_COOKIE["lang"])){
+        if($_COOKIE["lang"]=='fr'){
+            echo "<link rel='gettext' type='application/x-po' href='./locale/fr_FR/LC_MESSAGES/messages.po'>";
+        }
+    }else{
+        $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+        if($defLang=='fr'){
+            echo "<link rel='gettext' type='application/x-po' href='./locale/fr_FR/LC_MESSAGES/messages.po'>";
+        }
+    } 
+?>
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
