@@ -16,7 +16,7 @@ class CORALInstaller {
   protected $config;
   protected $updates = array(
     "1.1" => array(
-      "privileges" => array("ALTER","CREATE"),
+      "privileges" => array("ALTER","CREATE","DROP"),
       "installedTablesCheck" => array("Layout"),
       "description" => "<p>The 1.1 update to the CORAL Usage module includes a number of enhancements:</p>
       <ul>
