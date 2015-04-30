@@ -1,6 +1,6 @@
 /*
 **************************************************************************************************************************
-** CORAL Usage Statistics Module v. 1.1
+** CORAL Usage Statistics Module
 **
 ** Copyright (c) 2010 University of Notre Dame
 **
