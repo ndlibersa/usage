@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2015-04-23 16:24+0100\n"
-"PO-Revision-Date: 2015-04-23 16:24+0100\n"
+"POT-Creation-Date: 2015-04-29 12:25+0100\n"
+"PO-Revision-Date: 2015-04-29 12:26+0100\n"
 "Last-Translator: Cesar <hernandez.antonio.cesar19@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -67,6 +67,18 @@ msgstr "A échoué"
 #: admin/classes/domain/ImportLog.php:44
 msgid "awaiting import"
 msgstr "Dans l'attente d'import"
+
+#: admin/classes/domain/SushiService.php:186
+msgid "At least one report type must be set up!"
+msgstr "Au moins un type de rapport doit être configuré!"
+
+#: admin/classes/domain/SushiService.php:188
+msgid "Connection test successful!"
+msgstr "La connexion de test a terminé avec succès!"
+
+#: admin/classes/domain/SushiService.php:211
+msgid "No report types are set up!"
+msgstr "Aucun type de rapport a été configuré!"
 
 #: ajax_forms.php:39 ajax_forms.php:170 ajax_forms.php:259 ajax_forms.php:356
 #: ajax_forms.php:423 ajax_forms.php:488 ajax_forms.php:980
