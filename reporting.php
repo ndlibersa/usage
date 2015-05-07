@@ -7,9 +7,9 @@ include 'templates/header.php';
 
 <table class="headerTable">
 <tr><td>
-<div class="headerText" style='margin-bottom:9px;'><?= _("Publisher / Platform Reporting Administrative Update");?></div>
+<div class="headerText" style='margin-bottom:9px;'><?php echo _("Publisher / Platform Reporting Administrative Update");?></div>
 
-<b><?= _("Directions:");?></b>  <?=_("Mark the checkboxes to add / remove specific Platforms or Publishers to the default report list.");?><br /><?=_("Click 'edit report display name' to change the display name in the reporting system for specific Platforms or Publishers.");?>
+<b><?php echo _("Directions:");?></b>  <?php echo_("Mark the checkboxes to add / remove specific Platforms or Publishers to the default report list.");?><br /><?php echo_("Click 'edit report display name' to change the display name in the reporting system for specific Platforms or Publishers.");?>
 <br /><br />
 <?php
 

@@ -53,7 +53,7 @@ if ((isset($_POST['sushiServiceID'])) and ($_POST['sushiServiceID'] > 0)) {
 		<tr><td>
 			<table style='width:897px;'>
 			<tr style='vertical-align:top'>
-			<td><span class="headerText"><?= _("SUSHI Administration");?></span><br /></td>
+			<td><span class="headerText"><?php echo _("SUSHI Administration");?></span><br /></td>
 			<td style='text-align:right;'>&nbsp;</td>
 			</tr>
 			</table>
@@ -72,11 +72,11 @@ if (isset($logText)) {
 
 
 			<br /><br /><br />
-			<div class="headerText" style='margin-bottom:9px;'><?= _("Last Failed SUSHI Imports");?>&nbsp;&nbsp;&nbsp;<span id='span_failed_feedback'></span></div>
+			<div class="headerText" style='margin-bottom:9px;'><?php echo _("Last Failed SUSHI Imports");?>&nbsp;&nbsp;&nbsp;<span id='span_failed_feedback'></span></div>
 			<div id="div_FailedSushiImports"></div>
 
 			<br /><br /><br />
-			<div class="headerText" style='margin-bottom:9px;'><?= _("All SUSHI Services");?>&nbsp;&nbsp;&nbsp;<span id='span_upcoming_feedback'></span></div>
+			<div class="headerText" style='margin-bottom:9px;'><?php echo _("All SUSHI Services");?>&nbsp;&nbsp;&nbsp;<span id='span_upcoming_feedback'></span></div>
 			<div id="div_AllSushiServices"></div>
 
 

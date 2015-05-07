@@ -13,7 +13,7 @@ include 'templates/header.php';
 
 <table class="headerTable">
 <tr><td>
-<div class="headerText"><?= _("Publisher / Platform Update");?></div>
+<div class="headerText"><?php echo _("Publisher / Platform Update");?></div>
 
   <br />
 

@@ -57,13 +57,13 @@ header("Content-Disposition: attachment; filename=" . $excelfile);
 <table border='1'>
 <tr>
 <th>&nbsp;</th>
-<th><?= _("Publisher");?></th>
-<th><?= _("Platform");?></th>
+<th><?php echo _("Publisher");?></th>
+<th><?php echo _("Platform");?></th>
 <?php if ($resourceType == "Journal"){ ?>
 	<th>DOI</th>
-	<th><?= _("Proprietary ID");?></th>
-	<th><?= _("Print ISSN");?></th>
-	<th><?= _("Online ISSN");?></th>
+	<th><?php echo _("Proprietary ID");?></th>
+	<th><?php echo _("Print ISSN");?></th>
+	<th><?php echo _("Online ISSN");?></th>
 	<th>YTD Total</th>
 	<th>YTD HTML</th>
 	<th>YTD PDF</th>
@@ -81,7 +81,7 @@ header("Content-Disposition: attachment; filename=" . $excelfile);
 	<th>Dec-<?php echo $year; ?></th>
 <?php } else if ($resourceType == "Book") {?>
 	<th>DOI</th>
-	<th><?= _("Proprietary ID");?></th>
+	<th><?php echo _("Proprietary ID");?></th>
 	<th>ISBN</th>
 	<th>ISSN</th>
 	<th>YTD Total</th>
