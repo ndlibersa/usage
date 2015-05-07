@@ -11,7 +11,7 @@ include 'templates/header.php';
 <tr style='vertical-align:top;'>
 <td style="width:235px;padding-right:10px;">
 
-<div class="headerText" style='margin:5px 5px 9px 3px;'><?= _("Usage Statistics Import");?></div>
+<div class="headerText" style='margin:5px 5px 9px 3px;'><?php echo _("Usage Statistics Import");?></div>
 
 
   <?php
@@ -40,7 +40,7 @@ include 'templates/header.php';
 
     	<br />
 
-        <b><?= _("File:");?></b><span id='span_error' style='color:red'></span><br /><input type="file" name="usageFile" id="usageFile" class='bigger' /><br /><br />
+        <b><?php echo _("File:");?></b><span id='span_error' style='color:red'></span><br /><input type="file" name="usageFile" id="usageFile" class='bigger' /><br /><br />
 
 		<?php
 
@@ -54,8 +54,8 @@ include 'templates/header.php';
 
 		<br /><br />
 
-        <input type="checkbox" name="overrideInd" id="overrideInd" />&nbsp;<span class="smallText"><?= _("Override previous month verification");?></span><br /><br />
-        <input type="submit" name="submitFile" id="submitFile" value="<?= _('Upload');?>" />
+        <input type="checkbox" name="overrideInd" id="overrideInd" />&nbsp;<span class="smallText"><?php echo _("Override previous month verification");?></span><br /><br />
+        <input type="submit" name="submitFile" id="submitFile" value="<?php echo _('Upload');?>" />
         <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
 
         
@@ -65,12 +65,12 @@ include 'templates/header.php';
 <br /><br />
 <hr />
 <br />
-<div class="bigBlueText"><?= _("Instructions:");?></div>
+<div class="bigBlueText"><?php echo _("Instructions:");?></div>
 <ul class="smallerText">
-<li><?= _("Save file as .txt files in tab delimited format");?></li>
-<li><?= _("File may not be larger than 5MB");?></li>
-<li><?= _("Ensure column headers conform to Counter's standards for the report type");?></li>
-<li><?= _("More info:");?> <a href="http://www.projectcounter.org/code_practice.html" target="_blank">http://www.projectcounter.org/code_practice.html</a></li>
+<li><?php echo _("Save file as .txt files in tab delimited format");?></li>
+<li><?php echo _("File may not be larger than 5MB");?></li>
+<li><?php echo _("Ensure column headers conform to Counter's standards for the report type");?></li>
+<li><?php echo _("More info:");?> <a href="http://www.projectcounter.org/code_practice.html" target="_blank">http://www.projectcounter.org/code_practice.html</a></li>
 </ul>
 </div>
 <br /><br />
@@ -79,7 +79,7 @@ include 'templates/header.php';
 </td>
 <td>
 
-<div class="headerText" style='margin-bottom:9px;'><?= _("Recent Imports");?>&nbsp;&nbsp;&nbsp;<span id='span_feedback'></span></div>
+<div class="headerText" style='margin-bottom:9px;'><?php echo _("Recent Imports");?>&nbsp;&nbsp;&nbsp;<span id='span_feedback'></span></div>
 <div id='div_recentImports'>
 </div>
 

@@ -43,7 +43,7 @@ switch ($action) {
 
 		?>
 
-		<h3><?= _("Import History for ").$platform->name; ?></h3>
+		<h3><?php echo _("Import History for ").$platform->name; ?></h3>
 
 		<div id="div_imports">
 
@@ -92,7 +92,7 @@ switch ($action) {
 
 			?>
 
-			<h3>Publisher Logins</h3>
+			<h3><?php echo _("Publisher Logins");?></h3>
 
 			<div id="div_logins">
 
@@ -109,10 +109,10 @@ switch ($action) {
 
 			<table class='verticalFormTable'>
 			<tr>
-			<th><?= _("Interface Login");?></th>
-			<th><?= _("Password");?></th>
-			<th><?= _("URL");?></th>
-			<th><?= _("Login Notes");?></th>
+			<th><?php echo _("Interface Login");?></th>
+			<th><?php echo _("Password");?></th>
+			<th><?php echo _("URL");?></th>
+			<th><?php echo _("Login Notes");?></th>
 			<th>&nbsp;</th>
 			</tr>
 
@@ -142,7 +142,7 @@ switch ($action) {
 			</div>
 
 			<br />
-			<a href='ajax_forms.php?action=getLoginForm&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=250&width=325&modal=true' class='thickbox' id='uploadDocument'><?= _("add new login");?></a>
+			<a href='ajax_forms.php?action=getLoginForm&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=250&width=325&modal=true' class='thickbox' id='uploadDocument'><?php echo _("add new login");?></a>
 
 
 		<?php
@@ -153,7 +153,7 @@ switch ($action) {
 			?>
 
 
-			<h3>Interface Logins</h3>
+			<h3><?php echo _("Interface Logins");?></h3>
 
 			<div id="div_logins">
 
@@ -170,10 +170,10 @@ switch ($action) {
 
 			<table class='verticalFormTable'>
 			<tr>
-			<th><?= _("Interface Login");?></th>
-			<th><?= _("Password");?></th>
-			<th><?= _("URL");?></th>
-			<th><?= _("Login Notes");?></th>
+			<th><?php echo _("Interface Login");?></th>
+			<th><?php echo _("Password");?></th>
+			<th><?php echo _("URL");?></th>
+			<th><?php echo _("Login Notes");?></th>
 			<th>&nbsp;</th>
 			</tr>
 
@@ -203,7 +203,7 @@ switch ($action) {
 			</div>
 
 			<br />
-			<a href='ajax_forms.php?action=getLoginForm&platformID=<?php echo $platform->platformID; ?>&height=250&width=325&modal=true' class='thickbox' id='uploadDocument'><?= _("add new login");?></a>
+			<a href='ajax_forms.php?action=getLoginForm&platformID=<?php echo $platform->platformID; ?>&height=250&width=325&modal=true' class='thickbox' id='uploadDocument'><?php echo _("add new login");?></a>
 
 		<?php
 		}
@@ -236,11 +236,11 @@ switch ($action) {
 					For <?php echo $obj->getOrganizationName() . "&nbsp;&nbsp;<a href='" . $util->getOrganizationURL() . $obj->organizationID . "' target='_blank'>"._("view organization")."</a>"; ?>
 					<table class='verticalFormTable'>
 					<tr>
-					<th><?= _("Login Type");?></th>
-					<th><?= _("Username");?></th>
-					<th><?= _("Password");?></th>
-					<th><?= _("URL");?></th>
-					<th><?= _("Notes");?></th>
+					<th><?php echo _("Login Type");?></th>
+					<th><?php echo _("Username");?></th>
+					<th><?php echo _("Password");?></th>
+					<th><?php echo _("URL");?></th>
+					<th><?php echo _("Notes");?></th>
 					</tr>
 
 					<?php
@@ -262,7 +262,7 @@ switch ($action) {
 
 				?>
 				<br />
-				<a href='ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true' class='thickbox'><?= _("change associated organization");?></a>
+				<a href='ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true' class='thickbox'><?php echo _("change associated organization");?></a>
 				<br />
 				<?php
 
@@ -271,7 +271,7 @@ switch ($action) {
 				?>
 
 					<br />
-					<a href='ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true' class='thickbox'>link to associated organization</a>
+					<a href='ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true' class='thickbox'><?php echo _("link to associated organization");?></a>
 
 
 				<?php
@@ -317,7 +317,7 @@ switch ($action) {
 
 			?>
 
-			<h3>Publisher Notes</h3>
+			<h3><?php echo _("Publisher Notes");?></h3>
 
 			<div id="div_noteText">
 
@@ -332,9 +332,9 @@ switch ($action) {
 
 			<table class='verticalFormTable'>
 			<tr>
-			<th><?= _("Start Year");?></th>
-			<th><?= _("End Year");?></th>
-			<th><?= _("Notes");?></th>
+			<th><?php echo _("Start Year");?></th>
+			<th><?php echo _("End Year");?></th>
+			<th><?php echo _("Notes");?></th>
 			<th>&nbsp;</th>
 			</tr>
 
@@ -360,7 +360,7 @@ switch ($action) {
 
 			<br />
 
-			<a href='ajax_forms.php?action=getPublisherNoteForm&publisherPlatformNoteID=&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=225&width=313&modal=true' class='thickbox' id='uploadDocument'><?= _("add new publisher notes");?></a>
+			<a href='ajax_forms.php?action=getPublisherNoteForm&publisherPlatformNoteID=&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=225&width=313&modal=true' class='thickbox' id='uploadDocument'><?php echo _("add new publisher notes");?></a>
 
 
 			<br />
@@ -373,7 +373,7 @@ switch ($action) {
 
 			?>
 
-			<h3>Interface Notes</h3>
+			<h3><?php echo _("Interface Notes");?></h3>
 
 			<div id="div_interfaces">
 
@@ -391,10 +391,10 @@ switch ($action) {
 
 			<table class='verticalFormTable'>
 			<tr>
-			<th><?= _("Start Year");?></th>
-			<th><?= _("End Year");?></th>
-			<th><?= _("Counter").'<br />'._("Compliant?");?></th>
-			<th><?= _("Interface Notes");?></th>
+			<th><?php echo _("Start Year");?></th>
+			<th><?php echo _("End Year");?></th>
+			<th><?php echo _("Counter").'<br />'._("Compliant?");?></th>
+			<th><?php echo _("Interface Notes");?></th>
 			<th>&nbsp;</th>
 			</tr>
 
@@ -429,7 +429,7 @@ switch ($action) {
 
 			<br />
 
-			<a href='ajax_forms.php?action=getPlatformNoteForm&platformNoteID=&platformID=<?php echo $platform->platformID; ?>&height=255&width=408&modal=true' class='thickbox' id='addInterface'><?= _("add new interface note");?></a>
+			<a href='ajax_forms.php?action=getPlatformNoteForm&platformNoteID=&platformID=<?php echo $platform->platformID; ?>&height=255&width=408&modal=true' class='thickbox' id='addInterface'><?php echo _("add new interface note");?></a>
 
 			<br />
 			<br />
@@ -710,11 +710,11 @@ switch ($action) {
 
 		if (count($titleArray) >0 ){
 			?>
-			<h3><?= _("Journals - Associated Titles and ISSNs");?></h3>
+			<h3><?php echo _("Journals - Associated Titles and ISSNs");?></h3>
 
 			<table class='verticalFormTable'>
 			<tr>
-				<th style='max-width:440px;'><b><?= _("Title");?></b></th>
+				<th style='max-width:440px;'><b><?php echo _("Title");?></b></th>
 				<th style='width:90px;'><b>DOI</b></th>
 				<th style='width:90px;'><b>ISSN</b></th>
 				<th style='width:90px;'><b>eISSN</b></th>
@@ -786,11 +786,11 @@ switch ($action) {
 
 		if (count($titleArray) >0 ){
 			?>
-			<h3><?= _("Books - Associated Titles and ISBNs");?></h3>
+			<h3><?php echo _("Books - Associated Titles and ISBNs");?></h3>
 
 			<table class='verticalFormTable'>
 			<tr>
-				<th style='max-width:440px;'><b><?= _("Title");?></b></th>
+				<th style='max-width:440px;'><b><?php echo _("Title");?></b></th>
 				<th style='width:90px;'><b>DOI</b></th>
 				<th style='width:90px;'><b>ISBN</b></th>
 				<th style='width:90px;'><b>ISSN</b></th>
@@ -860,11 +860,11 @@ switch ($action) {
 
 		if (count($titleArray) > 0){
 			?>
-			<h3>Database Titles</h3>
+			<h3><?php echo _("Database Titles");?></h3>
 
 			<table class='verticalFormTable'>
 			<tr>
-				<th style='max-width:440px;'><b>Title</b></th>
+				<th style='max-width:440px;'><b><?php echo _("Title");?></b></th>
 			</tr>
 
 			<?php
@@ -1007,24 +1007,24 @@ switch ($action) {
 		?>
 			<tr>
 			<td width="149"><?php echo $yearly_stat['Title']; ?></td>
-			<td width="40"><?= _("Total");?><td>
+			<td width="40"><?php echo _("Total");?><td>
 			<td width="40" ><?php echo $yearly_stat['totalCount']; ?></td>
 			<td width="40"><input name="overrideTotalCount_<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>" id="overrideTotalCount_<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>" type="text"value="<?php echo $yearly_stat['overrideTotalCount']; ?>" size="6" maxlength="6"/></td>
-			<td width="40"><a href="javascript:updateYTDOverride('<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>', 'overrideTotalCount')"><?= _("update");?></a></td>
+			<td width="40"><a href="javascript:updateYTDOverride('<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>', 'overrideTotalCount')"><?php echo _("update");?></a></td>
 			</tr>
 			<tr>
 			<td width="149">&nbsp;</td>
-			<td width="40">PDF<td>
+			<td width="40"><?php echo _("PDF");?><td>
 			<td width="40"><?php echo $yearly_stat['ytdPDFCount']; ?></td>
 			<td width="40"><input name="overridePDFCount_<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>" id="overridePDFCount_<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>" type="text"value="<?php echo $yearly_stat['overridePDFCount']; ?>" size="6" maxlength="6"/></td>
-			<td width="40"><a href="javascript:updateYTDOverride('<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>', 'overridePDFCount')"><?= _("update");?></a></td>
+			<td width="40"><a href="javascript:updateYTDOverride('<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>', 'overridePDFCount')"><?php echo _("update");?></a></td>
 			</tr>
 			<tr>
 			<td width="149">&nbsp;</td>
 			<td width="40">HTML<td>
 			<td width="40"><?php echo $yearly_stat['ytdHTMLCount']; ?></td>
 			<td width="40"><input name="overrideHTMLCount_<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>" id="overrideHTMLCount_<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>" type="text"value="<?php echo $yearly_stat['overrideHTMLCount']; ?>" size="6" maxlength="6"/></td>
-			<td width="40"><a href="javascript:updateYTDOverride('<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>', 'overrideHTMLCount')"><?= _("update");?></a></td>
+			<td width="40"><a href="javascript:updateYTDOverride('<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>', 'overrideHTMLCount')"><?php echo _("update");?></a></td>
 			</tr>
 		<?php
 
@@ -1400,10 +1400,10 @@ switch ($action) {
 			?>
 			<table class='dataTable' style='width:550px'>
 				<tr>
-				<th><?= _("Login ID");?></th>
-				<th><?= _("First Name");?></th>
-				<th><?= _("Last Name");?></th>
-				<th><?= _("Privilege");?></th>
+				<th><?php echo _("Login ID");?></th>
+				<th><?php echo _("First Name");?></th>
+				<th><?php echo _("Last Name");?></th>
+				<th><?php echo _("Privilege");?></th>
 				<th>&nbsp;</th>
 				<th>&nbsp;</th>
 				<?php
@@ -1512,12 +1512,12 @@ switch ($action) {
 			?>
 			<table class='dataTable' style='width:727px'>
 			<tr>
-				<th><table class='noBorderTable'><tr><td><?= _("Platform Name");?></td><td class='arrow'><a href='javascript:setOrder("P.name","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("P.name","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td><?= _("Publishers");?></td><td class='arrow'><a href='javascript:setOrder("publishers","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("publishers","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td><?= _("Next Run");?></td><td class='arrow'><a href='javascript:setOrder("serviceDayOfMonth","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("serviceDayOfMonth","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td><?= _("Latest Run");?></td><td class='arrow'><a href='javascript:setOrder("importDateTime","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("ImportDateTime","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td><?= _("Latest Status");?></td><td class='arrow'><a href='javascript:setOrder("details","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("details","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td><?= _("By");?></td><td class='arrow'><a href='javascript:setOrder("loginID","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("loginID","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td><?php echo _("Platform Name");?></td><td class='arrow'><a href='javascript:setOrder("P.name","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("P.name","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td><?php echo _("Publishers");?></td><td class='arrow'><a href='javascript:setOrder("publishers","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("publishers","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td><?php echo _("Next Run");?></td><td class='arrow'><a href='javascript:setOrder("serviceDayOfMonth","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("serviceDayOfMonth","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td><?php echo _("Latest Run");?></td><td class='arrow'><a href='javascript:setOrder("importDateTime","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("ImportDateTime","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td><?php echo _("Latest Status");?></td><td class='arrow'><a href='javascript:setOrder("details","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("details","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td><?php echo _("By");?></td><td class='arrow'><a href='javascript:setOrder("loginID","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("loginID","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
 			</tr>
 
 			<?php
@@ -1618,7 +1618,7 @@ switch ($action) {
 				}
 				?>
 			</select>
-			<span class='smallText'><?= _("records per page");?></span>
+			<span class='smallText'><?php echo _("records per page");?></span>
 			</td>
 			</tr>
 			</table>

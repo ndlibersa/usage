@@ -955,13 +955,13 @@ foreach ($platformArray AS $platformID){
 
 <table class="headerTable">
 <tr><td>
-<div class="headerText"><?= _("Status");?></div>
+<div class="headerText"><?php echo _("Status");?></div>
 	<br />
-    <p><?= _("File archived as").' '.$Base_URL . $uploadedFile; ?>.</p>
-    <p><?= _("Log file available at:");?> <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
-    <p><?= _("Process completed.")."  ".$mailOutput; ?></p>
+    <p><?php echo _("File archived as").' '.$Base_URL . $uploadedFile; ?>.</p>
+    <p><?php echo _("Log file available at:");?> <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
+    <p><?php echo _("Process completed.")."  ".$mailOutput; ?></p>
     <br />
-    <?= _("Summary:").'  '.$rownumber . _(" titles processed.")."<br />" . nl2br($logSummary); ?><br />
+    <?php echo _("Summary:").'  '.$rownumber . _(" titles processed.")."<br />" . nl2br($logSummary); ?><br />
     <br />
     <?php echo $screenOutput; ?><br />
     <p>&nbsp; </p>
