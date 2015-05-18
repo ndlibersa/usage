@@ -50,16 +50,18 @@ $coralURL = $util->getCORALURL();
 <script type="text/javascript" src="js/plugins/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="js/plugins/Gettext.js"></script>
 <?php
-   if(isset($_COOKIE["lang"])){
-        if($_COOKIE["lang"]=='fr'){
-            echo "<link rel='gettext' type='application/x-po' href='./locale/fr_FR/LC_MESSAGES/messages.po'>";
+    // Add translation for the JavaScript files
+    global $http_lang;
+    $str = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+    $default_l = $lang_name->getLanguage($str);
+    if($default_l==null || empty($default_l)){$default_l=$str;}
+    if(isset($_COOKIE["lang"])){
+        if($_COOKIE["lang"]==$http_lang && $_COOKIE["lang"] != "en_US"){
+            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
         }
-    }else{
-        $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
-        if($defLang=='fr'){
-            echo "<link rel='gettext' type='application/x-po' href='./locale/fr_FR/LC_MESSAGES/messages.po'>";
-        }
-    } 
+    }else if($default_l==$http_lang && $default_l != "en_US"){
+            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
+}
 ?>
 <script type="text/javascript" src="js/common.js"></script>
 </head>
@@ -148,24 +150,43 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 		</li>
 		</ul>
         <select name="lang" id="lang" class="dropDownLang">
-               <?php
-                $fr="<option value='fr' selected='selected'>"._("French")."</option><option value='en'>"._("English")."</option>";
-                $en="<option value='fr'>"._("French")."</option><option value='en' selected='selected'>"._("English")."</option>";
+        <?php
+            // Get all translations on the 'locale' folder
+            $route='locale';
+            $lang[]="en_US"; // add default language
+            if (is_dir($route) && is_readable($route)) { 
+                if ($dh = opendir($route)) { 
+                    while (($file = readdir($dh)) !== false) {
+                        if (is_dir("$route/$file") && $file!="." && $file!=".."){
+                            $lang[]=$file;
+                        } 
+                    } 
+                    closedir($dh); 
+                } 
+            }else {
+                echo "<br>"._("Invalid translation route!"); 
+            }
+            // Get language of navigator
+            $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+            
+            // Show an ordered list
+            sort($lang); 
+            for($i=0; $i<count($lang); $i++){
                 if(isset($_COOKIE["lang"])){
-                    if($_COOKIE["lang"]=='fr'){
-                        echo $fr;
+                    if($_COOKIE["lang"]==$lang[$i]){
+                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang(substr($lang[$i],0,2))."</option>";
                     }else{
-                        echo $en;
+                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang(substr($lang[$i],0,2))."</option>";
                     }
                 }else{
-                    $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
-                    if($defLang=='fr'){
-                        echo $fr;
+                    if($defLang==substr($lang[$i],0,2)){
+                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang(substr($lang[$i],0,2))."</option>";
                     }else{
-                        echo $en;
+                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang(substr($lang[$i],0,2))."</option>";
                     }
                 }
-                ?>
+            }
+        ?>
 
             </select>
         </div>
@@ -177,7 +198,7 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 
             function setLanguage(lang) {
                 var wl = window.location, now = new Date(), time = now.getTime();
-                var cookievalid=86400000; // 1 jour (1000*60*60*24)
+                var cookievalid=2592000000; // 30 days (1000*60*60*24*30)
                 time += cookievalid;
                 now.setTime(time);
                 document.cookie ='lang='+lang+';path=/'+';domain='+wl.host+';expires='+now;

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2015-05-18 10:30+0100\n"
-"PO-Revision-Date: 2015-05-18 10:30+0100\n"
+"POT-Creation-Date: 2015-05-18 11:44+0100\n"
+"PO-Revision-Date: 2015-05-18 11:59+0100\n"
 "Last-Translator: Cesar <hernandez.antonio.cesar19@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -14,6 +14,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: LangCodes.php:17
+msgid "French"
+msgstr "Français"
+
+#: LangCodes.php:18
+msgid "English"
+msgstr "Anglais"
 
 #: admin.php:2
 msgid "Administration"
@@ -404,7 +412,7 @@ msgstr " ne pas etabli!"
 
 #: ajax_htmldata.php:46
 msgid "Import History for "
-msgstr "Histoire d'importation de "
+msgstr "Historique d'importation de "
 
 #: ajax_htmldata.php:61 ajax_htmldata.php:1148
 msgid "Import Date"
@@ -673,11 +681,11 @@ msgstr "Paramètres courantes des valeurs aberrantes"
 
 #: ajax_htmldata.php:924 uploadComplete.php:87
 msgid " over plus "
-msgstr " sur plus "
+msgstr " plus "
 
 #: ajax_htmldata.php:924
 msgid "over - displayed "
-msgstr "sur - l'affiché"
+msgstr "plus - l'affiché "
 
 #: ajax_htmldata.php:929
 msgid ""
@@ -706,7 +714,7 @@ msgstr "En montrant "
 
 #: ajax_htmldata.php:1113 ajax_htmldata.php:1473
 msgid " to "
-msgstr " par "
+msgstr " - "
 
 #: ajax_htmldata.php:1113 ajax_htmldata.php:1473
 msgid " of "
@@ -817,7 +825,7 @@ msgstr "La liste d'affichage par défaut a été mis à jour avec succès"
 msgid "Publisher Reporting Display Name has been updated"
 msgstr "Le nom d'affichage par les reports a été mise à jour avec succès"
 
-#: import.php:3 index.php:27 templates/header.php:105
+#: import.php:3 index.php:27 templates/header.php:107
 msgid "Home"
 msgstr "Accueil"
 
@@ -936,7 +944,7 @@ msgstr "Regarder / Modifier"
 msgid "No publishers / platforms found."
 msgstr "Aucun Éditeur / plate-forme trouvé."
 
-#: reporting.php:2 templates/header.php:105
+#: reporting.php:2 templates/header.php:107
 msgid "Report Options"
 msgstr "Options des reports"
 
@@ -947,6 +955,20 @@ msgstr "Éditeur / Mise à jour du Rapport Administrative de la Plate-forme"
 #: reporting.php:12
 msgid "Directions:"
 msgstr "Directions:"
+
+#: reporting.php:12
+msgid ""
+"Mark the checkboxes to add / remove specific Platforms or Publishers to the "
+"default report list."
+msgstr ""
+"Marquer les checkboxes por ajouter / supprimer Plate-formes specifiés ou "
+"Éditeurs par défaut dans la liste du rapport."
+
+#: reporting.php:12
+msgid ""
+"Click 'edit report display name' to change the display name in the reporting "
+"system for specific Platforms or Publishers."
+msgstr "Cliquez sur 'Modifier le nom du report'"
 
 #: reporting.php:25
 msgid "Available"
@@ -1048,7 +1070,7 @@ msgstr " a échoué!"
 msgid "Nothing to see here!  (no sushi scheduled today)"
 msgstr "Il n'y a pas pour regarder ici! (pas de SUSHI prévue aujourd'hui)"
 
-#: templates/header.php:67
+#: templates/header.php:69
 msgid ""
 "JavaScript must be enabled in order for you to use CORAL. However, it seems "
 "JavaScript is either disabled or not supported by your browser. To use "
@@ -1059,45 +1081,41 @@ msgstr ""
 "utiliser CORAL, activez JavaScript en modifiant la configuration de votre "
 "navigateur, après "
 
-#: templates/header.php:67
+#: templates/header.php:69
 msgid "try again"
 msgstr "réessayez"
 
-#: templates/header.php:86
+#: templates/header.php:88
 msgid "Hello, "
 msgstr "Bonjour, "
 
-#: templates/header.php:95
+#: templates/header.php:97
 msgid "logout"
 msgstr "Se déconnecter"
 
-#: templates/header.php:105
+#: templates/header.php:107
 msgid "File Import"
 msgstr "Importer un fichier"
 
-#: templates/header.php:105
+#: templates/header.php:107
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/header.php:107
+#: templates/header.php:109
 msgid "Usage"
 msgstr "Usage"
 
-#: templates/header.php:107
+#: templates/header.php:109
 msgid "Reports"
 msgstr "Reports"
 
-#: templates/header.php:122
+#: templates/header.php:124
 msgid "Change Module"
 msgstr "Changer le module"
 
-#: templates/header.php:152 templates/header.php:153
-msgid "French"
-msgstr "Français"
-
-#: templates/header.php:152 templates/header.php:153
-msgid "English"
-msgstr "Anglais"
+#: templates/header.php:167
+msgid "Invalid translation route!"
+msgstr "Le chemin aux traductions n'est pas valide!"
 
 #: uploadComplete.php:25
 msgid "Upload Process Complete"
@@ -1125,7 +1143,7 @@ msgstr "Niveau"
 
 #: uploadComplete.php:87
 msgid "over"
-msgstr "sur"
+msgstr "plus"
 
 #: uploadComplete.php:244
 msgid "Override indicator set - all months will be imported."
@@ -1448,6 +1466,10 @@ msgstr "L'année finale doit être 4 nombres et commencer avec 19 ou 20."
 msgid "Please choose Yes or No for Counter Compliant."
 msgstr "S'il vous plaît choisissez Yes ou No pour le Counter compilant "
 
+#: js/forms/platformSubmitForm.js:71
+msgid "Platform must be entered."
+msgstr "La plate-forme doir être saisi."
+
 #: js/import.js:65
 msgid "Please select a file."
 msgstr "S'il vous plaît selectionnez un fichier."
@@ -1491,15 +1513,3 @@ msgstr "Cacher la liste des éditeurs"
 #: js/sushi.js:78
 msgid "Do you really want to delete this import?"
 msgstr "Voulez-vous vraiment supprimer cette importation?"
-
-#~ msgid ""
-#~ "Mark the checkboxes to add / remove specific Platforms or Publishers to "
-#~ "the default report list."
-#~ msgstr ""
-#~ "Marquer les checkboxes por ajouter / supprimer Plate-formes specifiés ou "
-#~ "Éditeurs par défaut dans la liste du rapport."
-
-#~ msgid ""
-#~ "Click 'edit report display name' to change the display name in the "
-#~ "reporting system for specific Platforms or Publishers."
-#~ msgstr "Cliquez sur 'Modifier le nom du report'"

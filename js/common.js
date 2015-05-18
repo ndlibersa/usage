@@ -15,7 +15,7 @@
 **************************************************************************************************************************
 */
 
-function getCookie(keyCo){
+/*function getCookie(keyCo){
     var valCookie= ""; 
     var search= keyCo + "="; 
     if(document.cookie.length > 0) { 
@@ -51,7 +51,7 @@ function fLang() {
         langBrowser = getCookie('lang');
     }
     return langBrowser;
-}
+}*/
 var gt = new Gettext({ 'domain' : 'messages' });
 function _(msgid) {
     return gt.gettext(msgid);
