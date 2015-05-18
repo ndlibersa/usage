@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2015-05-07 15:45+0100\n"
-"PO-Revision-Date: 2015-05-07 17:39+0100\n"
+"POT-Creation-Date: 2015-05-18 10:30+0100\n"
+"PO-Revision-Date: 2015-05-18 10:30+0100\n"
 "Last-Translator: Cesar <hernandez.antonio.cesar19@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -14,6 +14,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: admin.php:2
+msgid "Administration"
+msgstr "Administration"
 
 #: admin.php:12
 msgid "Users"
@@ -74,7 +78,7 @@ msgstr "Au moins un type de rapport doit être configuré!"
 
 #: admin/classes/domain/SushiService.php:188
 msgid "Connection test successful!"
-msgstr "La connexion de test a terminé avec succès!"
+msgstr "La connexion de test a fini avec succès!"
 
 #: admin/classes/domain/SushiService.php:211
 msgid "No report types are set up!"
@@ -159,7 +163,7 @@ msgstr "Mise à jour le nom du report"
 msgid "update"
 msgstr "Mise à jour"
 
-#: ajax_forms.php:298 ajax_htmldata.php:397
+#: ajax_forms.php:298 ajax_htmldata.php:376 ajax_htmldata.php:397
 msgid "Interface Notes"
 msgstr "Notes de l'interface"
 
@@ -171,6 +175,14 @@ msgstr "Année de début:"
 msgid "End Year:"
 msgstr "Année de fin:"
 
+#: ajax_forms.php:311
+msgid "Yes"
+msgstr "Oui"
+
+#: ajax_forms.php:312
+msgid "No"
+msgstr "No"
+
 #: ajax_forms.php:318
 msgid "Interface Notes:"
 msgstr "Notes de l'interface:"
@@ -180,7 +192,7 @@ msgstr "Notes de l'interface:"
 msgid "submit"
 msgstr "Confirmer"
 
-#: ajax_forms.php:376
+#: ajax_forms.php:376 ajax_htmldata.php:320
 msgid "Publisher Notes"
 msgstr "Notes d'éditeur"
 
@@ -199,6 +211,10 @@ msgstr "Nom d'utilisateur:"
 #: ajax_forms.php:447 ajax_forms.php:551
 msgid "Password:"
 msgstr "Mot de passe:"
+
+#: ajax_forms.php:450
+msgid "URL:"
+msgstr "URL:"
 
 #: ajax_forms.php:454
 msgid "Login Notes:"
@@ -230,7 +246,7 @@ msgstr "Type(s) de(s) report(s);"
 
 #: ajax_forms.php:518
 msgid "separate report types with semi-colon, e.g. JR1;BR1"
-msgstr "séparez les types des reports avec points-virgules, ex. JR1;BR1"
+msgstr "Séparez les types des reports avec points-virgules, ex. JR1;BR1"
 
 #: ajax_forms.php:522
 msgid "COUNTER Release:"
@@ -254,7 +270,7 @@ msgstr "(optionnel)"
 
 #: ajax_forms.php:541
 msgid "can be: HTTP Basic, WSSE Authentication"
-msgstr "peut-être: HTTP Basique, Authentification WSSE"
+msgstr "Peut-être: HTTP Basique, Authentification WSSE"
 
 #: ajax_forms.php:545
 msgid "Login:"
@@ -262,7 +278,7 @@ msgstr "Connexion:"
 
 #: ajax_forms.php:547 ajax_forms.php:553
 msgid "only needed for HTTP or WSSE Authentication"
-msgstr "seulement nécessaire par HTTP ou WSSE Authentification"
+msgstr "Seulement nécessaire par HTTP ou WSSE Authentification"
 
 #: ajax_forms.php:558
 msgid "Service Day:"
@@ -270,7 +286,7 @@ msgstr "Jour de service:"
 
 #: ajax_forms.php:560
 msgid "number indicating the day of month the service should run"
-msgstr "le numero indiqué le jour du mois que le service doit-être éxecuté"
+msgstr "Le numero indiqué le jour du mois que le service doit-être éxecuté"
 
 #: ajax_forms.php:560
 msgid "(e.g. 27 will run 27th of every month)"
@@ -309,6 +325,10 @@ msgstr ""
 #: ajax_forms.php:769 ajax_htmldata.php:1010
 msgid "Total"
 msgstr "Total"
+
+#: ajax_forms.php:776 ajax_htmldata.php:1017
+msgid "PDF"
+msgstr "PDF"
 
 #: ajax_forms.php:823
 msgid "Add New Platform for SUSHI Connection"
@@ -410,6 +430,10 @@ msgstr "Regarder le fichier"
 msgid "(no imports found)"
 msgstr "(pas des imports trouvés)"
 
+#: ajax_htmldata.php:95
+msgid "Publisher Logins"
+msgstr "Connexions des éditeurs"
+
 #: ajax_htmldata.php:112 ajax_htmldata.php:173
 msgid "Interface Login"
 msgstr "Interface de connexion"
@@ -449,6 +473,10 @@ msgstr "(non trouvé)"
 msgid "add new login"
 msgstr "Ajouter une nouvelle connexion"
 
+#: ajax_htmldata.php:156
+msgid "Interface Logins"
+msgstr "Interfaces de connexion"
+
 #: ajax_htmldata.php:216
 msgid "Organization Accounts"
 msgstr "Comptes d'organisation"
@@ -475,7 +503,11 @@ msgstr "Pas d'information enregistré pour "
 
 #: ajax_htmldata.php:265
 msgid "change associated organization"
-msgstr "changer les organisations associés"
+msgstr "Changer les organisations associés"
+
+#: ajax_htmldata.php:274
+msgid "link to associated organization"
+msgstr "Lien à une organisation associé"
 
 #: ajax_htmldata.php:299
 msgid "Login Credentials are also available for the following publishers:"
@@ -569,7 +601,7 @@ msgstr "Supprimer le mois complète"
 
 #: ajax_htmldata.php:521 ajax_htmldata.php:605
 msgid "view outliers for this month"
-msgstr "regarder les valeurs aberrantes pour ce mois"
+msgstr "Regarder les valeurs aberrantes pour ce mois"
 
 #: ajax_htmldata.php:556 ajax_htmldata.php:637
 msgid "Statistics Management"
@@ -607,7 +639,7 @@ msgstr "Regarder les livres des feuilles de calcul"
 msgid "Journals - Associated Titles and ISSNs"
 msgstr "Journaux - Titres Associés et ISSNs"
 
-#: ajax_htmldata.php:717 ajax_htmldata.php:793
+#: ajax_htmldata.php:717 ajax_htmldata.php:793 ajax_htmldata.php:867
 msgid "Title"
 msgstr "Titre"
 
@@ -622,6 +654,10 @@ msgstr "Regarder dans le résolveur des liens"
 #: ajax_htmldata.php:789
 msgid "Books - Associated Titles and ISBNs"
 msgstr "Livres - Titres Associés et ISBNs"
+
+#: ajax_htmldata.php:863
+msgid "Database Titles"
+msgstr "Titres de la base de données"
 
 #: ajax_htmldata.php:896
 msgid "Current Email Addresses"
@@ -912,20 +948,6 @@ msgstr "Éditeur / Mise à jour du Rapport Administrative de la Plate-forme"
 msgid "Directions:"
 msgstr "Directions:"
 
-#: reporting.php:12
-msgid ""
-"Mark the checkboxes to add / remove specific Platforms or Publishers to the "
-"default report list."
-msgstr ""
-"Marquer les checkboxes por ajouter / supprimer Plate-formes specifiés ou "
-"Éditeurs par défaut dans la liste du rapport."
-
-#: reporting.php:12
-msgid ""
-"Click 'edit report display name' to change the display name in the reporting "
-"system for specific Platforms or Publishers."
-msgstr "Cliquez sur 'Modifier le nom du report'"
-
 #: reporting.php:25
 msgid "Available"
 msgstr "Disponible"
@@ -1052,6 +1074,10 @@ msgstr "Se déconnecter"
 #: templates/header.php:105
 msgid "File Import"
 msgstr "Importer un fichier"
+
+#: templates/header.php:105
+msgid "Admin"
+msgstr "Admin"
 
 #: templates/header.php:107
 msgid "Usage"
@@ -1465,3 +1491,15 @@ msgstr "Cacher la liste des éditeurs"
 #: js/sushi.js:78
 msgid "Do you really want to delete this import?"
 msgstr "Voulez-vous vraiment supprimer cette importation?"
+
+#~ msgid ""
+#~ "Mark the checkboxes to add / remove specific Platforms or Publishers to "
+#~ "the default report list."
+#~ msgstr ""
+#~ "Marquer les checkboxes por ajouter / supprimer Plate-formes specifiés ou "
+#~ "Éditeurs par défaut dans la liste du rapport."
+
+#~ msgid ""
+#~ "Click 'edit report display name' to change the display name in the "
+#~ "reporting system for specific Platforms or Publishers."
+#~ msgstr "Cliquez sur 'Modifier le nom du report'"

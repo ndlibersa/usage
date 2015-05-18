@@ -124,3 +124,4 @@ $_SESSION['ref_script']=$currentPage;
 
   //print footer
   include 'templates/footer.php';
+?>
