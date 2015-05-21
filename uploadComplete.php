@@ -29,6 +29,8 @@ $layoutsArray = parse_ini_file("layouts.ini", true);
 
 
 $uploadedFile = $_POST['upFile'];
+$uploadedFilename = explode('archive/',$uploadedFile);
+$uploadedFilename = $uploadedFilename[1];
 $orgFileName = $_POST['orgFileName'];
 $overrideInd = $_POST['overrideInd'];
 $layoutID = $_POST['layoutID'];
@@ -917,7 +919,7 @@ if ($importLogID != ""){
 	$importLog = new ImportLog();	
 	$importLog->importLogID = '';
 	$importLog->fileName = $orgFileName;
-	$importLog->archiveFileURL = $uploadedFile;
+	$importLog->archiveFileURL = 'archive/' . $uploadedFilename;
 	$importLog->details = $rownumber . " titles processed." . $logSummary;
 }
 
@@ -957,9 +959,9 @@ foreach ($platformArray AS $platformID){
 <tr><td>
 <div class="headerText"><?php echo _("Status");?></div>
 	<br />
-    <p><?php echo _("File archived as").' '.$Base_URL . $uploadedFile; ?>.</p>
+    <p><?php echo _("File archived as") .' '. $Base_URL . 'archive/' . $uploadedFilename; ?>.</p>
     <p><?php echo _("Log file available at:");?> <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
-    <p><?php echo _("Process completed.")."  ".$mailOutput; ?></p>
+    <p><?php echo _("Process completed.") .' '. $mailOutput; ?></p>
     <br />
     <?php echo _("Summary:").'  '.$rownumber . _(" titles processed.")."<br />" . nl2br($logSummary); ?><br />
     <br />

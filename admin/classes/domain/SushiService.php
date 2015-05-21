@@ -450,7 +450,7 @@ class SushiService extends DatabaseObject {
 		  $client = $this->soapConnection($wsdl, $parameters);
 		}
 
-		if (preg_match("/wsse/i", $security)){
+		if (preg_match("/wsse/i", $this->security)){
 		    // Prepare SoapHeader parameters
 		    $strWSSENS = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
 		    $objSoapVarUser = new SoapVar($this->login, XSD_STRING, NULL, $strWSSENS, NULL, $strWSSENS);
