@@ -107,11 +107,11 @@ switch ($action) {
 					<td colspan='2'><span class='headerText'>SUSHI Service for <?php echo $sushiService->getServiceProvider; ?></span><br /> Optional Parameters<span id='span_errors' style='color:red;'><br /></span><br /></td>
 				</tr>
 				<tr>
-					<td style='vertical-align:top;text-align:right;width:85px;'><label for='startDate'><b>Start Date:</b></label</td>
+					<td style='vertical-align:top;text-align:right;width:85px;'><label for='startDate'><b>Start Date:</b></label></td>
 					<td><input type='text' id='startDate' name='startDate' value="<?php echo $sushiService->startDate; ?>" style='width:90px;' /> (yyyy-mm-dd)<span id='span_error_startDate' style='color:red'></span></td>
 				</tr>
 				<tr>
-					<td style='vertical-align:top;text-align:right;'><label for='endDate'><b>End Date:</b></label</td>
+                    <td style='vertical-align:top;text-align:right;'><label for='endDate'><b>End Date:</b></label></td>
 					<td><input type='text' id='endDate' name='endDate' value="<?php echo $sushiService->endDate; ?>" style='width:90px;' /> (yyyy-mm-dd)<span id='span_error_endDate' style='color:red'></span></td>
 				</tr>
 				<tr>
@@ -161,9 +161,9 @@ switch ($action) {
 		<div id='div_updateForm'>
 		<input type='hidden' id='updateOutlierID' name='updateOutlierID' value='<?php echo $outlierID; ?>'>
 		<table class="thickboxTable" style="width:300px;padding:2px;">
-		<tr><td colspan='2'><span class='headerText'>Update Outlier - <b>Level <?php echo $outlier->outlierLevel; ?></b><br /><br /></td></tr>
-		<tr><td style='vertical-align:top;text-align:right;'><label for='overageCount'><b>Count Over</b></label</td><td><input type='text' id='overageCount' name='overageCount' value="<?php echo $outlier->overageCount; ?>" style='width:140px;' /><span id='span_error_overageCount' style='color:red'></span></td></tr>
-		<tr><td style='vertical-align:top;text-align:right;'><label for='overagePercent'><b>% Over prior 12 months</b></label</td><td><input type='text' id='overagePercent' name='overagePercent' value="<?php echo $outlier->overagePercent; ?>" style='width:140px;' /><span id='span_error_overagePercent' style='color:red'></span></td></tr>
+            <tr><td colspan='2'><span class='headerText'>Update Outlier - <b>Level <?php echo $outlier->outlierLevel; ?></b></span><br /><br /></td></tr>
+		<tr><td style='vertical-align:top;text-align:right;'><label for='overageCount'><b>Count Over</b></label></td><td><input type='text' id='overageCount' name='overageCount' value="<?php echo $outlier->overageCount; ?>" style='width:140px;' /><span id='span_error_overageCount' style='color:red'></span></td></tr>
+		<tr><td style='vertical-align:top;text-align:right;'><label for='overagePercent'><b>% Over prior 12 months</b></label></td><td><input type='text' id='overagePercent' name='overagePercent' value="<?php echo $outlier->overagePercent; ?>" style='width:140px;' /><span id='span_error_overagePercent' style='color:red'></span></td></tr>
 
 		<tr style="vertical-align:middle;">
 		<td style="padding-top:8px;text-align:right;">&nbsp;</td>
@@ -298,15 +298,15 @@ switch ($action) {
 				<td colspan='2'><span class='headerText'><?php echo $addUpdate; ?> Interface Notes</span><span id='span_errors' style='color:red;'><br /></span><br /></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='startYear'><b>Start Year:</b></label</td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='startYear'><b>Start Year:</b></label></td>
 				<td><input type='text' id='startYear' name='startYear' value="<?php echo $platformNote->startYear; ?>" style='width:90px;' /><span id='span_error_startYear' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='endYear'><b>End Year:</b></label</td>
+                <td style='vertical-align:top;text-align:right;'><label for='endYear'><b>End Year:</b></label></td>
 				<td><input type='text' id='endYear' name='endYear' value="<?php echo $endYear; ?>" style='width:90px;' /><span id='span_error_endYear' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='counterCompliantInd'><b>Counter Compliant?</b></label</td>
+				<td style='vertical-align:top;text-align:right;'><label for='counterCompliantInd'><b>Counter Compliant?</b></label></td>
 				<td>
 				<input type='radio' id='counterCompliantInd' name='counterCompliantInd' value='1' <?php echo $counterCompliant; ?> />&nbsp;Yes&nbsp;&nbsp;
 				<input type='radio' id='counterCompliantInd' name='counterCompliantInd' value='0' <?php echo $notCounterCompliant; ?> />&nbsp;No
@@ -376,11 +376,11 @@ switch ($action) {
 				<td colspan='2'><span class='headerText'><?php echo $addUpdate; ?> Publisher Notes</span><span id='span_errors' style='color:red;'><br /></span><br /></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='startYear'><b>Start Year:</b></label</td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='startYear'><b>Start Year:</b></label></td>
 				<td><input type='text' id='startYear' name='startYear' value="<?php echo $publisherPlatformNote->startYear; ?>" style='width:90px;' /><span id='span_error_startYear' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='endYear'><b>End Year:</b></label</td>
+                <td style='vertical-align:top;text-align:right;'><label for='endYear'><b>End Year:</b></label></td>
 				<td><input type='text' id='endYear' name='endYear' value="<?php echo $endYear; ?>" style='width:90px;' /><span id='span_error_endYear' style='color:red'></span></td>
 			</tr>
 			<tr>
@@ -440,14 +440,14 @@ switch ($action) {
 				<td colspan='2'><span class='headerText'><?php echo $addUpdate; ?> Login</span><span id='span_errors' style='color:red;'><br /></span><br /></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='username'><b>Username:</b></label</td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='username'><b>Username:</b></label></td>
 				<td><input type='text' id='username' name='username' value="<?php if ($externalLoginID) echo $externalLogin->username; ?>" style='width:200px;' /><span id='span_error_loginID' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='password'><b>Password:</b></label</td>
+                <td style='vertical-align:top;text-align:right;'><label for='password'><b>Password:</b></label></td>
 				<td><input type='text' id='password' name='password' value="<?php if ($externalLoginID) echo $externalLogin->password; ?>" style='width:200px;' /><span id='span_error_password' style='color:red'></span></td>			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='loginURL'><b>URL:</b></label</td>
+                <td style='vertical-align:top;text-align:right;'><label for='loginURL'><b>URL:</b></label></td>
 				<td><input type='text' id='loginURL' name='loginURL' value="<?php if ($externalLoginID) echo $externalLogin->loginURL; ?>" style='width:200px;' /><span id='span_error_url' style='color:red'></span></td>
 			</tr>
 			<tr>
@@ -513,13 +513,13 @@ switch ($action) {
 					<br /><span class="smallDarkRedText"> - if not using COUNTER's WSDL</span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='reportLayouts'><b>Report Type(s):</b></label</td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='reportLayouts'><b>Report Type(s):</b></label></td>
 				<td><input type='text' id='reportLayouts' name='reportLayouts' value="<?php if ($sushiServiceID) echo $sushiService->reportLayouts; ?>" style='width:150px;' />
 					<br /><span class="smallDarkRedText">separate report types with semi-colon, e.g. JR1;BR1</span>
 					<span id='span_error_reportLayouts' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='releaseNumber'><b>COUNTER Release:</b></label</td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='releaseNumber'><b>COUNTER Release:</b></label></td>
 				<td>
 					<select id='releaseNumber' name='releaseNumber' style='width:50px;'>
 					<option value='3' <?php if (!$sushiServiceID){ echo "selected"; } else if ($sushiService->releaseNumber == "3"){ echo "selected"; } ?>>3</option>
@@ -528,34 +528,34 @@ switch ($action) {
 				</td>
 			</tr>					
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='requestorID'><b>Requestor ID:</b></label</td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='requestorID'><b>Requestor ID:</b></label></td>
 				<td><input type='text' id='requestorID' name='requestorID' value="<?php if ($sushiServiceID) echo $sushiService->requestorID; ?>" style='width:150px;' /></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='customerID'><b>Customer ID:</b></label</td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='customerID'><b>Customer ID:</b></label></td>
 				<td><input type='text' id='customerID' name='customerID' value="<?php if ($sushiServiceID) echo $sushiService->customerID; ?>" style='width:150px;' /></td>
 			</tr>				
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='security'><b>Security Type:</b></label</td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='security'><b>Security Type:</b></label></td>
 				<td><input type='text' id='security' name='security' value="<?php if ($sushiServiceID) echo $sushiService->security; ?>" style='width:150px;' />
 					<span class="smallDarkRedText">(optional)<br />can be: HTTP Basic, WSSE Authentication</span>
 					<span id='span_error_security' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='login'><b>Login:</b></label</td>
+                <td style='vertical-align:top;text-align:right;'><label for='login'><b>Login:</b></label></td>
 				<td><input type='text' id='login' name='login' value="<?php if ($sushiServiceID) echo $sushiService->login; ?>" style='width:150px;' />
 					<span class="smallDarkRedText">(optional)<br /> -  only needed for HTTP or WSSE Authentication</span>
 					<span id='span_error_login' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='password'><b>Password:</b></label</td>
+                <td style='vertical-align:top;text-align:right;'><label for='password'><b>Password:</b></label></td>
 				<td><input type='text' id='password' name='password' value="<?php if ($sushiServiceID) echo $sushiService->password; ?>" style='width:150px;' />
 					<span class="smallDarkRedText">(optional)<br /> - only needed for HTTP or WSSE Authentication</span>
 					<span id='span_error_password' style='color:red'></span></td>
 			</tr>
 			
 			<tr>
-				<td style='vertical-align:top;text-align:right;'><label for='serviceDayOfMonth'><b>Service Day:</b></label</td>
+				<td style='vertical-align:top;text-align:right;'><label for='serviceDayOfMonth'><b>Service Day:</b></label></td>
 				<td><input type='text' id='serviceDayOfMonth' name='serviceDayOfMonth' value="<?php if ($sushiServiceID) echo $sushiService->serviceDayOfMonth; ?>" style='width:50px;' />
 					<span class="smallDarkRedText">(optional)<br /> - number indicating the day of month the service should run <br />(e.g. 27 will run 27th of every month)</span><span id='span_error_serviceDay' style='color:red'></span></td>
 			</tr>
@@ -698,7 +698,6 @@ switch ($action) {
 		?>
 
 		</table>
-		</td>
 		</tr>
 		<tr><td style='text-align:center;width:100%;'><br /><br /><a href='#' onclick='window.parent.updateFullStatsDetails(); window.parent.tb_remove(); return false'>Close</a></td></tr>
 		</table>
@@ -793,7 +792,6 @@ switch ($action) {
 		?>
 
 		</table>
-		</td>
 		</tr>
 		<tr><td style='text-align:center;width:100%;'><br /><br /><a href='#' onclick='window.parent.tb_remove(); return false'>Close</a></td></tr>
 		</table>
@@ -821,7 +819,7 @@ switch ($action) {
 		<div id='div_addPlatformForm'>
 		<table class="thickboxTable" style="width:300px;padding:2px;">
 		<tr><td colspan='2'><span class='headerText'>Add New Platform for SUSHI Connection</span><br /><br /></td></tr>
-		<tr><td style='vertical-align:top;text-align:right;'><label for='platformName'><b>Platform Name</b></label</td><td><input type='text' id='platformName' name='platformName' value="" style='width:200px;' /><span id='span_error_Platform' style='color:red'></span></td></tr>
+		<tr><td style='vertical-align:top;text-align:right;'><label for='platformName'><b>Platform Name</b></label></td><td><input type='text' id='platformName' name='platformName' value="" style='width:200px;' /><span id='span_error_Platform' style='color:red'></span></td></tr>
 
 
 		<tr style="vertical-align:middle;">
@@ -863,7 +861,7 @@ switch ($action) {
 		<div id='div_addIdentifierForm'>
 		<table class="thickboxTable" style="width:200px;padding:2px;">
 		<tr><td colspan='2'><span class='headerText'>Add Identifier</span><br /><br /></td></tr>
-		<tr><td style='vertical-align:top;text-align:right;'><label for='identifierType'><b>Identifier Type</b></label</td>
+		<tr><td style='vertical-align:top;text-align:right;'><label for='identifierType'><b>Identifier Type</b></label></td>
 			<td>
 			<select id='identifierType' name='identifierType' style='width:90px;'>
 			<option value='ISSN'>ISSN</option>
@@ -875,7 +873,7 @@ switch ($action) {
 			</select>
 			</td>
 		</tr>
-		<tr><td style='vertical-align:top;text-align:right;'><label for='identifier'><b>Identifier</b></label</td><td><input type='text' id='identifier' name='identifier' value="" style='width:90px;' /><span id='span_error_Identifier' style='color:red'></span></td></tr>
+		<tr><td style='vertical-align:top;text-align:right;'><label for='identifier'><b>Identifier</b></label></td><td><input type='text' id='identifier' name='identifier' value="" style='width:90px;' /><span id='span_error_Identifier' style='color:red'></span></td></tr>
 
 
 		<tr style="vertical-align:middle;">
@@ -988,10 +986,10 @@ switch ($action) {
 		<div id='div_updateForm'>
 		<table class="thickboxTable" style="width:245px;padding:2px;">
 		<tr><td colspan='3'><span class='headerText'><?php echo $update; ?> User</span><br /><br /></td></tr>
-		<tr><td colspan='2' style='width:135px;'><label for='loginID'><b>Login ID</b></label</td><td><input type='text' id='loginID' name='loginID' value='<?php echo $loginID; ?>' style='width:140px;' /></td></tr>
-		<tr><td colspan='2'><label for='firstName'><b>First Name</b></label</td><td><input type='text' id='firstName' name='firstName' value="<?php if (isset($updateUser)) echo $updateUser->firstName; ?>" style='width:140px;' /></td></tr>
-		<tr><td colspan='2'><label for='lastName'><b>Last Name</b></label</td><td><input type='text' id='lastName' name='lastName' value="<?php if (isset($updateUser)) echo $updateUser->lastName; ?>" style='width:140px;' /></td></tr>
-		<tr><td><label for='privilegeID'><b>Privilege</b></label</td>
+            <tr><td colspan='2' style='width:135px;'><label for='loginID'><b>Login ID</b></label></td><td><input type='text' id='loginID' name='loginID' value='<?php echo $loginID; ?>' style='width:140px;' /></td></tr>
+            <tr><td colspan='2'><label for='firstName'><b>First Name</b></label></td><td><input type='text' id='firstName' name='firstName' value="<?php if (isset($updateUser)) echo $updateUser->firstName; ?>" style='width:140px;' /></td></tr>
+            <tr><td colspan='2'><label for='lastName'><b>Last Name</b></label></td><td><input type='text' id='lastName' name='lastName' value="<?php if (isset($updateUser)) echo $updateUser->lastName; ?>" style='width:140px;' /></td></tr>
+            <tr><td><label for='privilegeID'><b>Privilege</b></label></td>
 		<td>
 				<fieldset id="foottip">
 				<a href="#footnote_priv"><img src='images/help.gif'></a>
