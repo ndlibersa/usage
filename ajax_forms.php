@@ -216,7 +216,7 @@ switch ($action) {
 		<input type='hidden' id='type' name='type' value='<?php echo $_GET['type']; ?>'>
 		<table class="thickboxTable" style="width:230px;">
 		<tr>
-		<td colspan='2'><br /><span class='headerText'>Update Report Display Name</span><br /></td>
+		<td colspan='2'><br /><span class='headerText'>Update Report Display Name</span><br /><span id='span_errors' style='color:red;'></span></td>
 		</tr>
 		<tr>
 		<td>

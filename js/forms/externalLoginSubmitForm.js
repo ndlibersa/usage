@@ -49,26 +49,33 @@
 	  	 
  });
  
-
-
-
-
+function validateExternalLogin() {
+    if($("#username").val() == ''){
+        $("#span_errors").html('<br />Please enter an username to continue');
+        $("#username").focus();
+        return false;
+    }else if($("#password").val() == ''){
+        $("#span_errors").html('<br />For security, please enter a password');
+        $("#password").focus();
+        return false;
+    }else{
+        return true;
+    }
+}
 
 function submitExternalLogin(){
 
-	$('#submitExternalLoginForm').attr("disabled", "disabled"); 
-	  $.ajax({
-		 type:       "POST",
-		 url:        "ajax_processing.php?action=submitExternalLogin",
-		 cache:      false,
-		 data:       { externalLoginID: $("#editExternalLoginID").val(), publisherPlatformID: $("#publisherPlatformID").val(), platformID: $("#platformID").val(), username: $("#username").val(), password: $("#password").val(), loginURL: $("#loginURL").val(), noteText: $("#noteText").val() },
-		 success:    function(html) {
-				window.parent.tb_remove();
-				window.parent.updateLoginDetails();
-				return false;
-		 }
-
-
-	 });
-
+	if(validateExternalLogin() === true){
+        $.ajax({
+            type:       "POST",
+            url:        "ajax_processing.php?action=submitExternalLogin",
+            cache:      false,
+            data:       { externalLoginID: $("#editExternalLoginID").val(), publisherPlatformID: $("#publisherPlatformID").val(), platformID: $("#platformID").val(), username: $("#username").val(), password: $("#password").val(), loginURL: $("#loginURL").val(), noteText: $("#noteText").val() },
+            success:    function(html) {
+                window.parent.tb_remove();
+                window.parent.updateLoginDetails();
+                return false;
+            }
+        });
+    }
 }
