@@ -52,7 +52,7 @@ switch ($action) {
 		<input type='hidden' id='updateLogEmailAddressID' name='updateLogEmailAddressID' value='<?php echo $logEmailAddressID; ?>'>
 		<table class="thickboxTable" style="width:230px;">
 		<tr>
-		<td colspan='2'><br /><span class='headerText'><?php echo $addUpdate; ?> Email Address</span><br /></td>
+		<td colspan='2'><br /><span class='headerText'><?php echo $addUpdate; ?> Email Address</span><br /><span id='span_errors' style='color:red;'></span><br /></td>
 		</tr>
 		<tr>
 		<td>
