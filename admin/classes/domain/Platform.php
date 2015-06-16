@@ -837,9 +837,9 @@ class Platform extends DatabaseObject {
 									WHERE upper(name) like upper('%" . $q . "%')
 									ORDER BY 1;";
 
-			$result = mysql_query($query);
+			$result = mysqli_query($this->db->getDatabase(), $query);
 
-			while ($row = mysql_fetch_assoc($result)){
+			while ($row = mysqli_fetch_assoc($result)){
 				$orgArray[] = $row['organizationID'] . "|" . $row['name'];
 			}
 
@@ -904,9 +904,9 @@ class Platform extends DatabaseObject {
 			$orgArray = array();
 			$query = "SELECT name FROM " . $dbName . ".Organization WHERE organizationID = " . $this->organizationID;
 
-			if ($result = mysql_query($query)){
+			if ($result = mysqli_query($this->db->getDatabase(), $query)){
 
-				while ($row = mysql_fetch_assoc($result)){
+				while ($row = mysqli_fetch_assoc($result)){
 					return $row['name'];
 				}
 			}
@@ -1006,10 +1006,10 @@ class Platform extends DatabaseObject {
 						loginID,
 						details,
 						if(serviceDayOfMonth > day(now()), str_to_date(concat(EXTRACT(YEAR_MONTH FROM NOW()), lpad(serviceDayOfMonth,2,'0')), '%Y%m%d'), str_to_date(concat(EXTRACT(YEAR_MONTH FROM NOW()) + 1, lpad(serviceDayOfMonth,2,'0')), '%Y%m%d') ) next_import
-								FROM 
+								FROM
 									Platform P
-									LEFT JOIN (PublisherPlatform PP 
-										INNER JOIN Publisher USING (publisherID)) 
+									LEFT JOIN (PublisherPlatform PP
+										INNER JOIN Publisher USING (publisherID))
 									ON P.PlatformID = PP.PlatformID
 									LEFT JOIN (SELECT platformID, mil.importLogID, max(importDateTime) importDateTime, loginID, details FROM ImportLog mil INNER JOIN ImportLogPlatformLink mipl USING (ImportLogID) GROUP BY platformID) mil ON P.platformID = mil.platformID
 									LEFT JOIN SushiService SS ON P.PlatformID = SS.PlatformID

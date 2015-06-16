@@ -3,7 +3,7 @@ $pageTitle = 'Report Options';
 include 'templates/header.php';
 
 ?>
-
+<script type="text/javascript" src="js/reporting.js"></script>
 
 <table class="headerTable">
 <tr><td>
@@ -42,7 +42,7 @@ if (count($platformArray) > 0){
 
 		echo "\n<div id='div_" . $platform->platformID . "' style='display:none;max-width:600px;margin-left:50px;'>";
 
-		//$Publisher_result = mysql_query("select Publisher.name Publisher, publisherPlatformID, Publisher.publisherID, pp.reportDisplayName reportPublisher, pp.reportDropDownInd reportPublisherDropDownInd from Publisher_Platform pp, Publisher where pp.publisherID = Publisher.publisherID and platformID = '" . $row['platformID'] . "' order by 1,2;");
+		//$Publisher_result = mysqli_query($platformObj->getDatabase(), "select Publisher.name Publisher, publisherPlatformID, Publisher.publisherID, pp.reportDisplayName reportPublisher, pp.reportDropDownInd reportPublisherDropDownInd from Publisher_Platform pp, Publisher where pp.publisherID = Publisher.publisherID and platformID = '" . $row['platformID'] . "' order by 1,2;");
 
 		$publisherPlatform = new PublisherPlatform();
 		foreach($platform->getPublisherPlatforms() as $publisherPlatform) {
@@ -79,7 +79,5 @@ if (count($platformArray) > 0){
 </td>
 </tr>
 </table>
-
-<script type="text/javascript" src="js/reporting.js"></script>
 
 <?php include 'templates/footer.php'; ?>

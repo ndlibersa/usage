@@ -44,11 +44,8 @@ class DBService extends Object {
 		$host = $this->config->database->host;
 		$username = $this->config->database->username;
 		$password = $this->config->database->password;
-		$this->db = mysqli_connect($host, $username, $password);
-		$this->checkForError();
-
 		$databaseName = $this->config->database->name;
-		$this->db->select_db($databaseName);
+		$this->db = mysqli_connect($host, $username, $password, $databaseName);
 		$this->checkForError();
 	}
 
@@ -56,31 +53,35 @@ class DBService extends Object {
 		$this->db->close();
 	}
 
-    public function escapeString($value) {
-        return mysqli_real_escape_string($value);
-    }
+  public function escapeString($value) {
+      return mysqli_real_escape_string($this->db, $value);
+  }
+
+	public function getDatabase() {
+		return $this->db;
+	}
 
 	public function processQuery($sql, $type = NULL) {
 
-		$result = $this->db->query($sql);
+		$result = mysqli_query($this->db, $sql);
 		$this->checkForError();
 		$data = array();
 
 		if ($result instanceof mysqli_result) {
-			$resultType = MYSQL_NUM;
+			$resultType = MYSQLI_NUM;
 			if ($type == 'assoc') {
-				$resultType = MYSQL_ASSOC;
+				$resultType = MYSQLI_ASSOC;
 			}
-			while ($row = $result->fetch_array($resultType)) {
-				if ($this->db->affected_rows > 1) {
+			while ($row = mysqli_fetch_array($result, $resultType)) {
+				if (mysqli_affected_rows($this->db) > 1) {
 					array_push($data, $row);
 				} else {
 					$data = $row;
 				}
 			}
-			$result->free_result();
+			mysqli_free_result($result);
 		} else if ($result) {
-			$data = $this->db->insert_id;
+			$data = mysqli_insert_id($this->db);
 		}
 
 		return $data;
