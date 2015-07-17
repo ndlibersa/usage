@@ -32,11 +32,11 @@ function showPublisherList(platformID){
 
 	if (displayInds[divID] == 0) {
 		$('#image_' + platformID).attr('src', "images/arrowright.gif");
-		$('#link_' + platformID).text('show Publisher list');
+		$('#link_' + platformID).text(_("show Publisher list"));
 		displayInds[divID]=1; 
 	} else {
 		$('#image_' + platformID).attr('src', "images/arrowdown.gif");
-		$('#link_' + platformID).text('hide Publisher list');
+		$('#link_' + platformID).text(_("hide Publisher list"));
 		displayInds[divID]=0;
 	}
 		

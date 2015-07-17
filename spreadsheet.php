@@ -57,13 +57,13 @@ header("Content-Disposition: attachment; filename=" . $excelfile);
 <table border='1'>
 <tr>
 <th>&nbsp;</th>
-<th>Publisher</th>
-<th>Platform</th>
+<th><?php echo _("Publisher");?></th>
+<th><?php echo _("Platform");?></th>
 <?php if ($resourceType == "Journal"){ ?>
 	<th>DOI</th>
-	<th>Proprietary ID</th>
-	<th>Print ISSN</th>
-	<th>Online ISSN</th>
+	<th><?php echo _("Proprietary ID");?></th>
+	<th><?php echo _("Print ISSN");?></th>
+	<th><?php echo _("Online ISSN");?></th>
 	<th>YTD Total</th>
 	<th>YTD HTML</th>
 	<th>YTD PDF</th>
@@ -81,7 +81,7 @@ header("Content-Disposition: attachment; filename=" . $excelfile);
 	<th>Dec-<?php echo $year; ?></th>
 <?php } else if ($resourceType == "Book") {?>
 	<th>DOI</th>
-	<th>Proprietary ID</th>
+	<th><?php echo _("Proprietary ID");?></th>
 	<th>ISBN</th>
 	<th>ISSN</th>
 	<th>YTD Total</th>
@@ -121,11 +121,11 @@ echo "</tr>";
 //Add a line for totals at top (to mimic counter compliant reports)
 echo "<tr>";
 if ($resourceType == 'Journal'){
-	echo "<td colspan = '7'><b>Total for all Journals</b></td>";
+	echo "<td colspan = '7'><b>"._("Total for all Journals")."</b></td>";
 }else if ($resourceType == 'Book'){
-	echo "<td colspan = '7'><b>Total for all Books</b></td>";
+	echo "<td colspan = '7'><b>"._("Total for all Books")."</b></td>";
 }else if ($resourceType == 'Database'){
-	echo "<td colspan = '4'><b>Total for all Databases</b></td>";
+	echo "<td colspan = '4'><b>"._("Total for all Databases")."</b></td>";
 }
 
 //get ytd data if available

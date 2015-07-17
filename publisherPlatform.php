@@ -17,7 +17,7 @@ if (($publisherPlatformID == '') && ($platformID == '')){
 }
 
 
-$pageTitle = 'View or Edit Publisher / Platform';
+$pageTitle = _('View or Edit Publisher / Platform');
 
 include 'templates/header.php';
 

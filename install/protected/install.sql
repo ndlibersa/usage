@@ -8,7 +8,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`ExternalLogin` (
   `loginURL` varchar(245) default NULL,
   `noteText` text,
   PRIMARY KEY  USING BTREE (`externalLoginID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`ImportLog`;
@@ -24,7 +24,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`ImportLog` (
   `logFileURL` varchar(145) DEFAULT NULL,
   `details` varchar(245) DEFAULT NULL,
   PRIMARY KEY (`importLogID`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 
@@ -33,7 +33,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`LogEmailAddress` (
   `logEmailAddressID` int(11) NOT NULL auto_increment,
   `emailAddress` varchar(50) default NULL,
   PRIMARY KEY  (`logEmailAddressID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`MonthlyUsageSummary`;
@@ -54,7 +54,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`MonthlyUsageSummary` (
   KEY `Index_publisherPlatformID` (`publisherPlatformID`),
   KEY `Index_year` (`year`),
   KEY `Index_TPPYMA` (`titleID`,`publisherPlatformID`,`year`,`month`,`archiveInd`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`Outlier`;
@@ -65,7 +65,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`Outlier` (
   `overagePercent` int(3) default NULL,
   `color` varchar(45) NOT NULL,
   PRIMARY KEY  (`outlierID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`Platform`;
@@ -76,7 +76,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`Platform` (
   `reportDisplayName` varchar(150) default NULL,
   `reportDropDownInd` tinyint(1) unsigned default '0',
   PRIMARY KEY  (`platformID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`PlatformNote`;
@@ -88,7 +88,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`PlatformNote` (
   `counterCompliantInd` tinyint(1) unsigned default NULL,
   `noteText` text,
   PRIMARY KEY  USING BTREE (`platformNoteID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 
@@ -97,7 +97,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`Privilege` (
   `privilegeID` int(10) unsigned NOT NULL auto_increment,
   `shortName` varchar(50) default NULL,
   PRIMARY KEY  USING BTREE (`privilegeID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`Publisher`;
@@ -105,7 +105,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`Publisher` (
   `publisherID` int(11) NOT NULL auto_increment,
   `name` varchar(150) NOT NULL,
   PRIMARY KEY  (`publisherID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`PublisherPlatform`;
@@ -117,7 +117,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`PublisherPlatform` (
   `reportDisplayName` varchar(150) NOT NULL,
   `reportDropDownInd` tinyint(1) unsigned NOT NULL,
   PRIMARY KEY  (`publisherPlatformID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`PublisherPlatformNote`;
@@ -128,7 +128,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`PublisherPlatformNote` (
   `endYear` int(4) unsigned default NULL,
   `noteText` text,
   PRIMARY KEY  USING BTREE (`publisherPlatformNoteID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`Title`;
@@ -138,7 +138,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`Title` (
   `resourceType` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`titleID`),
   KEY `Index_title` (`title`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 
@@ -152,7 +152,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`TitleIdentifier` (
   KEY `Index_titleID` (`titleID`),
   KEY `Index_issn` (`identifier`) USING BTREE,
   KEY `Index_ISSNType` (`identifierType`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 
@@ -162,7 +162,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`User` (
   `lastName` varchar(45) default NULL,
   `firstName` varchar(45) default NULL,
   `privilegeID` int(10) unsigned NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
 
@@ -185,7 +185,7 @@ CREATE TABLE  `_DATABASE_NAME_`.`YearlyUsageSummary` (
   KEY `Index_publisherPlatformID` (`publisherPlatformID`),
   KEY `Index_year` (`year`),
   KEY `Index_TPPYA` (`titleID`,`publisherPlatformID`,`year`,`archiveInd`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 ALTER TABLE `_DATABASE_NAME_`.`MonthlyUsageSummary` ADD COLUMN `activityType` VARCHAR(45) NULL  AFTER `mergeInd` ;
@@ -200,7 +200,7 @@ CREATE TABLE `_DATABASE_NAME_`.`Layout` (
   `name` varchar(45) DEFAULT NULL,
   `resourceType` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`layoutID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`SushiService`;
@@ -222,7 +222,7 @@ CREATE TABLE `_DATABASE_NAME_`.`SushiService` (
   PRIMARY KEY (`sushiServiceID`),
   KEY `Index_publisherPlatformID` (`publisherPlatformID`),
   KEY `Index_platformID` (`platformID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `_DATABASE_NAME_`.`ImportLogPlatformLink`;
@@ -232,7 +232,7 @@ CREATE TABLE `_DATABASE_NAME_`.`ImportLogPlatformLink` (
   `importLogID` int(11) DEFAULT NULL,
   PRIMARY KEY (`importLogPlatformLinkID`),
   KEY `Index_platformID` (`platformID`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 
 

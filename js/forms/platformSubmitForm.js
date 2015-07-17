@@ -68,7 +68,7 @@ function submitPlatform(){
 function validateForm (){
 	myReturn=0;
 	if ($("#platformName").val() == ""){
-		$('#span_error_Platform').html('<br />Platform must be entered.');
+		$('#span_error_Platform').html("<br />"+_("Platform must be entered."));
 		myReturn=1;
 	}
 	
