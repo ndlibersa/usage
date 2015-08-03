@@ -46,17 +46,25 @@ function showPublisherList(platformID){
 
 
 function updateReportDisplayName(){
-	if ($('#type').val() == 'platform'){
-		updateDisplayPlatform($('#updateID').val());
-	}else{
-		updateDisplayPublisher($('#updateID').val());
-	}
-	
-	window.parent.tb_remove(); 
-	
-
+    
+    if(validateDisplay() === true){
+        if ($('#type').val() == 'platform'){
+              updateDisplayPlatform($('#updateID').val());
+        }else{
+              updateDisplayPublisher($('#updateID').val());
+        }
+    }	
 }
 
+function validateDisplay(){
+    if($('#reportDisplayName').val() == ''){
+        $("#span_errors").html('Error - Please enter a value.');
+        $('#reportDisplayName').focus();
+        return false;
+    }else{
+        return true;
+    }
+}
 
 function updateDisplayPlatform(platformID){ 
 
@@ -73,6 +81,7 @@ function updateDisplayPlatform(platformID){
 		setTimeout("emptyResponse('platform_" + platformID + "');",3000); 
 
 		updatePlatformDisplay(platformID);
+	    window.parent.tb_remove(); 
           }
        });
 
@@ -108,6 +117,7 @@ function updateDisplayPublisher(publisherPlatformID){
           success:    function(html) { 
 
 		updatePublisherDisplay(publisherPlatformID);
+              window.parent.tb_remove(); 
           }
        });
 
