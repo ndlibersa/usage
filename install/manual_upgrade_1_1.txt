@@ -11,9 +11,7 @@ Update the usage module codebase
 	
 Update the database schema
 
-    -Open SQL file in /coral/usage/install/protected/update_1.1.sql and replace 
-	_DATABASE_NAME_ with your database schema name
-    -Run SQL file
+    -For install this upgrade, you must run the file 'update.php' located in the install directory and that's all the upgrade will be installed. This file detects the last version to install.
 
 Update /admin/configuration.ini
 
