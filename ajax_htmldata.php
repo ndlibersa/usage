@@ -80,10 +80,10 @@ switch ($action) {
 		}else{
 			echo "(no imports found)";
 
-		}	
+		}
 
 		echo "</div>";
-		break;	
+		break;
 
     case 'getLoginDetails':
 
@@ -477,7 +477,7 @@ switch ($action) {
 			echo "\n(none found)<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>Add SUSHI Connection</a><br />";
 
 		}
-		
+
 
 		echo "<br /><br /><img src='images/help.gif' style='float:left;'>&nbsp;&nbsp;";
 		echo "Visit the <a href='http://www.niso.org/workrooms/sushi/registry_server/' target='_blank'>SUSHI Server Registry</a> for information about adding your provider.";
@@ -563,7 +563,7 @@ switch ($action) {
 					//echo "<hr>";
 					$holdYear = $year;
 				}
-							
+
 				if ($statArray['archiveInd'] == "1") {$archive = '&nbsp;(archive)';}else{$archive='';}
 
 				echo "<div class='boldBlueText' style='margin:10px 10px 0px 10px;'>";
@@ -571,7 +571,7 @@ switch ($action) {
 				echo "</div>";
 
 				echo "<div id='div_" . $year . "_" . $statArray['resourceType'] . "_" . $statArray['archiveInd'] . "'>";
-				echo "<table class='verticalFormTable' style='margin:5px 10px 10px 25px;width:350px;'>";	
+				echo "<table class='verticalFormTable' style='margin:5px 10px 10px 25px;width:350px;'>";
 
 				echo "<tr>";
 				echo "<th><a target='_blank' href='spreadsheet.php?publisherPlatformID=" .  $publisherPlatformID . "&platformID=" . $platformID . "&year=" . $statArray['year'] . "&archiveInd=" . $statArray['archiveInd'] . "&resourceType=" . $statArray['resourceType'] . "' style='font-size:110%;'>View Spreadsheet</a></td>";
@@ -758,12 +758,12 @@ switch ($action) {
 
 					$resolverURL .= $urlAdd;
 					echo "\n<td><span style='float:left;'><a href='ajax_forms.php?action=getRelatedTitlesForm&titleID=" . $title['titleID'] . "&height=240&width=258&modal=true' class='thickbox'>view related titles</a><br /><a href='" . $resolverURL  . "' target='_blank'>view in link resolver</a></span></td>";
-					
+
 				}else{
 					echo "\n<td>&nbsp;</td>";
 				}
 
-				
+
 
 				echo "</tr>";
 
@@ -849,7 +849,7 @@ switch ($action) {
 		}
 
 
-		
+
 
 		/////////////////////////////////
 		// DATABASE
@@ -883,7 +883,7 @@ switch ($action) {
 		}
 
 
-		
+
 		break;
 
 
@@ -1068,8 +1068,7 @@ switch ($action) {
     	$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $_GET['publisherPlatformID'])));
     	$publisher = new Publisher(new NamedArguments(array('primaryKey' => $publisherPlatform->publisherID)));
 
-
-		$result = mysql_query("select distinct pp.publisherPlatformID, Publisher.name Publisher, pp.reportDisplayName reportPublisher, pp.reportDropDownInd from Publisher_Platform pp, Publisher where pp.publisherID = Publisher.publisherID and pp.publisherPlatformID = '" . $publisherPlatformID . "';");
+		$result = mysqli_query($publisherPlatform->getDatabase(), "select distinct pp.publisherPlatformID, Publisher.name Publisher, pp.reportDisplayName reportPublisher, pp.reportDropDownInd from Publisher_Platform pp, Publisher where pp.publisherID = Publisher.publisherID and pp.publisherPlatformID = '" . $publisherPlatformID . "';");
 
 		if ($publisherPlatform->reportDropDownInd == '1') { $reportDropDownInd = 'checked';}else{$reportDropDownInd = '';}
 
@@ -1260,7 +1259,7 @@ switch ($action) {
 		}else{
 			echo "(no outstanding imports found)";
 
-		}	
+		}
 
 		break;
 
@@ -1317,7 +1316,7 @@ switch ($action) {
 		}else{
 			echo "(no failed imports found)";
 
-		}	
+		}
 
 
 		break;
@@ -1380,7 +1379,7 @@ switch ($action) {
 		}else{
 			echo "(no sushi services set up)";
 
-		}	
+		}
 
 
 		break;
@@ -1545,7 +1544,7 @@ switch ($action) {
 							foreach($publisherPlatformArray as $publisherPlatformID){
 								$publisherPlatform = new PublisherPlatform(new NamedArguments(array('primaryKey' => $publisherPlatformID)));
 								echo "<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatformID . "'>" . $publisherPlatform->reportDisplayName . "</a><br />\n";
-							}						
+							}
 
 							echo "</div>";
 						}else{
@@ -1554,7 +1553,7 @@ switch ($action) {
 								echo "<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatformID . "'>" . $publisherPlatform->reportDisplayName . "</a><br />\n";
 							}
 						}
-					}				
+					}
 				echo "</td>";
 
 

@@ -629,9 +629,9 @@ class PublisherPlatform extends DatabaseObject {
 			$orgArray = array();
 			$query = "SELECT name FROM " . $dbName . ".Organization WHERE organizationID = " . $this->organizationID;
 
-			if ($result = mysql_query($query)){
+			if ($result = mysqli_query($this->db->getDatabase(), $query)){
 
-				while ($row = mysql_fetch_assoc($result)){
+				while ($row = mysqli_fetch_assoc($result)){
 					return $row['name'];
 				}
 			}

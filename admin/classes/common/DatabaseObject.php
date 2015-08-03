@@ -195,6 +195,12 @@ class DatabaseObject extends DynamicObject {
 		}
 	}
 
+
+	public function getDatabase() {
+		return $this->db->getDatabase();
+	}
 }
+
+
 
 ?>
