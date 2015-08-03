@@ -106,7 +106,7 @@ function doSubmitLogEmailAddress(){
             type:       "GET",
             url:        "ajax_processing.php",
             cache:      false,
-            data:       "action=submitLogEmailAddress&logEmailAddressID=" + $('#updateLogEmailAddressID').val() + "&emailAddress=" + escape($('#emailAddress').val()),
+            data:       "action=submitLogEmailAddress&logEmailAddressID=" + $('#updateLogEmailAddressID').val() + "&emailAddress=" + encodeURIComponent($('#emailAddress').val()),
             success:    function(html) { 
                 updateLogEmailAddressTable(); 
                 window.parent.tb_remove();
@@ -121,7 +121,7 @@ function validateLogEmail(){
         $("#span_errors").html('Error - Please enter a value.');
         $("#emailAddress").focus();
         return false;
-    }else if(!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test( $("#emailAddress").val() )){
+    }else if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]+$/.test( $("#emailAddress").val() )){
         $("#span_errors").html('Error - Please enter a valid email address.');
         $("#emailAddress").focus();
         return false;
