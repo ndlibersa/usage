@@ -104,7 +104,7 @@ class SushiService extends DatabaseObject {
 
 		$result = $this->db->processQuery(stripslashes($query), 'assoc');
 
-		$searchArray = array();
+		$resultArray = array();
 		$importArray = array();
 
 		//need to do this since it could be that there's only one result and this is how the dbservice returns result
@@ -141,7 +141,7 @@ class SushiService extends DatabaseObject {
 
 		$result = $this->db->processQuery(stripslashes($query), 'assoc');
 
-		$searchArray = array();
+		$resultArray = array();
 		$importArray = array();
 
 		//need to do this since it could be that there's only one result and this is how the dbservice returns result
@@ -450,7 +450,7 @@ class SushiService extends DatabaseObject {
 		  $client = $this->soapConnection($wsdl, $parameters);
 		}
 
-		if (preg_match("/wsse/i", $security)){
+		if (preg_match("/wsse/i", $this->security)){
 		    // Prepare SoapHeader parameters
 		    $strWSSENS = "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd";
 		    $objSoapVarUser = new SoapVar($this->login, XSD_STRING, NULL, $strWSSENS, NULL, $strWSSENS);
@@ -527,6 +527,7 @@ class SushiService extends DatabaseObject {
 			$this->saveLogAndExit($reportLayout);
 		}
 
+		$message = "";
 		while ($reader->read()) {
 			if ($reader->nodeType == XMLReader::ELEMENT){
 				if ($reader->localName == 'Severity') {
@@ -588,7 +589,9 @@ class SushiService extends DatabaseObject {
 
 
 		$layoutCode = "";
-		$countArray = array();
+		$countArray = array('ytd'=>null,'pdf'=>null,'html'=>null);
+		$txtOut = "";
+		$m = null; //month
 
 		while ($reader->read()) {
 			//First - get report information
@@ -608,7 +611,7 @@ class SushiService extends DatabaseObject {
 				}
 
 				//At this point, determine the format of the report to port to csv from the layouts.ini file
-				$layoutKey = $layoutsArray[ReportTypes][$layoutCode];
+				$layoutKey = $layoutsArray['ReportTypes'][$layoutCode];
 	  			$layoutColumns = $layoutsArray[$layoutKey]['columns'];
 
 
@@ -616,7 +619,7 @@ class SushiService extends DatabaseObject {
 	  			if (count($layoutColumns) == "0"){
 	  				$layoutCode = $reportLayout . "_R" . $this->releaseNumber;
 
-					$layoutKey = $layoutsArray[ReportTypes][$layoutCode];
+					$layoutKey = $layoutsArray['ReportTypes'][$layoutCode];
 		  			$layoutColumns = $layoutsArray[$layoutKey]['columns'];
 	  			}
 				
@@ -633,7 +636,7 @@ class SushiService extends DatabaseObject {
 
 				//reset variables
 				$identifierArray=array();
-				$reportArray = array();
+				$reportArray = array('ytd'=>null,'ytdHTML'=>null,'ytdPDF'=>null);
 
 				//loop through each element under "Item"
 		        while ($reader->read()) {
@@ -681,14 +684,16 @@ class SushiService extends DatabaseObject {
 		          					break;
 		          				case 'Begin':
 		          					$date = new DateTime($reader->value);
-
-		          					if (strtolower($date->format('M')) != $m){
+									if ($m === null) {
+										$m = strtolower($date->format('M'));
+										$countArray = array('ytd'=>null,'pdf'=>null,'html'=>null);
+									} else if (strtolower($date->format('M')) !== $m){
 										$totalCountsArray[$m] = $countArray;
 
 										$m = strtolower($date->format('M'));
-										$y = strtolower($date->format('Y'));
+										//$y = strtolower($date->format('Y'));
 
-										$countArray = array();
+										$countArray = array('ytd'=>null,'pdf'=>null,'html'=>null);
 									}
 		          					
 		          					break;
@@ -748,9 +753,20 @@ class SushiService extends DatabaseObject {
       								$reportArray[$key] = intval($countArray['ytd']);	
       							}
 
-      							$reportArray['ytd'] += intval($countArray['ytd']);
-      							$reportArray['ytdPDF'] += intval($countArray['pdf']);
-      							$reportArray['ytdHTML'] += intval($countArray['html']);
+								if ($reportArray['ytd']===null)
+									$reportArray['ytd'] = intval($countArray['ytd']);
+								else
+									$reportArray['ytd'] += intval($countArray['ytd']);
+
+      							if ($reportArray['ytdPDF']===null)
+									$reportArray['ytdPDF'] = intval($countArray['pdf']);
+								else
+									$reportArray['ytdPDF'] += intval($countArray['pdf']);
+
+      							if ($reportArray['ytdHTML']===null)
+									$reportArray['ytdHTML'] = intval($countArray['html']);
+								else
+									$reportArray['ytdHTML'] += intval($countArray['html']);
       						}
 
       					}
@@ -759,7 +775,10 @@ class SushiService extends DatabaseObject {
       					//Now look at the report's layoutcode's columns to order them properly
       					$finalArray=array();
       					foreach($layoutColumns as $colName){
-      						$finalArray[] = $reportArray[$colName];
+							if (isset($reportArray[$colName]))
+								$finalArray[] = $reportArray[$colName];
+							else
+								$finalArray[] = null;
       					}
 
       					$txtOut .= implode($finalArray,"\t") . "\n";
@@ -800,7 +819,7 @@ class SushiService extends DatabaseObject {
 		$this->log("");
 		$this->log("-- Sushi XML parsing completed --");
 
-		$this->log("Archive/Text File Name: " . $utility->getPageURL . 'archive/' . $txtFile);
+		$this->log("Archive/Text File Name: " . Utility::getPageURL() . 'archive/' . $txtFile);
 
 		$this->saveLogAndExit($layoutCode, $txtFile, true);
 	}
