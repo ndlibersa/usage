@@ -40,14 +40,14 @@ include 'templates/header.php';
 			</table>
 
 
-			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'><img src="images/plus.gif" / > Add new platform for SUSHI</a>
+			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'>Add new platform for SUSHI</a>
 			<br /><br /><div id="div_run_feedback"></div><br />
 
 			<div class="headerText" style='margin-bottom:9px;'>Outstanding Import Queue&nbsp;&nbsp;&nbsp;<span id='span_outstanding_feedback'></span></div>
 
 			<div id="div_OutstandingSushiImports"></div>
 
-			<br /><br /><br />
+			<br />
 
 			<div class="headerText" style='margin-bottom:9px;'>Upcoming SUSHI Imports&nbsp;&nbsp;&nbsp;<span id='span_upcoming_feedback'></span></div>
 			

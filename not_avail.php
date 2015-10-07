@@ -39,7 +39,7 @@ $pageTitle='Not Available';
 <div style="text-align:left;">
 
 <center>
-<table class="titleTable" style="background-image:url('images/usagetitle.gif');background-repeat:no-repeat;width:900px;height:80px;text-align:left;">
+<table class="titleTable" style="background-image:url('images/usagetitle.jpg');background-repeat:no-repeat;width:900px;height:120px;text-align:left;">
 <tr style='vertical-align:bottom'>
 <td>
 &nbsp;
@@ -52,7 +52,7 @@ $pageTitle='Not Available';
 </tr>
 </table>
 
-<table class="headerTable" style='height:80px;'>
+<table class="headerTable">
 <tr><td>
 <?php
 if ($_GET['errorMessage']){

@@ -9,7 +9,7 @@ include 'templates/header.php';
 <table class="headerTable">
 
 <tr style='vertical-align:top;'>
-<td style="width:235px;padding-right:10px;">
+<td style="padding-right:10px;" id="import-file">
 
 <div class="headerText" style='margin:5px 5px 9px 3px;'>Usage Statistics Import</div>
 
