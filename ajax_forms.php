@@ -792,6 +792,7 @@ switch ($action) {
 		?>
 
 		</table>
+		</td>
 		</tr>
 		<tr><td style='text-align:center;width:100%;'><br /><br /><a href='#' onclick='window.parent.tb_remove(); return false'>Close</a></td></tr>
 		</table>
@@ -819,16 +820,16 @@ switch ($action) {
 		<div id='div_addPlatformForm'>
 		<table class="thickboxTable" style="width:300px;padding:2px;">
 		<tr><td colspan='2'><span class='headerText'>Add New Platform for SUSHI Connection</span><br /><br /></td></tr>
-		<tr><td style='vertical-align:top;text-align:right;'><label for='platformName'><b>Platform Name</b></label></td><td><input type='text' id='platformName' name='platformName' value="" style='width:200px;' /><span id='span_error_Platform' style='color:red'></span></td></tr>
+		<tr><td style='vertical-align:top;text-align:right;'><label for='platformName'><b>Platform Name</b></label</td><td><input type='text' id='platformName' name='platformName' value="" style='width:200px;' /><span id='span_error_Platform' style='color:red'></span></td></tr>
 
 
 		<tr style="vertical-align:middle;">
-			<td style="padding-top:8px;text-align:right;">&nbsp;</td>
+			<td style="padding-top:8px;">&nbsp;</td>
 			<td style="padding-top:8px;padding-right:8px;">
 				<table class='noBorderTable' style='width:100%;'>
 					<tr>
-						<td style='text-align:left'><input type='button' value='submit' name='submitPlatformForm' id ='submitPlatformForm'></td>
-						<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
+						<td><input type='button' value='submit' name='submitPlatformForm' id ='submitPlatformForm'></td>
+						<td><input type='button' value='cancel' onclick="tb_remove()" id='cancel-button'></td>
 					</tr>
 				</table>
 			</td>
@@ -853,8 +854,8 @@ switch ($action) {
 	//Add Identifiers
 	case 'getAddIdentifierForm':
 		if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
- 		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
- 		if (isset($_GET['titleID'])) $titleID = $_GET['titleID'];
+		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
+		if (isset($_GET['titleID'])) $titleID = $_GET['titleID'];
 
 
 		?>
