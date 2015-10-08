@@ -33,10 +33,6 @@ table {
  border-spacing: 0;
 }
 
-table:nth-of-type(1) td {
- padding-top: 0;
-}
-
 .push {
  height: 2em;
 }
@@ -415,13 +411,6 @@ hr {
   height: 0;
   background: #e0dfe3;
 }
-
-
-
-span.searchLetter{margin:0px;padding-left:1.5px;padding-right:1.5px;background-color:white;}
-span.searchLetterSelected{margin:0px;padding-left:1.5px;padding-right:1.5px;background-color: #e0dfe3;}
-span.searchLetterSelected a:focus{color:#3D545D;}
-span.searchLetterSelected a:active{color:#3D545D;}
 
 #search_box {
     width: 170px;

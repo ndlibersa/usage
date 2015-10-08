@@ -80,7 +80,7 @@ $coralURL = $util->getCORALURL();
 	}
 ?>
 </span>
-<br /><?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout'>logout</a>"; } ?>
+<br /><?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout' id='logout'>logout</a>"; } ?>
 </div>
 </td>
 </tr>
