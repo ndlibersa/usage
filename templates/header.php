@@ -90,29 +90,19 @@ $coralURL = $util->getCORALURL();
 
 
 
-<a href='index.php'>
-    <img src="images/menu/menu-home<?php if ($currentPage == 'index.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-home-over.gif" class="rollover" />
-</a>
+<a href='index.php'><img src="images/menu/menu-home<?php if ($currentPage == 'index.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-home-over.gif" class="rollover" /></a>
 <img src='images/menu/menu-bar.gif'/>
-<a href='import.php'>
-    <img src="images/menu/menu-fileimport<?php if ($currentPage == 'import.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-fileimport-over.gif" class="rollover" />
-</a>
+<a href='import.php'><img src="images/menu/menu-fileimport<?php if ($currentPage == 'import.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-fileimport-over.gif" class="rollover" /></a>
 <img src='images/menu/menu-bar.gif'/>
-<a href='sushi.php'>
-    <img src="images/menu/menu-sushi<?php if ($currentPage == 'sushi.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-sushi-over.gif" class="rollover" />
-</a>
+<a href='sushi.php'><img src="images/menu/menu-sushi<?php if ($currentPage == 'sushi.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-sushi-over.gif" class="rollover" /></a>
 <img src='images/menu/menu-bar.gif'/>
 
 <?php if ($user->isAdmin()) { ?>
-	<a href='admin.php'>
-	    <img src='images/menu/menu-admin<?php if ($currentPage == 'admin.php') { echo "-on"; } ?>.gif' hover="images/menu/menu-admin-over.gif" class="rollover" />
-	</a>
+	<a href='admin.php'><img src='images/menu/menu-admin<?php if ($currentPage == 'admin.php') { echo "-on"; } ?>.gif' hover="images/menu/menu-admin-over.gif" class="rollover" /></a>
 	<img src='images/menu/menu-bar.gif'/>
 <?php } ?>
 
-<a href='reporting.php'>
-    <img src="images/menu/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-reportingoptions-over.gif" class="rollover" />
-</a>
+<a href='reporting.php'><img src="images/menu/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-reportingoptions-over.gif" class="rollover" /></a>
 
 <?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' id='usage-reports'><img src='images/usage-reports-button.gif'></a>"; ?>
 </td>
