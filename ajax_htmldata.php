@@ -27,7 +27,7 @@ include_once 'directory.php';
 include "common.php";
 
 $action = $_REQUEST['action'];
-
+$classAdd = "";
 switch ($action) {
 
 
