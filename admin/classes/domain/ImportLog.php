@@ -27,27 +27,26 @@ class ImportLog extends DatabaseObject {
 	static public function shortStatusFromDetails($details){
 		//first, find if titles were processed
 		preg_match('/[0-9]+ titles processed/i', $details, $matches);
-		$titles = str_replace(" processed", "", $matches[0]);
+		if (isset($matches[0])) {
+			$titles = str_replace(" processed", "", $matches[0]);	
+		}
 
-		if ($titles){
+		if (isset($titles)){
 			if (preg_match("/finished/i", $details)){
 				$status = $titles . " (via sushi)";
 			}else{
 				$status = $titles;	
 			}
-			
 		}else{
-
 			if (preg_match("/fail/i", $details)){
 				$status = "Failed";
 			}elseif (preg_match("/finished/i", $details)){
 				$status = "<i>awaiting import</i>";				
+			} else {
+				$status = null;
 			}
-
 		}
-
 		return $status;
-
 	}
 
 

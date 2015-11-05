@@ -29,7 +29,7 @@ include 'templates/header.php';
 
 
 //this a SUSHI Service ID has been passed in, it needs to be run
-if ($_POST['sushiServiceID'] > 0){
+if ((isset($_POST['sushiServiceID'])) and ($_POST['sushiServiceID'] > 0)) {
 	$sushiServiceID = $_POST['sushiServiceID'];
  	$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $sushiServiceID)));	
 
@@ -50,18 +50,24 @@ if ($_POST['sushiServiceID'] > 0){
 	<script type="text/javascript" src="js/sushi.js"></script>
 
 	<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-		<tr><td>
-			<table style='width:897px;'>
-			<tr style='vertical-align:top'>
-			<td><span class="headerText">SUSHI Administration</span><br /></td>
-			<td style='text-align:right;'>&nbsp;</td>
-			</tr>
-			</table>
+	<tr><td>
+		<table style='width:897px;'>
+		<tr style='vertical-align:top'>
+		<td><span class="headerText">SUSHI Administration</span><br /></td>
+		<td style='text-align:right;'>&nbsp;</td>
+		</tr>
+		</table>
 
 
 			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'><img src="images/plus.gif" / > Add new platform for SUSHI</a>
 
-			<br /><br /><div id="div_run_feedback"><?php echo $logText; ?></div><br />
+			<br /><br /><div id="div_run_feedback"><?php
+
+if (isset($logText)) {
+	echo $logText;
+}
+
+?></div><br />
 			<div class="headerText" style='margin-bottom:9px;'>Outstanding Import Queue&nbsp;&nbsp;&nbsp;<span id='span_outstanding_feedback'></span></div>
 			<div id="div_OutstandingSushiImports"></div>
 

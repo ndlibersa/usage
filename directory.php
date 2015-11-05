@@ -23,8 +23,8 @@ ini_set('memory_limit', '256M');
 
 
 // Useful directory constants, ending with |/|.
-define('ADMIN_DIR', dirname(__FILE__) . '/admin/');
 define('BASE_DIR', dirname(__FILE__) . '/');
+define('ADMIN_DIR', BASE_DIR . 'admin/');
 define('CLASSES_DIR', ADMIN_DIR . 'classes/');
 
 // Automatically load undefined classes from subdirectories of |CLASSES_DIR|.

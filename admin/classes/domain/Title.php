@@ -237,6 +237,8 @@ class Title extends DatabaseObject {
 
 		if ($activityType){
 			$addWhere = " AND activityType='" . $activityType . "'";
+		} else {
+			$addWhere = null;
 		}
 
 		//now formulate query
