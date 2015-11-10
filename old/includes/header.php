@@ -36,7 +36,7 @@ $currentPage = $parts[count($parts) - 1];
 <title>CORAL Usage Statistics - <?php echo $pageTitle; ?></title>
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen" />
-<link rel="SHORTCUT ICON" href="images/seahorsefavicon.ico" />
+<link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <script type="text/javascript" src="js/plugins/jquery.js"></script>
 <script type="text/javascript" src="js/plugins/ajaxupload.3.5.js"></script>
 <script type="text/javascript" src="js/plugins/thickbox.js"></script>
