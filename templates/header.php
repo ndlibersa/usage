@@ -42,7 +42,7 @@ $coralURL = $util->getCORALURL();
 <link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/jquery.tooltip.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/jquery.autocomplete.css" type="text/css" media="screen" />
-<link rel="SHORTCUT ICON" href="images/Favicon.ico" />
+<link rel="SHORTCUT ICON" href="images/favicon.ico" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script type="text/javascript" src="js/plugins/jquery.js"></script>
 <script type="text/javascript" src="js/plugins/ajaxupload.3.5.js"></script>
