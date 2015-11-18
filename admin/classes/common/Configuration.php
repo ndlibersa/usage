@@ -20,8 +20,12 @@
 class Configuration extends DynamicObject {
 
 	public function init(NamedArguments $arguments) {
-		$arguments->setDefaultValueForArgumentName('filename', BASE_DIR . '/admin/configuration.ini');
-		$config = parse_ini_file($arguments->filename, true);
+		$arguments->setDefaultValueForArgumentName('filename', BASE_DIR . 'admin/configuration.ini');
+		if ((file_exists($arguments->filename)) and (is_readable($arguments->filename))) {
+			$config = parse_ini_file($arguments->filename, true);
+		} else {
+			die( BASE_DIR . 'admin/configuration.ini is missing or unreadable.');
+		}
 		foreach ($config as $section => $entries) {
 			$this->$section = Utility::objectFromArray($entries);
 		}

@@ -27,6 +27,7 @@ include_once 'directory.php';
 include "common.php";
 
 $action = $_REQUEST['action'];
+$classAdd = "";
 
 switch ($action) {
 
@@ -555,7 +556,7 @@ switch ($action) {
 
 			echo "<h3 style='margin-bottom:7px;'>Statistics Management</h3>";
 
-
+			$holdYear = "";
 			foreach($statsArray as $statArray){
 				$year=$statArray['year'];
 				if ($year != $holdYear){
@@ -1353,7 +1354,7 @@ switch ($action) {
 					$obj = new PublisherPlatform(new NamedArguments(array('primaryKey' => $sushi['publisherPlatformID'])));
 				}
 
-				if ($obj->getImportLogs[0]){
+				if (isset($obj->getImportLogs[0])){
 					$lastImportObj = $obj->getImportLogs[0];
 					$lastImportDate = format_date($lastImportObj->importDateTime);
 					$lastImportDetails = nl2br($lastImportObj->details);
