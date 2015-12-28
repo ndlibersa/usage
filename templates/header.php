@@ -86,27 +86,12 @@ $coralURL = $util->getCORALURL();
 </tr>
 
 <tr style='vertical-align:top;'>
-<td style='width:870px;height:19px;line-height:18px;vertical-align:top;'>
-
-
-
-<a href='index.php'><img src="images/menu/menu-home<?php if ($currentPage == 'index.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-home-over.gif" class="rollover" /></a>
-<img src='images/menu/menu-bar.gif'/>
-<a href='import.php'><img src="images/menu/menu-fileimport<?php if ($currentPage == 'import.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-fileimport-over.gif" class="rollover" /></a>
-<img src='images/menu/menu-bar.gif'/>
-<a href='sushi.php'><img src="images/menu/menu-sushi<?php if ($currentPage == 'sushi.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-sushi-over.gif" class="rollover" /></a>
-<img src='images/menu/menu-bar.gif'/>
-
-<?php if ($user->isAdmin()) { ?>
-	<a href='admin.php'><img src='images/menu/menu-admin<?php if ($currentPage == 'admin.php') { echo "-on"; } ?>.gif' hover="images/menu/menu-admin-over.gif" class="rollover" /></a>
-	<img src='images/menu/menu-bar.gif'/>
+<td style='width:870px;height:19px;'>
+<?php if ($user->isAdmin()){ ?>
+<a href='index.php'><img src="images/menu/menu-home<?php if ($currentPage == 'index.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-home-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='import.php'><img src="images/menu/menu-fileimport<?php if ($currentPage == 'import.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-fileimport-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='sushi.php'><img src="images/menu/menu-sushi<?php if ($currentPage == 'sushi.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-sushi-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='admin.php'><img src='images/menu/menu-admin<?php if ($currentPage == 'admin.php') { echo "-on"; } ?>.gif' hover="images/menu/menu-admin-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='reporting.php'><img src="images/menu/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-reportingoptions-over.gif" class="rollover" /></a><?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' id='usage-reports'><img src='images/usage-reports-button.gif'></a>"; ?>
+<?php }else{ ?>
+<a href='index.php'><img src="images/menu/menu-home<?php if ($currentPage == 'index.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-home-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='import.php'><img src="images/menu/menu-fileimport<?php if ($currentPage == 'import.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-fileimport-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='sushi.php'><img src="images/menu/menu-sushi<?php if ($currentPage == 'sushi.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-sushi-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='admin.php'><img src='images/menu/menu-admin<?php if ($currentPage == 'admin.php') { echo "-on"; } ?>.gif' hover="images/menu/menu-admin-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='reporting.php'><img src="images/menu/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-reportingoptions-over.gif" class="rollover" /></a><?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' id='usage-reports'><img src='images/usage-reports-button.gif'></a>"; ?>
 <?php } ?>
-
-<a href='reporting.php'><img src="images/menu/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/menu-reportingoptions-over.gif" class="rollover" /></a>
-
-<?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' id='usage-reports'><img src='images/usage-reports-button.gif'></a>"; ?>
-</td>
-
 </td>
 <td style='width:130px;height:19px;' align='right'>
 
@@ -143,6 +128,11 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 				if ($config->settings->cancellationModule == 'Y') {
 				?>
 				<li><a href="<?php echo $coralURL; ?>cancellation/" target='_blank'><img src='images/change/coral-cancellation.png'></a></li>
+				<?php
+				}
+				if ($config->settings->managementModule == 'Y') {
+				?>
+				<li><a href="<?php echo $coralURL; ?>management/" target='_blank'><img src='images/change/coral-management.png'></a></li>
 				<?php } ?>
 			</ul>
 		</li>

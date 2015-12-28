@@ -325,7 +325,7 @@ switch ($action) {
 					<table class='noBorderTable' style='width:100%;'>
 						<tr>
 							<td style='text-align:left'><input type='button' value='submit' name='submitPlatformNoteForm' id ='submitPlatformNoteForm'></td>
-							<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
+							<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()" id='interface-cancel'></td>
 						</tr>
 					</table>
 				</td>
@@ -1021,7 +1021,7 @@ switch ($action) {
 		</tr>
 		<tr style="vertical-align:middle;">
 		<td colspan='2' style="padding-top:8px;text-align:right;">&nbsp;</td>
-		<td style="padding-top:18px;padding-right:8px;text-align:left;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitUserData("<?php echo $loginID; ?>");'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value='cancel' onclick="window.parent.tb_remove(); return false"></td>
+		<td style="padding-top:18px;padding-right:8px;text-align:left;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitUserData("<?php echo $loginID; ?>");'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value='cancel' onclick="window.parent.tb_remove(); return false" id='update-user-cancel'></td>
 		</tr>
 
 		</table>

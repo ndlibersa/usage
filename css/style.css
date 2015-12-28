@@ -45,60 +45,6 @@ text-align:center;
 width:100%;
 } 
 
-
-/* Menu */
-.menubtn {
-  background: #fefefe;
-  background-image: -webkit-linear-gradient(top, #fefefe, #dee8f1);
-  background-image: -moz-linear-gradient(top, #fefefe, #dee8f1);
-  background-image: -ms-linear-gradient(top, #fefefe, #dee8f1);
-  background-image: -o-linear-gradient(top, #fefefe, #dee8f1);
-  background-image: linear-gradient(to bottom, #fefefe, #dee8f1);
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0px;
-  border: none;
-  display: inline-block;
-  font-family: Arial;
-  font-weight: 500;
-  color: #2c3c42;
-  font-size: 13px;
-  padding: 3px 13px;
-  text-decoration: none;
-  vertical-align:top;
-}
-
-.menubtn:hover {
-  background: #526972;
-  background-image: -webkit-linear-gradient(top, #526972, #96a5aa) !important;
-  background-image: -moz-linear-gradient(top, #526972, #96a5aa) !important;
-  background-image: -ms-linear-gradient(top, #526972, #96a5aa) !important;
-  background-image: -o-linear-gradient(top, #526972, #96a5aa) !important;
-  background-image: linear-gradient(to bottom, #526972, #96a5aa) !important;
-  text-decoration: none;
-  color: #ccd7db;
-}
-
-#firstmenubtn {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-#lastmenubtn {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-.menubtn.active {
-  background: #c7d3de;
-  background-image: -webkit-linear-gradient(top, #c7d3de, #e7eef5);
-  background-image: -moz-linear-gradient(top, #c7d3de, #e7eef5);
-  background-image: -ms-linear-gradient(top, #c7d3de, #e7eef5);
-  background-image: -o-linear-gradient(top, #c7d3de, #e7eef5);
-  background-image: linear-gradient(to bottom, #c7d3de, #e7eef5);
-}
-
-
 a {color:#3D545D;}
 a:active {color:#94a9be;}
 a:focus {color:#94a9be; outline: none; -moz-outline-style: none;}
@@ -135,7 +81,6 @@ fieldset {border:0;}
 
 select option { color: #3D545D; font-family: "arial"; font-size: 95%; margin:1px; }
 .optionStyle { color: #3D545D; font-family: "arial"; font-size: 8pt; font-weight: medium; }
-
 
 /* following is for the right panel (helpful links) in the resource page
 *************************/
@@ -398,7 +343,7 @@ table#title {padding:0px; background-image:url('../images/organizationstitle.jpg
 
 table.headerTable {
  padding: 1px;
- width: 900px;
+ width: 1024px;
  min-height:40px;
  background: none !important;
  border-collapse: collapse;
@@ -460,7 +405,6 @@ ul.tabs a{
 	text-decoration: none;
 }
 
-
 .printContent{
     padding: 24px 24px 24px 24px; 
     background-color: white; 
@@ -469,8 +413,6 @@ ul.tabs a{
     vertical-align: top;
     
 }
-
-
 
 table.formTable td {	
 	margin:4px;
@@ -629,8 +571,6 @@ table.surroundBox td {
 table.surroundBox tr {	
 	vertical-align:top;
 }
-
-
 
 table.noBorder td { border:0; }
 table.smallPadding td{ padding:1px; }
@@ -1824,7 +1764,7 @@ div.rightPanelHeader {
 	margin-bottom: 5px;
 }
 
-=#title-search {
+#title-search {
 	padding: 20px;
 	padding-top: 0;
 }
@@ -2005,26 +1945,13 @@ input#submitPlatformForm:hover {
 	text-transform: capitalize;
 	cursor: pointer;
 	float: left;
+	position: relative;
+	left: -17px;
 }
 
 .noBorderTable input#cancel-button:hover {
 	cursor: pointer;
 	background: #999;
-}
-
-#title-sushi {
-	margin: 0;
-	padding: 6px;
-	border-width: 1px 1px 0 0;
-	border-style: solid;
-	border-color: #C9C9C9;
-	background-color: #CAD7E1;
-	-moz-border-radius: 0px;
-	vertical-align: middle;
-	font-weight: 300;
-	color: #000;
-	background: rgba(200, 200, 200, 0.5) url(../images/bg-diagonal-stripes.png) repeat top left !important;
-	border-bottom: 1px solid #C9C9C9 !important;
 }
 
 #TB_ajaxContent {
@@ -2038,4 +1965,370 @@ input#submitPlatformForm:hover {
 a#usage-reports {
 	position: relative;
 	top: -9px;
+}
+
+/*--- Align Text When No Documents Fit the Query ---*/
+
+div#div_searchResults > i {
+		font-size: 18px;
+		position: relative;
+		top: 0;
+		left: 0;
+}
+
+/*--- Capitalize Add/Edit Links ---*/
+
+.mainContent a {
+	text-transform: capitalize;
+}
+
+.headerTable a {
+	text-transform: capitalize;
+}
+
+/*--- Form Modal Windows ---*/
+
+table.thickboxTable .headerText {
+	width: auto !important;
+	margin: 0;
+	padding: 6px;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #e6e5e9;
+	background-color: #cad7e1;
+	-moz-border-radius: 0px;
+	background: rgba(200, 200, 200, 0.5) url(../images/bg-diagonal-stripes.png) repeat top left !important;
+	display: block;
+}
+
+#div_updateForm table.thickboxTable .headerText {
+	height: 16px;
+	margin-bottom: 10px;
+}
+
+
+/*--- Adjust Add Login Form Modal Window ---*/
+
+#div_updateForm input#submitExternalLoginForm {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+}
+
+#div_updateForm input#submitExternalLoginForm:hover {
+	cursor: pointer;
+}
+
+#div_updateForm input[value=cancel] {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+	position: relative;
+	left: -76px;
+}
+
+#div_updateForm input[value=cancel]:hover {
+	cursor: pointer;
+}
+
+/*--- Adjust Update Sushi Connection Form Modal Window ---*/
+
+#div_updateForm input#submitSushiForm {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+}
+
+#div_updateForm input#submitSushiForm:hover {
+	cursor: pointer;
+}
+
+#div_updateForm input#update-sushi-cancel {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+	position: relative;
+	left: -176px;
+}
+
+#div_updateForm input#update-sushi-cancel:hover {
+	cursor: pointer;
+}
+
+/*--- Adjust Link Associated Organization Form Modal Window ---*/
+
+#div_organizationsForm input#submitOrganization {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+}
+
+#div_organizationsForm input#submitOrganization:hover {
+	cursor: pointer;
+}
+
+#div_organizationsForm input[value=cancel] {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+	position: relative;
+	left: -130px;
+}
+
+#div_organizationsForm input[value=cancel]:hover {
+	cursor: pointer;
+}
+
+/*--- Adjust Update Sushi Connection Form Modal Window ---*/
+
+#div_updateForm input#submitPlatformNoteForm {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+}
+
+#div_updateForm input#submitPlatformNoteForm:hover {
+	cursor: pointer;
+}
+
+#div_updateForm input#interface-cancel {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+	position: relative;
+	left: -132px;
+}
+
+#div_updateForm input#interface-cancel:hover {
+	cursor: pointer;
+}
+
+/*--- Adjust Update User Form Modal Window ---*/
+
+#div_updateForm input[value=Update] {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+	float: left;
+}
+
+#div_updateForm input[value=Update]:hover {
+	cursor: pointer;
+}
+
+#div_updateForm input#update-user-cancel {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+	position: relative;
+	left: 2px;
+	top: -16px;
+}
+
+#div_updateForm input#update-user-cancel:hover {
+	cursor: pointer;
+}
+
+/*--- Adjust Add New User Form Modal Window ---*/
+
+#div_updateForm input[value=Add\ New] {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+	float: left;
+}
+
+#div_updateForm input[value=Add\ New]:hover {
+	cursor: pointer;
+}
+
+/*--- More Spacing for Headers ---*/
+
+.div_mainContent h3 {
+	margin-top: 15px;
+}
+
+.div_mainContent h3:nth-child(1) {
+	margin-top: 0;
+}
+
+/*--- Adjust Update Outlier Form Modal Window ---*/
+
+#div_updateForm input#outlier-cancel {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	margin-left: 5px;
+	position: relative;
+	left: -30px;
+}
+
+#div_updateForm input#outlier-cancel:hover {
+	cursor: pointer;
+}
+
+/*--- Side Menu Icons ---*/
+
+a.showImports:before {
+	font-family: FontAwesome;
+	content: "\f019";
+	font-size: 11px;
+	margin-right: 5px;
+}
+
+a.showImports {
+	text-decoration: none;
+	text-transform: capitalize;
+	font-size: 12px;
+}
+
+a.showTitles:before {
+	font-family: FontAwesome;
+	content: "\f0c9";
+	font-size: 11px;
+	margin-right: 5px;
+}
+
+a.showTitles {
+			text-decoration: none;
+			text-transform: capitalize;
+			font-size: 12px;
+}
+
+a.showStatistics:before {
+	font-family: FontAwesome;
+	content: "\f080";
+	font-size: 11px;
+	margin-right: 5px;
+}
+
+a.showStatistics {
+	text-decoration: none;
+	text-transform: capitalize;
+	font-size: 12px;
+}
+
+a.showLogins:before {
+	font-family: FontAwesome;
+	content: "\f007";
+	font-size: 11px;
+	margin-right: 5px;
+}
+
+a.showLogins {
+	text-decoration: none;
+	text-transform: capitalize;
+	font-size: 12px;
+}
+
+
+a.showSushi:before {
+	font-family: FontAwesome;
+	content: "\f192";
+	font-size: 11px;
+	margin-right: 5px;
+}
+
+a.showSushi {
+	text-decoration: none;
+	text-transform: capitalize;
+	font-size: 12px;
+}
+
+/*--- Get Recent Imports Table to View Properly ---*/
+
+div#div_recentImports {
+		width: 700px;
+}
+
+.dataTable th:nth-child(2) {
+	max-width: 80px !important;
+}
+
+.dataTable td:nth-child(3) {
+	max-width: 380px;
+	word-wrap: break-word;
+}
+
+.dataTable th:nth-child(4) {
+	max-width: 75px !important;
+}
+
+.dataTable th:nth-child(5) {
+	max-width: 60px !important;
+}
+
+#importForm fieldset:nth-of-type(1) label {
+	padding-left: 70px;
 }
