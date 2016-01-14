@@ -1,40 +1,40 @@
 html {
- height: 100%;
- margin: 0;
- padding: 0;
- -webkit-font-smoothing: antialiased;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
 }
 
 body {
- height: 100%;
- text-decoration: none;
- color:  #666;
- font-family: Arial, sans-serif;
- font-size: 14px;
- font-weight: 30;
- background: #E7E8E8;
- margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
- padding: 0;
- text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
- background: #E7E8E8 url(../images/bg-gray-texture.jpg) repeat top left;
- -webkit-font-smoothing: antialiased;
+	height: 100%;
+	text-decoration: none;
+	color:  #666;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 30;
+	background: #E7E8E8;
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	background: #E7E8E8 url(../images/bg-gray-texture.jpg) repeat top left;
+	-webkit-font-smoothing: antialiased;
 }
 
 .wrapper {
- margin: 0 auto -2em;
- height; 120px;
- background-image: url("../images/back-header.jpg");
- background-repeat: repeat-x;
- padding-bottom: 40px;
+	margin: 0 auto -2em;
+	height; 120px;
+	background-image: url("../images/back-header.jpg");
+	background-repeat: repeat-x;
+	padding-bottom: 40px;
 }
 
 table {
- border-collapse: collapse;
- border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 .push {
- height: 2em;
+	height: 2em;
 }
 
 .footer {
@@ -43,7 +43,7 @@ font-size:80%;
 color:#526972;
 text-align:center;
 width:100%;
-} 
+}
 
 a {color:#3D545D;}
 a:active {color:#94a9be;}
@@ -67,8 +67,8 @@ a.helpfulLink {color:#526972;}
 .boldText{font-weight:bold;}
 
 .bigBlueText {
- font-size: 125%;
- color: #1B77AA;
+	font-size: 125%;
+	color: #1B77AA;
 }
 
 .headerText {font-size:125%;font-weight:bold; }
@@ -103,7 +103,7 @@ div.queueMenuLink a:hover {color:#526972;text-decoration:underline;}
 div.queueMenuLink a:focus {color:#3D545D; outline: none; font-weight:bold;}
 
 
-table.queueMenuTable {	
+table.queueMenuTable {
 	border-width: 0 0 1px 1px;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -117,8 +117,8 @@ table.queueMenuTable td {
 	margin: 0;
 	padding: 3px 3px 3px 3px;
 	background-color: #f6f8fa;
-    	border-top: 1px solid #e6e5e9;
-    	vertical-align:top;
+			border-top: 1px solid #e6e5e9;
+			vertical-align:top;
 	-moz-border-radius: 0px;
 }
 
@@ -126,10 +126,10 @@ table.queueMenuTable td {
 table.queueMenuTable td.selected {
 	margin: 0;
 	padding: 3px 3px 3px 3px;
-    	border-top: 1px solid #e6e5e9;
-    	background-color: #f2f5f7;
-    	background-image:url('../images/tab.gif');
-    	background-repeat:no-repeat;
+			border-top: 1px solid #e6e5e9;
+			background-color: #f2f5f7;
+			background-image:url('../images/tab.gif');
+			background-repeat:no-repeat;
 	background-position:right top;
 	-moz-border-radius: 0px;
 }
@@ -142,12 +142,12 @@ table.queueMenuTable td.selected a:focus {color:#526972;outline: none;}
 
 
 
-table.queueMenuTable tr {	
+table.queueMenuTable tr {
 	vertical-align:top;
 }
 
 
-td.queueRightPanel {	
+td.queueRightPanel {
 	border-width: 1px 1px 1px 1px;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -160,7 +160,7 @@ td.queueRightPanel {
 
 
 
-table.queueDataTable {	
+table.queueDataTable {
 	border-width: 0 1px 1px 1px;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -190,7 +190,7 @@ table.queueDataTable th {
 	-moz-border-radius: 0px;
 }
 
-table.queueDataTable tr {	
+table.queueDataTable tr {
 	vertical-align:top;
 }
 
@@ -212,7 +212,7 @@ div.adminMenuLink a:hover {color:#526972;text-decoration:underline;}
 div.adminMenuLink a:focus {color:#3D545D; outline: none; font-weight:bold;}
 
 
-table.adminMenuTable {	
+table.adminMenuTable {
 	border-width: 0 0 1px 1px;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -226,8 +226,8 @@ table.adminMenuTable td {
 	margin: 0;
 	padding: 3px 3px 3px 3px;
 	background-color: #f6f8fa;
-    	border-top: 1px solid #e6e5e9;
-    	vertical-align:top;
+			border-top: 1px solid #e6e5e9;
+			vertical-align:top;
 	-moz-border-radius: 0px;
 }
 
@@ -235,10 +235,10 @@ table.adminMenuTable td {
 table.adminMenuTable td.selected {
 	margin: 0;
 	padding: 3px 3px 3px 3px;
-    	border-top: 1px solid #e6e5e9;
-    	background-color: #f2f5f7;
-    	background-image:url('../images/tab.gif');
-    	background-repeat:no-repeat;
+			border-top: 1px solid #e6e5e9;
+			background-color: #f2f5f7;
+			background-image:url('../images/tab.gif');
+			background-repeat:no-repeat;
 	background-position:right top;
 	-moz-border-radius: 0px;
 }
@@ -251,12 +251,12 @@ table.adminMenuTable td.selected a:focus {color:#526972;outline: none;}
 
 
 
-table.adminMenuTable tr {	
+table.adminMenuTable tr {
 	vertical-align:top;
 }
 
 
-td.adminRightPanel {	
+td.adminRightPanel {
 	border-width: 1px 1px 1px 1px;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -269,7 +269,7 @@ td.adminRightPanel {
 
 
 
-table.linedDataTable {	
+table.linedDataTable {
 	border-width: 0 1px 1px 1px;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -304,7 +304,7 @@ table.linedDataTable th {
 	-moz-border-radius: 0px;
 }
 
-table.linedDataTable tr {	
+table.linedDataTable tr {
 	vertical-align:top;
 }
 
@@ -323,18 +323,18 @@ div.f3 { clear: both; }
 
 
 .checkboxes label{
-    display: block;
-    float: left;
-    padding-right: 10px;
-    white-space: nowrap;
+		display: block;
+		float: left;
+		padding-right: 10px;
+		white-space: nowrap;
 }
 
 .checkboxes input{
-    vertical-align: middle;
+		vertical-align: middle;
 }
 
 .checkboxes label span{
-    vertical-align: middle;
+		vertical-align: middle;
 }
 
 
@@ -342,37 +342,37 @@ div.f3 { clear: both; }
 table#title {padding:0px; background-image:url('../images/organizationstitle.jpg');background-repeat:no-repeat;height:120px;width:900px;}
 
 table.headerTable {
- padding: 1px;
- width: 1024px;
- min-height:40px;
- background: none !important;
- border-collapse: collapse;
+	padding: 1px;
+	width: 1024px;
+	min-height:40px;
+	background: none !important;
+	border-collapse: collapse;
 }
 
 
 hr {
-  border:0;
-  border-bottom: 1px solid #e0dfe3;
-  height: 0;
-  background: #e0dfe3;
+	border:0;
+	border-bottom: 1px solid #e0dfe3;
+	height: 0;
+	background: #e0dfe3;
 }
 
 #search_box {
-    width: 170px;
-    height: 19px;
-    background: url('../images/searchbox.gif');
+		width: 170px;
+		height: 19px;
+		background: url('../images/searchbox.gif');
 }
 #search_box #search_organization {
-    float: left;
-    padding: 0;
-    margin: 2px 0 0 6px;
-    border: 0;
-    width: 159px;
-    background: none;
+		float: left;
+		padding: 0;
+		margin: 2px 0 0 6px;
+		border: 0;
+		width: 159px;
+		background: none;
 }
 #search_box #go {
-    float: right;
-    margin: 3px 4px 0 0;
+		float: right;
+		margin: 3px 4px 0 0;
 }
 
 
@@ -406,32 +406,32 @@ ul.tabs a{
 }
 
 .printContent{
-    padding: 24px 24px 24px 24px; 
-    background-color: white; 
-    text-align:left;
-    background-color: white;
-    vertical-align: top;
-    
+		padding: 24px 24px 24px 24px;
+		background-color: white;
+		text-align:left;
+		background-color: white;
+		vertical-align: top;
+		
 }
 
-table.formTable td {	
+table.formTable td {
 	margin:4px;
 	padding:4px;
 }
 
-table.formTable tr {	
+table.formTable tr {
 	vertical-align:top;
 }
 
 
-table.formTable td.alt {	
+table.formTable td.alt {
 	margin:4px;
 	padding:4px;
 	background-color:#f0f2f4;
 }
 
 
-table.verticalFormTable {	
+table.verticalFormTable {
 	border-width: 0 0 1px 1px;
 	border-style: solid;
 	border-color: #e0dfe3;
@@ -461,23 +461,23 @@ table.verticalFormTable th {
 }
 
 
-table.verticalFormTable tr {	
+table.verticalFormTable tr {
 	vertical-align:top;
 }
 
 
-table.verticalFormTable td.complete {	
+table.verticalFormTable td.complete {
 	background-color:#f2f5f7;
 }
 
-table.verticalFormTable td.outstanding {	
+table.verticalFormTable td.outstanding {
 	background-color:#fdf2e7;
 }
 
 
 
 
-table.linedFormTable {	
+table.linedFormTable {
 	border-width: 0 1px 1px 1px;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -518,16 +518,16 @@ table.linedFormTable th {
 }
 
 
-table.linedFormTable tr {	
+table.linedFormTable tr {
 	vertical-align:top;
 }
 
 
-table.linedFormTable tr.lightGrayBackground td {	
+table.linedFormTable tr.lightGrayBackground td {
 	background-color:#ebebeb;
 }
 
-table.linedFormTable td.outstanding {	
+table.linedFormTable td.outstanding {
 	background-color:#fdf2e7;
 }
 
@@ -544,15 +544,15 @@ div.formTitle {
 
 
 span.surroundBoxTitle {
-	background-color:white; 
-	position:relative; 
-	top:8px; 
+	background-color:white;
+	position:relative;
+	top:8px;
 	left:5px;
 	font-size:110%;
 }
 
 
-table.surroundBox {	
+table.surroundBox {
 	border-width: 1px;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -568,7 +568,7 @@ table.surroundBox td {
 	-moz-border-radius: 0px;
 }
 
-table.surroundBox tr {	
+table.surroundBox tr {
 	vertical-align:top;
 }
 
@@ -586,16 +586,16 @@ table.noMargin td { border:0px;margin:0px; padding:0px; }
 div.thickboxDiv{display:none;}
 
 table.thickboxTable{
- padding:6px; 
- text-decoration: none;
- color:  #2c3c42;
- font-family: "arial";
- font-size: 8pt;
- font-weight: heavy;
+	padding:6px;
+	text-decoration: none;
+	color:  #2c3c42;
+	font-family: "arial";
+	font-size: 8pt;
+	font-weight: heavy;
 }
 
 table.thickboxTable td{
- padding:1px; 
+	padding:1px;
 }
 
 .infoText{font-size:small;font-weight:normal; color:gray}
@@ -620,15 +620,15 @@ a.dp-choose-date {
 	display: block;
 	text-indent: -2000px;
 	overflow: hidden;
-	background: url('../images/calendar.gif') no-repeat; 
+	background: url('../images/calendar.gif') no-repeat;
 }
 a.dp-choose-date.dp-disabled {
 	background-position: 0 -20px;
 	cursor: default;
 }
 /* makes the input field shorter once the date picker code
- * has run (to allow space for the calendar icon
- */
+	* has run (to allow space for the calendar icon
+	*/
 input.dp-applied {
 	width: 140px;
 	float: left;
@@ -639,51 +639,51 @@ input.dp-applied {
 
 
 
-.changeInput{  
- padding:1px;  
- outline:none;  
-}  
-
-select.changeSelect{  
- padding:0px;  
-}  
-
-select option.changeSelect{  
- padding:0px;  
+.changeInput{
+	padding:1px;
+	outline:none;
 }
 
-.changeDefault{  
- padding:2px;  
- outline:none;  
- background:#f5f8fa;
- border: solid 1px #a5acb2;  
- color: #526972;  
-} 
+select.changeSelect{
+	padding:0px;
+}
 
-.focusField{  
- border:solid 1px #526972;  
- background:#f5f8fa;  
- color:#2c3c42;  
-}  
-.idleField{  
- background:#fbfbfb;  
- color: #526972;  
- border: solid 1px #a5acb2;  
-}  
+select option.changeSelect{
+	padding:0px;
+}
+
+.changeDefault{
+	padding:2px;
+	outline:none;
+	background:#f5f8fa;
+	border: solid 1px #a5acb2;
+	color: #526972;
+}
+
+.focusField{
+	border:solid 1px #526972;
+	background:#f5f8fa;
+	color:#2c3c42;
+}
+.idleField{
+	background:#fbfbfb;
+	color: #526972;
+	border: solid 1px #a5acb2;
+}
 
 .changeAutocomplete{
- padding:2px;  
- outline:none;  
- background:#f5f8fa;
- border: solid 1px #a5acb2;  
- color: #526972;  
-} 
+	padding:2px;
+	outline:none;
+	background:#f5f8fa;
+	border: solid 1px #a5acb2;
+	color: #526972;
+}
 
 
-.changeDefaultWhite{  
- border: solid 1px #a5acb2;  
- color: #526972;  
-} 
+.changeDefaultWhite{
+	border: solid 1px #a5acb2;
+	color: #526972;
+}
 
 /*-------------------------------------------------------------------*/
 
@@ -1224,7 +1224,7 @@ table.borderedHeadTable tr {
 table.noBorder td { border:0; }
 
 table.smallPadding td {
- padding:1px;
+	padding:1px;
 }
 
 table.noMargin { border:0px;margin:0px; padding:0px;text-align:center; }
@@ -1238,16 +1238,16 @@ table.noMargin td { border:0px;margin:0px; padding:0px; }
 div.thickboxDiv{display:none;}
 
 table.thickboxTable{
- padding:6px;
- text-decoration: none;
- color:  #2c3c42;
- font-family: "arial";
- font-size: 8pt;
- font-weight: heavy;
+	padding:6px;
+	text-decoration: none;
+	color:  #2c3c42;
+	font-family: "arial";
+	font-size: 8pt;
+	font-weight: heavy;
 }
 
 table.thickboxTable td{
- padding:1px; 
+	padding:1px;
 }
 
 .smallText{font-size:small;}
@@ -1278,8 +1278,8 @@ a.dp-choose-date.dp-disabled {
 	cursor: default;
 }
 /* makes the input field shorter once the date picker code
- * has run (to allow space for the calendar icon
- */
+	* has run (to allow space for the calendar icon
+	*/
 input.dp-applied {
 	width: 140px;
 	float: left;
@@ -1290,51 +1290,51 @@ input.dp-applied {
 
 
 
-.changeInput{  
- padding:1px;  
- outline:none;  
-}  
-
-select.changeSelect{  
- padding:0px;  
-}  
-
-select option.changeSelect{  
- padding:0px;  
+.changeInput{
+	padding:1px;
+	outline:none;
 }
 
-.changeDefault{  
- padding:2px;  
- outline:none;  
- background:#f5f8fa;
- border: solid 1px #a5acb2;  
- color: #526972;  
-} 
+select.changeSelect{
+	padding:0px;
+}
 
-.focusField{  
- border:solid 1px #526972;  
- background:#f5f8fa;  
- color:#2c3c42;  
-}  
-.idleField{  
- background:#fbfbfb;  
- color: #526972;  
- border: solid 1px #a5acb2;  
-}  
+select option.changeSelect{
+	padding:0px;
+}
+
+.changeDefault{
+	padding:2px;
+	outline:none;
+	background:#f5f8fa;
+	border: solid 1px #a5acb2;
+	color: #526972;
+}
+
+.focusField{
+	border:solid 1px #526972;
+	background:#f5f8fa;
+	color:#2c3c42;
+}
+.idleField{
+	background:#fbfbfb;
+	color: #526972;
+	border: solid 1px #a5acb2;
+}
 
 .changeAutocomplete{
- padding:2px;  
- outline:none;  
- background:#f5f8fa;
- border: solid 1px #a5acb2;  
- color: #526972;  
-} 
+	padding:2px;
+	outline:none;
+	background:#f5f8fa;
+	border: solid 1px #a5acb2;
+	color: #526972;
+}
 
 
-.changeDefaultWhite{  
- border: solid 1px #a5acb2;  
- color: #526972;  
-} 
+.changeDefaultWhite{
+	border: solid 1px #a5acb2;
+	color: #526972;
+}
 
 /*--- Additional Custom CSS ---*/
 
@@ -2036,7 +2036,7 @@ table.thickboxTable .headerText {
 	text-transform: capitalize;
 	margin-left: 5px;
 	position: relative;
-	left: -76px;
+	left: -31px;
 }
 
 #div_updateForm input[value=cancel]:hover {
@@ -2331,4 +2331,48 @@ div#div_recentImports {
 
 #importForm fieldset:nth-of-type(1) label {
 	padding-left: 70px;
+}
+
+/*--- IE 11 Fix for Sidemenu Link Color ---*/
+
+.sidemenu span.link a {
+	color: #fff;
+}
+
+.sidemenu span.link a:hover {
+	color: #ccc;
+}
+
+/*--- Add New Email Address Modal ---*/
+
+#div_updateForm a#addButton {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	text-decoration: none;
+}
+
+#div_updateForm a#addButton:hover {
+	cursor: pointer;
+}
+
+#div_updateForm a#closeButton {
+	color: #FFFFFF;
+	font-family: "Arial", sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	background: #1b76a9;
+	border: none;
+	padding: 5px 10px;
+	text-transform: capitalize;
+	text-decoration: none;
+}
+
+#div_updateForm a#closeButton:hover {
+	cursor: pointer;
 }
