@@ -46,9 +46,9 @@ switch ($action) {
 				   if(e.keyCode == 13) {
 					   processEmailAddress();
 				   }
-        	});
+					});
 
-        </script>
+				</script>
 
 
 		<?php
@@ -131,9 +131,9 @@ switch ($action) {
 				   if(e.keyCode == 13) {
 					   updateReportDisplayName();
 				   }
-        	});
+					});
 
-        </script>
+				</script>
 
 
 		<?php
@@ -143,7 +143,7 @@ switch ($action) {
 
 	case 'getInterfaceForm':
 		if (isset($_GET['platformInterfaceID'])) $platformInterfaceID = $_GET['platformInterfaceID']; else $platformInterfaceID = '';
- 		if (isset($_GET['platformID'])) $platformID = $_GET['platformID'];
+			if (isset($_GET['platformID'])) $platformID = $_GET['platformID'];
 
 
 		if ($platformInterfaceID) $addUpdate = 'Update'; else $addUpdate = 'Add';
@@ -232,7 +232,7 @@ switch ($action) {
 
 	case 'getPublisherNotesForm':
 		if (isset($_GET['publisherNotesID'])) $publisherNotesID = $_GET['publisherNotesID']; else $publisherNotesID = '';
- 		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
+			if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
 
 
 		if ($publisherNotesID) $addUpdate = 'Update'; else $addUpdate = 'Add';
@@ -297,8 +297,8 @@ switch ($action) {
 
 	case 'getLoginForm':
 		if (isset($_GET['interfaceLoginID'])) $interfaceLoginID = $_GET['interfaceLoginID']; else $interfaceLoginID = '';
- 		if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
- 		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID']; else $publisherPlatformID = '';
+			if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
+			if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID']; else $publisherPlatformID = '';
 
 
 		if ($interfaceLoginID) $addUpdate = 'Update'; else $addUpdate = 'Add';
@@ -368,7 +368,7 @@ switch ($action) {
 
 	case 'getMonthlyOutlierForm':
 		if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
- 		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
+			if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
 
 		$archiveInd = $_GET['archiveInd'];
 		$year = $_GET['year'];
@@ -473,7 +473,7 @@ switch ($action) {
 
 	case 'getYearlyOverrideForm':
 		if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
- 		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
+			if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
 
 		$archiveInd = $_GET['archiveInd'];
 		$year = $_GET['year'];
@@ -602,8 +602,8 @@ switch ($action) {
 	//Add ISSNs
 	case 'getAddISSNForm':
 		if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
- 		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
- 		if (isset($_GET['titleID'])) $titleID = $_GET['titleID'];
+			if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
+			if (isset($_GET['titleID'])) $titleID = $_GET['titleID'];
 
 
 		?>
@@ -661,7 +661,7 @@ switch ($action) {
 
 	//Related Titles (this form is display only)
 	case 'getRelatedTitlesForm':
- 		if (isset($_GET['titleID'])) $titleID = $_GET['titleID'];
+			if (isset($_GET['titleID'])) $titleID = $_GET['titleID'];
 
 		?>
 		<div id='div_relatedTitles'>
@@ -735,8 +735,8 @@ switch ($action) {
 
 
 	default:
-       echo "Function " . $_REQUEST['function'] . " not set up!";
-       break;
+				echo "Function " . $_REQUEST['function'] . " not set up!";
+				break;
 
 
 }

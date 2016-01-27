@@ -819,7 +819,7 @@ switch ($action) {
 		<div id='div_addPlatformForm'>
 		<table class="thickboxTable" style="width:300px;padding:2px;">
 		<tr><td colspan='2'><span class='headerText'>Add New Platform for SUSHI Connection</span><br /><br /></td></tr>
-		<tr><td style='vertical-align:top;text-align:right;'><label for='platformName'><b>Platform Name</b></label</td><td><input type='text' id='platformName' name='platformName' value="" style='width:200px;' /><span id='span_error_Platform' style='color:red'></span></td></tr>
+		<tr><td style='vertical-align:top;text-align:right;'><label for='platformName'><b>Platform Name</b></label></td><td><input type='text' id='platformName' name='platformName' value="" style='width:200px;' /><span id='span_error_Platform' style='color:red'></span></td></tr>
 
 
 		<tr style="vertical-align:middle;">
