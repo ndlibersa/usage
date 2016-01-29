@@ -31,6 +31,7 @@ body {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+	/*-*/margin: 0 auto;
 }
 
 .push {
@@ -871,6 +872,7 @@ table.dataTable {
 	font-size:90%;
 	margin-top: 11px;
 	margin-bottom: 10px;
+	/*-*/margin-left: 0;
 }
 
 table.dataTable td {
@@ -2376,4 +2378,18 @@ div#div_recentImports {
 
 #div_updateForm a#closeButton:hover {
 	cursor: pointer;
+}
+
+/*--- Left Align Table Header Text ---*/
+
+table.dataTable th {
+	text-align: left;
+}
+
+/*--- IE10 and IE11 Only ---*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	#div_updateForm input#update-user-cancel {
+		left: 39px;
+		top: -23px;
+	}
 }
