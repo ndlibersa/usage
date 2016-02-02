@@ -94,8 +94,8 @@
           	$('#div_emailAddresses').html(html);
           	tb_reinit();
           },
-          error: function(xhr, ajaxOptions, thrownError) {
-            alert(xhr.status . "\n\n" . thrownError);
+          errorkey: "value", function(xhr, ajaxOptions, thrownError) {
+            alert(xhr.status + "\n\n" + thrownError);
           }
       });
 
