@@ -131,7 +131,7 @@ CREATE TABLE  `TitleIdentifier` (
   `titleIdentifierID` int(11) NOT NULL AUTO_INCREMENT,
   `titleID` int(11) DEFAULT NULL,
   `identifier` varchar(25) DEFAULT NULL,
-  `identifierType` varchar(25) DEFAULT NULL,
+  `identifierType` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`titleIdentifierID`),
   KEY `Index_titleID` (`titleID`),
   KEY `Index_issn` (`identifier`) USING BTREE,
