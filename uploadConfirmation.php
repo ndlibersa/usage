@@ -33,7 +33,7 @@ if ($_GET['importLogID'] > 0){
 	$pageTitle = 'SUSHI Import Confirmation';
 
 	$target_path = $importLog->fileName;
-	$checkYear = date("Y");
+	//$checkYear = date("Y"); //checkYear is not used for SUSHI anymore
 	$formatCorrectFlag = "Y";
 	$errorFlag = "N";
 	$startFlag = "Y";
@@ -41,6 +41,28 @@ if ($_GET['importLogID'] > 0){
 
 	#read this file
 	$file_handle = $util->utf8_fopen_read($target_path, true);
+
+	//takes the first line of the SUSHI import file and finds the year(s) associated
+        $firstLine = stream_get_line($file_handle, 10000000, "\n");
+	$firstArray = explode("\t",$firstLine);
+	$numCol = count($firstArray);
+	//gets the start and ending years from the first line of the SUSHI import
+	$startYearArr = explode("-",$firstArray[(count($firstArray)-1)]);
+	$startYear = $startYearArr[1];//the month of december is always the starting year
+	$endYearArrHelp = explode("-",$firstLine);
+	$endYearArr = explode("\t",$endYearArrHelp[1]);
+	$endYear = $endYearArr[0];//find january's year, which is always the end year
+	$monthArray = explode("-".$endYear."\t",$firstLine); //used to find the starting month, which will be found right after the endyear
+	if ($startYear == $endYear)
+		$startMonth = "jan";
+	else {
+		$startMonthArr = explode("-", $monthArray[count($monthArray)-1]);
+		$startMonth = $startMonthArr[0];
+	}
+	$startDate = array($startMonth, $startYear);
+	$startDate = implode("-", $startDate);
+	$numMonths = 12;
+//came from file import
 
 //came from file import
 }else{
@@ -136,17 +158,18 @@ function updateSubmit(){
 
  //print out headers automaticall if this was from sushi
  if ($importLog->loginID == "sushi"){
-
 		//print out report type and year
-		echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . " for " . $checkYear . "</td></tr>";
-
+		echo "<tr><td colspan='" . $numberOfColumns . "'>" . $reportTypeDisplay . " for " . date("F", strtotime($startMonth)) . " " . $startYear;
+		if ($startYear != $endYear)
+			echo " - " . date("F", mktime(0,0,0,date("n",strtotime($startMonth))+$numMonths-1)) . " " . $endYear . "</td></tr>";
+		else
+			echo "</td></tr>";
 		#also print out column headers
 		echo "<tr>";
 		foreach ($layoutColumns as $value){
 			echo "<th>" . strtoupper($value) . "</th>";
 		}
 		echo "</tr>";
-
  }
 
 
@@ -301,6 +324,8 @@ function updateSubmit(){
     <input type="hidden" name="importLogID" value="<?php echo $importLog->importLogID; ?>">
     <input type="hidden" name="checkYear" value="<?php echo $checkYear; ?>">
     <input type="hidden" name="layoutID" value="<?php echo $layoutID; ?>">
+	<input type="hidden" name="startDate" value="<?php echo $startDate; ?>">
+	<input type="hidden" name="numMonths" value="<?php echo $numMonths; ?>">
 	<table>
 	<tr valign="center">
 	<td>

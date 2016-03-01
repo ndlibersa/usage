@@ -591,6 +591,19 @@ class SushiService extends DatabaseObject {
 		$layoutCode = "";
 		$countArray = array('ytd'=>null,'pdf'=>null,'html'=>null);
 		$txtOut = "";
+		$startDateArr = explode("-", $this -> startDate);
+		$endDateArr = explode("-", $this -> endDate);
+		$startYear = $startDateArr[0];
+		$startMonth = $startDateArr[1];
+		$endYear = $endDateArr[0];
+		$endMonth = $endDateArr[1];
+		$numMonths = 0;
+		if ($startMonth > $endMonth)
+			$numMonths = (13 - ($startMonth - $endMonth));
+		else if ($endMonth > $startMonth)
+			$numMonths = ($endMonth - $startMonth);
+		else
+			$numMonths = 1;
 		$m = null; //month
 
 		while ($reader->read()) {
@@ -621,6 +634,92 @@ class SushiService extends DatabaseObject {
 
 					$layoutKey = $layoutsArray['ReportTypes'][$layoutCode];
 		  			$layoutColumns = $layoutsArray[$layoutKey]['columns'];
+					
+					///////////////////////////////////////////////////////
+					// Create header for SUSHI file
+					///////////////////////////////////////////////////////
+					$header = $layoutColumns;
+					for ($i = 0; $i < sizeof($header); $i++) {
+						if ($header[$i] == "jan" && $startMonth == 1) {
+							$header[$i] .= "-" . $startYear;	
+						}
+						else if ($header[$i] == "jan" && $startMonth != 1) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "feb" && $startMonth <= 2) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "feb" && $startMonth > 2) {
+
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "mar" && $startMonth <= 3) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "mar" && $startMonth > 3) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "apr" && $startMonth <= 4) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "apr" && $startMonth > 4) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "may" && $startMonth <= 5) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "may" && $startMonth > 5) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "jun" && $startMonth <= 6) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "jun" && $startMonth > 6) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "jul" && $startMonth <= 7) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "jul" && $startMonth > 7) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "aug" && $startMonth <= 8) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "aug" && $startMonth > 8) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "sep" && $startMonth <= 9) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "sep" && $startMonth > 9) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "oct" && $startMonth <= 10) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "oct" && $startMonth > 10) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "nov" && $startMonth <= 11) {
+							$header[$i] .= "-" . $startYear;
+						}
+						else if ($header[$i] == "nov" && $startMonth == 12) {
+							$header[$i] .= "-" . $endYear;
+						}
+						if ($header[$i] == "dec" && $startMonth <= 12) {
+							$header[$i] .= "-" . $startYear;
+						}
+					}
+					/*for ($i = 12; $i > 0; $i--) {
+						if ($startMonth > $endMonth && $i < $startMonth && $i > $endMonth)
+							$header[(count($header) - 13)+$i] .= "-x";
+						else if ($endMonth > $startMonth && $i < $startMonth && $i > $endMonth)
+							$header[(count($header) - 13)+$i] .= "-x";
+						else if ($endMonth == $startMonth && $i < $startMonth && $i > $endMonth)
+							$header[(count($header) - 13)+$i] .= "-x";
+					}*/
+					$txtOut .= implode($header, "\t") . "\n";
 	  			}
 				
 				$this->log("Layout validated successfully against layouts.ini : " . $layoutCode);
