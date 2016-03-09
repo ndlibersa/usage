@@ -2420,3 +2420,11 @@ a#help:before {
     font-size: 11px;
     margin-right: 3px;
 }
+
+/*--- Adjustments for Language Dropdown ---*/
+
+select#lang {
+    border: none;
+    margin-left: 10px;
+    background-color: #fff;
+}
