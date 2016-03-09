@@ -58,7 +58,7 @@ $pageTitle='Not Available';
 if ($_GET['errorMessage']){
 	echo "<h3>" . $_GET['errorMessage'] . "</h3>";
 }else{
-	echo "<h3>You have not been set up to have access to the Usage Statistics Module.  Please contact <a href=\"mailto:ERHELP@LISTSERV.ND.EDU\">ER Help</a> to be added.</h3>";
+	echo "<h3>YPlease contact your Administrator for access to the Usage Statistics Module.</h3>";
 }
 ?>
 
