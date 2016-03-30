@@ -1937,7 +1937,7 @@ input#submitPlatformForm:hover {
 	background: #999;
 }
 
-.noBorderTable input#cancel-button {
+/*.noBorderTable input#cancel-button {
 	color: #FFFFFF;
 	font-family: "Arial", sans-serif;
 	font-size: 11px;
@@ -1955,7 +1955,7 @@ input#submitPlatformForm:hover {
 .noBorderTable input#cancel-button:hover {
 	cursor: pointer;
 	background: #999;
-}
+}*/
 
 #TB_ajaxContent {
 	height: auto !important;
@@ -2012,7 +2012,7 @@ table.thickboxTable .headerText {
 
 /*--- Adjust Add Login Form Modal Window ---*/
 
-#div_updateForm input#submitExternalLoginForm {
+/*#div_updateForm input#submitExternalLoginForm {
 	color: #FFFFFF;
 	font-family: "Arial", sans-serif;
 	font-size: 11px;
@@ -2044,11 +2044,11 @@ table.thickboxTable .headerText {
 
 #div_updateForm input[value=cancel]:hover {
 	cursor: pointer;
-}
+}*/
 
 /*--- Adjust Update Sushi Connection Form Modal Window ---*/
 
-#div_updateForm input#submitSushiForm {
+/*#div_updateForm input#submitSushiForm {
 	color: #FFFFFF;
 	font-family: "Arial", sans-serif;
 	font-size: 11px;
@@ -2080,11 +2080,11 @@ table.thickboxTable .headerText {
 
 #div_updateForm input#update-sushi-cancel:hover {
 	cursor: pointer;
-}
+}*/
 
 /*--- Adjust Link Associated Organization Form Modal Window ---*/
 
-#div_organizationsForm input#submitOrganization {
+/*#div_organizationsForm input#submitOrganization {
 	color: #FFFFFF;
 	font-family: "Arial", sans-serif;
 	font-size: 11px;
@@ -2116,11 +2116,11 @@ table.thickboxTable .headerText {
 
 #div_organizationsForm input[value=cancel]:hover {
 	cursor: pointer;
-}
+}*/
 
 /*--- Adjust Update Sushi Connection Form Modal Window ---*/
 
-#div_updateForm input#submitPlatformNoteForm {
+/*#div_updateForm input#submitPlatformNoteForm {
 	color: #FFFFFF;
 	font-family: "Arial", sans-serif;
 	font-size: 11px;
@@ -2152,11 +2152,11 @@ table.thickboxTable .headerText {
 
 #div_updateForm input#interface-cancel:hover {
 	cursor: pointer;
-}
+}*/
 
 /*--- Adjust Update User Form Modal Window ---*/
 
-#div_updateForm input[value=Update] {
+/*#div_updateForm input[value=Update] {
 	color: #FFFFFF;
 	font-family: "Arial", sans-serif;
 	font-size: 11px;
@@ -2190,11 +2190,11 @@ table.thickboxTable .headerText {
 
 #div_updateForm input#update-user-cancel:hover {
 	cursor: pointer;
-}
+}*/
 
 /*--- Adjust Add New User Form Modal Window ---*/
 
-#div_updateForm input[value=Add\ New] {
+/*#div_updateForm input[value=Add\ New] {
 	color: #FFFFFF;
 	font-family: "Arial", sans-serif;
 	font-size: 11px;
@@ -2209,7 +2209,7 @@ table.thickboxTable .headerText {
 
 #div_updateForm input[value=Add\ New]:hover {
 	cursor: pointer;
-}
+}*/
 
 /*--- More Spacing for Headers ---*/
 
@@ -2223,7 +2223,7 @@ table.thickboxTable .headerText {
 
 /*--- Adjust Update Outlier Form Modal Window ---*/
 
-#div_updateForm input#outlier-cancel {
+/*#div_updateForm input#outlier-cancel {
 	color: #FFFFFF;
 	font-family: "Arial", sans-serif;
 	font-size: 11px;
@@ -2239,7 +2239,7 @@ table.thickboxTable .headerText {
 
 #div_updateForm input#outlier-cancel:hover {
 	cursor: pointer;
-}
+}*/
 
 /*--- Side Menu Icons ---*/
 
@@ -2348,7 +2348,7 @@ div#div_recentImports {
 
 /*--- Add New Email Address Modal ---*/
 
-#div_updateForm a#addButton {
+/*#div_updateForm a#addButton {
 	color: #FFFFFF;
 	font-family: "Arial", sans-serif;
 	font-size: 11px;
@@ -2378,7 +2378,7 @@ div#div_recentImports {
 
 #div_updateForm a#closeButton:hover {
 	cursor: pointer;
-}
+}*/
 
 /*--- Left Align Table Header Text ---*/
 
@@ -2427,4 +2427,41 @@ select#lang {
     border: none;
     margin-left: 10px;
     background-color: #fff;
+}
+
+/*--- Consistentcy for Form Buttons ---*/
+
+.submit-button,
+.cancel-button,
+.save-button
+ {
+    color: #FFFFFF;
+    font-family: "Arial", sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    background: #1b76a9;
+    border: none;
+    padding: 5px 10px;
+    text-transform: capitalize;
+    margin-left: 8px;
+    min-width: 60px;
+    margin-top: 5px;
+}
+
+.submit-button:hover,
+.cancel-button:hover,
+.save-button {
+    cursor: pointer;
+}
+
+.submit-button {
+    margin-left: 0;
+}
+
+a.submit-button,
+a.cancel-button,
+a.save-button
+ {
+    color: #FFFFFF !important;
+    text-decoration: none !important;
 }

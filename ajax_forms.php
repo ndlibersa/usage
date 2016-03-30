@@ -60,9 +60,9 @@ switch ($action) {
 		</td>
 
 		<td>
-		<a href='javascript:doSubmitLogEmailAddress();' id='addButton'><?php echo strtolower($addUpdate); ?></a>
+		<a href='javascript:doSubmitLogEmailAddress();' id='addButton' class='submit-button'><?php echo strtolower($addUpdate); ?></a>
 		</td>
-		<td colspan='2'><p><a href='#' onclick='window.parent.tb_remove(); return false' id='closeButton'>close</a></td>
+		<td colspan='2'><p><a href='#' onclick='window.parent.tb_remove(); return false' id='closeButton' class='cancel-button'>close</a></td>
 		</tr>
 		</table>
 		</div>
@@ -125,8 +125,8 @@ switch ($action) {
 					<td style="padding-top:8px;padding-right:8px;">
 						<table class='noBorderTable' style='width:100%;'>
 							<tr>
-								<td style='text-align:left'><input type='submit' value='submit for processing' name='submitSushiRun' id ='submitSushiRun'></td>
-								<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
+								<td style='width:60px;'><input type='submit' value='submit for processing' name='submitSushiRun' id ='submitSushiRun' class='submit-button'></td>
+								<td><input type='button' value='cancel' onclick="tb_remove()" class='cancel-button'></td>
 							</tr>
 						</table>
 					</td>
@@ -165,8 +165,8 @@ switch ($action) {
 		<tr><td style='vertical-align:top;text-align:right;'><label for='overagePercent'><b>% Over prior 12 months</b></label></td><td><input type='text' id='overagePercent' name='overagePercent' value="<?php echo $outlier->overagePercent; ?>" style='width:140px;' /><span id='span_error_overagePercent' style='color:red'></span></td></tr>
 
 		<tr style="vertical-align:middle;">
-		<td style="padding-top:8px;text-align:right;">&nbsp;</td>
-		<td style="padding-top:18px;padding-right:8px;text-align:left;"><input type='button' value='Update' onclick='javascript:window.parent.updateOutlier();'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value='cancel' onclick="window.parent.tb_remove(); return false"></td>
+		<td style="width:60px;"><input type='button' value='Update' onclick='javascript:window.parent.updateOutlier();' class='submit-button'></td>
+		<td><input type='button' value='cancel' onclick="window.parent.tb_remove(); return false" class='cancel-button'></td>
 		</tr>
 
 		</table>
@@ -215,19 +215,18 @@ switch ($action) {
 		<input type='hidden' id='type' name='type' value='<?php echo $_GET['type']; ?>'>
 		<table class="thickboxTable" style="width:230px;">
 		<tr>
-		<td colspan='2'><br /><span class='headerText'>Update Report Display Name</span><br /><span id='span_errors' style='color:red;'></span></td>
+		<td colspan='3'><span class='headerText'>Update Report Display Name</span><br /><span id='span_errors' style='color:red;'></span></td>
 		</tr>
 		<tr>
 		<td>
 		<?php
-		echo "<input type='text' id='reportDisplayName' name='reportDisplayName' value='" . $obj->reportDisplayName . "' style='width:190px;'/></td><td><a href='javascript:updateReportDisplayName();'>update</a>";
+		echo "<input type='text' id='reportDisplayName' name='reportDisplayName' value='" . $obj->reportDisplayName . "' style='width:190px;'/></td><td><a href='javascript:updateReportDisplayName();' class='submit-button'>update</a>";
 		?>
 
 
 		</td>
-		</tr>
-		<tr>
-		<td colspan='2'><p><a href='#' onclick='window.parent.tb_remove(); return false'>close</a></td>
+
+		<td colspan='2'><a href='#' onclick='window.parent.tb_remove(); return false' class='cancel-button'>close</a></td>
 		</tr>
 		</table>
 		</div>
@@ -323,8 +322,8 @@ switch ($action) {
 				<td style="padding-top:8px;padding-right:8px;">
 					<table class='noBorderTable' style='width:100%;'>
 						<tr>
-							<td style='text-align:left'><input type='button' value='submit' name='submitPlatformNoteForm' id ='submitPlatformNoteForm'></td>
-							<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()" id='interface-cancel'></td>
+							<td style='width:60px;'><input type='button' value='submit' name='submitPlatformNoteForm' id ='submitPlatformNoteForm' class='submit-button'></td>
+							<td><input type='button' value='cancel' onclick="tb_remove()" id='interface-cancel' class='cancel-button'></td>
 						</tr>
 					</table>
 				</td>
@@ -392,8 +391,8 @@ switch ($action) {
 				<td style="padding-top:8px;padding-right:8px;">
 					<table class='noBorderTable' style='width:100%;'>
 						<tr>
-							<td style='text-align:left'><input type='button' value='submit' name='submitPublisherNoteForm' id ='submitPublisherNoteForm'></td>
-							<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
+							<td style='width:60px;'><input type='button' value='submit' name='submitPublisherNoteForm' id ='submitPublisherNoteForm' class='submit-button'></td>
+							<td><input type='button' value='cancel' onclick="tb_remove()" class='cancel-button'></td>
 						</tr>
 					</table>
 				</td>
@@ -459,8 +458,8 @@ switch ($action) {
 				<td style="padding-top:8px;padding-right:8px;">
 					<table class='noBorderTable' style='width:100%;'>
 						<tr>
-							<td style='text-align:left'><input type='button' value='submit' name='submitExternalLoginForm' id ='submitExternalLoginForm'></td>
-							<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
+							<td style='width:60px;'><input type='button' value='submit' name='submitExternalLoginForm' id ='submitExternalLoginForm' class='submit-button'></td>
+							<td><input type='button' value='cancel' onclick="tb_remove()" class='cancel-button'></td>
 						</tr>
 					</table>
 				</td>
@@ -568,8 +567,8 @@ switch ($action) {
 				<td style="padding-top:8px;padding-right:8px;">
 					<table class='noBorderTable' style='width:100%;'>
 						<tr>
-							<td style='text-align:left'><input type='button' value='submit' name='submitSushiForm' id ='submitSushiForm'></td>
-							<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
+							<td style='width:60px;'><input type='button' value='submit' name='submitSushiForm' id ='submitSushiForm' class='submit-button'></td>
+							<td><input type='button' value='cancel' onclick="tb_remove()" class='cancel-button'></td>
 						</tr>
 					</table>
 				</td>
@@ -622,8 +621,8 @@ switch ($action) {
 
 
 		<tr style="vertical-align:middle;">
-		<td style="padding-top:8px;"><input type='button' value='submit' name='submitOrganization' id ='submitOrganization'></td>
-		<td style="padding-top:8px;padding-right:8px;text-align:right;"><input type='button' value='cancel' onclick="tb_remove()"></td>
+		<td style="width:60px;"><input type='button' value='submit' name='submitOrganization' id ='submitOrganization' class='submit-button'></td>
+		<td><input type='button' value='cancel' onclick="tb_remove()" class='cancel-button'></td>
 		</tr>
 		</table>
 
@@ -827,8 +826,8 @@ switch ($action) {
 			<td style="padding-top:8px;padding-right:8px;">
 				<table class='noBorderTable' style='width:100%;'>
 					<tr>
-						<td><input type='button' value='submit' name='submitPlatformForm' id ='submitPlatformForm'></td>
-						<td><input type='button' value='cancel' onclick="tb_remove()" id='cancel-button'></td>
+						<td style="width:60px;"><input type='button' value='submit' name='submitPlatformForm' id ='submitPlatformForm' class='submit-button'></td>
+						<td><input type='button' value='cancel' onclick="tb_remove()" id='cancel-button' class='cancel-button'></td>
 					</tr>
 				</table>
 			</td>
@@ -881,8 +880,8 @@ switch ($action) {
 			<td style="padding-top:8px;padding-right:8px;">
 				<table class='noBorderTable' style='width:100%;'>
 					<tr>
-						<td style='text-align:left'><input type='button' value='submit' name='submitIdentifierForm' id ='submitIdentifierForm'></td>
-						<td style='text-align:right'><input type='button' value='cancel' onclick="tb_remove()"></td>
+						<td><input type='button' value='submit' name='submitIdentifierForm' id ='submitIdentifierForm' class='submit-button'></td>
+						<td><input type='button' value='cancel' onclick="tb_remove()" class='cancel-button'></td>
 					</tr>
 				</table>
 			</td>
@@ -950,7 +949,7 @@ switch ($action) {
 		</tr>
 
 		<tr>
-		<td style='text-align:center;width:100%;'><br /><br /><a href='#' onclick='window.parent.tb_remove(); return false'>Close</a>
+		<td style='text-align:center;width:100%;'><br /><br /><a href='#' onclick='window.parent.tb_remove(); return false' class='cancel-button'>Close</a>
 		</td>
 		</tr>
 
@@ -1019,8 +1018,8 @@ switch ($action) {
 		</td>
 		</tr>
 		<tr style="vertical-align:middle;">
-		<td colspan='2' style="padding-top:8px;text-align:right;">&nbsp;</td>
-		<td style="padding-top:18px;padding-right:8px;text-align:left;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitUserData("<?php echo $loginID; ?>");'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' value='cancel' onclick="window.parent.tb_remove(); return false" id='update-user-cancel'></td>
+		<td style="width:60px;"><input type='button' value='<?php echo $update; ?>' onclick='javascript:window.parent.submitUserData("<?php echo $loginID; ?>");' class='submit-button'></td>
+		<td><input type='button' value='cancel' onclick="window.parent.tb_remove(); return false" id='update-user-cancel' class='cancel-button'></td>
 		</tr>
 
 		</table>
