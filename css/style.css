@@ -2329,7 +2329,7 @@ div#div_recentImports {
 }
 
 .dataTable th:nth-child(5) {
-	max-width: 60px !important;
+	max-width: 75px !important;
 }
 
 #importForm fieldset:nth-of-type(1) label {
@@ -2464,4 +2464,10 @@ a.save-button
  {
     color: #FFFFFF !important;
     text-decoration: none !important;
+}
+
+/*--- Adjustments to Up/Down Arrows ---*/
+
+table.noBorderTable td.arrow {
+    text-align: right;
 }
