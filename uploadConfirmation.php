@@ -304,10 +304,10 @@ function updateSubmit(){
 	<table>
 	<tr valign="center">
 	<td>
-	<input type="button" name="submitForm" id="submitForm" value="Confirm" <?php if ($errorFlag == "Y"){ echo "disabled"; } ?> onclick="javascript:updateSubmit();" />
+	<input type="button" name="submitForm" id="submitForm" value="Confirm" <?php if ($errorFlag == "Y"){ echo "disabled"; } ?> onclick="javascript:updateSubmit();" class="submit-button" />
     </td>
     <td>
-	<input type="button" value="Cancel" onClick="javascript:history.back();">
+	<input type="button" value="Cancel" onClick="javascript:history.back();" class='cancel-button'>
     </td>
     </tr>
     </table>

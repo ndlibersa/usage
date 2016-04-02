@@ -39,7 +39,7 @@ $pageTitle='Not Available';
 <div style="text-align:left;">
 
 <center>
-<table class="titleTable" style="background-image:url('images/usagetitle.gif');background-repeat:no-repeat;width:900px;height:80px;text-align:left;">
+<table class="titleTable" style="background-image:url('images/usagetitle.jpg');background-repeat:no-repeat;width:900px;height:120px;text-align:left;">
 <tr style='vertical-align:bottom'>
 <td>
 &nbsp;
@@ -52,13 +52,13 @@ $pageTitle='Not Available';
 </tr>
 </table>
 
-<table class="headerTable" style='height:80px;'>
+<table class="headerTable">
 <tr><td>
 <?php
 if ($_GET['errorMessage']){
 	echo "<h3>" . $_GET['errorMessage'] . "</h3>";
 }else{
-	echo "<h3>You have not been set up to have access to the Usage Statistics Module.  Please contact <a href=\"mailto:ERHELP@LISTSERV.ND.EDU\">ER Help</a> to be added.</h3>";
+	echo "<h3>YPlease contact your Administrator for access to the Usage Statistics Module.</h3>";
 }
 ?>
 

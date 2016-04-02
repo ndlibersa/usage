@@ -24,7 +24,7 @@ if (count($platformArray) > 0){
 
 	echo "Available<br />As Default<br />Report";
 
-	echo "<div style='line-height:130%;'>";
+	echo "<div style='line-height:130%;margin-top:15px;'>";
 
 	foreach($platformArray as $platform) {
 		if ($platform->reportDropDownInd == '1') { $reportDropDownInd = 'checked';}else{$reportDropDownInd = '';}

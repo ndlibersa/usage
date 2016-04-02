@@ -214,7 +214,7 @@ switch ($action) {
 
 		//both publishers and platforms will have organizations lookup
 		if ($config->settings->organizationsModule == 'Y'){
-			echo "<br /><br /><br /><h3>Organization Accounts</h3>";
+			echo "<br /><h3>Organization Accounts</h3>";
 
 			if (isset($_GET['publisherPlatformID']) && ($_GET['publisherPlatformID'] != '')){
 				$publisherPlatformID = $_GET['publisherPlatformID'];
@@ -310,7 +310,7 @@ switch ($action) {
 
 		}
 
-		echo "<br /><br /><br />";
+		echo "<br />";
 
 		//Notes
 		if (isset($_GET['publisherPlatformID']) && ($_GET['publisherPlatformID'] != '')){
@@ -1133,14 +1133,14 @@ switch ($action) {
 					}
 				}
 
-				if ($pageStart == $nextPageStarts){
-					echo "<span class='smallText'>>></span>&nbsp;";
-				}else{
-					echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");'>>></a>&nbsp;";
-				}
-			}else{
-				echo "<br />";
-			}
+										if ($pageStart == $nextPageStarts){
+													echo "<span class='smallText'><i class='fa fa-forward'></i></span>&nbsp;";
+										}else{
+													echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");'><i class='fa fa-forward'></i></a>&nbsp;";
+										}
+								}else{
+										echo "<br />";
+								}
 
 			//making table larger so it fills the page more
 			echo "<table class='dataTable' style='width:630px; max-width:630px;'>";
@@ -1178,13 +1178,13 @@ switch ($action) {
 
 			<?php
 
-			//print out page selectors
-			if ($totalRecords > $numberOfRecords){
-				if ($pageStart == "1"){
-					echo "<span class='smallText'><<</span>&nbsp;";
-				}else{
-					echo "<a href='javascript:setPageStart(1);'><<</a>&nbsp;";
-				}
+								//print out page selectors
+								if ($totalRecords > $numberOfRecords){
+										if ($pageStart == "1"){
+													echo "<span class='smallText'><i class='fa fa-backward'></i></span>&nbsp;";
+										}else{
+													echo "<a href='javascript:setPageStart(1);'><i class='fa fa-backward'></i></a>&nbsp;";
+										}
 
 				for ($i=1; $i<($totalRecords/$numberOfRecords)+1; $i++){
 
@@ -1199,15 +1199,15 @@ switch ($action) {
 					}
 				}
 
-				if ($pageStart == $nextPageStarts){
-					echo "<span class='smallText'>>></span>&nbsp;";
-				}else{
-					echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");'>>></a>&nbsp;";
-				}
-			}else{
-				echo "<br />";
-			}
-		}
+										if ($pageStart == $nextPageStarts){
+													echo "<span class='smallText'><i class='fa fa-forward'></i></span>&nbsp;";
+										}else{
+													echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");'><i class='fa fa-forward'></i></a>&nbsp;";
+										}
+								}else{
+										echo "<br />";
+								}
+					}
 
 
 		break;
@@ -1260,7 +1260,7 @@ switch ($action) {
 		}else{
 			echo "(no outstanding imports found)";
 
-		}
+		}	
 
 		break;
 
@@ -1472,13 +1472,13 @@ switch ($action) {
 			$thisPageNum = count($platformArray) + $pageStart - 1;
 			echo "<span style='font-weight:bold;'>Displaying " . $pageStart . " to " . $thisPageNum . " of " . $totalRecords . " Platform Records</span><br />";
 
-			//print out page selectors
-			if ($totalRecords > $numberOfRecords){
-				if ($pageStart == "1"){
-					echo "<span class='smallerText'><<</span>&nbsp;";
-				}else{
-					echo "<a href='javascript:setPageStart(1);' class='smallLink'><<</a>&nbsp;";
-				}
+								//print out page selectors
+								if ($totalRecords > $numberOfRecords){
+										if ($pageStart == "1"){
+													echo "<span class='smallerText'><i class='fa fa-backward'></i></span>&nbsp;";
+										}else{
+													echo "<a href='javascript:setPageStart(1);' class='smallLink'><i class='fa fa-backward'></i></a>&nbsp;";
+										}
 
 				//don't want to print out too many page selectors!!
 				$maxDisplay=41;
@@ -1499,25 +1499,25 @@ switch ($action) {
 					}
 				}
 
-				if ($pageStart == $nextPageStarts){
-					echo "<span class='smallerText'>>></span>&nbsp;";
-				}else{
-					echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'>>></a>&nbsp;";
-				}
-			}else{
-				echo "<br />";
-			}
+										if ($pageStart == $nextPageStarts){
+													echo "<span class='smallerText'><i class='fa fa-forward'></i></span>&nbsp;";
+										}else{
+													echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'><i class='fa fa-forward'></i></a>&nbsp;";
+										}
+								}else{
+										echo "<br />";
+								}
 
 
 			?>
 			<table class='dataTable' style='width:727px'>
 			<tr>
-				<th><table class='noBorderTable'><tr><td>Platform Name</td><td class='arrow'><a href='javascript:setOrder("P.name","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("P.name","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td>Publishers</td><td class='arrow'><a href='javascript:setOrder("publishers","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("publishers","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td>Next Run</td><td class='arrow'><a href='javascript:setOrder("serviceDayOfMonth","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("serviceDayOfMonth","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td>Latest Run</td><td class='arrow'><a href='javascript:setOrder("importDateTime","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("ImportDateTime","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td>Latest Status</td><td class='arrow'><a href='javascript:setOrder("details","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("details","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td>By</td><td class='arrow'><a href='javascript:setOrder("loginID","asc");'><img src='images/arrowup.gif' border=0></a>&nbsp;<a href='javascript:setOrder("loginID","desc");'><img src='images/arrowdown.gif' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>Platform Name</td><td class='arrow'><a href='javascript:setOrder("P.name","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("P.name","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>Publishers</td><td class='arrow'><a href='javascript:setOrder("publishers","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("publishers","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>Next Run</td><td class='arrow'><a href='javascript:setOrder("serviceDayOfMonth","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("serviceDayOfMonth","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>Latest Run</td><td class='arrow'><a href='javascript:setOrder("importDateTime","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("ImportDateTime","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>Latest Status</td><td class='arrow'><a href='javascript:setOrder("details","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("details","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td>By</td><td class='arrow'><a href='javascript:setOrder("loginID","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("loginID","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 			</tr>
 
 			<?php
@@ -1568,17 +1568,17 @@ switch ($action) {
 			?>
 			</table>
 
-			<table style='width:100%;margin-top:4px'>
-			<tr>
-			<td style='text-align:left'>
-			<?php
-			//print out page selectors
-			if ($totalRecords > $numberOfRecords){
-				if ($pageStart == "1"){
-					echo "<span class='smallerText'><<</span>&nbsp;";
-				}else{
-					echo "<a href='javascript:setPageStart(1);' class='smallLink'><<</a>&nbsp;";
-				}
+								<table style='width:100%;margin-top:4px'>
+								<tr>
+								<td style='text-align:left'>
+								<?php
+								//print out page selectors
+								if ($totalRecords > $numberOfRecords){
+										if ($pageStart == "1"){
+													echo "<span class='smallerText'><i class='fa fa-backward'></i></span>&nbsp;";
+										}else{
+													echo "<a href='javascript:setPageStart(1);' class='smallLink'><i class='fa fa-backward'></i></a>&nbsp;";
+										}
 
 				$maxDisplay=41;
 				if ((($totalRecords/$numberOfRecords)+1) < $maxDisplay){
@@ -1598,30 +1598,30 @@ switch ($action) {
 					}
 				}
 
-				if ($pageStart == $nextPageStarts){
-					echo "<span class='smallerText'>>></span>&nbsp;";
-				}else{
-					echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'>>></a>&nbsp;";
-				}
-			}
-			?>
-			</td>
-			<td style="text-align:right">
-			<select id='numberOfRecords' name='numberOfRecords' onchange='javascript:setNumberOfRecords();' style='width:50px;'>
-				<?php
-				for ($i=5; $i<=50; $i=$i+5){
-					if ($i == $numberOfRecords){
-						echo "<option value='" . $i . "' selected>" . $i . "</option>";
-					}else{
-						echo "<option value='" . $i . "'>" . $i . "</option>";
-					}
-				}
-				?>
-			</select>
-			<span class='smallText'>records per page</span>
-			</td>
-			</tr>
-			</table>
+										if ($pageStart == $nextPageStarts){
+													echo "<span class='smallerText'><i class='fa fa-forward'></i></span>&nbsp;";
+										}else{
+													echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'><i class='fa fa-forward'></i></a>&nbsp;";
+										}
+								}
+								?>
+								</td>
+								<td style="text-align:right">
+								<select id='numberOfRecords' name='numberOfRecords' onchange='javascript:setNumberOfRecords();' style='width:50px;'>
+										<?php
+										for ($i=5; $i<=50; $i=$i+5){
+													if ($i == $numberOfRecords){
+															echo "<option value='" . $i . "' selected>" . $i . "</option>";
+													}else{
+															echo "<option value='" . $i . "'>" . $i . "</option>";
+													}
+										}
+										?>
+								</select>
+								<span class='smallText'>records per page</span>
+								</td>
+								</tr>
+								</table>
 
 			<?php
 		}
