@@ -148,6 +148,62 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 ?>
 
 </td>
+<td id="setLanguage">
+		<select name="lang" id="lang" class="dropDownLang">
+           <?php
+            // Get all translations on the 'locale' folder
+            $route='locale';
+            $lang[]="en_US"; // add default language
+            if (is_dir($route)) {
+                if ($dh = opendir($route)) {
+                    while (($file = readdir($dh)) !== false) {
+                        if (is_dir("$route/$file") && $file!="." && $file!=".."){
+                            $lang[]=$file;
+                        } 
+                    } 
+                    closedir($dh); 
+                } 
+            }else {
+                echo "<br>"._("Invalid translation route!"); 
+            }
+            // Get language of navigator
+            $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+            
+            // Show an ordered list
+            sort($lang); 
+            for($i=0; $i<count($lang); $i++){
+                if(isset($_COOKIE["lang"])){
+                    if($_COOKIE["lang"]==$lang[$i]){
+                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
+                    }else{
+                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
+                    }
+                }else{
+                    if($defLang==substr($lang[$i],0,2)){
+                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
+                    }else{
+                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
+                    }
+                }
+            }
+            ?>
+            
+        </select>
+</td>
 </tr>
 </table>
+	<script>
+        $("#lang").change(function() {
+            setLanguage($("#lang").val());
+            location.reload();
+        });
+        
+        function setLanguage(lang) {
+			var wl = window.location, now = new Date(), time = now.getTime();
+            var cookievalid=2592000000; // 30 days (1000*60*60*24*30)
+            time += cookievalid;
+			now.setTime(time);
+			document.cookie ='lang='+lang+';path=/'+';domain='+wl.host+';expires='+now;
+	    }
+    </script>
 <span id='span_message' style='color:red;text-align:left;'><?php if (isset($err)) echo $err; ?></span>

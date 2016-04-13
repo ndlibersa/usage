@@ -36,11 +36,11 @@ switch ($action) {
 
 		if (isset($_GET['logEmailAddressID']) && ($_GET['logEmailAddressID'] != '')){
 			$logEmailAddressID = $_GET['logEmailAddressID'];
-			$addUpdate = 'Update';
+			$addUpdate = _('Update');
 			$logEmailAddress = new LogEmailAddress(new NamedArguments(array('primaryKey' => $_GET['logEmailAddressID'])));
 		}else{
 			$logEmailAddressID = '';
-			$addUpdate = 'Add';
+			$addUpdate = _('Add');
 			$logEmailAddress = new LogEmailAddress();
 		}
 
@@ -52,7 +52,7 @@ switch ($action) {
 		<input type='hidden' id='updateLogEmailAddressID' name='updateLogEmailAddressID' value='<?php echo $logEmailAddressID; ?>'>
 		<table class="thickboxTable" style="width:230px;">
 		<tr>
-		<td colspan='3'><span class='headerText'><?php echo $addUpdate; ?> Email Address</span><br /><span id='span_errors' style='color:red;'></span></td>
+		<td colspan='3'><span class='headerText'><?php echo $addUpdate; ?> <?php echo _("Email Address");?></span><br /><span id='span_errors' style='color:red;'></span></td>
 		</tr>
 		<tr>
 		<td>
@@ -62,7 +62,7 @@ switch ($action) {
 		<td>
 		<a href='javascript:doSubmitLogEmailAddress();' id='addButton' class='submit-button'><?php echo strtolower($addUpdate); ?></a>
 		</td>
-		<td colspan='2'><p><a href='#' onclick='window.parent.tb_remove(); return false' id='closeButton' class='cancel-button'>close</a></td>
+		<td colspan='2'><p><a href='#' onclick='window.parent.tb_remove(); return false' id='closeButton' class='cancel-button'><?php echo _("close");?></a></td>
 		</tr>
 		</table>
 		</div>
@@ -103,15 +103,15 @@ switch ($action) {
 			<input type='hidden' id='sushiServiceID' name='sushiServiceID' value='<?php echo $sushiServiceID; ?>'>
 			<table class="thickboxTable" style="width:300px;padding:2px;">
 				<tr>
-					<td colspan='2'><span class='headerText'>SUSHI Service for <?php echo $sushiService->getServiceProvider; ?></span><br /> Optional Parameters<span id='span_errors' style='color:red;'><br /></span><br /></td>
+					<td colspan='2'><span class='headerText'><?php echo _("SUSHI Service for ");?><?php echo $sushiService->getServiceProvider; ?></span><br /> <?php echo _("Optional Parameters");?><span id='span_errors' style='color:red;'><br /></span><br /></td>
 				</tr>
 				<tr>
-					<td style='vertical-align:top;text-align:right;width:85px;'><label for='startDate'><b>Start Date:</b></label></td>
+					<td style='vertical-align:top;text-align:right;width:85px;'><label for='startDate'><b><?php echo _("Start Date:");?></b></label></td>
 					<td><input type='text' id='startDate' name='startDate' value="<?php echo $sushiService->startDate; ?>" style='width:90px;' /> (yyyy-mm-dd)<span id='span_error_startDate' style='color:red'></span></td>
 				</tr>
 				<tr>
-										<td style='vertical-align:top;text-align:right;'><label for='endDate'><b>End Date:</b></label></td>
-					<td><input type='text' id='endDate' name='endDate' value="<?php echo $sushiService->endDate; ?>" style='width:90px;' /> (yyyy-mm-dd)<span id='span_error_endDate' style='color:red'></span></td>
+										<td style='vertical-align:top;text-align:right;'><label for='endDate'><b><?php echo _("End Date:");?></b></label></td>
+					<td><input type='text' id='endDate' name='endDate' value="<?php echo $sushiService->endDate; ?>" style='width:90px;' /> <?php echo _("(yyyy-mm-dd)");?><span id='span_error_endDate' style='color:red'></span></td>
 				</tr>
 				<tr>
 					<td style='vertical-align:top;text-align:right;'><input type='checkbox' id='overwritePlatform' name='overwritePlatform' value='1' checked /></td>
