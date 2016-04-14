@@ -1,0 +1,546 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"POT-Creation-Date: 2016-04-13 20:12-0600\n"
+"PO-Revision-Date: 2016-04-13 20:17-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin.php:12
+msgid "Users"
+msgstr ""
+
+#: admin.php:13
+msgid "add new user"
+msgstr "Ajouter un nouvel utilisateur"
+
+#: admin.php:16 admin.php:31 admin.php:46
+msgid "Loading..."
+msgstr ""
+
+#: admin.php:27
+msgid "Email addresses for logs"
+msgstr ""
+
+#: admin.php:28
+msgid "add new email address"
+msgstr ""
+
+#: admin.php:43
+msgid "Outlier Parameters"
+msgstr ""
+
+#: ajax_forms.php:39 ajax_forms.php:168 ajax_forms.php:257 ajax_forms.php:354
+#: ajax_forms.php:421 ajax_forms.php:486 ajax_forms.php:977
+msgid "Update"
+msgstr ""
+
+#: ajax_forms.php:43 ajax_forms.php:257 ajax_forms.php:363 ajax_forms.php:427
+#: ajax_forms.php:490
+msgid "Add"
+msgstr "Ajouter"
+
+#: ajax_forms.php:55
+msgid "Email Address"
+msgstr ""
+
+#: ajax_forms.php:65 ajax_forms.php:229
+msgid "close"
+msgstr ""
+
+#: ajax_forms.php:106
+msgid "SUSHI Service for "
+msgstr ""
+
+#: ajax_forms.php:106
+msgid "Optional Parameters"
+msgstr ""
+
+#: ajax_forms.php:109
+msgid "Start Date:"
+msgstr ""
+
+#: ajax_forms.php:113
+msgid "End Date:"
+msgstr ""
+
+#: ajax_forms.php:114
+msgid "(yyyy-mm-dd)"
+msgstr ""
+
+#: ajax_forms.php:119
+msgid "Ensure platform name stays CORAL's Platform Name: "
+msgstr ""
+
+#: ajax_forms.php:128
+msgid "submit for processing"
+msgstr ""
+
+#: ajax_forms.php:129 ajax_forms.php:169 ajax_forms.php:326 ajax_forms.php:395
+#: ajax_forms.php:462 ajax_forms.php:625 ajax_forms.php:830 ajax_forms.php:884
+#: ajax_forms.php:1022
+msgid "cancel"
+msgstr "annuler"
+
+#: ajax_forms.php:142
+msgid "No Sushi Service passed in!"
+msgstr ""
+
+#: ajax_forms.php:163
+msgid "Update Outlier - "
+msgstr ""
+
+#: ajax_forms.php:164
+msgid "Count Over"
+msgstr ""
+
+#: ajax_forms.php:165
+msgid "% Over prior 12 months"
+msgstr ""
+
+#: ajax_forms.php:218
+msgid "Update Report Display Name"
+msgstr ""
+
+#: ajax_forms.php:223 ajax_forms.php:769 ajax_forms.php:776 ajax_forms.php:783
+msgid "update"
+msgstr ""
+
+#: ajax_forms.php:296
+msgid " Interface Notes"
+msgstr ""
+
+#: ajax_forms.php:299 ajax_forms.php:377
+msgid "Start Year:"
+msgstr ""
+
+#: ajax_forms.php:303 ajax_forms.php:381
+msgid "End Year:"
+msgstr ""
+
+#: ajax_forms.php:307
+msgid "Counter Compliant?"
+msgstr ""
+
+#: ajax_forms.php:309
+msgid "Yes"
+msgstr ""
+
+#: ajax_forms.php:310
+msgid "No"
+msgstr ""
+
+#: ajax_forms.php:316
+msgid "Interface Notes:"
+msgstr ""
+
+#: ajax_forms.php:325 ajax_forms.php:394 ajax_forms.php:461 ajax_forms.php:624
+#: ajax_forms.php:829 ajax_forms.php:883
+msgid "submit"
+msgstr "envoyer"
+
+#: ajax_forms.php:374 ajax_htmldata.php:320
+msgid "Publisher Notes"
+msgstr ""
+
+#: ajax_forms.php:385
+msgid "Publisher Notes:"
+msgstr ""
+
+#: ajax_forms.php:438
+msgid "Login"
+msgstr ""
+
+#: ajax_forms.php:441
+msgid "Username:"
+msgstr ""
+
+#: ajax_forms.php:445 ajax_forms.php:549
+msgid "Password:"
+msgstr ""
+
+#: ajax_forms.php:448
+msgid "URL:"
+msgstr ""
+
+#: ajax_forms.php:452
+msgid "Login Notes:"
+msgstr ""
+
+#: ajax_forms.php:500
+msgid "SUSHI Connection"
+msgstr ""
+
+#: ajax_forms.php:503
+msgid "Service/Endpoint URL:"
+msgstr ""
+
+#: ajax_forms.php:505
+msgid " - if using COUNTER's WSDL"
+msgstr ""
+
+#: ajax_forms.php:509
+msgid " - or - WSDL URL:"
+msgstr ""
+
+#: ajax_forms.php:511
+msgid " - if not using COUNTER's WSDL"
+msgstr ""
+
+#: ajax_forms.php:514
+msgid "Report Type(s):"
+msgstr ""
+
+#: ajax_forms.php:516
+msgid "separate report types with semi-colon, e.g. JR1;BR1"
+msgstr ""
+
+#: ajax_forms.php:520
+msgid "COUNTER Release:"
+msgstr ""
+
+#: ajax_forms.php:529
+msgid "Requestor ID:"
+msgstr ""
+
+#: ajax_forms.php:533
+msgid "Customer ID:"
+msgstr ""
+
+#: ajax_forms.php:537
+msgid "Security Type:"
+msgstr ""
+
+#: ajax_forms.php:539 ajax_forms.php:545 ajax_forms.php:558
+msgid "(optional)"
+msgstr ""
+
+#: ajax_forms.php:539
+msgid "can be: HTTP Basic, WSSE Authentication"
+msgstr ""
+
+#: ajax_forms.php:543
+msgid "Login:"
+msgstr ""
+
+#: ajax_forms.php:545
+msgid " -  only needed for HTTP or WSSE Authentication"
+msgstr ""
+
+#: ajax_forms.php:551
+msgid " - only needed for HTTP or WSSE Authentication"
+msgstr ""
+
+#: ajax_forms.php:556
+msgid "Service Day:"
+msgstr ""
+
+#: ajax_forms.php:558
+msgid " - number indicating the day of month the service should run"
+msgstr ""
+
+#: ajax_forms.php:558
+msgid "(e.g. 27 will run 27th of every month)"
+msgstr ""
+
+#: ajax_forms.php:561
+msgid "Sushi Notes:"
+msgstr ""
+
+#: ajax_forms.php:609
+msgid "Link Associated Organization"
+msgstr ""
+
+#: ajax_forms.php:613
+msgid "Organization:"
+msgstr ""
+
+#: ajax_forms.php:691
+msgid "ignore outlier"
+msgstr ""
+
+#: ajax_forms.php:700 ajax_forms.php:795 ajax_forms.php:952
+msgid "Close"
+msgstr ""
+
+#: ajax_forms.php:751
+msgid "(showing only titles for which there were outliers during the year)"
+msgstr ""
+
+#: ajax_forms.php:766
+msgid "Total"
+msgstr ""
+
+#: ajax_forms.php:820
+msgid "Add New Platform for SUSHI Connection"
+msgstr ""
+
+#: ajax_forms.php:821
+msgid "Platform Name"
+msgstr ""
+
+#: ajax_forms.php:862
+msgid "Add Identifier"
+msgstr ""
+
+#: ajax_forms.php:863
+msgid "Identifier Type"
+msgstr ""
+
+#: ajax_forms.php:866
+msgid "ISSN"
+msgstr ""
+
+#: ajax_forms.php:867
+msgid "eISSN"
+msgstr ""
+
+#: ajax_forms.php:868
+msgid "ISBN"
+msgstr ""
+
+#: ajax_forms.php:869
+msgid "eISBN"
+msgstr ""
+
+#: ajax_forms.php:870
+msgid "DOI"
+msgstr ""
+
+#: ajax_forms.php:871
+msgid "Proprietary ID"
+msgstr ""
+
+#: ajax_forms.php:875
+msgid "Identifier"
+msgstr ""
+
+#: ajax_forms.php:917
+msgid "Associated Titles and Identifiers"
+msgstr ""
+
+#: ajax_forms.php:980
+msgid "Add New"
+msgstr "Ajouter"
+
+#: ajax_forms.php:987
+msgid " User"
+msgstr ""
+
+#: ajax_forms.php:988
+msgid "Login ID"
+msgstr ""
+
+#: ajax_forms.php:989
+msgid "First Name"
+msgstr ""
+
+#: ajax_forms.php:990
+msgid "Last Name"
+msgstr ""
+
+#: ajax_forms.php:991
+msgid "Privilege"
+msgstr ""
+
+#: ajax_forms.php:995
+msgid "Add/Edit users have access to everything"
+msgstr ""
+
+#: ajax_forms.php:995
+msgid "except the Admin tab and admin users"
+msgstr ""
+
+#: ajax_forms.php:995
+msgid "have access to everything"
+msgstr ""
+
+#: ajax_htmldata.php:46
+msgid "Import History for "
+msgstr ""
+
+#: ajax_htmldata.php:61
+msgid "Import Date"
+msgstr ""
+
+#: ajax_htmldata.php:62
+msgid "Imported By"
+msgstr ""
+
+#: ajax_htmldata.php:63
+msgid "Import Summary"
+msgstr ""
+
+#: ajax_htmldata.php:75
+msgid "view log"
+msgstr ""
+
+#: ajax_htmldata.php:76
+msgid "view archive"
+msgstr ""
+
+#: ajax_htmldata.php:81
+msgid "(no imports found)"
+msgstr ""
+
+#: ajax_htmldata.php:112
+msgid "Interface Login"
+msgstr ""
+
+#: ajax_htmldata.php:113 ajax_htmldata.php:241
+msgid "Password"
+msgstr ""
+
+#: ajax_htmldata.php:114 ajax_htmldata.php:242
+msgid "URL"
+msgstr ""
+
+#: ajax_htmldata.php:115
+msgid "Login Notes"
+msgstr ""
+
+#: ajax_htmldata.php:137 ajax_htmldata.php:198 ajax_htmldata.php:358
+#: ajax_htmldata.php:427
+msgid "(none found)"
+msgstr ""
+
+#: ajax_htmldata.php:145 ajax_htmldata.php:206
+msgid "add new login"
+msgstr ""
+
+#: ajax_htmldata.php:156
+msgid "Interface Logins"
+msgstr ""
+
+#: ajax_htmldata.php:188 ajax_htmldata.php:350 ajax_htmldata.php:419
+msgid "remove"
+msgstr ""
+
+#: ajax_htmldata.php:236
+msgid "For "
+msgstr ""
+
+#: ajax_htmldata.php:236 ajax_htmldata.php:260
+msgid "view organization"
+msgstr ""
+
+#: ajax_htmldata.php:239
+msgid "Login Type"
+msgstr ""
+
+#: ajax_htmldata.php:240
+msgid "Username"
+msgstr ""
+
+#: ajax_htmldata.php:243 ajax_htmldata.php:337
+msgid "Notes"
+msgstr ""
+
+#: ajax_htmldata.php:260
+msgid "No login information stored for "
+msgstr ""
+
+#: ajax_htmldata.php:265
+msgid "change associated organization"
+msgstr ""
+
+#: ajax_htmldata.php:274
+msgid "link to associated organization"
+msgstr ""
+
+#: ajax_htmldata.php:299
+msgid "Login Credentials are also available for the following publishers:"
+msgstr ""
+
+#: ajax_htmldata.php:335 ajax_htmldata.php:394
+msgid "Start Year"
+msgstr ""
+
+#: ajax_htmldata.php:336 ajax_htmldata.php:395
+msgid "End Year"
+msgstr ""
+
+#: ajax_htmldata.php:344
+msgid "Present"
+msgstr ""
+
+#: ajax_htmldata.php:350
+msgid "edit"
+msgstr ""
+
+#: ajax_htmldata.php:363
+msgid "add new publisher notes"
+msgstr ""
+
+#: ajax_htmldata.php:376 ajax_htmldata.php:397
+msgid "Interface Notes"
+msgstr ""
+
+#: ajax_htmldata.php:396
+msgid "Counter"
+msgstr ""
+
+#: ajax_htmldata.php:396
+msgid "Compliant?"
+msgstr ""
+
+#: ajax_htmldata.php:432
+msgid "add new interface note"
+msgstr ""
+
+#: ajax_htmldata.php:474
+msgid "Edit SUSHI Connection Info"
+msgstr ""
+
+#: ajax_htmldata.php:475
+msgid "Test SUSHI Connection"
+msgstr ""
+
+#: ajax_htmldata.php:477
+msgid "Add SUSHI Connection"
+msgstr ""
+
+#: ajax_htmldata.php:483
+msgid "Visit the "
+msgstr ""
+
+#: ajax_htmldata.php:483
+msgid "SUSHI Server Registry"
+msgstr ""
+
+#: ajax_htmldata.php:483
+msgid " for information about adding your provider."
+msgstr ""
+
+#: index.php:50
+msgid "Search"
+msgstr ""
+
+#: index.php:51
+msgid "new search"
+msgstr ""
+
+#: index.php:60
+msgid "Name (contains)"
+msgstr ""
+
+#: index.php:63
+msgid "go!"
+msgstr ""
+
+#: index.php:70
+msgid "Starts with"
+msgstr ""
+
+#: templates/header.php:167
+msgid "Invalid translation route!"
+msgstr ""

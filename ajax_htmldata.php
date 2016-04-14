@@ -43,7 +43,7 @@ switch ($action) {
 
 		?>
 
-		<h3>Import History for <?php echo $platform->name; ?></h3>
+		<h3><?php echo _("Import History for ");?><?php echo $platform->name; ?></h3>
 
 		<div id="div_imports">
 
@@ -58,9 +58,9 @@ switch ($action) {
 
 			echo "<table class='dataTable' style='width:100%;'>";
 			echo "<tr>";
-			echo "<th style='padding:3px;'>Import Date</th>";
-			echo "<th style='padding:3px;'>Imported By</th>";
-			echo "<th style='padding:3px;'>Import Summary</th>";
+			echo "<th style='padding:3px;'>" . _("Import Date") . "</th>";
+			echo "<th style='padding:3px;'>" . _("Imported By") . "</th>";
+			echo "<th style='padding:3px;'>" . _("Import Summary") . "</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "<th style='padding:3px;'>&nbsp;</th>";
 			echo "</tr>";
@@ -72,13 +72,13 @@ switch ($action) {
 				echo "<td $classAdd style='padding:3px;'>" . format_date($importLog->importDateTime) . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $importLog->loginID . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . nl2br($importLog->details) . "</td>";
-				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog->logFileURL . "'>view log</a></td>";
-				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog->archiveFileURL . "'>view archive</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog->logFileURL . "'>" . _("view log") . "</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog->archiveFileURL . "'>" . _("view archive") . "</a></td>";
 				echo "</tr>";
 			}
 			echo "</table>";
 		}else{
-			echo "(no imports found)";
+			echo _("(no imports found)");
 
 		}
 
@@ -92,7 +92,7 @@ switch ($action) {
 
 			?>
 
-			<h3>Publisher Logins</h3>
+			<h3><?php echo("Publisher Logins");?></h3>
 
 			<div id="div_logins">
 
@@ -109,10 +109,10 @@ switch ($action) {
 
 			<table class='verticalFormTable'>
 			<tr>
-			<th>Interface Login</th>
-			<th>Password</th>
-			<th>URL</th>
-			<th>Login Notes</th>
+			<th><?php echo _("Interface Login");?></th>
+			<th><?php echo _("Password");?></th>
+			<th><?php echo _("URL");?></th>
+			<th><?php echo _("Login Notes");?></th>
 			<th>&nbsp;</th>
 			</tr>
 
@@ -134,7 +134,7 @@ switch ($action) {
 
 			<?php
 			}else{
-				echo "(none found)";
+				echo _("(none found)");
 			}
 			?>
 
@@ -142,7 +142,7 @@ switch ($action) {
 			</div>
 
 			<br />
-			<a href='ajax_forms.php?action=getLoginForm&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=250&width=325&modal=true' class='thickbox' id='uploadDocument'>add new login</a>
+			<a href='ajax_forms.php?action=getLoginForm&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=250&width=325&modal=true' class='thickbox' id='uploadDocument'><?php echo _("add new login");?></a>
 
 
 		<?php
@@ -153,7 +153,7 @@ switch ($action) {
 			?>
 
 
-			<h3>Interface Logins</h3>
+			<h3><?php echo _("Interface Logins");?></h3>
 
 			<div id="div_logins">
 
@@ -185,7 +185,7 @@ switch ($action) {
 				echo "<td>" . $externalLogin->password . "</td>";
 				echo "<td>" . $externalLogin->loginURL . "</td>";
 				echo "<td>" . $externalLogin->noteText . "</td>";
-				echo "<td><a href='ajax_forms.php?action=getLoginForm&externalLoginID=" . $externalLogin->externalLoginID . "&height=250&width=325&modal=true' class='thickbox' style='font-size:100%;'>edit</a><br /><a href='javascript:deleteExternalLogin(" . $externalLogin->externalLoginID . ");' style='font-size:100%;'>remove</a></td>";
+				echo "<td><a href='ajax_forms.php?action=getLoginForm&externalLoginID=" . $externalLogin->externalLoginID . "&height=250&width=325&modal=true' class='thickbox' style='font-size:100%;'>edit</a><br /><a href='javascript:deleteExternalLogin(" . $externalLogin->externalLoginID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
 				echo "</tr>";
 
 			}
@@ -195,7 +195,7 @@ switch ($action) {
 
 			<?php
 			}else{
-				echo "(none found)";
+				echo _("(none found)");
 			}
 			?>
 
@@ -203,7 +203,7 @@ switch ($action) {
 			</div>
 
 			<br />
-			<a href='ajax_forms.php?action=getLoginForm&platformID=<?php echo $platform->platformID; ?>&height=250&width=325&modal=true' class='thickbox' id='uploadDocument'>add new login</a>
+			<a href='ajax_forms.php?action=getLoginForm&platformID=<?php echo $platform->platformID;?>&height=250&width=325&modal=true' class='thickbox' id='uploadDocument'><?php echo _("add new login");?></a>
 
 		<?php
 		}
@@ -233,14 +233,14 @@ switch ($action) {
 
 				if (count($externalLoginArray) > 0){
 					?>
-					For <?php echo $obj->getOrganizationName() . "&nbsp;&nbsp;<a href='" . $util->getOrganizationURL() . $obj->organizationID . "' target='_blank'>view organization</a>"; ?>
+					<?php echo _("For ");?><?php echo $obj->getOrganizationName() . "&nbsp;&nbsp;<a href='" . $util->getOrganizationURL() . $obj->organizationID . "' target='_blank'>" . _("view organization") . "</a>";?>
 					<table class='verticalFormTable'>
 					<tr>
-					<th>Login Type</th>
-					<th>Username</th>
-					<th>Password</th>
-					<th>URL</th>
-					<th>Notes</th>
+					<th><?php echo _("Login Type");?></th>
+					<th><?php echo _("Username");?></th>
+					<th><?php echo _("Password");?></th>
+					<th><?php echo _("URL");?></th>
+					<th><?php echo _("Notes");?></th>
 					</tr>
 
 					<?php
@@ -257,12 +257,12 @@ switch ($action) {
 					echo "</table>";
 
 				}else{
-					echo "<i>No login information stored for " . $obj->getOrganizationName . "</i>&nbsp;&nbsp;<a href='" . $util->getOrganizationURL() . $obj->organizationID . "' target='_blank'>view organization</a>";
+					echo "<i>" . _("No login information stored for ") . $obj->getOrganizationName . "</i>&nbsp;&nbsp;<a href='" . $util->getOrganizationURL() . $obj->organizationID . "' target='_blank'>" . _("view organization") . "</a>";
 				}
 
 				?>
 				<br />
-				<a href='ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true' class='thickbox'>change associated organization</a>
+				<a href='ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true' class='thickbox'><?php echo _("change associated organization");?></a>
 				<br />
 				<?php
 
@@ -271,7 +271,7 @@ switch ($action) {
 				?>
 
 					<br />
-					<a href='ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true' class='thickbox'>link to associated organization</a>
+					<a href='ajax_forms.php?action=getOrganizationForm&platformID=<?php echo $platformID; ?>&publisherPlatformID=<?php echo $publisherPlatformID; ?>&height=150&width=285&modal=true' class='thickbox'><?php echo _("link to associated organization");?></a>
 
 
 				<?php
@@ -296,7 +296,7 @@ switch ($action) {
 
 				if (count($pubArray) > 0){
 					echo "<br />";
-					echo "Login Credentials are also available for the following publishers:<br />";
+					echo _("Login Credentials are also available for the following publishers:") . "<br />";
 
 					foreach ($pubArray as $pubID => $pubName){
 						echo "<a href='publisherPlatform.php?publisherPlatformID=" . $pubID . "'>" . $pubName . "</a><br />";
@@ -317,7 +317,7 @@ switch ($action) {
 
 			?>
 
-			<h3>Publisher Notes</h3>
+			<h3><?php echo _("Publisher Notes");?></h3>
 
 			<div id="div_noteText">
 
@@ -332,22 +332,22 @@ switch ($action) {
 
 			<table class='verticalFormTable'>
 			<tr>
-			<th>Start Year</th>
-			<th>End Year</th>
-			<th>Notes</th>
+			<th><?php echo _("Start Year");?></th>
+			<th><?php echo _("End Year");?></th>
+			<th><?php echo _("Notes");?></th>
 			<th>&nbsp;</th>
 			</tr>
 
 			<?php
 
 			foreach($publisherPlatformNoteArray as $publisherPlatformNote) {
-				if (($publisherPlatformNote->endYear == '0') || ($publisherPlatformNote->endYear =='')) $endYear = 'Present'; else $endYear = $publisherPlatformNote->endYear;
+				if (($publisherPlatformNote->endYear == '0') || ($publisherPlatformNote->endYear =='')) $endYear = _('Present'); else $endYear = $publisherPlatformNote->endYear;
 
 				echo "<tr>";
 				echo "<td>" . $publisherPlatformNote->startYear . "</td>";
 				echo "<td>" . $endYear . "</td>";
 				echo "<td>" . $publisherPlatformNote->noteText . "</td>";
-				echo "<td><a href='ajax_forms.php?action=getPublisherNoteForm&publisherPlatformNoteID=" . $publisherPlatformNote->publisherPlatformNoteID . "&height=225&width=313&modal=true' class='thickbox' style='font-size:100%;'>edit</a><br /><a href='javascript:deletePublisherNote(" . $publisherPlatformNote->publisherPlatformNoteID . ");' style='font-size:100%;'>remove</a></td>";
+				echo "<td><a href='ajax_forms.php?action=getPublisherNoteForm&publisherPlatformNoteID=" . $publisherPlatformNote->publisherPlatformNoteID . "&height=225&width=313&modal=true' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deletePublisherNote(" . $publisherPlatformNote->publisherPlatformNoteID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
 				echo "</tr>";
 
 			}
@@ -355,12 +355,12 @@ switch ($action) {
 			?>
 			</table>
 
-			<?php }else{ echo "(none found)"; } ?>
+			<?php }else{ echo _("(none found)"); } ?>
 			</div>
 
 			<br />
 
-			<a href='ajax_forms.php?action=getPublisherNoteForm&publisherPlatformNoteID=&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=225&width=313&modal=true' class='thickbox' id='uploadDocument'>add new publisher notes</a>
+			<a href='ajax_forms.php?action=getPublisherNoteForm&publisherPlatformNoteID=&publisherPlatformID=<?php echo $publisherPlatform->publisherPlatformID; ?>&height=225&width=313&modal=true' class='thickbox' id='uploadDocument'><?php echo _("add new publisher notes");?></a>
 
 
 			<br />
@@ -373,7 +373,7 @@ switch ($action) {
 
 			?>
 
-			<h3>Interface Notes</h3>
+			<h3><?php echo _("Interface Notes");?></h3>
 
 			<div id="div_interfaces">
 
@@ -391,10 +391,10 @@ switch ($action) {
 
 			<table class='verticalFormTable'>
 			<tr>
-			<th>Start Year</th>
-			<th>End Year</th>
-			<th>Counter<br />Compliant?</th>
-			<th>Interface Notes</th>
+			<th><?php echo _("Start Year");?></th>
+			<th><?php echo _("End Year");?></th>
+			<th><?php echo _("Counter");?><br /><?php echo _("Compliant?");?></th>
+			<th><?php echo _("Interface Notes");?></th>
 			<th>&nbsp;</th>
 			</tr>
 
@@ -416,7 +416,7 @@ switch ($action) {
 				echo "<td>" . $endYear . "</td>";
 				echo "<td>" . $counterCompliantInd . "</td>";
 				echo "<td>" . $platformNote->noteText . "</td>";
-				echo "<td><a href='ajax_forms.php?action=getPlatformNoteForm&platformNoteID=" . $platformNote->platformNoteID . "&height=255&width=408&modal=true' class='thickbox' style='font-size:100%;'>edit</a><br /><a href='javascript:deletePlatformNote(" . $platformNote->platformNoteID . ");' style='font-size:100%;'>remove</a></td>";
+				echo "<td><a href='ajax_forms.php?action=getPlatformNoteForm&platformNoteID=" . $platformNote->platformNoteID . "&height=255&width=408&modal=true' class='thickbox' style='font-size:100%;'>edit</a><br /><a href='javascript:deletePlatformNote(" . $platformNote->platformNoteID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
 				echo "</tr>";
 
 			}
@@ -424,12 +424,12 @@ switch ($action) {
 			?>
 			</table>
 
-			<?php }else{ echo "(none found)"; } ?>
+			<?php }else{ echo _("(none found)"); } ?>
 			</div>
 
 			<br />
 
-			<a href='ajax_forms.php?action=getPlatformNoteForm&platformNoteID=&platformID=<?php echo $platform->platformID; ?>&height=255&width=408&modal=true' class='thickbox' id='addInterface'>add new interface note</a>
+			<a href='ajax_forms.php?action=getPlatformNoteForm&platformNoteID=&platformID=<?php echo $platform->platformID; ?>&height=255&width=408&modal=true' class='thickbox' id='addInterface'><?php echo _("add new interface note");?></a>
 
 			<br />
 			<br />
@@ -471,16 +471,16 @@ switch ($action) {
 			echo "<tr><td>Service Day</td><td>" . $sushiService->serviceDayOfMonth . " (day of month)</td></tr>";
 			echo "<tr><td>Notes</td><td>" . $sushiService->noteText . "</td></tr>";
 			echo "</table>";
-			echo "<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=" . $sushiService->sushiServiceID . "&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>Edit SUSHI Connection Info</a><br />";
-			echo "<br /><div id='div_test_service'><a href='javascript:testService(" . $sushiService->sushiServiceID . ")'>Test SUSHI Connection</a></div><br />";
+			echo "<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=" . $sushiService->sushiServiceID . "&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>" . _("Edit SUSHI Connection Info") . "</a><br />";
+			echo "<br /><div id='div_test_service'><a href='javascript:testService(" . $sushiService->sushiServiceID . ")'>" . _("Test SUSHI Connection") . "</a></div><br />";
 		}else{
-			echo "\n(none found)<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>Add SUSHI Connection</a><br />";
+			echo "\n(none found)<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>" . _("Add SUSHI Connection") . "</a><br />";
 
 		}
 
 
 		echo "<br /><br /><img src='images/help.gif' style='float:left;'>&nbsp;&nbsp;";
-		echo "Visit the <a href='http://www.niso.org/workrooms/sushi/registry_server/' target='_blank'>SUSHI Server Registry</a> for information about adding your provider.";
+		echo _("Visit the ") . "<a href='http://www.niso.org/workrooms/sushi/registry_server/' target='_blank'>" . _("SUSHI Server Registry") . "</a>" . _(" for information about adding your provider.");
 
         break;
 
@@ -507,7 +507,7 @@ switch ($action) {
 			if ($month['archiveInd'] == "1") {$archive = '&nbsp;(archive)';}else{$archive='';}
 
 			echo "<label for='month' class='month'><b>" . numberToMonth($month['month']) . " " . $month['year'] . "</b> " . $archive . "</label>";
-			echo "<label for='deleteStats' class='deleteStats'><a href=\"javascript:deleteMonth('" . $month['month'] . "','" . $month['year'] . "','" . $month['archiveInd'] . "', '" . $publisherPlatformID . "', '" . $platformID . "')\">delete entire month</a></label>";
+			echo "<label for='deleteStats' class='deleteStats'><a href=\"javascript:deleteMonth('" . $month['month'] . "','" . $month['year'] . "','" . $month['archiveInd'] . "', '" . $publisherPlatformID . "', '" . $platformID . "')\">" . _("delete entire month") . "</a></label>";
 
 			//monthly ouliers
 			if ($publisherPlatformID){
@@ -518,7 +518,7 @@ switch ($action) {
 
 
 			if ($outlierCount != 0) {
-				echo "<label for='outliers' class='outliers'><a href=\"javascript:popUp('outliers.php?publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $month['archiveInd'] . "&month=" . $month['month'] . "&year=" . $month['year'] . "&resourceType=" . $month['resourceType'] . "');\">view outliers for this month</a></label>";
+				echo "<label for='outliers' class='outliers'><a href=\"javascript:popUp('outliers.php?publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $month['archiveInd'] . "&month=" . $month['month'] . "&year=" . $month['year'] . "&resourceType=" . $month['resourceType'] . "');\">" . _("view outliers for this month") . "</a></label>";
 			}else{
 				echo "<label for='outliers' class='outliers'>&nbsp;</label>";
 			}
@@ -553,7 +553,7 @@ switch ($action) {
 
 		if (count($statsArray) > 0){
 
-			echo "<h3 style='margin-bottom:7px;'>Statistics Management</h3>";
+			echo "<h3 style='margin-bottom:7px;'>" . _("Statistics Management") . "</h3>";
 
 
 			foreach($statsArray as $statArray){
@@ -634,7 +634,7 @@ switch ($action) {
 			}
 
 		}else{
-			echo "<h3>Statistics Management</h3>(none found)";
+			echo "<h3>" . _("Statistics Management") . "</h3>" . _("(none found)");
 
 
 		}
@@ -695,7 +695,7 @@ switch ($action) {
 		$databaseTitleArray = $obj->getDatabaseTitles;
 
 		if ((count($journalTitleArray) == '0') && (count($bookTitleArray) == '0') && (count($databaseTitleArray) == '0')){
-			echo "<h3>Titles</h3>(none found)";
+			echo "<h3>" . _("Titles") . "</h3>" . _("(none found)");
 		}
 
 
@@ -710,14 +710,14 @@ switch ($action) {
 
 		if (count($titleArray) >0 ){
 			?>
-			<h3>Journals - Associated Titles and ISSNs</h3>
+			<h3><?php echo _("Journals - Associated Titles and ISSNs");?></h3>
 
 			<table class='verticalFormTable'>
 			<tr>
-				<th style='max-width:440px;'><b>Title</b></th>
-				<th style='width:90px;'><b>DOI</b></th>
-				<th style='width:90px;'><b>ISSN</b></th>
-				<th style='width:90px;'><b>eISSN</b></th>
+				<th style='max-width:440px;'><b><?php echo _("Title");?></b></th>
+				<th style='width:90px;'><b><?php echo _("DOI");?></b></th>
+				<th style='width:90px;'><b><?php echo _("ISSN");?></b></th>
+				<th style='width:90px;'><b><?php echo _("eISSN");?></b></th>
 				<th style='width:110px;'>&nbsp;</th>
 			</tr>
 
