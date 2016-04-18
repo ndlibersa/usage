@@ -18,7 +18,7 @@
 
 include_once 'directory.php';
 
-$pageTitle='Not Available';
+$pageTitle=_('Not Available');
 
 ?>
 
@@ -26,7 +26,7 @@ $pageTitle='Not Available';
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Usage Statistics Module - <?php echo $pageTitle; ?></title>
+<title><?php echo _("Usage Statistics Module - ") . $pageTitle;?></title>
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
@@ -58,7 +58,7 @@ $pageTitle='Not Available';
 if ($_GET['errorMessage']){
 	echo "<h3>" . $_GET['errorMessage'] . "</h3>";
 }else{
-	echo "<h3>YPlease contact your Administrator for access to the Usage Statistics Module.</h3>";
+	echo "<h3>" . _("Please contact your Administrator for access to the Usage Statistics Module.") . "</h3>";
 }
 ?>
 

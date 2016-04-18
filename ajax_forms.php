@@ -1038,7 +1038,7 @@ switch ($action) {
 
 
 	default:
-				echo "Function " . $_REQUEST['function'] . " not set up!";
+				echo _("Function ") . $_REQUEST['function'] . _(" not set up!");
 				break;
 
 

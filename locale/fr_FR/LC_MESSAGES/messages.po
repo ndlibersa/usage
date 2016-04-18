@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-04-13 20:12-0600\n"
-"PO-Revision-Date: 2016-04-13 20:17-0600\n"
+"POT-Creation-Date: 2016-04-17 18:52-0600\n"
+"PO-Revision-Date: 2016-04-17 18:55-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -112,6 +112,8 @@ msgid "Update Report Display Name"
 msgstr ""
 
 #: ajax_forms.php:223 ajax_forms.php:769 ajax_forms.php:776 ajax_forms.php:783
+#: ajax_htmldata.php:1013 ajax_htmldata.php:1020 ajax_htmldata.php:1027
+#: ajax_htmldata.php:1418
 msgid "update"
 msgstr ""
 
@@ -264,7 +266,7 @@ msgstr ""
 msgid "Organization:"
 msgstr ""
 
-#: ajax_forms.php:691
+#: ajax_forms.php:691 ajax_htmldata.php:969
 msgid "ignore outlier"
 msgstr ""
 
@@ -284,7 +286,7 @@ msgstr ""
 msgid "Add New Platform for SUSHI Connection"
 msgstr ""
 
-#: ajax_forms.php:821
+#: ajax_forms.php:821 ajax_htmldata.php:1514
 msgid "Platform Name"
 msgstr ""
 
@@ -296,15 +298,15 @@ msgstr ""
 msgid "Identifier Type"
 msgstr ""
 
-#: ajax_forms.php:866
+#: ajax_forms.php:866 ajax_htmldata.php:719 ajax_htmldata.php:796
 msgid "ISSN"
 msgstr ""
 
-#: ajax_forms.php:867
+#: ajax_forms.php:867 ajax_htmldata.php:720
 msgid "eISSN"
 msgstr ""
 
-#: ajax_forms.php:868
+#: ajax_forms.php:868 ajax_htmldata.php:795
 msgid "ISBN"
 msgstr ""
 
@@ -312,7 +314,7 @@ msgstr ""
 msgid "eISBN"
 msgstr ""
 
-#: ajax_forms.php:870
+#: ajax_forms.php:870 ajax_htmldata.php:718 ajax_htmldata.php:794
 msgid "DOI"
 msgstr ""
 
@@ -336,19 +338,19 @@ msgstr "Ajouter"
 msgid " User"
 msgstr ""
 
-#: ajax_forms.php:988
+#: ajax_forms.php:988 ajax_htmldata.php:1402
 msgid "Login ID"
 msgstr ""
 
-#: ajax_forms.php:989
+#: ajax_forms.php:989 ajax_htmldata.php:1403
 msgid "First Name"
 msgstr ""
 
-#: ajax_forms.php:990
+#: ajax_forms.php:990 ajax_htmldata.php:1404
 msgid "Last Name"
 msgstr ""
 
-#: ajax_forms.php:991
+#: ajax_forms.php:991 ajax_htmldata.php:1405
 msgid "Privilege"
 msgstr ""
 
@@ -364,19 +366,27 @@ msgstr ""
 msgid "have access to everything"
 msgstr ""
 
+#: ajax_forms.php:1041 ajax_htmldata.php:1639 ajax_processing.php:598
+msgid "Function "
+msgstr ""
+
+#: ajax_forms.php:1041 ajax_htmldata.php:1639 ajax_processing.php:598
+msgid " not set up!"
+msgstr ""
+
 #: ajax_htmldata.php:46
 msgid "Import History for "
 msgstr ""
 
-#: ajax_htmldata.php:61
+#: ajax_htmldata.php:61 ajax_htmldata.php:1147
 msgid "Import Date"
 msgstr ""
 
-#: ajax_htmldata.php:62
+#: ajax_htmldata.php:62 ajax_htmldata.php:1148
 msgid "Imported By"
 msgstr ""
 
-#: ajax_htmldata.php:63
+#: ajax_htmldata.php:63 ajax_htmldata.php:1149
 msgid "Import Summary"
 msgstr ""
 
@@ -409,7 +419,8 @@ msgid "Login Notes"
 msgstr ""
 
 #: ajax_htmldata.php:137 ajax_htmldata.php:198 ajax_htmldata.php:358
-#: ajax_htmldata.php:427
+#: ajax_htmldata.php:427 ajax_htmldata.php:637 ajax_htmldata.php:698
+#: ajax_htmldata.php:1428 ajax_htmldata.php:1536
 msgid "(none found)"
 msgstr ""
 
@@ -422,6 +433,7 @@ msgid "Interface Logins"
 msgstr ""
 
 #: ajax_htmldata.php:188 ajax_htmldata.php:350 ajax_htmldata.php:419
+#: ajax_htmldata.php:1419
 msgid "remove"
 msgstr ""
 
@@ -473,7 +485,7 @@ msgstr ""
 msgid "Present"
 msgstr ""
 
-#: ajax_htmldata.php:350
+#: ajax_htmldata.php:350 ajax_htmldata.php:901 ajax_htmldata.php:925
 msgid "edit"
 msgstr ""
 
@@ -521,6 +533,240 @@ msgstr ""
 msgid " for information about adding your provider."
 msgstr ""
 
+#: ajax_htmldata.php:510
+msgid "delete entire month"
+msgstr ""
+
+#: ajax_htmldata.php:521
+msgid "view outliers for this month"
+msgstr ""
+
+#: ajax_htmldata.php:556 ajax_htmldata.php:637
+msgid "Statistics Management"
+msgstr ""
+
+#: ajax_htmldata.php:698
+msgid "Titles"
+msgstr ""
+
+#: ajax_htmldata.php:713
+msgid "Journals - Associated Titles and ISSNs"
+msgstr ""
+
+#: ajax_htmldata.php:717 ajax_htmldata.php:793
+msgid "Title"
+msgstr ""
+
+#: ajax_htmldata.php:760
+msgid "view related titles"
+msgstr ""
+
+#: ajax_htmldata.php:760
+msgid "view in link resolver"
+msgstr ""
+
+#: ajax_htmldata.php:789
+msgid "Books - Associated Titles and ISBNs"
+msgstr ""
+
+#: ajax_htmldata.php:896
+msgid "Current Email Addresses"
+msgstr ""
+
+#: ajax_htmldata.php:902
+msgid "delete"
+msgstr ""
+
+#: ajax_htmldata.php:921
+msgid "Current Outlier Parameters"
+msgstr ""
+
+#: ajax_htmldata.php:924
+msgid "Level "
+msgstr ""
+
+#: ajax_htmldata.php:924
+msgid " over plus "
+msgstr ""
+
+#: ajax_htmldata.php:924
+#, php-format
+msgid "% over - displayed "
+msgstr ""
+
+#: ajax_htmldata.php:929
+msgid ""
+"Outliers are currently disabled in the configuration file.  Contact your "
+"technical support to enable them."
+msgstr ""
+
+#: ajax_htmldata.php:961
+msgid "None currently"
+msgstr ""
+
+#: ajax_htmldata.php:968
+msgid "update override"
+msgstr ""
+
+#: ajax_htmldata.php:1017
+msgid "PDF"
+msgstr ""
+
+#: ajax_htmldata.php:1055 ajax_htmldata.php:1080
+msgid "edit report display name"
+msgstr ""
+
+#: ajax_htmldata.php:1106
+msgid "No imports found."
+msgstr ""
+
+#: ajax_htmldata.php:1112 ajax_htmldata.php:1472
+msgid "Displaying "
+msgstr ""
+
+#: ajax_htmldata.php:1112 ajax_htmldata.php:1472
+msgid " to "
+msgstr ""
+
+#: ajax_htmldata.php:1112 ajax_htmldata.php:1472
+msgid " of "
+msgstr ""
+
+#: ajax_htmldata.php:1112
+msgid " Records"
+msgstr ""
+
+#: ajax_htmldata.php:1228 ajax_htmldata.php:1280 ajax_htmldata.php:1337
+msgid "Platform/Publisher"
+msgstr ""
+
+#: ajax_htmldata.php:1229
+msgid "Import Run Date"
+msgstr ""
+
+#: ajax_htmldata.php:1230
+msgid "Details"
+msgstr ""
+
+#: ajax_htmldata.php:1260
+msgid "(no outstanding imports found)"
+msgstr ""
+
+#: ajax_htmldata.php:1281 ajax_htmldata.php:1340 ajax_htmldata.php:1517
+msgid "Latest Run"
+msgstr ""
+
+#: ajax_htmldata.php:1282 ajax_htmldata.php:1341 ajax_htmldata.php:1518
+msgid "Latest Status"
+msgstr ""
+
+#: ajax_htmldata.php:1308
+msgid "view full log"
+msgstr ""
+
+#: ajax_htmldata.php:1309 ajax_htmldata.php:1372
+msgid "run now"
+msgstr ""
+
+#: ajax_htmldata.php:1310 ajax_htmldata.php:1373
+msgid "change/test connection"
+msgstr ""
+
+#: ajax_htmldata.php:1317
+msgid "(no failed imports found)"
+msgstr ""
+
+#: ajax_htmldata.php:1338
+msgid "Report(s)"
+msgstr ""
+
+#: ajax_htmldata.php:1339 ajax_htmldata.php:1516
+msgid "Next Run"
+msgstr ""
+
+#: ajax_htmldata.php:1380
+msgid "(no sushi services set up)"
+msgstr ""
+
+#: ajax_htmldata.php:1468
+msgid "Sorry, no platforms or publishers fit your query"
+msgstr ""
+
+#: ajax_htmldata.php:1472
+msgid " Platform Records"
+msgstr ""
+
+#: ajax_htmldata.php:1515
+msgid "Publishers"
+msgstr ""
+
+#: ajax_htmldata.php:1541 publisherPlatformList.php:32
+msgid "show publisher list"
+msgstr ""
+
+#: ajax_htmldata.php:1620
+msgid "records per page"
+msgstr ""
+
+#: import.php:14
+msgid "Usage Statistics Import"
+msgstr ""
+
+#: import.php:25
+msgid "Incorrect File format, must be .txt!"
+msgstr ""
+
+#: import.php:28
+msgid ""
+"There was an error uploading the file.  Please verify the size is not over "
+"5MB and try again!"
+msgstr ""
+
+#: import.php:31
+msgid "File has an incorrectly formatted name - try filename.txt!"
+msgstr ""
+
+#: import.php:43
+msgid "File:"
+msgstr ""
+
+#: import.php:48
+msgid "Layout:"
+msgstr ""
+
+#: import.php:57
+msgid "Override previous month verification"
+msgstr ""
+
+#: import.php:58
+msgid "Upload"
+msgstr ""
+
+#: import.php:68
+msgid "Instructions:"
+msgstr ""
+
+#: import.php:70
+msgid "Save file as .txt files in tab delimited format"
+msgstr ""
+
+#: import.php:71
+msgid "File may not be larger than 5MB"
+msgstr ""
+
+#: import.php:72
+msgid ""
+"Ensure column headers conform to Counter's standards for the report type"
+msgstr ""
+
+#: import.php:73
+msgid "More info: "
+msgstr ""
+
+#: import.php:82
+msgid "Recent Imports"
+msgstr ""
+
 #: index.php:50
 msgid "Search"
 msgstr ""
@@ -539,6 +785,75 @@ msgstr ""
 
 #: index.php:70
 msgid "Starts with"
+msgstr ""
+
+#: not_avail.php:21
+msgid "Not Available"
+msgstr ""
+
+#: not_avail.php:29
+msgid "Usage Statistics Module - "
+msgstr ""
+
+#: not_avail.php:61
+msgid ""
+"Please contact your Administrator for access to the Usage Statistics Module."
+msgstr ""
+
+#: publisherPlatform.php:20
+msgid "View or Edit Publisher / Platform"
+msgstr ""
+
+#: publisherPlatformList.php:4
+msgid "Edit Publishers / Platforms"
+msgstr ""
+
+#: publisherPlatformList.php:16
+msgid "Publisher / Platform Update"
+msgstr ""
+
+#: publisherPlatformList.php:31
+msgid "view / edit"
+msgstr ""
+
+#: publisherPlatformList.php:50 reporting.php:71
+msgid "No publishers / platforms found."
+msgstr ""
+
+#: reporting.php:2
+msgid "Report Options"
+msgstr ""
+
+#: reporting.php:10
+msgid "Publisher / Platform Reporting Administrative Update"
+msgstr ""
+
+#: reporting.php:12
+msgid "Directions:"
+msgstr ""
+
+#: reporting.php:12
+msgid ""
+" Mark the checkboxes to add / remove specific Platforms or Publishers to the "
+"default report list."
+msgstr ""
+
+#: reporting.php:12
+msgid ""
+"Click 'edit report display name' to change the display name in the reporting "
+"system for specific Platforms or Publishers."
+msgstr ""
+
+#: reporting.php:25
+msgid "Available"
+msgstr ""
+
+#: reporting.php:25
+msgid "As Default"
+msgstr ""
+
+#: reporting.php:25
+msgid "Report"
 msgstr ""
 
 #: templates/header.php:167

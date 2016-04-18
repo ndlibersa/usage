@@ -1,5 +1,5 @@
 <?php
-$pageTitle = 'Report Options';
+$pageTitle = _('Report Options');
 include 'templates/header.php';
 
 ?>
@@ -7,9 +7,9 @@ include 'templates/header.php';
 
 <table class="headerTable">
 <tr><td>
-<div class="headerText" style='margin-bottom:9px;'>Publisher / Platform Reporting Administrative Update</div>
+<div class="headerText" style='margin-bottom:9px;'><?php echo _("Publisher / Platform Reporting Administrative Update");?></div>
 
-<b>Directions:</b>  Mark the checkboxes to add / remove specific Platforms or Publishers to the default report list.<br />Click 'edit report display name' to change the display name in the reporting system for specific Platforms or Publishers.
+<b><?php echo _("Directions:");?></b><?php echo _(" Mark the checkboxes to add / remove specific Platforms or Publishers to the default report list.");?><br /><?php echo _("Click 'edit report display name' to change the display name in the reporting system for specific Platforms or Publishers.");?>
 <br /><br />
 <?php
 
@@ -22,7 +22,7 @@ $platformArray = $platformObj->all();
 
 if (count($platformArray) > 0){
 
-	echo "Available<br />As Default<br />Report";
+	echo _("Available") . "<br />" . _("As Default") . "<br />" . _("Report");
 
 	echo "<div style='line-height:130%;margin-top:15px;'>";
 
@@ -68,7 +68,7 @@ if (count($platformArray) > 0){
 
 	echo "</div>";
 }else{
-	echo "<i>No publishers / platforms found.</i>";
+	echo "<i>" . _("No publishers / platforms found.") . "</i>";
 }
 
 
