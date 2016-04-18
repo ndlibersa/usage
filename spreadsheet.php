@@ -57,61 +57,61 @@ header("Content-Disposition: attachment; filename=" . $excelfile);
 <table border='1'>
 <tr>
 <th>&nbsp;</th>
-<th>Publisher</th>
-<th>Platform</th>
+<th><?php echo _("Publisher");?></th>
+<th><?php echo _("Platform");?></th>
 <?php if ($resourceType == "Journal"){ ?>
-	<th>DOI</th>
-	<th>Proprietary ID</th>
-	<th>Print ISSN</th>
-	<th>Online ISSN</th>
-	<th>YTD Total</th>
-	<th>YTD HTML</th>
-	<th>YTD PDF</th>
-	<th>Jan-<?php echo $year; ?></th>
-	<th>Feb-<?php echo $year; ?></th>
-	<th>Mar-<?php echo $year; ?></th>
-	<th>Apr-<?php echo $year; ?></th>
-	<th>May-<?php echo $year; ?></th>
-	<th>Jun-<?php echo $year; ?></th>
-	<th>Jul-<?php echo $year; ?></th>
-	<th>Aug-<?php echo $year; ?></th>
-	<th>Sep-<?php echo $year; ?></th>
-	<th>Oct-<?php echo $year; ?></th>
-	<th>Nov-<?php echo $year; ?></th>
-	<th>Dec-<?php echo $year; ?></th>
+	<th><?php echo _("DOI");?></th>
+	<th><?php echo _("Proprietary ID");?></th>
+	<th><?php echo _("Print ISSN");?></th>
+	<th><?php echo _("Online ISSN");?></th>
+	<th><?php echo _("YTD Total");?></th>
+	<th><?php echo _("YTD HTML");?></th>
+	<th><?php echo _("YTD PDF");?></th>
+	<th><?php echo _("Jan-") . $year;?></th>
+	<th><?php echo _("Feb-") . $year;?></th>
+	<th><?php echo _("Mar-") . $year;?></th>
+	<th><?php echo _("Apr-") . $year;?></th>
+	<th><?php echo _("May-") . $year;?></th>
+	<th><?php echo _("Jun-") . $year;?></th>
+	<th><?php echo _("Jul-") . $year;?></th>
+	<th><?php echo _("Aug-") . $year;?></th>
+	<th><?php echo _("Sep-") . $year;?></th>
+	<th><?php echo _("Oct-") . $year;?></th>
+	<th><?php echo _("Nov-") . $year;?></th>
+	<th><?php echo _("Dec-") . $year;?></th>
 <?php } else if ($resourceType == "Book") {?>
-	<th>DOI</th>
-	<th>Proprietary ID</th>
-	<th>ISBN</th>
-	<th>ISSN</th>
-	<th>YTD Total</th>
-	<th>Jan-<?php echo $year; ?></th>
-	<th>Feb-<?php echo $year; ?></th>
-	<th>Mar-<?php echo $year; ?></th>
-	<th>Apr-<?php echo $year; ?></th>
-	<th>May-<?php echo $year; ?></th>
-	<th>Jun-<?php echo $year; ?></th>
-	<th>Jul-<?php echo $year; ?></th>
-	<th>Aug-<?php echo $year; ?></th>
-	<th>Sep-<?php echo $year; ?></th>
-	<th>Oct-<?php echo $year; ?></th>
-	<th>Nov-<?php echo $year; ?></th>
-	<th>Dec-<?php echo $year; ?></th>
+	<th><?php echo _("DOI");?></th>
+	<th><?php echo _("Proprietary ID");?></th>
+	<th><?php echo _("ISBN");?></th>
+	<th><?php echo _("ISSN");?></th>
+	<th><?php echo _("YTD Total");?></th>
+	<th><?php echo _("Jan-") . $year;?></th>
+	<th><?php echo _("Feb-") . $year;?></th>
+	<th><?php echo _("Mar-") . $year;?></th>
+	<th><?php echo _("Apr-") . $year;?></th>
+	<th><?php echo _("May-") . $year;?></th>
+	<th><?php echo _("Jun-") . $year;?></th>
+	<th><?php echo _("Jul-") . $year;?></th>
+	<th><?php echo _("Aug-") . $year;?></th>
+	<th><?php echo _("Sep-") . $year;?></th>
+	<th><?php echo _("Oct-") . $year;?></th>
+	<th><?php echo _("Nov-") . $year;?></th>
+	<th><?php echo _("Dec-") . $year;?></th>
 <?php } else if ($resourceType == "Database") {?>
-	<th>User Activity</th>
-	<th>YTD Total</th>
-	<th>Jan-<?php echo $year; ?></th>
-	<th>Feb-<?php echo $year; ?></th>
-	<th>Mar-<?php echo $year; ?></th>
-	<th>Apr-<?php echo $year; ?></th>
-	<th>May-<?php echo $year; ?></th>
-	<th>Jun-<?php echo $year; ?></th>
-	<th>Jul-<?php echo $year; ?></th>
-	<th>Aug-<?php echo $year; ?></th>
-	<th>Sep-<?php echo $year; ?></th>
-	<th>Oct-<?php echo $year; ?></th>
-	<th>Nov-<?php echo $year; ?></th>
-	<th>Dec-<?php echo $year; ?></th>
+	<th><?php echo _("User Activity");?></th>
+	<th><?php echo _("YTD Total");?></th>
+	<th><?php echo _("Jan-") . $year;?></th>
+	<th><?php echo _("Feb-") . $year;?></th>
+	<th><?php echo _("Mar-") . $year;?></th>
+	<th><?php echo _("Apr-") . $year;?></th>
+	<th><?php echo _("May-") . $year;?></th>
+	<th><?php echo _("Jun-") . $year;?></th>
+	<th><?php echo _("Jul-") . $year;?></th>
+	<th><?php echo _("Aug-") . $year;?></th>
+	<th><?php echo _("Sep-") . $year;?></th>
+	<th><?php echo _("Oct-") . $year;?></th>
+	<th><?php echo _("Nov-") . $year;?></th>
+	<th><?php echo _("Dec-") . $year;?></th>
 <?php 
 }
 
@@ -121,11 +121,11 @@ echo "</tr>";
 //Add a line for totals at top (to mimic counter compliant reports)
 echo "<tr>";
 if ($resourceType == 'Journal'){
-	echo "<td colspan = '7'><b>Total for all Journals</b></td>";
+	echo "<td colspan = '7'><b>" . _("Total for all Journals") . "</b></td>";
 }else if ($resourceType == 'Book'){
-	echo "<td colspan = '7'><b>Total for all Books</b></td>";
+	echo "<td colspan = '7'><b>" . _("Total for all Books") . "</b></td>";
 }else if ($resourceType == 'Database'){
-	echo "<td colspan = '4'><b>Total for all Databases</b></td>";
+	echo "<td colspan = '4'><b>" . _("Total for all Databases") . "</b></td>";
 }
 
 //get ytd data if available

@@ -32,7 +32,7 @@ header("Content-Disposition: attachment; filename=" . $excelfile);
 </head>
 <body>
 
-<h2> <?php echo $display_name . " " . $resourceType; ?> Titles </h2>
+<h2> <?php echo $display_name . " " . $resourceType . _(" Titles ");?></h2>
 
 <?php
 if ($resourceType == "Journal"){
@@ -46,13 +46,13 @@ if ($resourceType == "Journal"){
 <tr>
 <th>Title</th>
 <?php if ($resourceType == "Journal"){ ?>
-	<th>DOI</th>
-	<th>Print ISSN</th>
-	<th>Online ISSN</th>
+	<th><?php echo _("DOI");?></th>
+	<th><?php echo _("Print ISSN");?></th>
+	<th><?php echo _("Online ISSN");?></th>
 <?php } else if ($resourceType == "Book") {?>
-	<th>DOI</th>
-	<th>ISBN</th>
-	<th>ISSN</th>
+	<th><?php echo _("DOI");?></th>
+	<th><?php echo _("ISBN");?></th>
+	<th><?php echo _("ISSN");?></th>
 <?php }
 
 echo "</tr>";
