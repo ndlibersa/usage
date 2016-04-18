@@ -49,6 +49,22 @@ $coralURL = $util->getCORALURL();
 <script type="text/javascript" src="js/plugins/thickbox.js"></script>
 <script type="text/javascript" src="js/plugins/jquery.tooltip.js"></script>
 <script type="text/javascript" src="js/plugins/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="js/plugins/Gettext.js"></script>
+<?php
+    // Add translation for the JavaScript files
+    global $http_lang;
+    $str = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+    $default_l = $lang_name->getLanguage($str);
+    if($default_l==null || empty($default_l)){$default_l=$str;}
+    if(isset($_COOKIE["lang"])){
+        if($_COOKIE["lang"]==$http_lang && $_COOKIE["lang"] != "en_US"){
+            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
+        }
+    }else if($default_l==$http_lang && $default_l != "en_US"){
+            echo "<link rel='gettext' type='application/x-po' href='./locale/".$http_lang."/LC_MESSAGES/messages.po' />";
+    }
+?>
+<script type="text/javascript" src="js/plugins/translate.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
