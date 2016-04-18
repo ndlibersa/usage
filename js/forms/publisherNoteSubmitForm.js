@@ -52,8 +52,8 @@ function submitPublisherNote(){
 
 
 	errorMessage='';
-	if (isYear($("#startYear").val()) == false) { errorMessage = "<br />Start Year must be 4 numbers and start with 19 or 20.\n"; }
-	if ((isYear($("#endYear").val()) == false) && ($("#endYear").val() != '')) { errorMessage += "<br />End Year must be 4 numbers and start with 19 or 20.\n"; }
+	if (isYear($("#startYear").val()) == false) { errorMessage = "<br />" + _("Start Year must be 4 numbers and start with 19 or 20.") + "\n"; }
+	if ((isYear($("#endYear").val()) == false) && ($("#endYear").val() != '')) { errorMessage += "<br />" + _("End Year must be 4 numbers and start with 19 or 20.") + "\n"; }
 
 	$('#span_errors').html(errorMessage);
 	

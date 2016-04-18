@@ -51,9 +51,9 @@
 function submitPlatformNotes(){
 
 	errorMessage='';
-	if (isYear($("#startYear").val()) == false) { errorMessage = "<br />Start Year must be 4 numbers and start with 19 or 20.\n"; }
-	if ((isYear($("#endYear").val()) == false) && ($("#endYear").val() != '')){ errorMessage += "<br />End Year must be 4 numbers and start with 19 or 20.\n"; }
-	if (!($('#counterCompliantInd:checked').length > 0)) { errorMessage += "<br />Please choose Yes or No for Counter Compliant.\n"; }
+	if (isYear($("#startYear").val()) == false) { errorMessage = "<br />" + _("Start Year must be 4 numbers and start with 19 or 20.") + "\n"; }
+	if ((isYear($("#endYear").val()) == false) && ($("#endYear").val() != '')){ errorMessage += "<br />" + _("End Year must be 4 numbers and start with 19 or 20.") + "\n"; }
+	if (!($('#counterCompliantInd:checked').length > 0)) { errorMessage += "<br />" + _("Please choose Yes or No for Counter Compliant.") + "\n"; }
 
 	$('#span_errors').html(errorMessage);
 	

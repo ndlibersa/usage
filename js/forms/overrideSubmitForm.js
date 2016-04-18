@@ -55,7 +55,7 @@ function updateYTDOverride(yearlyUsageSummaryIDValue, overrideColumn){
 //validates fields
 function validateForm (columnName){
 	myReturn=0;
-	if (!validateRequired(columnName, 'Count is required.')) myReturn="1";
+	if (!validateRequired(columnName, _('Count is required.'))) myReturn="1";
 	if (myReturn == "1"){
 		return false;
 	}else{

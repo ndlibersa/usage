@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-04-17 18:52-0600\n"
-"PO-Revision-Date: 2016-04-17 18:55-0600\n"
+"POT-Creation-Date: 2016-04-18 09:37-0600\n"
+"PO-Revision-Date: 2016-04-18 09:38-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -14,6 +14,101 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: js/admin.js:121 js/reporting.js:61
+msgid "Error - Please enter a value."
+msgstr ""
+
+#: js/admin.js:125
+msgid "Error - Please enter a valid email address."
+msgstr ""
+
+#: js/admin.js:135
+msgid "Do you really want to delete this email address?"
+msgstr ""
+
+#: js/admin.js:199
+msgid "Count over must be a number."
+msgstr ""
+
+#: js/admin.js:200
+#, javascript-format
+msgid "% over must be a number."
+msgstr ""
+
+#: js/forms/externalLoginSubmitForm.js:54
+msgid "Please enter a username to continue"
+msgstr ""
+
+#: js/forms/externalLoginSubmitForm.js:58
+msgid "For security, please enter a password"
+msgstr ""
+
+#: js/forms/organizationForm.js:34
+msgid "This organization doesn't exist in the CORAL Organizations module."
+msgstr ""
+
+#: js/forms/outlierSubmitForm.js:94
+msgid ""
+"Count is required.  If you wish to remove the count the outlier should be "
+"ignored."
+msgstr ""
+
+#: js/forms/overrideSubmitForm.js:58
+msgid "Count is required."
+msgstr ""
+
+#: js/forms/platformNoteSubmitForm.js:54 js/forms/publisherNoteSubmitForm.js:55
+msgid "Start Year must be 4 numbers and start with 19 or 20."
+msgstr ""
+
+#: js/forms/platformNoteSubmitForm.js:55 js/forms/publisherNoteSubmitForm.js:56
+msgid "End Year must be 4 numbers and start with 19 or 20."
+msgstr ""
+
+#: js/forms/platformNoteSubmitForm.js:56
+msgid "Please choose Yes or No for Counter Compliant."
+msgstr ""
+
+#: js/forms/platformSubmitForm.js:71
+msgid "Platform must be entered."
+msgstr ""
+
+#: js/import.js:65
+msgid "Please select a file."
+msgstr ""
+
+#: js/index.js:147 ajax_htmldata.php:1541 publisherPlatformList.php:32
+msgid "show publisher list"
+msgstr ""
+
+#: js/index.js:153
+msgid "hide publisher list"
+msgstr ""
+
+#: js/publisherPlatform.js:175
+msgid "Do you really want to remove this interface note?"
+msgstr ""
+
+#: js/publisherPlatform.js:193
+msgid "Do you really want to remove this Publisher note?"
+msgstr ""
+
+#: js/publisherPlatform.js:211
+msgid "Do you really want to remove this login information?"
+msgstr ""
+
+#: js/publisherPlatform.js:244
+msgid "Do you really want to delete this "
+msgstr ""
+
+#: js/publisherPlatformList.js:35 js/reporting.js:35
+msgid "show Publisher list"
+msgstr ""
+
+#: js/publisherPlatformList.js:39 js/reporting.js:39
+msgid "hide Publisher list"
+msgstr ""
 
 #: admin.php:12
 msgid "Users"
@@ -299,6 +394,7 @@ msgid "Identifier Type"
 msgstr ""
 
 #: ajax_forms.php:866 ajax_htmldata.php:719 ajax_htmldata.php:796
+#: spreadsheet.php:86 titles_spreadsheet.php:55
 msgid "ISSN"
 msgstr ""
 
@@ -306,7 +402,8 @@ msgstr ""
 msgid "eISSN"
 msgstr ""
 
-#: ajax_forms.php:868 ajax_htmldata.php:795
+#: ajax_forms.php:868 ajax_htmldata.php:795 spreadsheet.php:85
+#: titles_spreadsheet.php:54
 msgid "ISBN"
 msgstr ""
 
@@ -315,10 +412,12 @@ msgid "eISBN"
 msgstr ""
 
 #: ajax_forms.php:870 ajax_htmldata.php:718 ajax_htmldata.php:794
+#: spreadsheet.php:63 spreadsheet.php:83 titles_spreadsheet.php:49
+#: titles_spreadsheet.php:53
 msgid "DOI"
 msgstr ""
 
-#: ajax_forms.php:871
+#: ajax_forms.php:871 spreadsheet.php:64 spreadsheet.php:84
 msgid "Proprietary ID"
 msgstr ""
 
@@ -486,6 +585,7 @@ msgid "Present"
 msgstr ""
 
 #: ajax_htmldata.php:350 ajax_htmldata.php:901 ajax_htmldata.php:925
+#: uploadComplete.php:317
 msgid "edit"
 msgstr ""
 
@@ -581,11 +681,11 @@ msgstr ""
 msgid "Current Outlier Parameters"
 msgstr ""
 
-#: ajax_htmldata.php:924
+#: ajax_htmldata.php:924 uploadComplete.php:89
 msgid "Level "
 msgstr ""
 
-#: ajax_htmldata.php:924
+#: ajax_htmldata.php:924 uploadComplete.php:89
 msgid " over plus "
 msgstr ""
 
@@ -698,10 +798,6 @@ msgstr ""
 
 #: ajax_htmldata.php:1515
 msgid "Publishers"
-msgstr ""
-
-#: ajax_htmldata.php:1541 publisherPlatformList.php:32
-msgid "show publisher list"
 msgstr ""
 
 #: ajax_htmldata.php:1620
@@ -856,6 +952,404 @@ msgstr ""
 msgid "Report"
 msgstr ""
 
+#: spreadsheet.php:60
+msgid "Publisher"
+msgstr ""
+
+#: spreadsheet.php:61
+msgid "Platform"
+msgstr ""
+
+#: spreadsheet.php:65 titles_spreadsheet.php:50
+msgid "Print ISSN"
+msgstr ""
+
+#: spreadsheet.php:66 titles_spreadsheet.php:51
+msgid "Online ISSN"
+msgstr ""
+
+#: spreadsheet.php:67 spreadsheet.php:87 spreadsheet.php:102
+msgid "YTD Total"
+msgstr ""
+
+#: spreadsheet.php:68
+msgid "YTD HTML"
+msgstr ""
+
+#: spreadsheet.php:69
+msgid "YTD PDF"
+msgstr ""
+
+#: spreadsheet.php:70 spreadsheet.php:88 spreadsheet.php:103
+msgid "Jan-"
+msgstr ""
+
+#: spreadsheet.php:71 spreadsheet.php:89 spreadsheet.php:104
+msgid "Feb-"
+msgstr ""
+
+#: spreadsheet.php:72 spreadsheet.php:90 spreadsheet.php:105
+msgid "Mar-"
+msgstr ""
+
+#: spreadsheet.php:73 spreadsheet.php:91 spreadsheet.php:106
+msgid "Apr-"
+msgstr ""
+
+#: spreadsheet.php:74 spreadsheet.php:92 spreadsheet.php:107
+msgid "May-"
+msgstr ""
+
+#: spreadsheet.php:75 spreadsheet.php:93 spreadsheet.php:108
+msgid "Jun-"
+msgstr ""
+
+#: spreadsheet.php:76 spreadsheet.php:94 spreadsheet.php:109
+msgid "Jul-"
+msgstr ""
+
+#: spreadsheet.php:77 spreadsheet.php:95 spreadsheet.php:110
+msgid "Aug-"
+msgstr ""
+
+#: spreadsheet.php:78 spreadsheet.php:96 spreadsheet.php:111
+msgid "Sep-"
+msgstr ""
+
+#: spreadsheet.php:79 spreadsheet.php:97 spreadsheet.php:112
+msgid "Oct-"
+msgstr ""
+
+#: spreadsheet.php:80 spreadsheet.php:98 spreadsheet.php:113
+msgid "Nov-"
+msgstr ""
+
+#: spreadsheet.php:81 spreadsheet.php:99 spreadsheet.php:114
+msgid "Dec-"
+msgstr ""
+
+#: spreadsheet.php:101
+msgid "User Activity"
+msgstr ""
+
+#: spreadsheet.php:124
+msgid "Total for all Journals"
+msgstr ""
+
+#: spreadsheet.php:126
+msgid "Total for all Books"
+msgstr ""
+
+#: spreadsheet.php:128
+msgid "Total for all Databases"
+msgstr ""
+
+#: sushi.php:26
+msgid "SUSHI Import"
+msgstr ""
+
+#: sushi.php:45
+msgid "Sushi Output Log:"
+msgstr ""
+
+#: sushi.php:56
+msgid "SUSHI Administration"
+msgstr ""
+
+#: sushi.php:62
+msgid "Add new platform for SUSHI"
+msgstr ""
+
+#: sushi.php:66
+msgid "Outstanding Import Queue"
+msgstr ""
+
+#: sushi.php:71
+msgid "Last Failed SUSHI Imports"
+msgstr ""
+
+#: sushi.php:75
+msgid "All SUSHI Services"
+msgstr ""
+
+#: sushiSchedule.php:33
+msgid " SUSHI runs found for day: "
+msgstr ""
+
+#: sushiSchedule.php:52
+msgid "Log in to "
+msgstr ""
+
+#: sushiSchedule.php:52
+msgid "Sushi Administration"
+msgstr ""
+
+#: sushiSchedule.php:52
+msgid " for more information."
+msgstr ""
+
+#: sushiSchedule.php:65
+msgid "SUSHI Scheduled run log for "
+msgstr ""
+
+#: sushiSchedule.php:65
+msgid " runs"
+msgstr ""
+
+#: sushiSchedule.php:70
+msgid "Run complete.  Log has been emailed to "
+msgstr ""
+
+#: sushiSchedule.php:72 uploadComplete.php:903
+msgid "Email to "
+msgstr ""
+
+#: sushiSchedule.php:72 uploadComplete.php:903
+msgid " Failed!"
+msgstr ""
+
+#: sushiSchedule.php:77
+msgid "Nothing to see here!  (no sushi scheduled today)"
+msgstr ""
+
 #: templates/header.php:167
 msgid "Invalid translation route!"
+msgstr ""
+
+#: titles_spreadsheet.php:35
+msgid " Titles "
+msgstr ""
+
+#: uploadComplete.php:25
+msgid "Upload Process Complete"
+msgstr ""
+
+#: uploadComplete.php:67
+msgid "Process started on "
+msgstr ""
+
+#: uploadComplete.php:68
+msgid "File: "
+msgstr ""
+
+#: uploadComplete.php:69 uploadConfirmation.php:292
+msgid "Report Format: "
+msgstr ""
+
+#: uploadComplete.php:82
+msgid "Outlier Parameters:"
+msgstr ""
+
+#: uploadComplete.php:89
+#, php-format
+msgid "% over "
+msgstr ""
+
+#: uploadComplete.php:246
+msgid "Override indicator set - all months will be imported."
+msgstr ""
+
+#: uploadComplete.php:255
+msgid ""
+"Entire year already exists for this Platform / year.  No counts will be "
+"imported."
+msgstr ""
+
+#: uploadComplete.php:259
+msgid "Month Started at: "
+msgstr ""
+
+#: uploadComplete.php:261
+msgid ""
+"No records exist for this Platform / year.  Import will start with month 1."
+msgstr ""
+
+#: uploadComplete.php:283
+msgid "Year: "
+msgstr ""
+
+#: uploadComplete.php:317
+msgid "New Platform set up: "
+msgstr ""
+
+#: uploadComplete.php:399
+msgid "New Publisher / Platform set up: "
+msgstr ""
+
+#: uploadComplete.php:616
+msgid "Publisher / Platform: "
+msgstr ""
+
+#: uploadComplete.php:625
+msgid "Title: "
+msgstr ""
+
+#: uploadComplete.php:662
+msgid "Duplicate record for this Print ISSN in same spreadsheet: Month: "
+msgstr ""
+
+#: uploadComplete.php:662
+msgid "  New Count: "
+msgstr ""
+
+#: uploadComplete.php:746
+msgid "New Usage Count Record Added: Month: "
+msgstr ""
+
+#: uploadComplete.php:746 uploadComplete.php:748
+msgid "  Count: "
+msgstr ""
+
+#: uploadComplete.php:748
+msgid "Usage Count Record is not numeric for month: "
+msgstr ""
+
+#: uploadComplete.php:755
+msgid "Outlier found for this record: Level "
+msgstr ""
+
+#: uploadComplete.php:764
+msgid "Current or future month will not be imported: "
+msgstr ""
+
+#: uploadComplete.php:803
+msgid "YTD Already Exists for this Print ISSN, counts are added together."
+msgstr ""
+
+#: uploadComplete.php:827
+msgid "YTD Total Count: "
+msgstr ""
+
+#: uploadComplete.php:827
+msgid "YTD HTML Count: "
+msgstr ""
+
+#: uploadComplete.php:827
+msgid "YTD PDF Count: "
+msgstr ""
+
+#: uploadComplete.php:834
+msgid "No YTD import performed since monthly stats were not imported"
+msgstr ""
+
+#: uploadComplete.php:844
+msgid ""
+"Title match did not complete correctly, please check ISBN / ISSN to verify "
+"for Title:  "
+msgstr ""
+
+#: uploadComplete.php:896
+msgid "Log Output for "
+msgstr ""
+
+#: uploadComplete.php:897
+msgid "Usage Statistics File Import Run!"
+msgstr ""
+
+#: uploadComplete.php:897
+msgid "Please find log file: "
+msgstr ""
+
+#: uploadComplete.php:901
+msgid "Log has been emailed to "
+msgstr ""
+
+#: uploadComplete.php:916 uploadComplete.php:923 uploadComplete.php:966
+msgid " titles processed."
+msgstr ""
+
+#: uploadComplete.php:966
+msgid "Summary:"
+msgstr ""
+
+#: uploadConfirmation.php:33
+msgid "SUSHI Import Confirmation"
+msgstr ""
+
+#: uploadConfirmation.php:70
+msgid "The file "
+msgstr ""
+
+#: uploadConfirmation.php:70
+msgid " has been uploaded successfully."
+msgstr ""
+
+#: uploadConfirmation.php:70
+msgid "Please confirm the following data:"
+msgstr ""
+
+#: uploadConfirmation.php:90
+msgid "Upload Process Confirmation"
+msgstr ""
+
+#: uploadConfirmation.php:142
+msgid " for "
+msgstr ""
+
+#: uploadConfirmation.php:190
+msgid "Looking for "
+msgstr ""
+
+#: uploadConfirmation.php:190
+msgid " in column "
+msgstr ""
+
+#: uploadConfirmation.php:190
+msgid "but found "
+msgstr ""
+
+#: uploadConfirmation.php:265
+msgid "Error with Format"
+msgstr ""
+
+#: uploadConfirmation.php:265
+msgid "Report format is set to "
+msgstr ""
+
+#: uploadConfirmation.php:265
+msgid ""
+" but does not match the column names listed in layouts.ini for this format - "
+msgstr ""
+
+#: uploadConfirmation.php:265
+msgid "Expecting columns: "
+msgstr ""
+
+#: uploadConfirmation.php:265
+msgid "Found columns: "
+msgstr ""
+
+#: uploadConfirmation.php:265
+msgid ""
+"If problems persist you can copy an existing header that works into this "
+"file."
+msgstr ""
+
+#: uploadConfirmation.php:270
+msgid "Error with Setup:  This report format is not set up in layouts.ini."
+msgstr ""
+
+#: uploadConfirmation.php:275
+msgid ""
+"Error with Format:  The line preceding the first should start with 'Total'."
+msgstr ""
+
+#: uploadConfirmation.php:280
+msgid "Error with Year:  Year listed in header "
+msgstr ""
+
+#: uploadConfirmation.php:280
+msgid " may not be ahead of current year.  Please correct and submit again."
+msgstr ""
+
+#: uploadConfirmation.php:285
+msgid ""
+"File is flagged to override verifications of previous month data.  If this "
+"is incorrect use 'Cancel' to fix."
+msgstr ""
+
+#: uploadConfirmation.php:292
+msgid ""
+"If this is incorrect, please use 'Cancel' to go back and fix the headers of "
+"the file."
 msgstr ""

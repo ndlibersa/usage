@@ -172,7 +172,7 @@
 
   function deletePlatformNote(platformNoteID){
 
-     if (confirm("Do you really want to remove this interface note?") == true) {
+     if (confirm(_("Do you really want to remove this interface note?")) == true) {
 	$.ajax({
           type:       "GET",
           url:        "ajax_processing.php",
@@ -190,7 +190,7 @@
 
   function deletePublisherNote(publisherPlatformNoteID){
 
-     if (confirm("Do you really want to remove this Publisher note?") == true) {
+     if (confirm(_("Do you really want to remove this Publisher note?")) == true) {
 	$.ajax({
           type:       "GET",
           url:        "ajax_processing.php",
@@ -208,7 +208,7 @@
 
 
   function deleteExternalLogin(externalLoginID){
-     if (confirm("Do you really want to remove this login information?") == true) {
+     if (confirm(_("Do you really want to remove this login information?")) == true) {
 	$.ajax({
           type:       "GET",
           url:        "ajax_processing.php",
@@ -241,7 +241,7 @@
   }
 
   function deleteIdentifier(titleIdentifierID, identifierType){
-	if (confirm("Do you really want to delete this " + identifierType + "?") == true) {
+	if (confirm(_("Do you really want to delete this ") + identifierType + "?") == true) {
 
 		$.ajax({
 		  type:       "GET",
