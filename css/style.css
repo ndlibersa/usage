@@ -84,6 +84,8 @@ fieldset {border:0;}
 select option { color: #3D545D; font-family: "arial"; font-size: 95%; margin:1px; }
 .optionStyle { color: #3D545D; font-family: "arial"; font-size: 8pt; font-weight: medium; }
 
+input, select, multiple, textarea {color: #3D545D; font-family: "arial"; font-size: 8pt; font-weight: medium;}
+
 /* following is for the right panel (helpful links) in the resource page
 *************************/
 div.rightPanel a {color:#3D545D;text-decoration:none;}
@@ -2429,8 +2431,11 @@ td#setLanguage {
 
 select#lang {
     border: none;
-    margin-left: 10px;
+    margin-left: 6px;
     background-color: #fff;
+    position: relative;
+    top: 3px;
+    font-size: 12px;
 }
 
 /*--- Consistentcy for Form Buttons ---*/
@@ -2474,4 +2479,9 @@ a.save-button
 
 table.noBorderTable td.arrow {
     text-align: right;
+}
+
+span#divider {
+	position: relative;
+	top: 3px;
 }

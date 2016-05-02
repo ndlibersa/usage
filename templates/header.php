@@ -96,13 +96,57 @@ $coralURL = $util->getCORALURL();
 	}
 ?>
 </span>
-<br /><?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout' id='logout'>logout</a><span id='divider'> | </span><a href='https://js-erm-helps.bc.sirsidynix.net' id='help' target='_blank'>Help</a>"; } ?>
+<br /><?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout' id='logout'>logout</a><span id='divider'> | </span><a href='https://js-erm-helps.bc.sirsidynix.net' id='help' target='_blank'>Help</a><span id='divider'> | </span>"; } ?>
+
+<span id="setLanguage">
+        <select name="lang" id="lang" class="dropDownLang">
+           <?php
+            // Get all translations on the 'locale' folder
+            $route='locale';
+            $lang[]="en_US"; // add default language
+            if (is_dir($route)) {
+                if ($dh = opendir($route)) {
+                    while (($file = readdir($dh)) !== false) {
+                        if (is_dir("$route/$file") && $file!="." && $file!=".."){
+                            $lang[]=$file;
+                        } 
+                    } 
+                    closedir($dh); 
+                } 
+            }else {
+                echo "<br>"._("Invalid translation route!"); 
+            }
+            // Get language of navigator
+            $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+            
+            // Show an ordered list
+            sort($lang); 
+            for($i=0; $i<count($lang); $i++){
+                if(isset($_COOKIE["lang"])){
+                    if($_COOKIE["lang"]==$lang[$i]){
+                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
+                    }else{
+                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
+                    }
+                }else{
+                    if($defLang==substr($lang[$i],0,2)){
+                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
+                    }else{
+                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
+                    }
+                }
+            }
+            ?>
+            
+        </select>
+</span>
+
 </div>
 </td>
 </tr>
 
 <tr style='vertical-align:top;'>
-<td style='width:870px;height:19px;'>
+<td style='width:870px;height:19px;' colspan="2">
 <?php if ($user->isAdmin()){ ?>
 <a href='index.php'><img src="images/menu/<?php echo $http_lang?>/menu-home<?php if ($currentPage == 'index.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-home-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='import.php'><img src="images/menu/<?php echo $http_lang?>/menu-fileimport<?php if ($currentPage == 'import.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-fileimport-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='sushi.php'><img src="images/menu/<?php echo $http_lang?>/menu-sushi<?php if ($currentPage == 'sushi.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-sushi-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='admin.php'><img src='images/menu/<?php echo $http_lang?>/menu-admin<?php if ($currentPage == 'admin.php') { echo "-on"; } ?>.gif' hover="images/menu/<?php echo $http_lang?>/menu-admin-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='reporting.php'><img src="images/menu/<?php echo $http_lang?>/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-reportingoptions-over.gif" class="rollover" /></a><?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' id='usage-reports'><img src='images/usage-reports-button.gif'></a>"; ?>
 <?php }else{ ?>
@@ -163,48 +207,6 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 
 ?>
 
-</td>
-<td id="setLanguage">
-		<select name="lang" id="lang" class="dropDownLang">
-           <?php
-            // Get all translations on the 'locale' folder
-            $route='locale';
-            $lang[]="en_US"; // add default language
-            if (is_dir($route)) {
-                if ($dh = opendir($route)) {
-                    while (($file = readdir($dh)) !== false) {
-                        if (is_dir("$route/$file") && $file!="." && $file!=".."){
-                            $lang[]=$file;
-                        } 
-                    } 
-                    closedir($dh); 
-                } 
-            }else {
-                echo "<br>"._("Invalid translation route!"); 
-            }
-            // Get language of navigator
-            $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
-            
-            // Show an ordered list
-            sort($lang); 
-            for($i=0; $i<count($lang); $i++){
-                if(isset($_COOKIE["lang"])){
-                    if($_COOKIE["lang"]==$lang[$i]){
-                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
-                    }else{
-                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
-                    }
-                }else{
-                    if($defLang==substr($lang[$i],0,2)){
-                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
-                    }else{
-                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
-                    }
-                }
-            }
-            ?>
-            
-        </select>
 </td>
 </tr>
 </table>
