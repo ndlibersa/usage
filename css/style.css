@@ -1969,7 +1969,7 @@ input#submitPlatformForm:hover {
 
 a#usage-reports {
 	position: relative;
-	top: -9px;
+	top: 9px;
 }
 
 /*--- Align Text When No Documents Fit the Query ---*/
@@ -2484,4 +2484,12 @@ table.noBorderTable td.arrow {
 span#divider {
 	position: relative;
 	top: 3px;
+}
+
+#main-menu-titles img {
+	float: left;
+}
+
+#usage-reports img {
+	float: none;
 }

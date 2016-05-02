@@ -33,6 +33,31 @@ $(function()
             $('.coraldropdown:eq(0)', this).slideUp(100);
         });
     });
+
+    //for swapping menu images
+    $('.rollover').hover(function() {
+        var currentImg = $(this).attr('src');
+        $(this).attr('src', $(this).attr('hover'));
+        $(this).attr('hover', currentImg);
+        
+        if ($(this).attr('id') == 'menu-last'){
+            var endImg = $("#menu-end").attr('src');
+            $('#menu-end').attr('src', $("#menu-end").attr('hover'));
+            $('#menu-end').attr('hover', endImg);
+        }
+        }, function() {
+        var currentImg = $(this).attr('src');
+        $(this).attr('src', $(this).attr('hover'));
+        $(this).attr('hover', currentImg);
+        
+        if ($(this).attr('id') == 'menu-last'){
+            var endImg = $("#menu-end").attr('src');
+            $('#menu-end').attr('src', $("#menu-end").attr('hover'));
+            $('#menu-end').attr('hover', endImg);
+        }
+        
+     });
+     
 });
 
 
