@@ -1,0 +1,21 @@
+diff --git a/user.php b/user.php
+index ef68901..1fe9e83 100755
+--- a/user.php
++++ b/user.php
+@@ -57,6 +57,8 @@ if ($config->settings->authModule == 'Y'){
+ 		$authURL = $util->getCORALURL() . "auth/" . $addURL . htmlentities($_SERVER['REQUEST_URI']);
+ 		header('Location: ' . $authURL, true);
+ 
++		exit; //PREVENT SECURITY HOLE
++
+ 	}
+ 
+ 
+@@ -110,6 +112,7 @@ if ($loginID){
+ 	//if the user doesn't exist in database we need to redirect them to a page to give instructions on how to be added
+ 	if ($user->privilegeID == ""){
+ 		header('Location: not_avail.php');
++		exit; //PREVENT SECURITY HOLE
+ 	}
+ }
+ 
