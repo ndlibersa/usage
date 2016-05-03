@@ -323,7 +323,7 @@ if ($step == "3"){
 	}
 
 	if (count($errorMessage) > 0){
-		$step="5";
+		$step="4";
 	}
 
 

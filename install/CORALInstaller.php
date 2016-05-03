@@ -16,8 +16,8 @@ class CORALInstaller {
   protected $config;
   protected $updates = array(
     "1.2" => array(
-      "privileges" => array("ALTER"),
-      // "installedTablesCheck" => array("Layout"),
+      "privileges" => array("ALTER","CREATE"),
+      "installedTablesCheck" => array("Version"),
       "description" => "<p>The 1.2 update includes the following</p>
       <ul>
         <li>Misc. bug fixes</li>
@@ -251,6 +251,24 @@ class CORALInstaller {
         }
         $this->statusNotes["version_".$version] = "Version $version already installed. Found tables: ".implode(", ", $installedTablesCheck);
         return true;
+      }
+      else
+      {
+        $query = "SELECT version FROM ".$this->config->database->name.".Version WHERE version = '".$version."'";
+        try{
+          $databaseVersion = $this->query($query);
+        }
+        catch (Exception $e){
+          //$this->statusNotes["version_".$version."_db_error"] = $e;
+        };
+
+        if($version == $databaseVersion[0]){
+          $this->statusNotes["version_".$version] = "Version $version already installed.";
+          return true;
+        }else{
+          $this->statusNotes["version_".$version] = "Version $version not installed. Could not find the version in the Version table";
+          return false;
+        }  
       }
     }
     return false;
