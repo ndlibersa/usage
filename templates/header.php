@@ -166,9 +166,13 @@ $coralURL = $util->getCORALURL();
         <img src="images/menu/<?php echo $http_lang?>/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-reportingoptions-over.gif" class="rollover" />
     </a>
     <?php if ($config->settings->reportingModule == "Y") {
-        echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' id='usage-reports'><img src='images/usage-reports-button.gif'></a>";
-    } ?>
-<?php
+    ?>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href='../reports/' target='_blank' id='usage-reports'>
+            <img src="images/menu/<?php echo $http_lang?>/menu-usage-reports.gif" hover="images/menu/<?php echo $http_lang?>/menu-usage-reports-over.gif" class="rollover" />
+        </a>
+    <?php
+    }
 }
 else
 {
