@@ -122,16 +122,17 @@ function updateSubmit(){
   if ($layoutID != ""){
   	$reportTypeSet = 'Y';
 	$layout = new Layout(new NamedArguments(array('primaryKey' => $layoutID)));
-	$layoutKey = $layoutsArray[ReportTypes][$layout->layoutCode];
+	$layoutKey = $layoutsArray['ReportTypes'][$layout->layoutCode];
 	$columnsToCheck = $layoutsArray[$layoutKey]['columnToCheck'];
 	$reportTypeDisplay = $layout->name;
 	$layoutColumns = $layoutsArray[$layoutKey]['columns'];
 	$numberOfColumns = count($layoutColumns);
   }
 
-
-  echo $uploadConfirm;
-  echo "<table class='dataTable' style='width:895px;'>";
+	if ((isset($uploadConfirm)) and (!empty($uploadConfirm))) {
+		echo $uploadConfirm;
+	}
+	echo "<table class='dataTable' style='width:895px;'>";
 
 
 
@@ -158,7 +159,7 @@ function updateSubmit(){
      //if report type hasn't been figured out, check for it in the first row / column
      if ($reportTypeSet == ""){
 
-		foreach ($layoutsArray[ReportTypes] as $reportTypeKey => $layoutKey){
+		foreach ($layoutsArray['ReportTypes'] as $reportTypeKey => $layoutKey){
 			list($report,$release) = explode("_",$reportTypeKey);
 			if ((strpos($line, $report) !== false) && (strpos($line, $release) !== false)){
 				$reportTypeSet = 'Y'; 

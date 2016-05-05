@@ -31,7 +31,7 @@ include 'templates/header.php';
 //except we don't want it to retain if they press the 'index' button
 //check what referring script is
 
-if ($_SESSION['ref_script'] != "publisherPlatform.php"){
+if ((isset($_SESSION['ref_script'])) and ($_SESSION['ref_script'] != "publisherPlatform.php")){
 	$reset = "Y";
 }
 
@@ -124,3 +124,4 @@ $_SESSION['ref_script']=$currentPage;
 
   //print footer
   include 'templates/footer.php';
+?>

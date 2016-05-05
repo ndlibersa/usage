@@ -42,7 +42,7 @@ $platformArray = array();
 
 
 $layout = new Layout(new NamedArguments(array('primaryKey' => $_POST['layoutID'])));
-$layoutKey = $layoutsArray[ReportTypes][$layout->layoutCode];
+$layoutKey = $layoutsArray['ReportTypes'][$layout->layoutCode];
 
 $reportTypeDisplay = $layout->name;
 $resourceType = $layout->resourceType;
@@ -126,13 +126,12 @@ while (!feof($file_handle)) {
      $line = stream_get_line($file_handle, 10000000, "\n"); 
 
      //set delimiter
-     if ($del == ""){
+     if (($del) == NULL or (empty($del))) {
         if(count(explode("\t",$line)) > 5){
                 $del = "\t";
         }else if (count(explode(",",$line)) > 5){
                 $del = ",";
         }
-
 
      }
 
@@ -195,16 +194,40 @@ while (!feof($file_handle)) {
 		$platformName = $columnValues['platform'];
 		$publisherName = $columnValues['publisher'];
 
-		$pISSN = $columnValues['issn'];
-		$eISSN = $columnValues['eissn'];
-		$pISBN = $columnValues['isbn'];
-		$eISBN = $columnValues['eisbn'];
+		if (isset($columnValues['issn'])) {
+			$pISSN = $columnValues['issn'];
+		} else {
+			$pISSN = null;
+		}
+		if (isset($columnValues['eissn'])) {
+			$eISSN = $columnValues['eissn'];
+		} else {
+			$eISSN = null;
+		}
+		if (isset($columnValues['isbn'])) {
+			$pISBN = $columnValues['isbn'];
+		} else {
+			$pISBN = null;
+		}
+		if (isset($columnValues['eisbn'])) {
+			$eISBN = $columnValues['eisbn'];
+		} else {
+			$eISBN = null;
+		}
 
 		$doi = $columnValues['doi'];
 		$pi = $columnValues['pi'];
 
-		$activityType = $columnValues['activityType'];
-		$sectionType = $columnValues['sectionType'];
+		if (isset($columnValues['activityType'])) {
+			$activityType = $columnValues['activityType'];
+		} else {
+			$activityType = null;
+		}
+		if (isset($columnValues['sectionType'])) {
+			$sectionType = $columnValues['sectionType'];
+		} else {
+			$sectionType = null;
+		}
 
 		$ytd = $columnValues['ytd'];
 		$ytdHTML = $columnValues['ytdHTML'];
@@ -232,7 +255,7 @@ while (!feof($file_handle)) {
 			$platformName = $holdPlatform;
 		}
 
-		if (!($platformID) || ($platformName != $holdPlatform)){
+		if (($platformID) == NULL || ($platformName != $holdPlatform)){
 			//get the platformID if available
 			$platformTestObj = new Platform();
 			$platformObj = new Platform();
@@ -269,7 +292,7 @@ while (!feof($file_handle)) {
 			}
 		}
 
-		if (!isset($startMonth) || ($startMonth == '')){
+		if (($startMonth) == NULL || ($startMonth == '')){
 			$startMonth = 1;
 		}
 
@@ -334,7 +357,7 @@ while (!feof($file_handle)) {
 			$publisherName = $holdPublisher;
 		}
 		
-		if (!($publisherID) || ($publisherName != $holdPublisher)){
+		if (($publisherID) == NULL || ($publisherName != $holdPublisher)){
 			//get the publisher object
 			$publisherTestObj = new Publisher();
 			$publisherObj = new Publisher();
@@ -366,7 +389,7 @@ while (!feof($file_handle)) {
 		// Query to see if the Publisher / Platform already exists, if so, get the ID
 		#################################################################
 		//check it against the previous row - no need to do another lookup if we've already figured out the publisherplatformID
-		if (!($publisherPlatformID) || ($publisherName != $holdPublisher) || ($platformName != $holdPlatform)){
+		if (!isset($publisherPlatformID) || ($publisherName != $holdPublisher) || ($platformName != $holdPlatform)){
 			//get the publisher platform object
 			$publisherPlatformTestObj = new PublisherPlatform();
 			$publisherPlatformObj = $publisherPlatformTestObj->getPublisherPlatform($publisherID, $platformID);
@@ -406,35 +429,51 @@ while (!feof($file_handle)) {
 		// Query to see if the Title already exists, if so, get the ID
 		#################################################################
 		//first, remove the '-' from the ISSNs
-		$pISSN = strtoupper(trim(str_replace ('-','',$pISSN)));
-		//remove blank
-		$pISSN = strtoupper(trim(str_replace (' ','',$pISSN)));
-		if (strpos(strtoupper($pISSN),'N/A') !== false) $pISSN = '';
-		if ($pISSN == '00000000') $pISSN = '';
-		if (strtoupper($pISSN) == 'XXXXXXXX') $pISSN = '';
-		if (strtoupper($pISSN) == '.') $pISSN = '';
+		if (isset($pISSN)) {
+			$pISSN = strtoupper(trim(str_replace ('-','',$pISSN)));
+			//remove blank
+			$pISSN = strtoupper(trim(str_replace (' ','',$pISSN)));
+			if (strpos(strtoupper($pISSN),'N/A') !== false) $pISSN = '';
+			if ($pISSN == '00000000') $pISSN = '';
+			if (strtoupper($pISSN) == 'XXXXXXXX') $pISSN = '';
+			if (strtoupper($pISSN) == '.') $pISSN = '';
+		} else {
+			$pISSN = null;
+		}
 
-		$eISSN = strtoupper(trim(str_replace ('-','',$eISSN)));
-		//remove blank
-		$eISSN = strtoupper(trim(str_replace (' ','',$eISSN)));
-		if (strpos(strtoupper($eISSN),'N/A') !== false) $eISSN = '';
-		if ($eISSN == '00000000') $eISSN = '';
-		if (strtoupper($eISSN) == 'XXXXXXXX') $eISSN = '';
-		if (strtoupper($eISSN) == '.') $eISSN = '';
+		if (isset($eISSN)) {
+			$eISSN = strtoupper(trim(str_replace ('-','',$eISSN)));
+			//remove blank
+			$eISSN = strtoupper(trim(str_replace (' ','',$eISSN)));
+			if (strpos(strtoupper($eISSN),'N/A') !== false) $eISSN = '';
+			if ($eISSN == '00000000') $eISSN = '';
+			if (strtoupper($eISSN) == 'XXXXXXXX') $eISSN = '';
+			if (strtoupper($eISSN) == '.') $eISSN = '';
+		} else {
+			$eISSN = null;
+		}
 
-		$pISBN = strtoupper(trim(str_replace ('-','',$pISBN)));
-		//remove blank
-		$pISBN = strtoupper(trim(str_replace (' ','',$pISBN)));
-		if (strpos(strtoupper($pISBN),'N/A') !== false) $pISBN = '';
-		if ($pISBN == '00000000') $pISBN = '';
-		if (strtoupper($pISBN) == 'XXXXXXXX') $pISBN = '';
+		if (isset($pISBN)) {
+			$pISBN = strtoupper(trim(str_replace ('-','',$pISBN)));
+			//remove blank
+			$pISBN = strtoupper(trim(str_replace (' ','',$pISBN)));
+			if (strpos(strtoupper($pISBN),'N/A') !== false) $pISBN = '';
+			if ($pISBN == '00000000') $pISBN = '';
+			if (strtoupper($pISBN) == 'XXXXXXXX') $pISBN = '';
+		} else {
+			$pISBN = null;
+		}
 
-		$eISBN = strtoupper(trim(str_replace ('-','',$eISBN)));
-		//remove blank
-		$eISBN = strtoupper(trim(str_replace (' ','',$eISBN)));
-		if (strpos(strtoupper($eISBN),'N/A') !== false) $eISBN = '';
-		if ($eISBN == '00000000') $eISBN = '';
-		if (strtoupper($eISBN) == 'XXXXXXXX') $eISBN = '';
+		if (isset($eISBN)) {
+			$eISBN = strtoupper(trim(str_replace ('-','',$eISBN)));
+			//remove blank
+			$eISBN = strtoupper(trim(str_replace (' ','',$eISBN)));
+			if (strpos(strtoupper($eISBN),'N/A') !== false) $eISBN = '';
+			if ($eISBN == '00000000') $eISBN = '';
+			if (strtoupper($eISBN) == 'XXXXXXXX') $eISBN = '';
+		} else {
+			$eISBN = null;
+		}
 
 		if ($doi == "0") $doi = "";
 		if ($pi == "0") $pi = "";
@@ -963,7 +1002,7 @@ foreach ($platformArray AS $platformID){
     <p>Log file available at: <a href='<?php echo $Base_URL . $logfile; ?>'><?php echo $Base_URL . $excelfile; ?></a>.</p>
     <p>Process completed.  <?php echo $mailOutput; ?></p>
     <br />
-    <?php echo _("Summary:") . $rownumber . _(" titles processed."); . "<br />" . nl2br($logSummary); ?><br />
+    <?php echo _("Summary:") . $rownumber . _(" titles processed.") . "<br />" . nl2br($logSummary); ?><br />
     <br />
     <?php echo $screenOutput; ?><br />
     <p>&nbsp; </p>

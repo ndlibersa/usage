@@ -476,6 +476,8 @@ class Platform extends DatabaseObject {
 
 		if ($resourceType){
 			$addWhere = "AND t.resourceType = '" . $resourceType . "'";
+		} else {
+			$addWhere = "";
 		}
 
 		//now formulate query

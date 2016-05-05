@@ -6,6 +6,13 @@ and follow instructions
 
 For the manual install, refer to the Technical Documentation available on http://erm.library.nd.edu
 
+**************************
+Changelog 1.2.0
+
+*	Misc. bug fixes
+*	Migrated from deprecated mysql to mysqli functions
+*	Added form validation
+*	SUSHI improvements
 
 **************************
 License / Copyright notices

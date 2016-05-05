@@ -68,7 +68,7 @@ class Utility {
 	//returns page URL up to /coral/
 	static public function getCORALURL(){
 		$pageURL = 'http';
-		if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+		if (isset($_SERVER["HTTPS"]) and ($_SERVER["HTTPS"] == "on")) {$pageURL .= "s";}
 		$pageURL .= "://";
 		if ($_SERVER["SERVER_PORT"] != "80") {
 		  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"];

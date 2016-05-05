@@ -29,7 +29,7 @@ include 'templates/header.php';
 
 
 //this a SUSHI Service ID has been passed in, it needs to be run
-if ($_POST['sushiServiceID'] > 0){
+if ((isset($_POST['sushiServiceID'])) and ($_POST['sushiServiceID'] > 0)) {
 	$sushiServiceID = $_POST['sushiServiceID'];
  	$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $sushiServiceID)));	
 
@@ -60,13 +60,18 @@ if ($_POST['sushiServiceID'] > 0){
 
 
 			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'><?php echo _("Add new platform for SUSHI");?></a>
-			<br /><br /><div id="div_run_feedback"></div><br />
 
-			<br /><br /><div id="div_run_feedback"><?php echo $logText; ?></div><br />
+			<br /><br /><div id="div_run_feedback"><?php
+
+if (isset($logText)) {
+	echo $logText;
+}
+
+?></div><br />
 			<div class="headerText" style='margin-bottom:9px;'><?php echo _("Outstanding Import Queue");?>&nbsp;&nbsp;&nbsp;<span id='span_outstanding_feedback'></span></div>
 			<div id="div_OutstandingSushiImports"></div>
 
-			<br />
+			<br /><br /><br />
 
 			<div class="headerText" style='margin-bottom:9px;'><?php echo _("Last Failed SUSHI Imports");?>&nbsp;&nbsp;&nbsp;<span id='span_failed_feedback'></span></div>
 			<div id="div_FailedSushiImports"></div>

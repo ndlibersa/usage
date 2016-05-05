@@ -100,8 +100,14 @@ function toggleDivs(platformID)
 
     toggleDivState(divID, displayInds[divID]);
 
-    if (displayInds[divID] == 0) displayInds[divID] = 1;
-    else displayInds[divID] = 0
+    if (displayInds[divID] == 0)
+    {
+	displayInds[divID] = 1;
+    }
+    else
+    {
+	displayInds[divID] = 0;
+    }
 
 
 }

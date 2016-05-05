@@ -790,7 +790,6 @@ switch ($action) {
 		?>
 
 		</table>
-		</td>
 		</tr>
 		<tr><td style='text-align:center;width:100%;'><br /><br /><a href='#' onclick='window.parent.tb_remove(); return false'><?php echo _("Close");?></a></td></tr>
 		</table>

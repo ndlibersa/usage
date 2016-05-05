@@ -15,6 +15,18 @@ class CORALInstaller {
   protected $statusNotes;
   protected $config;
   protected $updates = array(
+    "1.2" => array(
+      "privileges" => array("ALTER","CREATE"),
+      "installedTablesCheck" => array("Version"),
+      "description" => "<p>The 1.2 update includes the following</p>
+      <ul>
+        <li>Misc. bug fixes</li>
+        <li>Migrated from deprecated mysql to mysqli functions</li>
+        <li>Added form validation</li>
+        <li>SUSHI improvements</li>
+      </ul>
+      <p>The database change will increae the number of the allowed characters in the TitleIdentifer table.</p>"
+    ),
     "1.1" => array(
       "privileges" => array("ALTER","CREATE","DROP"),
       "installedTablesCheck" => array("Layout"),
@@ -51,17 +63,10 @@ class CORALInstaller {
 		if ($password === null) {
 		  $password = $this->config->database->password;
 	  }
-		$this->db = @mysql_connect($host, $username, $password);
+		$this->db = @mysqli_connect($host, $username, $password, $this->config->database->name);
 		if (!$this->db) {
 
-		  $this->error = mysql_error();
-		  if (!$this->error) {
-		    $this->error = "Access denied for user '$username'";
-		  }
-	  } else {
-  		$databaseName = $this->config->database->name;
-  		mysql_select_db($databaseName, $this->db);
-  		$this->error = mysql_error($this->db);
+		  $this->error = mysqli_error($this->db);
 		}
 
 		if ($this->error) {
@@ -73,30 +78,36 @@ class CORALInstaller {
 	}
 
 	public function query($sql) {
-		$result = mysql_query($sql, $this->db);
+		$result = mysqli_query($this->db, $sql);
 
 		$this->checkForError();
 		$data = array();
 
-		if (is_resource($result)) {
-			while ($row = mysql_fetch_array($result)) {
-				array_push($data, $row);
-			}
-		} else if ($result) {
-			$data = mysql_insert_id($this->db);
-		}
+	 if ($result instanceof mysqli_result) {
 
-		return $data;
-	}
+      while ($row = mysqli_fetch_array($result)) {
+        if (mysqli_affected_rows($this->db) > 1) {
+          array_push($data, $row);
+        } else {
+          $data = $row;
+        }
+      }
+      mysqli_free_result($result);
+    } else if ($result) {
+      $data = mysqli_insert_id($this->db);
+    }
 
-	protected function checkForError() {
-		if ($this->error = mysql_error($this->db)) {
-			throw new Exception("There was a problem with the database: " . $this->error);
-		}
-	}
+    return $data;
+  }
 
-	public function getDatabaseName() {
-	  return $this->config->database->name;
+  protected function checkForError() {
+    if ($this->error = mysqli_error($this->db)) {
+      throw new Exception("There was a problem with the database: " . $this->error);
+    }
+  }
+
+	public function getDatabase() {
+	  return $this->db;
 	}
 
   public function addErrorMessage($error) {
@@ -240,6 +251,24 @@ class CORALInstaller {
         }
         $this->statusNotes["version_".$version] = "Version $version already installed. Found tables: ".implode(", ", $installedTablesCheck);
         return true;
+      }
+      else
+      {
+        $query = "SELECT version FROM ".$this->config->database->name.".Version WHERE version = '".$version."'";
+        try{
+          $databaseVersion = $this->query($query);
+        }
+        catch (Exception $e){
+          //$this->statusNotes["version_".$version."_db_error"] = $e;
+        };
+
+        if($version == $databaseVersion[0]){
+          $this->statusNotes["version_".$version] = "Version $version already installed.";
+          return true;
+        }else{
+          $this->statusNotes["version_".$version] = "Version $version not installed. Could not find the version in the Version table";
+          return false;
+        }  
       }
     }
     return false;
