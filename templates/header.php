@@ -151,34 +151,92 @@ $coralURL = $util->getCORALURL();
 {
 ?>
     <a href='index.php'>
-        <img src="images/menu/<?php echo $http_lang?>/menu-home<?php if ($currentPage == 'index.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-home-over.gif" class="rollover" />
+        <div class="main-menu-link <?php if ($currentPage == 'index.php') { echo "active"; } ?>">
+            <img src="images/menu/icon-home.png" />
+            <span><?php echo _("Home");?></span>
+        </div>
     </a>
+
     <a href='import.php'>
-        <img src="images/menu/<?php echo $http_lang?>/menu-fileimport<?php if ($currentPage == 'import.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-fileimport-over.gif" class="rollover" />
-    </a>
+        <div class="main-menu-link <?php if ($currentPage == 'import.php') { echo "active"; } ?>">
+            <img src="images/menu/icon-import.png" />
+            <span><?php echo _("File Import");?></span>
+        </div>
+    </a> 
+
     <a href='sushi.php'>
-        <img src="images/menu/<?php echo $http_lang?>/menu-sushi<?php if ($currentPage == 'sushi.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-sushi-over.gif" class="rollover" />
-    </a>
+        <div class="main-menu-link <?php if ($currentPage == 'sushi.php') { echo "active"; } ?>">
+            <img src="images/menu/icon-sushi.png" />
+            <span><?php echo _("SUSHI");?></span>
+        </div>
+    </a> 
+
     <a href='admin.php'>
-        <img src='images/menu/<?php echo $http_lang?>/menu-admin<?php if ($currentPage == 'admin.php') { echo "-on"; } ?>.gif' hover="images/menu/<?php echo $http_lang?>/menu-admin-over.gif" class="rollover" />
-    </a>
+        <div class="main-menu-link <?php if ($currentPage == 'admin.php') { echo "active"; } ?>">
+            <img src="images/menu/icon-admin.png" />
+            <span><?php echo _("Admin");?></span>
+        </div>
+    </a>     
+
     <a href='reporting.php'>
-        <img src="images/menu/<?php echo $http_lang?>/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-reportingoptions-over.gif" class="rollover" />
-    </a>
+        <div class="main-menu-link <?php if ($currentPage == 'reporting.php') { echo "active"; } ?>">
+            <img src="images/menu/icon-report-options.png" />
+            <span><?php echo _("Report Options");?></span>
+        </div>
+    </a>     
     <?php if ($config->settings->reportingModule == "Y") {
     ?>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href='../reports/' target='_blank' id='usage-reports'>
-            <img src="images/menu/<?php echo $http_lang?>/menu-usage-reports.gif" hover="images/menu/<?php echo $http_lang?>/menu-usage-reports-over.gif" class="rollover" />
-        </a>
+    <a href='../reports/' target='_blank' id='usage-reports'>
+        <div class="main-menu-link">
+            <img src="images/menu/icon-usage.png" />
+            <span><?php echo _("Usage Reports");?></span>
+        </div>
+    </a>     
     <?php
     }
 }
 else
 {
 ?>
-    <a href='index.php'><img src="images/menu/<?php echo $http_lang?>/menu-home<?php if ($currentPage == 'index.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-home-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='import.php'><img src="images/menu/<?php echo $http_lang?>/menu-fileimport<?php if ($currentPage == 'import.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-fileimport-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='sushi.php'><img src="images/menu/<?php echo $http_lang?>/menu-sushi<?php if ($currentPage == 'sushi.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-sushi-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='admin.php'><img src='images/menu/<?php echo $http_lang?>/menu-admin<?php if ($currentPage == 'admin.php') { echo "-on"; } ?>.gif' hover="images/menu/<?php echo $http_lang?>/menu-admin-over.gif" class="rollover" /></a><img src='images/menu/menu-bar.gif'><a href='reporting.php'><img src="images/menu/<?php echo $http_lang?>/menu-reportingoptions<?php if ($currentPage == 'reporting.php') { echo "-on"; } ?>.gif" hover="images/menu/<?php echo $http_lang?>/menu-reportingoptions-over.gif" class="rollover" /></a><?php if ($config->settings->reportingModule == "Y") echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='../reports/' target='_blank' id='usage-reports'><img src='images/usage-reports-button.gif'></a>"; ?>
-<?php
+    <a href='index.php'>
+        <div class="main-menu-link <?php if ($currentPage == 'index.php') { echo "active"; } ?>">
+            <img src="images/menu/icon-home.png" />
+            <span><?php echo _("Home");?></span>
+        </div>
+    </a>
+
+    <a href='import.php'>
+        <div class="main-menu-link <?php if ($currentPage == 'import.php') { echo "active"; } ?>">
+            <img src="images/menu/icon-import.png" />
+            <span><?php echo _("File Import");?></span>
+        </div>
+    </a> 
+
+    <a href='sushi.php'>
+        <div class="main-menu-link <?php if ($currentPage == 'sushi.php') { echo "active"; } ?>">
+            <img src="images/menu/icon-sushi.png" />
+            <span><?php echo _("SUSHI");?></span>
+        </div>
+    </a> 
+
+    <a href='reporting.php'>
+        <div class="main-menu-link <?php if ($currentPage == 'reporting.php') { echo "active"; } ?>">
+            <img src="images/menu/icon-report-options.png" />
+            <span><?php echo _("Report Options");?></span>
+        </div>
+    </a>     
+    <?php if ($config->settings->reportingModule == "Y") {
+    ?>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href='../reports/' target='_blank' id='usage-reports'>
+        <div class="main-menu-link">
+            <img src="images/menu/icon-usage.png" />
+            <span><?php echo _("Usage Reports");?></span>
+        </div>
+    </a>     
+    <?php
+    }
 }
 ?>
 </td>
@@ -191,43 +249,37 @@ if ((file_exists($util->getCORALPath() . "index.php")) || ($config->settings->or
 
 	?>
 
-	<div style='text-align:left;'>
-		<ul class="tabs">
-		<li style="background: url('images/change/<?php echo $http_lang?>/coral-change.gif') no-repeat right;">&nbsp;
-			<ul class="coraldropdown">
-				<?php if (file_exists($util->getCORALPath() . "index.php")) {?>
-				<li><a href="<?php echo $coralURL; ?>" target='_blank'><img src='images/change/coral-main.png'></a></li>
-				<?php
-				}
-				if ($config->settings->resourcesModule == 'Y') {
-				?>
-				<li><a href="<?php echo $coralURL; ?>resources/" target='_blank'><img src='images/change/coral-resources.png'></a></li>
-				<?php
-				}
-				if ($config->settings->organizationsModule == 'Y') {
-				?>
-				<li><a href="<?php echo $coralURL; ?>organizations/" target='_blank'><img src='images/change/coral-organizations.png'></a></li>
-				<?php
-				}
-				if ($config->settings->licensingModule == 'Y') {
-				?>
-				<li><a href="<?php echo $coralURL; ?>licensing/" target='_blank'><img src='images/change/coral-licensing.png'></a></li>
-				<?php
-				}
-				if ($config->settings->cancellationModule == 'Y') {
-				?>
-				<li><a href="<?php echo $coralURL; ?>cancellation/" target='_blank'><img src='images/change/coral-cancellation.png'></a></li>
-				<?php
-				}
-				if ($config->settings->managementModule == 'Y') {
-				?>
-				<li><a href="<?php echo $coralURL; ?>management/" target='_blank'><img src='images/change/coral-management.png'></a></li>
-				<?php } ?>
-			</ul>
-		</li>
-		</ul>
-
-	</div>
+    <div style='text-align:left;'>
+        <ul class="tabs">
+        <li id="change-mod-menu"><span><?php echo _("Change Module");?></span><i class="fa fa-chevron-down"></i>
+            <ul class="coraldropdown">
+                <?php if (file_exists($util->getCORALPath() . "index.php")) {?>
+                <li class="change-mod-item"><a href="<?php echo $coralURL; ?>" target='_blank'><img src='images/change/icon-mod-main.png'><span><?php echo _("Main Menu");?></span></a></li>
+                <?php
+                }
+                if ($config->settings->resourcesModule == 'Y') {
+                ?>
+                <li class="change-mod-item"><a href="<?php echo $coralURL; ?>resources/" target='_blank'><img src='images/change/icon-mod-resources.png'><span><?php echo _("Resources");?></span></a></li>
+                <?php
+                }
+                if ($config->settings->organizationsModule == 'Y') {
+                ?>
+                <li class="change-mod-item"><a href="<?php echo $coralURL; ?>organizations/" target='_blank'><img src='images/change/icon-mod-organizations.png'><span><?php echo _("Organizations");?></span></a></li>
+                <?php
+                }
+                if ($config->settings->licensingModule == 'Y') {
+                ?>
+                <li class="change-mod-item"><a href="<?php echo $coralURL; ?>licensing/" target='_blank'><img src='images/change/icon-mod-licensing.png'><span><?php echo _("Licensing");?></span></a></li>
+                <?php
+                }
+                if ($config->settings->managementModule == 'Y') {
+                ?>
+                <li class="change-mod-item"><a href="<?php echo $coralURL; ?>management/" target='_blank'><img src='images/change/icon-mod-management.png'><span><?php echo _("Management");?></span></a></li>
+                <?php } ?>
+            </ul>
+        </li>
+        </ul>
+    </div>
 	<?php
 
 } else {
