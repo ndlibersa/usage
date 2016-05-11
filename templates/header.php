@@ -69,84 +69,94 @@ $coralURL = $util->getCORALURL();
 </head>
 <body>
 <noscript><font face=arial>JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then <a href="">try again</a>. </font></noscript>
-<!-- center -->
+<center>
 <div class="wrapper">
-<!-- center -->
-<table>
+<center>
+
+<table id="main-table">
+
 <tr>
 <td style='vertical-align:top;'>
 <div style="text-align:left;">
 
-<!-- center -->
-<table class="titleTable" style="background-image:url('images/usagetitle.jpg');background-repeat:no-repeat;width:1024px;text-align:left;">
-<tr style='vertical-align:top;'>
-<td style='height:53px;'>
-&nbsp;
-</td>
-<td style='text-align:right;height:53px;' colspan='2'>
-<div style='margin-top:1px;'>
-<span class='smallText' style='color:#526972;'>
-<?php
-	echo "Hello, ";
-	//user may not have their first name / last name set up
-	if ($user->lastName){
-		echo $user->firstName . " " . $user->lastName;
-	}else{
-		echo $user->loginID;
-	}
-?>
-</span>
-<br /><?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout' id='logout'>logout</a><span id='divider'> | </span><a href='https://js-erm-helps.bc.sirsidynix.net' id='help' target='_blank'>Help</a><span id='divider'> | </span>"; } ?>
+<center>
+    
+<table class="titleTable" style="width:1024px;text-align:left;">
 
-<span id="setLanguage">
-        <select name="lang" id="lang" class="dropDownLang">
-           <?php
-            // Get all translations on the 'locale' folder
-            $route='locale';
-            $lang[]="en_US"; // add default language
-            if (is_dir($route)) {
-                if ($dh = opendir($route)) {
-                    while (($file = readdir($dh)) !== false) {
-                        if (is_dir("$route/$file") && $file!="." && $file!=".."){
-                            $lang[]=$file;
-                        } 
-                    } 
-                    closedir($dh); 
-                } 
-            }else {
-                echo "<br>"._("Invalid translation route!"); 
-            }
-            // Get language of navigator
-            $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
-            
-            // Show an ordered list
-            sort($lang); 
-            for($i=0; $i<count($lang); $i++){
-                if(isset($_COOKIE["lang"])){
-                    if($_COOKIE["lang"]==$lang[$i]){
-                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
+    <tr style='vertical-align:top;'>
+        <td style='height:53px;' colspan='3'>
+                
+            <div id="main-title">
+                <img src="images/title-icon-usage.png" />
+                <span id="main-title-text"><?php echo _("Usage Statistics"); ?></span>
+                <span id="powered-by-text"><?php echo _("Powered by");?><img src="images/logo-coral.jpg" /></span>
+            </div>
+
+            <div id="menu-login" style='margin-top:1px;'>
+                <span class='smallText' style='color:#526972;'>
+                <?php
+                    echo "Hello, ";
+                    //user may not have their first name / last name set up
+                    if ($user->lastName){
+                        echo $user->firstName . " " . $user->lastName;
                     }else{
-                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
+                        echo $user->loginID;
                     }
-                }else{
-                    if($defLang==substr($lang[$i],0,2)){
-                        echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
-                    }else{
-                        echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
-                    }
-                }
-            }
-            ?>
-            
-        </select>
-</span>
+                ?>
+                </span><br />
 
-</div>
-</td>
-</tr>
+            <?php if($config->settings->authModule == 'Y'){ echo "<a href='" . $coralURL . "auth/?logout' id='logout'>logout</a><span id='divider'> | </span><a href='https://js-erm-helps.bc.sirsidynix.net' id='help' target='_blank'>Help</a><span id='divider'> | </span>"; } ?>
+
+                <span id="setLanguage">
+                    <select name="lang" id="lang" class="dropDownLang">
+                       <?php
+                        // Get all translations on the 'locale' folder
+                        $route='locale';
+                        $lang[]="en_US"; // add default language
+                        if (is_dir($route)) {
+                            if ($dh = opendir($route)) {
+                                while (($file = readdir($dh)) !== false) {
+                                    if (is_dir("$route/$file") && $file!="." && $file!=".."){
+                                        $lang[]=$file;
+                                    } 
+                                } 
+                                closedir($dh); 
+                            } 
+                        }else {
+                            echo "<br>"._("Invalid translation route!"); 
+                        }
+                        // Get language of navigator
+                        $defLang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
+                        
+                        // Show an ordered list
+                        sort($lang); 
+                        for($i=0; $i<count($lang); $i++){
+                            if(isset($_COOKIE["lang"])){
+                                if($_COOKIE["lang"]==$lang[$i]){
+                                    echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
+                                }else{
+                                    echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
+                                }
+                            }else{
+                                if($defLang==substr($lang[$i],0,2)){
+                                    echo "<option value='".$lang[$i]."' selected='selected'>".$lang_name->getNameLang($lang[$i])."</option>";
+                                }else{
+                                    echo "<option value='".$lang[$i]."'>".$lang_name->getNameLang($lang[$i])."</option>";
+                                }
+                            }
+                        }
+                        ?>
+                        
+                    </select>
+                </span>
+            </div>
+
+        </td>
+    </tr>
 
 <tr style='vertical-align:top;'>
-<td id='main-menu-titles' style='width:870px;height:19px;' colspan="2">
+<td id='main-menu-titles' style='width:870px;height:19px;' id="main-menu-titles" colspan="2">
+
 <?php if ($user->isAdmin())
 {
 ?>
@@ -184,10 +194,10 @@ $coralURL = $util->getCORALURL();
             <span><?php echo _("Report Options");?></span>
         </div>
     </a>     
+    
     <?php if ($config->settings->reportingModule == "Y") {
     ?>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href='../reports/' target='_blank' id='usage-reports'>
+    <a href='../reports/' target='_blank'>
         <div class="main-menu-link">
             <img src="images/menu/icon-usage.png" />
             <span><?php echo _("Usage Reports");?></span>
