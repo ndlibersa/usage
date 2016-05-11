@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "POT-Creation-Date: 2016-05-11 13:20-0600\n"
-"PO-Revision-Date: 2016-05-11 13:22-0600\n"
+"PO-Revision-Date: 2016-05-11 13:45-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1174,7 +1174,7 @@ msgstr "Changer de module"
 
 #: templates/header.php:267
 msgid "Main Menu"
-msgstr "Menu Principal"
+msgstr "Menu principal"
 
 #: templates/header.php:272
 msgid "Resources"
