@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
-"POT-Creation-Date: 2016-05-11 13:20-0600\n"
-"PO-Revision-Date: 2016-05-11 13:45-0600\n"
+"POT-Creation-Date: 2016-05-12 14:30-0600\n"
+"PO-Revision-Date: 2016-05-12 14:31-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -935,7 +935,7 @@ msgstr "voir/modifier"
 msgid "No publishers / platforms found."
 msgstr "Aucun éditeur/plateforme trouvé"
 
-#: reporting.php:2 templates/header.php:194 templates/header.php:236
+#: reporting.php:2 templates/header.php:195 templates/header.php:237
 msgid "Report Options"
 msgstr "Options de rapport"
 
@@ -1136,59 +1136,71 @@ msgstr " Echec !"
 msgid "Nothing to see here!  (no sushi scheduled today)"
 msgstr "Rien à afficher (aucun processus Sushi prévu pour aujourd'hui)"
 
-#: templates/header.php:91
+#: templates/header.php:92
 msgid "Usage Statistics"
 msgstr "Statistiques d'utilisation"
 
-#: templates/header.php:92
+#: templates/header.php:93
 msgid "Powered by"
 msgstr "Alimenté par"
 
-#: templates/header.php:126
+#: templates/header.php:99
+msgid "Hello"
+msgstr "Bonjour"
+
+#: templates/header.php:109
+msgid "logout"
+msgstr "Se Déconnecter"
+
+#: templates/header.php:109
+msgid "Help"
+msgstr "Aide"
+
+#: templates/header.php:127
 msgid "Invalid translation route!"
 msgstr "Chemin d'accès aux traductions invalide !"
 
-#: templates/header.php:166 templates/header.php:215
+#: templates/header.php:167 templates/header.php:216
 msgid "Home"
 msgstr "Accueil"
 
-#: templates/header.php:173 templates/header.php:222
+#: templates/header.php:174 templates/header.php:223
 msgid "File Import"
 msgstr "Importer"
 
-#: templates/header.php:180 templates/header.php:229
+#: templates/header.php:181 templates/header.php:230
 msgid "SUSHI"
 msgstr "SUSHI"
 
-#: templates/header.php:187
+#: templates/header.php:188
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/header.php:203 templates/header.php:245
+#: templates/header.php:204 templates/header.php:246
 msgid "Usage Reports"
 msgstr "Rapports d'utilisation"
 
-#: templates/header.php:264
+#: templates/header.php:265
 msgid "Change Module"
 msgstr "Changer de module"
 
-#: templates/header.php:267
+#: templates/header.php:268
 msgid "Main Menu"
 msgstr "Menu principal"
 
-#: templates/header.php:272
+#: templates/header.php:273
 msgid "Resources"
 msgstr "Ressources"
 
-#: templates/header.php:277
+#: templates/header.php:278
 msgid "Organizations"
 msgstr "Organisations"
 
-#: templates/header.php:282
+#: templates/header.php:283
 msgid "Licensing"
 msgstr "Licensing"
 
-#: templates/header.php:287
+#: templates/header.php:288
 msgid "Management"
 msgstr "Gestion"
 
