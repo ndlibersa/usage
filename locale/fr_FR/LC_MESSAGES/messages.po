@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: messages\n"
 "POT-Creation-Date: 2016-05-12 14:30-0600\n"
-"PO-Revision-Date: 2016-05-12 14:31-0600\n"
+"PO-Revision-Date: 2016-06-06 14:32-0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -164,11 +164,11 @@ msgstr "Paramètres facultatifs"
 
 #: ajax_forms.php:109
 msgid "Start Date:"
-msgstr "Date de début :"
+msgstr "Date de début:"
 
 #: ajax_forms.php:113
 msgid "End Date:"
-msgstr "Date de fin :"
+msgstr "Date de fin:"
 
 #: ajax_forms.php:114
 msgid "(yyyy-mm-dd)"
@@ -177,7 +177,7 @@ msgstr "(AAAA-MM-JJ)"
 #: ajax_forms.php:119
 msgid "Ensure platform name stays CORAL's Platform Name: "
 msgstr ""
-"Vérifier que le nom de la plateforme garde le Nom de la plateforme CORAL : "
+"Vérifier que le nom de la plateforme garde le Nom de la plateforme CORAL: "
 
 #: ajax_forms.php:128
 msgid "submit for processing"
@@ -221,11 +221,11 @@ msgstr " Notes de l'interface"
 
 #: ajax_forms.php:299 ajax_forms.php:377
 msgid "Start Year:"
-msgstr "Année de début :"
+msgstr "Année de début:"
 
 #: ajax_forms.php:303 ajax_forms.php:381
 msgid "End Year:"
-msgstr "Année de fin :"
+msgstr "Année de fin:"
 
 #: ajax_forms.php:307
 msgid "Counter Compliant?"
@@ -241,7 +241,7 @@ msgstr "Non"
 
 #: ajax_forms.php:316
 msgid "Interface Notes:"
-msgstr "Notes de l'interface :"
+msgstr "Notes de l'interface:"
 
 #: ajax_forms.php:325 ajax_forms.php:394 ajax_forms.php:461 ajax_forms.php:624
 #: ajax_forms.php:828 ajax_forms.php:882
@@ -254,7 +254,7 @@ msgstr "Notes de l'éditeur"
 
 #: ajax_forms.php:385
 msgid "Publisher Notes:"
-msgstr "Notes de l'éditeur :"
+msgstr "Notes de l'éditeur:"
 
 #: ajax_forms.php:438
 msgid "Login"
@@ -262,19 +262,19 @@ msgstr "Connexion"
 
 #: ajax_forms.php:441
 msgid "Username:"
-msgstr "Nom d'utilisateur :"
+msgstr "Nom d'utilisateur:"
 
 #: ajax_forms.php:445 ajax_forms.php:549
 msgid "Password:"
-msgstr "Mot de passe :"
+msgstr "Mot de passe:"
 
 #: ajax_forms.php:448
 msgid "URL:"
-msgstr "URL :"
+msgstr "URL:"
 
 #: ajax_forms.php:452
 msgid "Login Notes:"
-msgstr "Notes de connexion :"
+msgstr "Notes de connexion:"
 
 #: ajax_forms.php:500
 msgid "SUSHI Connection"
@@ -282,7 +282,7 @@ msgstr "Connexion SUSHI"
 
 #: ajax_forms.php:503
 msgid "Service/Endpoint URL:"
-msgstr "URL du Service/du point de terminaison :"
+msgstr "URL du Service/du point de terminaison:"
 
 #: ajax_forms.php:505
 msgid " - if using COUNTER's WSDL"
@@ -290,7 +290,7 @@ msgstr " - lors de l'utilisation du WSDL de COUNTER"
 
 #: ajax_forms.php:509
 msgid " - or - WSDL URL:"
-msgstr " - ou - URL de WSDL :"
+msgstr " - ou - URL de WSDL:"
 
 #: ajax_forms.php:511
 msgid " - if not using COUNTER's WSDL"
@@ -298,27 +298,27 @@ msgstr " - Si le WSDL de COUNTER n'est pas utilisé"
 
 #: ajax_forms.php:514
 msgid "Report Type(s):"
-msgstr "Type(s) de rapport(s) :"
+msgstr "Type(s) de rapport(s):"
 
 #: ajax_forms.php:516
 msgid "separate report types with semi-colon, e.g. JR1;BR1"
-msgstr "Séparer les types de rapport par des points-virgules (ex : JR1 ; BR1)"
+msgstr "Séparer les types de rapport par des points-virgules (ex: JR1 ; BR1)"
 
 #: ajax_forms.php:520
 msgid "COUNTER Release:"
-msgstr "Version COUNTER :"
+msgstr "Version COUNTER:"
 
 #: ajax_forms.php:529
 msgid "Requestor ID:"
-msgstr "ID du demandeur :"
+msgstr "ID du demandeur:"
 
 #: ajax_forms.php:533
 msgid "Customer ID:"
-msgstr "ID du client :"
+msgstr "ID du client:"
 
 #: ajax_forms.php:537
 msgid "Security Type:"
-msgstr "Type de sécurité :"
+msgstr "Type de sécurité:"
 
 #: ajax_forms.php:539 ajax_forms.php:545 ajax_forms.php:558
 msgid "(optional)"
@@ -326,11 +326,11 @@ msgstr "(facultatif)"
 
 #: ajax_forms.php:539
 msgid "can be: HTTP Basic, WSSE Authentication"
-msgstr "peut être : HTTP basique, Authentification WSSE"
+msgstr "peut être: HTTP basique, Authentification WSSE"
 
 #: ajax_forms.php:543
 msgid "Login:"
-msgstr "Connexion :"
+msgstr "Connexion:"
 
 #: ajax_forms.php:545
 msgid " -  only needed for HTTP or WSSE Authentication"
@@ -342,7 +342,7 @@ msgstr " -  uniquement requis pour HTTP ou une Authentification WSSE"
 
 #: ajax_forms.php:556
 msgid "Service Day:"
-msgstr "Jour de service :"
+msgstr "Jour de service:"
 
 #: ajax_forms.php:558
 msgid " - number indicating the day of month the service should run"
@@ -352,12 +352,11 @@ msgstr ""
 
 #: ajax_forms.php:558
 msgid "(e.g. 27 will run 27th of every month)"
-msgstr ""
-"(ex : 27 indique que le service sera lancé tous les 27ème jour du mois)"
+msgstr "(ex: 27 indique que le service sera lancé tous les 27ème jour du mois)"
 
 #: ajax_forms.php:561
 msgid "Sushi Notes:"
-msgstr "Notes Sushi :"
+msgstr "Notes Sushi:"
 
 #: ajax_forms.php:609
 msgid "Link Associated Organization"
@@ -365,7 +364,7 @@ msgstr "Rattacher à l'organisation associée"
 
 #: ajax_forms.php:613
 msgid "Organization:"
-msgstr "Organisation :"
+msgstr "Organisation:"
 
 #: ajax_forms.php:691 ajax_htmldata.php:970
 msgid "ignore outlier"
@@ -580,7 +579,7 @@ msgstr "Rattacher à l'organisation associée"
 msgid "Login Credentials are also available for the following publishers:"
 msgstr ""
 "Les identifiants de connexion sont aussi disponibles pour les éditeurs "
-"suivants :"
+"suivants:"
 
 #: ajax_htmldata.php:336 ajax_htmldata.php:395
 msgid "Start Year"
@@ -839,11 +838,11 @@ msgstr "Format incorrect du nom du fichier - renommez-le en nomdefichier.txt !"
 
 #: import.php:43
 msgid "File:"
-msgstr "Fichier :"
+msgstr "Fichier:"
 
 #: import.php:48
 msgid "Layout:"
-msgstr "Mise en page :"
+msgstr "Mise en page:"
 
 #: import.php:57
 msgid "Override previous month verification"
@@ -855,7 +854,7 @@ msgstr "Télécharger"
 
 #: import.php:68
 msgid "Instructions:"
-msgstr "Consignes :"
+msgstr "Consignes:"
 
 #: import.php:70
 msgid "Save file as .txt files in tab delimited format"
@@ -874,7 +873,7 @@ msgstr ""
 
 #: import.php:73
 msgid "More info: "
-msgstr "Pour plus d'informations : "
+msgstr "Pour plus d'informations: "
 
 #: import.php:82
 msgid "Recent Imports"
@@ -945,7 +944,7 @@ msgstr "Mise à jour administrative des rapports d'éditeur/de plateforme"
 
 #: reporting.php:12
 msgid "Directions:"
-msgstr "Consignes :"
+msgstr "Consignes:"
 
 #: reporting.php:12
 msgid ""
@@ -1074,7 +1073,7 @@ msgstr "Import SUSHI"
 
 #: sushi.php:45
 msgid "Sushi Output Log:"
-msgstr "Fichier des résultats SUSHI :"
+msgstr "Fichier des résultats SUSHI:"
 
 #: sushi.php:56
 msgid "SUSHI Administration"
@@ -1098,7 +1097,7 @@ msgstr "Tous les services SUSHI"
 
 #: sushiSchedule.php:33
 msgid " SUSHI runs found for day: "
-msgstr " Processus SUSHI trouvés pour le jour : "
+msgstr " Processus SUSHI trouvés pour le jour: "
 
 #: sushiSchedule.php:52
 msgid "Log in to "
@@ -1218,15 +1217,15 @@ msgstr "Processus démarré le "
 
 #: uploadComplete.php:68
 msgid "File: "
-msgstr "Fichier : "
+msgstr "Fichier: "
 
 #: uploadComplete.php:69 uploadConfirmation.php:293
 msgid "Report Format: "
-msgstr "Format du rapport : "
+msgstr "Format du rapport: "
 
 #: uploadComplete.php:82
 msgid "Outlier Parameters:"
-msgstr "Paramètres des valeurs hors normes :"
+msgstr "Paramètres des valeurs hors normes:"
 
 #: uploadComplete.php:89
 #, php-format
@@ -1247,7 +1246,7 @@ msgstr ""
 
 #: uploadComplete.php:282
 msgid "Month Started at: "
-msgstr "Mois commencé à : "
+msgstr "Mois commencé à: "
 
 #: uploadComplete.php:284
 msgid ""
@@ -1258,54 +1257,53 @@ msgstr ""
 
 #: uploadComplete.php:306
 msgid "Year: "
-msgstr "Année : "
+msgstr "Année: "
 
 #: uploadComplete.php:340
 msgid "New Platform set up: "
-msgstr "Nouvelle plateforme configurée : "
+msgstr "Nouvelle plateforme configurée: "
 
 #: uploadComplete.php:422
 msgid "New Publisher / Platform set up: "
-msgstr "Nouvel éditeur/plateforme configuré : "
+msgstr "Nouvel éditeur/plateforme configuré: "
 
 #: uploadComplete.php:655
 msgid "Publisher / Platform: "
-msgstr "Editeur/plateforme : "
+msgstr "Editeur/plateforme: "
 
 #: uploadComplete.php:664
 msgid "Title: "
-msgstr "Titre : "
+msgstr "Titre: "
 
 #: uploadComplete.php:701
 msgid "Duplicate record for this Print ISSN in same spreadsheet: Month: "
 msgstr ""
-"Notice dupliquée pour ce numéro ISSN imprimé dans la même feuille de "
-"calcul : Mois : "
+"Notice dupliquée pour ce numéro ISSN imprimé dans la même feuille de calcul: "
+"Mois: "
 
 #: uploadComplete.php:701
 msgid "  New Count: "
-msgstr "  Nouveau décompte : "
+msgstr "  Nouveau décompte: "
 
 #: uploadComplete.php:785
 msgid "New Usage Count Record Added: Month: "
-msgstr "Nouvelle notice de décompte ajoutée : Mois : "
+msgstr "Nouvelle notice de décompte ajoutée: Mois: "
 
 #: uploadComplete.php:785 uploadComplete.php:787
 msgid "  Count: "
-msgstr "  Décompte : "
+msgstr "  Décompte: "
 
 #: uploadComplete.php:787
 msgid "Usage Count Record is not numeric for month: "
-msgstr ""
-"La notice du décompte d'utilisation n'est pas numérique pour le mois : "
+msgstr "La notice du décompte d'utilisation n'est pas numérique pour le mois: "
 
 #: uploadComplete.php:794
 msgid "Outlier found for this record: Level "
-msgstr "Valeur hors normes trouvée pour cette notice : Niveau "
+msgstr "Valeur hors normes trouvée pour cette notice: Niveau "
 
 #: uploadComplete.php:803
 msgid "Current or future month will not be imported: "
-msgstr "Le mois actuel ou le mois prochain ne seront pas importés : "
+msgstr "Le mois actuel ou le mois prochain ne seront pas importés: "
 
 #: uploadComplete.php:842
 msgid "YTD Already Exists for this Print ISSN, counts are added together."
@@ -1319,11 +1317,11 @@ msgstr "Décompte total du cumul annuel: "
 
 #: uploadComplete.php:866
 msgid "YTD HTML Count: "
-msgstr "Décompte total du cumul annuel en HTML : "
+msgstr "Décompte total du cumul annuel en HTML: "
 
 #: uploadComplete.php:866
 msgid "YTD PDF Count: "
-msgstr "Décompte total du cumul annuel en PDF : "
+msgstr "Décompte total du cumul annuel en PDF: "
 
 #: uploadComplete.php:873
 msgid "No YTD import performed since monthly stats were not imported"
@@ -1337,7 +1335,7 @@ msgid ""
 "for Title:  "
 msgstr ""
 "La correspondance de titres n'a pas pu terminer correctement, merci de "
-"vérifier l'ISBN/l'ISSN du titre :  "
+"vérifier l'ISBN/l'ISSN du titre:  "
 
 #: uploadComplete.php:935
 msgid "Log Output for "
@@ -1349,7 +1347,7 @@ msgstr "Importation avec succès du fichier statistiques des utilisations !"
 
 #: uploadComplete.php:936
 msgid "Please find log file: "
-msgstr "Voici le fichier journal : "
+msgstr "Voici le fichier journal: "
 
 #: uploadComplete.php:940
 msgid "Log has been emailed to "
@@ -1361,7 +1359,7 @@ msgstr " titres traités."
 
 #: uploadComplete.php:1005
 msgid "Summary:"
-msgstr "Résumé :"
+msgstr "Résumé:"
 
 #: uploadConfirmation.php:33
 msgid "SUSHI Import Confirmation"
@@ -1377,7 +1375,7 @@ msgstr " a été téléchargé avec succès."
 
 #: uploadConfirmation.php:70
 msgid "Please confirm the following data:"
-msgstr "Veuillez confirmer les données suivantes :"
+msgstr "Veuillez confirmer les données suivantes:"
 
 #: uploadConfirmation.php:90
 msgid "Upload Process Confirmation"
@@ -1416,11 +1414,11 @@ msgstr ""
 
 #: uploadConfirmation.php:266
 msgid "Expecting columns: "
-msgstr "Colonnes prévues : "
+msgstr "Colonnes prévues: "
 
 #: uploadConfirmation.php:266
 msgid "Found columns: "
-msgstr "Colonnes trouvées : "
+msgstr "Colonnes trouvées: "
 
 #: uploadConfirmation.php:266
 msgid ""
@@ -1433,19 +1431,19 @@ msgstr ""
 #: uploadConfirmation.php:271
 msgid "Error with Setup:  This report format is not set up in layouts.ini."
 msgstr ""
-"Erreur de Configuration : Ce format de rapport n'est pas configuré dans le "
+"Erreur de Configuration: Ce format de rapport n'est pas configuré dans le "
 "fichier layouts.ini."
 
 #: uploadConfirmation.php:276
 msgid ""
 "Error with Format:  The line preceding the first should start with 'Total'."
 msgstr ""
-"Erreur de format : La ligne précédent la première devrait commencer par "
+"Erreur de format: La ligne précédent la première devrait commencer par "
 "\"Total\"."
 
 #: uploadConfirmation.php:281
 msgid "Error with Year:  Year listed in header "
-msgstr "Erreur avec l'Année : l'Année est présente dans l'en-tête "
+msgstr "Erreur avec l'Année: l'Année est présente dans l'en-tête "
 
 #: uploadConfirmation.php:281
 msgid " may not be ahead of current year.  Please correct and submit again."
