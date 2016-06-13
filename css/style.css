@@ -2628,3 +2628,11 @@ table.titleTable {
 #main-table {
     margin: 0 30px;
 }
+
+/*--- Allow Browser to Scroll When Modal Appears ---*/
+
+#TB_window {
+	position: absolute !important;
+	margin-top: 100px !important;
+	top: 0 !important;
+}
