@@ -2628,3 +2628,11 @@ table.titleTable {
 #main-table {
     margin: 0 30px;
 }
+
+#TB_window {
+	max-height: 75vh !important;
+	max-width: 100vw !important;
+	overflow-y: auto !important;
+	top: 5vh !important;
+	margin-top: 0px !important;
+}
