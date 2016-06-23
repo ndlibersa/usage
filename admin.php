@@ -1,5 +1,5 @@
 <?php
-$pageTitle = 'Administration';
+$pageTitle = _('Administration');
 include 'templates/header.php';
 
 

@@ -32,7 +32,7 @@ UPDATE Title SET resourceType="Journal";
 ALTER TABLE `TitleISSN` 
 CHANGE COLUMN `titleISSNID` `titleIdentifierID` INT(11) NOT NULL AUTO_INCREMENT  , 
 CHANGE COLUMN `issn` `identifier` VARCHAR(20) NULL DEFAULT NULL  , 
-CHANGE COLUMN `issnType` `identifierType` VARCHAR(20) NULL DEFAULT NULL  , 
+CHANGE COLUMN `issnType` `identifierType` VARCHAR(30) NULL DEFAULT NULL  , 
 RENAME TO  `TitleIdentifier` ;
 
 UPDATE TitleIdentifier SET identifierType="ISSN" where identifierType="print";

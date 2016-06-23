@@ -57,14 +57,14 @@ a.helpfulLink {color:#526972;}
 
 .smallText{color:#3D545D;font-size:92%;}
 .smallerText{color:#3D545D;font-size:85%;}
-.redText{color:red}
+.redText{color:red;}
 .smallRedText{font-size:85%;color:red;}
 .darkRedText{color:#7a0026;}
 .bigDarkRedText{font-size:125%; color:#7a0026;}
 .smallDarkRedText{font-size:85%;color:#7a0026;}
-.normalText{color:#3D545D}
-.smallBlueText{font-size:85%;font-weight:normal; color:#526972}
-.smallGreyText{font-size:85%;font-weight:normal; color:gray}
+.normalText{color:#3D545D;}
+.smallBlueText{font-size:85%;font-weight:normal; color:#526972;}
+.smallGreyText{font-size:85%;font-weight:normal; color:gray;}
 .boldBlueText{font-weight:bold; color:#526972;}
 .boldText{font-weight:bold;}
 
@@ -119,21 +119,21 @@ table.queueMenuTable {
 
 table.queueMenuTable td {
 	margin: 0;
-	padding: 3px 3px 3px 3px;
+	padding: 3px;
 	background-color: #f6f8fa;
-			border-top: 1px solid #e6e5e9;
-			vertical-align:top;
+    	border-top: 1px solid #e6e5e9;
+    	vertical-align:top;
 	-moz-border-radius: 0px;
 }
 
 
 table.queueMenuTable td.selected {
 	margin: 0;
-	padding: 3px 3px 3px 3px;
-			border-top: 1px solid #e6e5e9;
-			background-color: #f2f5f7;
-			background-image:url('../images/tab.gif');
-			background-repeat:no-repeat;
+	padding: 3px;
+    	border-top: 1px solid #e6e5e9;
+    	background-color: #f2f5f7;
+    	background-image:url('../images/tab.gif');
+    	background-repeat:no-repeat;
 	background-position:right top;
 	-moz-border-radius: 0px;
 }
@@ -151,8 +151,8 @@ table.queueMenuTable tr {
 }
 
 
-td.queueRightPanel {
-	border-width: 1px 1px 1px 1px;
+td.queueRightPanel {	
+	border-width: 1px;
 	border-style: solid;
 	border-color: #e6e5e9;
 	border-collapse: collapse;
@@ -176,7 +176,7 @@ table.queueDataTable {
 
 table.queueDataTable td {
 	margin: 0;
-	padding: 3px 3px 3px 3px;
+	padding: 3px;
 	border-width: 1px 0 0 0;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -228,21 +228,21 @@ table.adminMenuTable {
 
 table.adminMenuTable td {
 	margin: 0;
-	padding: 3px 3px 3px 3px;
+	padding: 3px;
 	background-color: #f6f8fa;
-			border-top: 1px solid #e6e5e9;
-			vertical-align:top;
+    	border-top: 1px solid #e6e5e9;
+    	vertical-align:top;
 	-moz-border-radius: 0px;
 }
 
 
 table.adminMenuTable td.selected {
 	margin: 0;
-	padding: 3px 3px 3px 3px;
-			border-top: 1px solid #e6e5e9;
-			background-color: #f2f5f7;
-			background-image:url('../images/tab.gif');
-			background-repeat:no-repeat;
+	padding: 3px;
+    	border-top: 1px solid #e6e5e9;
+    	background-color: #f2f5f7;
+    	background-image:url('../images/tab.gif');
+    	background-repeat:no-repeat;
 	background-position:right top;
 	-moz-border-radius: 0px;
 }
@@ -260,8 +260,8 @@ table.adminMenuTable tr {
 }
 
 
-td.adminRightPanel {
-	border-width: 1px 1px 1px 1px;
+td.adminRightPanel {	
+	border-width: 1px;
 	border-style: solid;
 	border-color: #e6e5e9;
 	border-collapse: collapse;
@@ -327,18 +327,18 @@ div.f3 { clear: both; }
 
 
 .checkboxes label{
-		display: block;
-		float: left;
-		padding-right: 10px;
-		white-space: nowrap;
+    display: block;
+    float: left;
+    padding-right: 10px;
+    white-space: nowrap;
 }
 
 .checkboxes input{
-		vertical-align: middle;
+    vertical-align: middle;
 }
 
 .checkboxes label span{
-		vertical-align: middle;
+    vertical-align: middle;
 }
 
 
@@ -362,21 +362,21 @@ hr {
 }
 
 #search_box {
-		width: 170px;
-		height: 19px;
-		background: url('../images/searchbox.gif');
+    width: 170px;
+    height: 19px;
+    background: url('../images/searchbox.gif');
 }
 #search_box #search_organization {
-		float: left;
-		padding: 0;
-		margin: 2px 0 0 6px;
-		border: 0;
-		width: 159px;
-		background: none;
+    float: left;
+    padding: 0;
+    margin: 2px 0 0 6px;
+    border: 0;
+    width: 159px;
+    background: none;
 }
 #search_box #go {
-		float: right;
-		margin: 3px 4px 0 0;
+    float: right;
+    margin: 3px 4px 0 0;
 }
 
 
@@ -446,7 +446,7 @@ table.verticalFormTable {
 
 table.verticalFormTable td {
 	margin: 0;
-	padding: 3px 3px 3px 3px;
+	padding: 3px;
 	border-width: 1px 1px 0 0;
 	border-style: solid;
 	border-color: #e0dfe3;
@@ -492,7 +492,7 @@ table.linedFormTable {
 
 table.linedFormTable td {
 	margin: 0;
-	padding: 3px 3px 3px 3px;
+	padding: 3px;
 	border-width: 1px 0 0 0;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -503,7 +503,7 @@ table.linedFormTable td {
 
 table.linedFormTable td.bottom {
 	margin: 0;
-	padding: 3px 3px 3px 3px;
+	padding: 3px;
 	border-width: 1px 0 0 0;
 	border-style: solid;
 	border-color: #e6e5e9;
@@ -580,7 +580,7 @@ table.noBorder td { border:0; }
 table.smallPadding td{ padding:1px; }
 
 table.noMargin { border:0px;margin:0px; padding:0px;text-align:center; }
-table.noMargin tr { border:0px;margin:0px; padding:0px; vertical-align:center; }
+table.noMargin tr { border:0px;margin:0px; padding:0px; vertical-align:middle; }
 table.noMargin td { border:0px;margin:0px; padding:0px; }
 
 
@@ -590,21 +590,21 @@ table.noMargin td { border:0px;margin:0px; padding:0px; }
 div.thickboxDiv{display:none;}
 
 table.thickboxTable{
-	padding:6px;
-	text-decoration: none;
-	color:  #2c3c42;
-	font-family: "arial";
-	font-size: 8pt;
-	font-weight: heavy;
+ padding:6px; 
+ text-decoration: none;
+ color:  #2c3c42;
+ font-family: "arial";
+ font-size: 8pt;
+ font-weight: heavy;
 }
 
 table.thickboxTable td{
 	padding:1px;
 }
 
-.infoText{font-size:small;font-weight:normal; color:gray}
-.span_CancellationNumber{font-size:small;font-weight:normal; color:gray}
-.span_CurrentQueue{font-size:small;font-weight:normal; color:gray}
+.infoText{font-size:small;font-weight:normal; color:gray;}
+.span_CancellationNumber{font-size:small;font-weight:normal; color:gray;}
+.span_CurrentQueue{font-size:small;font-weight:normal; color:gray;}
 
 table.noBorderTable {padding:0px; width:100%; border-style:none;}
 table.noBorderTable td {padding:0px; border-style:none; vertical-align:middle;}
@@ -639,7 +639,7 @@ input.dp-applied {
 }
 
 .adminAddInput{margin-top:5px;}
-.licenseAddInput{margin-top:5px;margin-bottom;5px;}
+.licenseAddInput{margin-top:5px;margin-bottom:5px;}
 
 
 
@@ -2627,12 +2627,4 @@ table.titleTable {
 
 #main-table {
     margin: 0 30px;
-}
-
-/*--- Allow Browser to Scroll When Modal Appears ---*/
-
-#TB_window {
-	position: absolute !important;
-	margin-top: 100px !important;
-	top: 0 !important;
 }

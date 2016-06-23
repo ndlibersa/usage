@@ -44,7 +44,7 @@ switch ($action) {
 
 		?>
 
-		<h3><?php echo _("Import History for ");?><?php echo $platform->name; ?></h3>
+		<h3><?php echo _("Import History for ") . $platform->name; ?></h3>
 
 		<div id="div_imports">
 
@@ -93,7 +93,7 @@ switch ($action) {
 
 			?>
 
-			<h3><?php echo("Publisher Logins");?></h3>
+			<h3><?php echo _("Publisher Logins");?></h3>
 
 			<div id="div_logins">
 
@@ -125,7 +125,7 @@ switch ($action) {
 				echo "<td>" . $externalLogin->password . "</td>";
 				echo "<td>" . $externalLogin->loginURL . "</td>";
 				echo "<td>" . $externalLogin->noteText . "</td>";
-				echo "<td><a href='ajax_forms.php?action=getLoginForm&externalLoginID=" . $externalLogin->externalLoginID . "&height=250&width=325&modal=true' class='thickbox' style='font-size:100%;'>edit</a><br /><a href='javascript:deleteExternalLogin(" . $externalLogin->externalLoginID . ");' style='font-size:100%;'>remove</a></td>";
+				echo "<td><a href='ajax_forms.php?action=getLoginForm&externalLoginID=" . $externalLogin->externalLoginID . "&height=250&width=325&modal=true' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deleteExternalLogin(" . $externalLogin->externalLoginID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
 				echo "</tr>";
 
 			}
@@ -171,10 +171,10 @@ switch ($action) {
 
 			<table class='verticalFormTable'>
 			<tr>
-			<th>Interface Login</th>
-			<th>Password</th>
-			<th>URL</th>
-			<th>Login Notes</th>
+			<th><?php echo _("Interface Login");?></th>
+			<th><?php echo _("Password");?></th>
+			<th><?php echo _("URL");?></th>
+			<th><?php echo _("Login Notes");?></th>
 			<th>&nbsp;</th>
 			</tr>
 
@@ -186,7 +186,7 @@ switch ($action) {
 				echo "<td>" . $externalLogin->password . "</td>";
 				echo "<td>" . $externalLogin->loginURL . "</td>";
 				echo "<td>" . $externalLogin->noteText . "</td>";
-				echo "<td><a href='ajax_forms.php?action=getLoginForm&externalLoginID=" . $externalLogin->externalLoginID . "&height=250&width=325&modal=true' class='thickbox' style='font-size:100%;'>edit</a><br /><a href='javascript:deleteExternalLogin(" . $externalLogin->externalLoginID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
+				echo "<td><a href='ajax_forms.php?action=getLoginForm&externalLoginID=" . $externalLogin->externalLoginID . "&height=250&width=325&modal=true' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deleteExternalLogin(" . $externalLogin->externalLoginID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
 				echo "</tr>";
 
 			}
@@ -214,7 +214,7 @@ switch ($action) {
 
 		//both publishers and platforms will have organizations lookup
 		if ($config->settings->organizationsModule == 'Y'){
-			echo "<br /><h3>Organization Accounts</h3>";
+			echo "<br /><h3>" . _("Organization Accounts") . "</h3>";
 
 			if (isset($_GET['publisherPlatformID']) && ($_GET['publisherPlatformID'] != '')){
 				$publisherPlatformID = $_GET['publisherPlatformID'];
@@ -394,7 +394,7 @@ switch ($action) {
 			<tr>
 			<th><?php echo _("Start Year");?></th>
 			<th><?php echo _("End Year");?></th>
-			<th><?php echo _("Counter");?><br /><?php echo _("Compliant?");?></th>
+			<th><?php echo _("Counter") . '<br />' . _("Compliant?");?></th>
 			<th><?php echo _("Interface Notes");?></th>
 			<th>&nbsp;</th>
 			</tr>
@@ -417,7 +417,7 @@ switch ($action) {
 				echo "<td>" . $endYear . "</td>";
 				echo "<td>" . $counterCompliantInd . "</td>";
 				echo "<td>" . $platformNote->noteText . "</td>";
-				echo "<td><a href='ajax_forms.php?action=getPlatformNoteForm&platformNoteID=" . $platformNote->platformNoteID . "&height=255&width=408&modal=true' class='thickbox' style='font-size:100%;'>edit</a><br /><a href='javascript:deletePlatformNote(" . $platformNote->platformNoteID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
+				echo "<td><a href='ajax_forms.php?action=getPlatformNoteForm&platformNoteID=" . $platformNote->platformNoteID . "&height=255&width=408&modal=true' class='thickbox' style='font-size:100%;'>" . _("edit") . "</a><br /><a href='javascript:deletePlatformNote(" . $platformNote->platformNoteID . ");' style='font-size:100%;'>" . _("remove") . "</a></td>";
 				echo "</tr>";
 
 			}
@@ -456,26 +456,26 @@ switch ($action) {
 			$sushiService->getByPublisherPlatformID($pubishlerPlatformID);
 		}
 
-		echo "<h3>SUSHI Connection</h3>";
+		echo "<h3>" . _("SUSHI Connection") . "</h3>";
 
 		if (($sushiService->platformID != '') || ($sushiService->publisherPlatformID != '')){
 			echo "<table class='verticalFormTable' style='width:100%;'>";
-			echo "<tr><td>Service URL</td><td>" . $sushiService->serviceURL . "</td></tr>";
-			echo "<tr><td>WSDL URL</td><td>" . $sushiService->wsdlURL . "</td></tr>";
-			echo "<tr><td>COUNTER Release</td><td>" . $sushiService->releaseNumber . "</td></tr>";
-			echo "<tr><td>Report Layouts</td><td>" . $sushiService->reportLayouts . "</td></tr>";
-			echo "<tr><td>Requestor ID</td><td>" . $sushiService->requestorID . "</td></tr>";
-			echo "<tr><td>Customer ID</td><td>" . $sushiService->customerID . "</td></tr>";
-			echo "<tr><td>Security</td><td>" . $sushiService->security . "</td></tr>";
-			echo "<tr><td>Login</td><td>" . $sushiService->login . "</td></tr>";
-			echo "<tr><td>Password</td><td>" . $sushiService->password . "</td></tr>";
-			echo "<tr><td>Service Day</td><td>" . $sushiService->serviceDayOfMonth . " (day of month)</td></tr>";
-			echo "<tr><td>Notes</td><td>" . $sushiService->noteText . "</td></tr>";
+			echo "<tr><td>" . _("Service URL") . "</td><td>" . $sushiService->serviceURL . "</td></tr>";
+			echo "<tr><td>" . _("WSDL URL") . "</td><td>" . $sushiService->wsdlURL . "</td></tr>";
+			echo "<tr><td>" . _("COUNTER Release") . "</td><td>" . $sushiService->releaseNumber . "</td></tr>";
+			echo "<tr><td>" . _("Report Layouts") . "</td><td>" . $sushiService->reportLayouts . "</td></tr>";
+			echo "<tr><td>" . _("Requestor ID") . "</td><td>" . $sushiService->requestorID . "</td></tr>";
+			echo "<tr><td>" . _("Customer ID") . "</td><td>" . $sushiService->customerID . "</td></tr>";
+			echo "<tr><td>" . _("Security") . "</td><td>" . $sushiService->security . "</td></tr>";
+			echo "<tr><td>" . _("Login") . "</td><td>" . $sushiService->login . "</td></tr>";
+			echo "<tr><td>" . _("Password") . "</td><td>" . $sushiService->password . "</td></tr>";
+			echo "<tr><td>" . _("Service Day") . "</td><td>" . $sushiService->serviceDayOfMonth . _(" (day of month)") . "</td></tr>";
+			echo "<tr><td>" . _("Notes") . "</td><td>" . $sushiService->noteText . "</td></tr>";
 			echo "</table>";
 			echo "<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=" . $sushiService->sushiServiceID . "&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>" . _("Edit SUSHI Connection Info") . "</a><br />";
 			echo "<br /><div id='div_test_service'><a href='javascript:testService(" . $sushiService->sushiServiceID . ")'>" . _("Test SUSHI Connection") . "</a></div><br />";
 		}else{
-			echo "\n(none found)<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>" . _("Add SUSHI Connection") . "</a><br />";
+			echo "\n" . _("(none found)") . "<br /><br /><a href='ajax_forms.php?action=getSushiForm&sushiServiceID=&platformID=" . $platformID . "&height=530&width=518&modal=true' class='thickbox'>" . _("Add SUSHI Connection") . "</a><br />";
 
 		}
 
@@ -565,7 +565,7 @@ switch ($action) {
 					$holdYear = $year;
 				}
 
-				if ($statArray['archiveInd'] == "1") {$archive = '&nbsp;(archive)';}else{$archive='';}
+				if ($statArray['archiveInd'] == "1") {$archive = "&nbsp;" . _("(archive)");}else{$archive='';}
 
 				echo "<div class='boldBlueText' style='margin:10px 10px 0px 10px;'>";
 				echo "&nbsp;&nbsp;" . $statArray['resourceType'] . "s" . $archive;
@@ -575,7 +575,7 @@ switch ($action) {
 				echo "<table class='verticalFormTable' style='margin:5px 10px 10px 25px;width:350px;'>";
 
 				echo "<tr>";
-				echo "<th><a target='_blank' href='spreadsheet.php?publisherPlatformID=" .  $publisherPlatformID . "&platformID=" . $platformID . "&year=" . $statArray['year'] . "&archiveInd=" . $statArray['archiveInd'] . "&resourceType=" . $statArray['resourceType'] . "' style='font-size:110%;'>View Spreadsheet</a></td>";
+				echo "<th><a target='_blank' href='spreadsheet.php?publisherPlatformID=" .  $publisherPlatformID . "&platformID=" . $platformID . "&year=" . $statArray['year'] . "&archiveInd=" . $statArray['archiveInd'] . "&resourceType=" . $statArray['resourceType'] . "' style='font-size:110%;'>" . _("View Spreadsheet") . "</a></td>";
 				echo "</tr>";
 
 				//loop through each month
@@ -599,11 +599,11 @@ switch ($action) {
 					echo "<table class='noBorderTable' style='width:340px;'>";
 					echo "<tr>";
 					echo "<td style='width:70px;font-weight:bold;'>" . numberToMonth($month) . " " . $statArray['year'] . "</td>";
-					echo "<td><a href=\"javascript:deleteMonth('" . $statArray['resourceType'] . "','" . $month . "','" . $statArray['year'] . "','" . $statArray['archiveInd'] . "', '" . $publisherPlatformID . "', '" . $platformID . "')\" style='font-size:100%;'>delete entire month</a>";
+					echo "<td><a href=\"javascript:deleteMonth('" . $statArray['resourceType'] . "','" . $month . "','" . $statArray['year'] . "','" . $statArray['archiveInd'] . "', '" . $publisherPlatformID . "', '" . $platformID . "')\" style='font-size:100%;'>" . _("delete entire month") . "</a>";
 
 					//print out prompt for outliers if outlierID is > 0
 					if ($outlier > 0){
-						echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getMonthlyOutlierForm&publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $statArray['archiveInd'] . "&month=" . $month . "&year=" . $statArray['year'] . "&resourceType=" . $statArray['resourceType'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>view outliers for this month</a>";
+						echo "&nbsp;&nbsp;<a href='ajax_forms.php?action=getMonthlyOutlierForm&publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $statArray['archiveInd'] . "&month=" . $month . "&year=" . $statArray['year'] . "&resourceType=" . $statArray['resourceType'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>" . _("view outliers for this month") . "</a>";
 					}
 
 					echo "</td></tr>";
@@ -620,9 +620,9 @@ switch ($action) {
 
 
 					if ($statArray['outlierID'] > 0){
-						echo "&nbsp;&nbsp;&nbsp;&nbsp;<a href='ajax_forms.php?action=getYearlyOverrideForm&resourceType=" . $statArray['resourceType'] . "publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $statArray['archiveInd'] . "&year=" . $statArray['year'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>update overrides for this year</a>";
+						echo "&nbsp;&nbsp;&nbsp;&nbsp;<a href='ajax_forms.php?action=getYearlyOverrideForm&resourceType=" . $statArray['resourceType'] . "publisherPlatformID=" . $publisherPlatformID . "&platformID=" . $platformID . "&archiveInd=" . $statArray['archiveInd'] . "&year=" . $statArray['year'] . "&height=340&width=415&modal=true' class='thickbox' style='font-size:100%;'>" . _("update overrides for this year") . "</a>";
 					}else{
-						echo "&nbsp;&nbsp;&nbsp;&nbsp;(no outliers found for this year)";
+						echo "&nbsp;&nbsp;&nbsp;&nbsp;" . _("(no outliers found for this year)");
 					}
 
 					echo "</td>";
@@ -658,19 +658,19 @@ switch ($action) {
 		$bookTitleArray = $obj->getBookTitles;
 
 
-		echo "<h3>Titles</h3>";
+		echo "<h3>" . _("Titles") . "</h3>";
 		echo "<div style='margin-left:10px;'>";
 
 		if ((count($journalTitleArray) == '0') && (count($bookTitleArray) == '0') && (count($databaseTitleArray) == '0')){
-			echo "(none found)";
+			echo _("(none found)");
 
 		}else{
 			if (count($journalTitleArray) > 0){
-				echo "<a href='titles_spreadsheet.php?publisherPlatformID=$publisherPlatformID&platformID=$platformID&resourceType=Journal' target='_blank'>View Journal Spreadsheet</a><br />";
+				echo "<a href='titles_spreadsheet.php?publisherPlatformID=$publisherPlatformID&platformID=$platformID&resourceType=Journal' target='_blank'>" . _("View Journal Spreadsheet") . "</a><br />";
 			}
 
 			if (count($bookTitleArray) > 0){
-				echo "<a href='titles_spreadsheet.php?publisherPlatformID=$publisherPlatformID&platformID=$platformID&resourceType=Book' target='_blank'>View Books Spreadsheet</a><br />";
+				echo "<a href='titles_spreadsheet.php?publisherPlatformID=$publisherPlatformID&platformID=$platformID&resourceType=Book' target='_blank'>" . _("View Books Spreadsheet") . "</a><br />";
 			}
 
 		}
@@ -759,7 +759,6 @@ switch ($action) {
 
 					$resolverURL .= $urlAdd;
 					echo "\n<td><span style='float:left;'><a href='ajax_forms.php?action=getRelatedTitlesForm&titleID=" . $title['titleID'] . "&height=240&width=258&modal=true' class='thickbox'>" . _("view related titles") . "</a><br /><a href='" . $resolverURL  . "' target='_blank'>" . _("view in link resolver") . "</a></span></td>";
-
 				}else{
 					echo "\n<td>&nbsp;</td>";
 				}
@@ -836,7 +835,7 @@ switch ($action) {
 
 					$resolverURL .= $urlAdd;
 
-					echo "\n<td><span style='float:left;'><a href='ajax_forms.php?action=getRelatedTitlesForm&titleID=" . $title['titleID'] . "&height=240&width=258&modal=true' class='thickbox'>view related titles</a><br /><a href='" . $resolverURL  . "' target='_blank'>view in link resolver</a></span></td>";
+					echo "\n<td><span style='float:left;'><a href='ajax_forms.php?action=getRelatedTitlesForm&titleID=" . $title['titleID'] . "&height=240&width=258&modal=true' class='thickbox'>" . _("view related titles") . "</a><br /><a href='" . $resolverURL  . "' target='_blank'>" . _("view in link resolver") . "</a></span></td>";
 				}else{
 					echo "\n<td>&nbsp;</td>";
 				}
@@ -861,11 +860,11 @@ switch ($action) {
 
 		if (count($titleArray) > 0){
 			?>
-			<h3>Database Titles</h3>
+			<h3><?php echo _("Database Titles");?></h3>
 
 			<table class='verticalFormTable'>
 			<tr>
-				<th style='max-width:440px;'><b>Title</b></th>
+				<th style='max-width:440px;'><b><?php echo _("Title");?></b></th>
 			</tr>
 
 			<?php
@@ -1008,7 +1007,7 @@ switch ($action) {
 		?>
 			<tr>
 			<td width="149"><?php echo $yearly_stat['Title']; ?></td>
-			<td width="40">Total<td>
+			<td width="40"><?php echo _("Total");?><td>
 			<td width="40" ><?php echo $yearly_stat['totalCount']; ?></td>
 			<td width="40"><input name="overrideTotalCount_<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>" id="overrideTotalCount_<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>" type="text"value="<?php echo $yearly_stat['overrideTotalCount']; ?>" size="6" maxlength="6"/></td>
 			<td width="40"><a href="javascript:updateYTDOverride('<?php echo $yearly_stat['yearlyUsageSummaryID']; ?>', 'overrideTotalCount')"><?php echo _("update");?></a></td>
@@ -1133,14 +1132,14 @@ switch ($action) {
 					}
 				}
 
-										if ($pageStart == $nextPageStarts){
-													echo "<span class='smallText'><i class='fa fa-forward'></i></span>&nbsp;";
-										}else{
-													echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");'><i class='fa fa-forward'></i></a>&nbsp;";
-										}
-								}else{
-										echo "<br />";
-								}
+				if ($pageStart == $nextPageStarts){
+					echo "<span class='smallText'><i class='fa fa-forward'></i></span>&nbsp;";
+				}else{
+					echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");'><i class='fa fa-forward'></i></a>&nbsp;";
+				}
+			}else{
+				echo "<br />";
+			}
 
 			//making table larger so it fills the page more
 			echo "<table class='dataTable' style='width:630px; max-width:630px;'>";
@@ -1166,8 +1165,8 @@ switch ($action) {
 				echo "<td $classAdd style='padding:3px;'>" . format_date($importLog['dateTime'], "%m/%e/%y %I:%i %p") . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . $importLog['loginID'] . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . nl2br($importLog['details']) . "</td>";
-				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog['logFileURL'] . "'>view log</a></td>";
-				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog['archiveFileURL'] . "'>view archive</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog['logFileURL'] . "'>" . _("view log") . "</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='" . $importLog['archiveFileURL'] . "'>" . _("view archive") . "</a></td>";
 				echo "</tr>";
 			}
 
@@ -1252,8 +1251,8 @@ switch ($action) {
 				echo "<td $classAdd style='padding:3px;'><a href='publisherPlatform.php?" . $urlstring . "'>" . $obj->name . "</a></td>";
 				echo "<td $classAdd style='padding:3px;'>" . format_date($sushi['importDateTime']) . "</td>";
 				echo "<td $classAdd style='padding:3px;'>" . nl2br($sushi['details']) . "</td>";
-				echo "<td $classAdd style='padding:3px;'><a href='uploadConfirmation.php?importLogID=" . $sushi['importLogID'] . "'>view to process</a></td>";
-				echo "<td $classAdd style='padding:3px;'><a href='javascript:deleteImportLog(" . $sushi['importLogID'] . ")'>delete import</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='uploadConfirmation.php?importLogID=" . $sushi['importLogID'] . "'>" . _("view to process") . "</a></td>";
+				echo "<td $classAdd style='padding:3px;'><a href='javascript:deleteImportLog(" . $sushi['importLogID'] . ")'>" . _("delete import") . "</a></td>";
 				echo "</tr>";
 			}
 			echo "</table>";
@@ -1517,7 +1516,7 @@ switch ($action) {
 				<th><table class='noBorderTable'><tr><td><?php echo _("Next Run");?></td><td class='arrow'><a href='javascript:setOrder("serviceDayOfMonth","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("serviceDayOfMonth","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 				<th><table class='noBorderTable'><tr><td><?php echo _("Latest Run");?></td><td class='arrow'><a href='javascript:setOrder("importDateTime","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("ImportDateTime","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 				<th><table class='noBorderTable'><tr><td><?php echo _("Latest Status");?></td><td class='arrow'><a href='javascript:setOrder("details","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("details","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
-				<th><table class='noBorderTable'><tr><td>By</td><td class='arrow'><a href='javascript:setOrder("loginID","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("loginID","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
+				<th><table class='noBorderTable'><tr><td><?php echo _("By");?></td><td class='arrow'><a href='javascript:setOrder("loginID","asc");'><img src='images/arrowup.png' border=0></a>&nbsp;<a href='javascript:setOrder("loginID","desc");'><img src='images/arrowdown.png' border=0></a></td></tr></table></th>
 			</tr>
 
 			<?php
@@ -1568,17 +1567,17 @@ switch ($action) {
 			?>
 			</table>
 
-								<table style='width:100%;margin-top:4px'>
-								<tr>
-								<td style='text-align:left'>
-								<?php
-								//print out page selectors
-								if ($totalRecords > $numberOfRecords){
-										if ($pageStart == "1"){
-													echo "<span class='smallerText'><i class='fa fa-backward'></i></span>&nbsp;";
-										}else{
-													echo "<a href='javascript:setPageStart(1);' class='smallLink'><i class='fa fa-backward'></i></a>&nbsp;";
-										}
+			<table style='width:100%;margin-top:4px'>
+			<tr>
+			<td style='text-align:left'>
+			<?php
+			//print out page selectors
+			if ($totalRecords > $numberOfRecords){
+				if ($pageStart == "1"){
+					echo "<span class='smallerText'><i class='fa fa-backward'></i></span>&nbsp;";
+				}else{
+					echo "<a href='javascript:setPageStart(1);' class='smallLink'><i class='fa fa-backward'></i></a>&nbsp;";
+				}
 
 				$maxDisplay=41;
 				if ((($totalRecords/$numberOfRecords)+1) < $maxDisplay){
@@ -1598,30 +1597,30 @@ switch ($action) {
 					}
 				}
 
-										if ($pageStart == $nextPageStarts){
-													echo "<span class='smallerText'><i class='fa fa-forward'></i></span>&nbsp;";
-										}else{
-													echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'><i class='fa fa-forward'></i></a>&nbsp;";
-										}
-								}
-								?>
-								</td>
-								<td style="text-align:right">
-								<select id='numberOfRecords' name='numberOfRecords' onchange='javascript:setNumberOfRecords();' style='width:50px;'>
-										<?php
-										for ($i=5; $i<=50; $i=$i+5){
-													if ($i == $numberOfRecords){
-															echo "<option value='" . $i . "' selected>" . $i . "</option>";
-													}else{
-															echo "<option value='" . $i . "'>" . $i . "</option>";
-													}
-										}
-										?>
-								</select>
-								<span class='smallText'><?php echo _("records per page");?></span>
-								</td>
-								</tr>
-								</table>
+				if ($pageStart == $nextPageStarts){
+					echo "<span class='smallerText'><i class='fa fa-forward'></i></span>&nbsp;";
+				}else{
+					echo "<a href='javascript:setPageStart(" . $nextPageStarts  .");' class='smallLink'><i class='fa fa-forward'></i></a>&nbsp;";
+				}
+			}
+			?>
+			</td>
+			<td style="text-align:right">
+			<select id='numberOfRecords' name='numberOfRecords' onchange='javascript:setNumberOfRecords();' style='width:50px;'>
+				<?php
+				for ($i=5; $i<=50; $i=$i+5){
+					if ($i == $numberOfRecords){
+						echo "<option value='" . $i . "' selected>" . $i . "</option>";
+					}else{
+						echo "<option value='" . $i . "'>" . $i . "</option>";
+					}
+				}
+				?>
+			</select>
+			<span class='smallText'><?php echo _("records per page");?></span>
+			</td>
+			</tr>
+			</table>
 
 			<?php
 		}

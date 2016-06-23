@@ -78,7 +78,7 @@
 
 
  function updateImportDetails(){
-	$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
+	$('.div_mainContent').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Processing..."));
 
        $.ajax({
           type:       "GET",
@@ -96,7 +96,7 @@
 
 
  function updateLoginDetails(){
-	$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
+	$('.div_mainContent').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Processing..."));
 
        $.ajax({
           type:       "GET",
@@ -114,7 +114,7 @@
 
 
  function updateFullStatsDetails(){
-	$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
+	$('.div_mainContent').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Processing..."));
 
        $.ajax({
           type:       "GET",
@@ -133,10 +133,10 @@
 
 
  function updateTitleDetails(titleID){
-	$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
+	$('.div_mainContent').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Processing..."));
 
  	if (titleID != ''){
- 		$('#span_' + titleID + '_feedback').html('&nbsp;&nbsp;<img src = "images/circle.gif">Loading...');
+ 		$('#span_' + titleID + '_feedback').html("&nbsp;&nbsp;<img src = 'images/circle.gif'>" + _("Loading..."));
  	}
        $.ajax({
           type:       "GET",
@@ -152,7 +152,7 @@
  }
 
  function updateSushiDetails(){
-	$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
+	$('.div_mainContent').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Processing..."));
 
        $.ajax({
           type:       "GET",
@@ -223,8 +223,8 @@
 
 
   function deleteMonth(resourceType, month, year, archiveInd, publisherPlatformID, platformID){
-	if (confirm("Do you really want to delete this month?") == true) {
-		$('.div_mainContent').html('<img src = "images/circle.gif">&nbsp;&nbsp;Processing...');
+	if (confirm(_("Do you really want to delete this month?")) == true) {
+		$('.div_mainContent').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Processing..."));
 
 		$.ajax({
 		  type:       "GET",
@@ -260,7 +260,7 @@
 
 
 function testService(sushiServiceID){
-  $('.div_mainContent').find('#div_test_service').html('<img src = "images/circle.gif">&nbsp;&nbsp;Running...<br />');
+  $('.div_mainContent').find('#div_test_service').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Running...") + "<br />");
 
   $.ajax({
           type:       "GET",

@@ -18,7 +18,6 @@
 
 $(document).ready(function()
 {
-
     updateSearch();
 
     //perform search if enter is hit
@@ -29,8 +28,6 @@ $(document).ready(function()
             updateSearch();
         }
     });
-
-
 });
 
 
@@ -41,9 +38,7 @@ var startWith = '';
 
 function updateSearch()
 {
-    $("#div_feedback").html("<img src='images/circle.gif'>  <span style='font-size:90%'>Processing...</span>");
-
-
+    $("#div_feedback").html("<img src='images/circle.gif'>  <span style='font-size:90%'>" + _("Processing...") + "</span>");
     $.ajax(
     {
         type: "GET",
@@ -55,12 +50,8 @@ function updateSearch()
             $("#div_feedback").html("&nbsp;");
             $('#div_searchResults').html(html);
         }
-
-
     });
-
 }
-
 
 function setOrder(column, direction)
 {
@@ -68,13 +59,11 @@ function setOrder(column, direction)
     updateSearch();
 }
 
-
 function setPageStart(pageStartNumber)
 {
     pageStart = pageStartNumber;
     updateSearch();
 }
-
 
 function setNumberOfRecords(numberOfRecordsNumber)
 {
@@ -82,9 +71,6 @@ function setNumberOfRecords(numberOfRecordsNumber)
     numberOfRecords = $("#numberOfRecords").val();
     updateSearch();
 }
-
-
-
 
 function setStartWith(startWithLetter)
 {

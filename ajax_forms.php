@@ -58,7 +58,6 @@ switch ($action) {
 		<td>
 		<input type='text' id='emailAddress' name='emailAddress' value='<?php if (isset($_GET['logEmailAddressID']) && ($_GET['logEmailAddressID'] != '')) echo $logEmailAddress->emailAddress; ?>' style='width:190px;'/>
 		</td>
-
 		<td>
 		<a href='javascript:doSubmitLogEmailAddress();' id='addButton' class='submit-button'><?php echo strtolower($addUpdate); ?></a>
 		</td>
@@ -74,9 +73,9 @@ switch ($action) {
 				   if(e.keyCode == 13) {
 					   doSubmitLogEmailAddress();
 				   }
-					});
+		   });
 
-				</script>
+		</script>
 
 
 		<?php
@@ -93,9 +92,9 @@ switch ($action) {
 
 		if ((isset($_GET['sushiServiceID'])) && ($_GET['sushiServiceID'] != '')){
 			$sushiServiceID = $_GET['sushiServiceID'];
-				$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $sushiServiceID)));
+ 			$sushiService = new SushiService(new NamedArguments(array('primaryKey' => $sushiServiceID)));
 
-				$sushiService->setDefaultImportDates();
+ 			$sushiService->setDefaultImportDates();
 
 			?>
 			<div id='div_sushiRunForm'>
@@ -103,20 +102,20 @@ switch ($action) {
 			<input type='hidden' id='sushiServiceID' name='sushiServiceID' value='<?php echo $sushiServiceID; ?>'>
 			<table class="thickboxTable" style="width:300px;padding:2px;">
 				<tr>
-					<td colspan='2'><span class='headerText'><?php echo _("SUSHI Service for ");?><?php echo $sushiService->getServiceProvider; ?></span><br /> <?php echo _("Optional Parameters");?><span id='span_errors' style='color:red;'><br /></span><br /></td>
+					<td colspan='2'><span class='headerText'><?php echo _("SUSHI Service for");?> <?php echo $sushiService->getServiceProvider; ?></span><br /> <?php echo _("Optional Parameters");?><span id='span_errors' style='color:red;'><br /></span><br /></td>
 				</tr>
 				<tr>
 					<td style='vertical-align:top;text-align:right;width:85px;'><label for='startDate'><b><?php echo _("Start Date:");?></b></label></td>
 					<td><input type='text' id='startDate' name='startDate' value="<?php echo $sushiService->startDate; ?>" style='width:90px;' /> (yyyy-mm-dd)<span id='span_error_startDate' style='color:red'></span></td>
 				</tr>
 				<tr>
-										<td style='vertical-align:top;text-align:right;'><label for='endDate'><b><?php echo _("End Date:");?></b></label></td>
+					<td style='vertical-align:top;text-align:right;'><label for='endDate'><b><?php echo _("End Date:");?></b></label></td>
 					<td><input type='text' id='endDate' name='endDate' value="<?php echo $sushiService->endDate; ?>" style='width:90px;' /> <?php echo _("(yyyy-mm-dd)");?><span id='span_error_endDate' style='color:red'></span></td>
 				</tr>
 				<tr>
 					<td style='vertical-align:top;text-align:right;'><input type='checkbox' id='overwritePlatform' name='overwritePlatform' value='1' checked /></td>
 					<td>
-					&nbsp;<?php echo _("Ensure platform name stays CORAL's Platform Name: ");?><?php echo $sushiService->getServiceProvider; ?>"
+					&nbsp;<?php echo _("Ensure platform name stays CORAL's Platform Name: ") . $sushiService->getServiceProvider;?>"
 					</td>
 				</tr>
 
@@ -160,7 +159,7 @@ switch ($action) {
 		<div id='div_updateForm'>
 		<input type='hidden' id='updateOutlierID' name='updateOutlierID' value='<?php echo $outlierID; ?>'>
 		<table class="thickboxTable" style="width:300px;padding:2px;">
-						<tr><td colspan='2'><span class='headerText'><?php echo _("Update Outlier - ");?><b>Level <?php echo $outlier->outlierLevel; ?></b></span><br /><br /></td></tr>
+		<tr><td colspan='2'><span class='headerText'><?php echo _("Update Outlier");?> - <b><?php echo _("Level");?> <?php echo $outlier->outlierLevel; ?></b></span><br /><br /></td></tr>
 		<tr><td style='vertical-align:top;text-align:right;'><label for='overageCount'><b><?php echo _("Count Over");?></b></label></td><td><input type='text' id='overageCount' name='overageCount' value="<?php echo $outlier->overageCount; ?>" style='width:140px;' /><span id='span_error_overageCount' style='color:red'></span></td></tr>
 		<tr><td style='vertical-align:top;text-align:right;'><label for='overagePercent'><b><?php echo _("% Over prior 12 months");?></b></label></td><td><input type='text' id='overagePercent' name='overagePercent' value="<?php echo $outlier->overagePercent; ?>" style='width:140px;' /><span id='span_error_overagePercent' style='color:red'></span></td></tr>
 
@@ -189,7 +188,7 @@ switch ($action) {
 				  }
 			});
 
-				</script>
+		</script>
 
 		<?php
 
@@ -239,9 +238,9 @@ switch ($action) {
 				   if(e.keyCode == 13) {
 					   updateReportDisplayName();
 				   }
-					});
+		   });
 
-				</script>
+		</script>
 
 
 		<?php
@@ -251,7 +250,7 @@ switch ($action) {
 
 	case 'getPlatformNoteForm':
 		if (isset($_GET['platformNoteID'])) $platformNoteID = $_GET['platformNoteID']; else $platformNoteID = '';
-			if (isset($_GET['platformID'])) $platformID = $_GET['platformID'];
+		if (isset($_GET['platformID'])) $platformID = $_GET['platformID'];
 
 
 		if ($platformNoteID) $addUpdate = _('Update'); else $addUpdate = _('Add');
@@ -293,14 +292,14 @@ switch ($action) {
 		<input type='hidden' id='platformID' name='platformID' value='<?php echo $platformID; ?>'>
 		<table class="thickboxTable" style="width:400px;padding:2px;">
 			<tr>
-				<td colspan='2'><span class='headerText'><?php echo $addUpdate; ?><?php echo _(" Interface Notes");?></span><span id='span_errors' style='color:red;'><br /></span><br /></td>
+				<td colspan='2'><span class='headerText'><?php echo $addUpdate . ' ' . _("Interface Notes");?></span><span id='span_errors' style='color:red;'><br /></span><br /></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='startYear'><b><?php echo _("Start Year:");?></b></label></td>
 				<td><input type='text' id='startYear' name='startYear' value="<?php echo $platformNote->startYear; ?>" style='width:90px;' /><span id='span_error_startYear' style='color:red'></span></td>
 			</tr>
 			<tr>
-								<td style='vertical-align:top;text-align:right;'><label for='endYear'><b><?php echo _("End Year:");?></b></label></td>
+				<td style='vertical-align:top;text-align:right;'><label for='endYear'><b><?php echo _("End Year:");?></b></label></td>
 				<td><input type='text' id='endYear' name='endYear' value="<?php echo $endYear; ?>" style='width:90px;' /><span id='span_error_endYear' style='color:red'></span></td>
 			</tr>
 			<tr>
@@ -348,7 +347,7 @@ switch ($action) {
 
 	case 'getPublisherNoteForm':
 		if (isset($_GET['publisherPlatformNoteID'])) $publisherPlatformNoteID = $_GET['publisherPlatformNoteID']; else $publisherPlatformNoteID = '';
-			if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
+		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
 
 		if ($publisherPlatformNoteID){
 			$addUpdate = _('Update');
@@ -371,7 +370,7 @@ switch ($action) {
 		<input type='hidden' id='publisherPlatformID' name='publisherPlatformID' value='<?php echo $publisherPlatformID; ?>'>
 		<table class="thickboxTable" style="width:310px;padding:2px;">
 			<tr>
-				<td colspan='2'><span class='headerText'><?php echo $addUpdate; ?> <?php echo _("Publisher Notes");?></span><span id='span_errors' style='color:red;'><br /></span><br /></td>
+				<td colspan='2'><span class='headerText'><?php echo $addUpdate . ' ' . _("Publisher Notes");?></span><span id='span_errors' style='color:red;'><br /></span><br /></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='startYear'><b><?php echo _("Start Year:");?></b></label></td>
@@ -414,8 +413,8 @@ switch ($action) {
 
 	case 'getLoginForm':
 		if (isset($_GET['externalLoginID'])) $externalLoginID = $_GET['externalLoginID']; else $externalLoginID = '';
-			if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
-			if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID']; else $publisherPlatformID = '';
+		if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
+		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID']; else $publisherPlatformID = '';
 
 		if ($externalLoginID){
 			$addUpdate = _('Update');
@@ -435,7 +434,7 @@ switch ($action) {
 		<input type='hidden' id='publisherPlatformID' name='publisherPlatformID' value='<?php echo $publisherPlatformID; ?>'>
 		<table class="thickboxTable" style="width:320px;padding:2px;">
 			<tr>
-				<td colspan='2'><span class='headerText'><?php echo $addUpdate; ?> <?php echo _("Login");?></span><span id='span_errors' style='color:red;'><br /></span><br /></td>
+				<td colspan='2'><span class='headerText'><?php echo $addUpdate . ' ' . _("Login");?></span><span id='span_errors' style='color:red;'><br /></span><br /></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='username'><b><?php echo _("Username:");?></b></label></td>
@@ -479,7 +478,7 @@ switch ($action) {
 	//sushi service information
 	case 'getSushiForm':
 		$sushiServiceID = $_GET['sushiServiceID'];
-			$platformID = $_GET['platformID'];
+		$platformID = $_GET['platformID'];
 			
 
 		if ($sushiServiceID){
@@ -497,18 +496,18 @@ switch ($action) {
 		<input type='hidden' id='platformID' name='platformID' value='<?php echo $platformID; ?>'>
 		<table class="thickboxTable" style="width:500px;padding:2px;">
 			<tr>
-				<td colspan='2'><span class='headerText'><?php echo $addUpdate; ?> <?php echo _("SUSHI Connection");?></span><span id='span_errors' style='color:red;'><br /></span><br /></td>
+				<td colspan='2'><span class='headerText'><?php echo $addUpdate . ' ' . _("SUSHI Connection");?></span><span id='span_errors' style='color:red;'><br /></span><br /></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='serviceURL'><b><?php echo _("Service/Endpoint URL:");?></b></label></td>
 				<td><input type='text' id='serviceURL' name='serviceURL' value="<?php if ($sushiServiceID) echo $sushiService->serviceURL; ?>" style='width:330px;' />
-					<br /><span class="smallDarkRedText"><?php echo _(" - if using COUNTER's WSDL");?></span>
+					<br /><span class="smallDarkRedText"> - <?php echo _("if using COUNTER's WSDL");?></span>
 					<span id='span_error_serviceURL' style='color:red'></span></td>
 			</tr>
 			<tr>
-				<td style='vertical-align:top;text-align:right;width:135px;'><label for='wsdlURL'><b><?php echo _(" - or - WSDL URL:");?></b></label></td>
+				<td style='vertical-align:top;text-align:right;width:135px;'><label for='wsdlURL'><b> - <?php echo _("or - WSDL URL:");?></b></label></td>
 				<td><input type='text' id='wsdlURL' name='wsdlURL' value="<?php if ($sushiServiceID) echo $sushiService->wsdlURL; ?>" style='width:330px;' />
-					<br /><span class="smallDarkRedText"><?php echo _(" - if not using COUNTER's WSDL");?></span></td>
+					<br /><span class="smallDarkRedText"> - <?php echo _("if not using COUNTER's WSDL");?></span></td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;width:135px;'><label for='reportLayouts'><b><?php echo _("Report Type(s):");?></b></label></td>
@@ -540,22 +539,25 @@ switch ($action) {
 					<span id='span_error_security' style='color:red'></span></td>
 			</tr>
 			<tr>
-								<td style='vertical-align:top;text-align:right;'><label for='login'><b><?php echo _("Login:");?></b></label></td>
+				<td style='vertical-align:top;text-align:right;'><label for='login'><b><?php echo _("Login:");?></b></label></td>
 				<td><input type='text' id='login' name='login' value="<?php if ($sushiServiceID) echo $sushiService->login; ?>" style='width:150px;' />
-					<span class="smallDarkRedText"><?php echo _("(optional)");?><br /><?php echo _(" -  only needed for HTTP or WSSE Authentication");?></span>
-					<span id='span_error_login' style='color:red'></span></td>
+					<span class="smallDarkRedText"><?php echo _("(optional)") . "<br /> - " . _("only needed for HTTP or WSSE Authentication");?></span>
+					<span id='span_error_login' style='color:red'></span>
+				</td>
 			</tr>
 			<tr>
-								<td style='vertical-align:top;text-align:right;'><label for='password'><b><?php echo _("Password:");?></b></label></td>
+				<td style='vertical-align:top;text-align:right;'><label for='password'><b><?php echo _("Password:");?></b></label></td>
 				<td><input type='text' id='password' name='password' value="<?php if ($sushiServiceID) echo $sushiService->password; ?>" style='width:150px;' />
-					<span class="smallDarkRedText">(optional)<br /><?php echo _(" - only needed for HTTP or WSSE Authentication");?></span>
-					<span id='span_error_password' style='color:red'></span></td>
+					<span class="smallDarkRedText"><?php echo _("(optional)") . "<br /> - " . _("only needed for HTTP or WSSE Authentication");?></span>
+					<span id='span_error_password' style='color:red'></span>
+				</td>
 			</tr>
 			
 			<tr>
 				<td style='vertical-align:top;text-align:right;'><label for='serviceDayOfMonth'><b><?php echo _("Service Day:");?></b></label></td>
 				<td><input type='text' id='serviceDayOfMonth' name='serviceDayOfMonth' value="<?php if ($sushiServiceID) echo $sushiService->serviceDayOfMonth; ?>" style='width:50px;' />
-					<span class="smallDarkRedText"><?php echo _("(optional)");?><br /><?php echo _(" - number indicating the day of month the service should run");?><br /><?php echo _("(e.g. 27 will run 27th of every month)");?></span><span id='span_error_serviceDay' style='color:red'></span></td>
+					<span class="smallDarkRedText"><?php echo _("(optional)") . "<br /> - " . _("number indicating the day of month the service should run") . "<br />" . _("(e.g. 27 will run 27th of every month)");?></span><span id='span_error_serviceDay' style='color:red'></span>
+				</td>
 			</tr>
 			<tr>
 				<td style='vertical-align:top;text-align:right;'><label for='noteText'><b><?php echo _("Sushi Notes:");?></b></label></td>
@@ -586,7 +588,7 @@ switch ($action) {
 
 
 	//form to edit associated organizations
-		case 'getOrganizationForm':
+    case 'getOrganizationForm':
 
 		$publisherPlatformID = $_GET['publisherPlatformID'];
 		$platformID = $_GET['platformID'];
@@ -635,7 +637,7 @@ switch ($action) {
 
 		<?php
 
-				break;
+        break;
 
 
 
@@ -643,7 +645,7 @@ switch ($action) {
 
 	case 'getMonthlyOutlierForm':
 		if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
-			if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
+ 		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
 
 		$archiveInd = $_GET['archiveInd'];
 		$year = $_GET['year'];
@@ -681,14 +683,14 @@ switch ($action) {
 		<?php
 
 			if ($totalRows == 0){
-				echo "<tr><td>None currently</td></tr>";
+				echo "<tr><td>" . _("None currently") . "</td></tr>";
 			}else{
 				foreach($statsArray as $monthlyStat){
 					echo "<tr>";
 					echo "<td style='width:170px;'>" . $monthlyStat['Title']. "<span id='span_error_overrideUsageCount_" . $monthlyStat['monthlyUsageSummaryID'] . "' style='color:red;'></span></td>";
 					echo "<td style='width:50px;text-align:center;background-color:" . $monthlyStat['color'] . "'>" . $monthlyStat['usageCount'] . "</td>";
 					echo "<td style='width:55px;'><input type='text' name = 'overrideUsageCount_" . $monthlyStat['monthlyUsageSummaryID'] . "' id = 'overrideUsageCount_" . $monthlyStat['monthlyUsageSummaryID'] . "' value='" . $monthlyStat['overrideUsageCount'] . "' style='width:50px'></td>";
-					echo "<td style='width:80px;'><a href=\"javascript:updateOverride('" . $monthlyStat['monthlyUsageSummaryID'] . "');\" style='font-size:100%;'>update override</a><br /><a href=\"javascript:ignoreOutlier('" . $monthlyStat['monthlyUsageSummaryID'] . "');\" style='font-size:100%;'>" . _("ignore outlier") . "</a></td>";
+					echo "<td style='width:80px;'><a href=\"javascript:updateOverride('" . $monthlyStat['monthlyUsageSummaryID'] . "');\" style='font-size:100%;'>" . _("update override") . "</a><br /><a href=\"javascript:ignoreOutlier('" . $monthlyStat['monthlyUsageSummaryID'] . "');\" style='font-size:100%;'>" . _("ignore outlier") . "</a></td>";
 					echo "</tr>";
 				}
 			}
@@ -719,7 +721,7 @@ switch ($action) {
 
 	case 'getYearlyOverrideForm':
 		if (isset($_GET['platformID'])) $platformID = $_GET['platformID']; else $platformID = '';
-			if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
+ 		if (isset($_GET['publisherPlatformID'])) $publisherPlatformID = $_GET['publisherPlatformID'];
 
 		$archiveInd = $_GET['archiveInd'];
 		$year = $_GET['year'];
@@ -748,7 +750,7 @@ switch ($action) {
 		<div id='div_overrideForm'>
 		<table class="thickboxTable" style="background-image:url('images/tbtitle.gif');width:410px;">
 		<tr>
-		<td><span class='headerText'><?php echo $nameDisplay; ?></span><br /><?php echo _("(showing only titles for which there were outliers during the year)");?></td>
+			<td><span class='headerText'><?php echo $nameDisplay; ?></span><br /><?php echo _("(showing only titles for which there were outliers during the year)");?></td>
 		</tr>
 		<tr>
 
@@ -757,7 +759,7 @@ switch ($action) {
 		<?php
 
 			if ($totalRows == 0){
-				echo "<tr><td>None currently</td></tr>";
+				echo "<tr><td>" . _("None currently") . "</td></tr>";
 			}else{
 				foreach($statsArray as $yearlyStat){
 				?>
@@ -770,7 +772,7 @@ switch ($action) {
 					</tr>
 					<tr>
 					<td width="149"><span id="span_error_<?php echo $yearlyStat['yearlyUsageSummaryID']; ?>_response" style='color:red;'></span></td>
-					<td width="40">PDF</td>
+					<td width="40"><?php echo _("PDF");?></td>
 					<td width="40"><?php echo $yearlyStat['ytdPDFCount']; ?></td>
 					<td width="40"><input name="overridePDFCount_<?php echo $yearlyStat['yearlyUsageSummaryID']; ?>" id="overridePDFCount_<?php echo $yearlyStat['yearlyUsageSummaryID']; ?>" type="text"value="<?php echo $yearlyStat['overridePDFCount']; ?>" size="6" maxlength="6"/></td>
 					<td width="40"><a href="javascript:updateYTDOverride('<?php echo $yearlyStat['yearlyUsageSummaryID']; ?>', 'overridePDFCount')"><?php echo _("update");?></a></td>
@@ -906,7 +908,7 @@ switch ($action) {
 
 	//Related Titles (this form is display only)
 	case 'getRelatedTitlesForm':
-			if (isset($_GET['titleID'])) $titleID = $_GET['titleID'];
+ 		if (isset($_GET['titleID'])) $titleID = $_GET['titleID'];
 
 		$title = new Title(new NamedArguments(array('primaryKey' => $titleID)));
 
@@ -983,15 +985,15 @@ switch ($action) {
 		?>
 		<div id='div_updateForm'>
 		<table class="thickboxTable" style="width:245px;padding:2px;">
-		<tr><td colspan='3'><span class='headerText'><?php echo $update; ?><?php echo _(" User");?></span><br /><br /></td></tr>
-						<tr><td colspan='2' style='width:135px;'><label for='loginID'><b><?php echo _("Login ID");?></b></label></td><td><input type='text' id='loginID' name='loginID' value='<?php echo $loginID; ?>' style='width:140px;' /></td></tr>
-						<tr><td colspan='2'><label for='firstName'><b><?php echo _("First Name");?></b></label></td><td><input type='text' id='firstName' name='firstName' value="<?php if (isset($updateUser)) echo $updateUser->firstName; ?>" style='width:140px;' /></td></tr>
-						<tr><td colspan='2'><label for='lastName'><b><?php echo _("Last Name");?></b></label></td><td><input type='text' id='lastName' name='lastName' value="<?php if (isset($updateUser)) echo $updateUser->lastName; ?>" style='width:140px;' /></td></tr>
-						<tr><td><label for='privilegeID'><b><?php echo _("Privilege");?></b></label></td>
+		<tr><td colspan='3'><span class='headerText'><?php echo $update . ' ' . _(" User");?></span><br /><br /></td></tr>
+		<tr><td colspan='2' style='width:135px;'><label for='loginID'><b><?php echo _("Login ID");?></b></label></td><td><input type='text' id='loginID' name='loginID' value='<?php echo $loginID; ?>' style='width:140px;' /></td></tr>
+		<tr><td colspan='2'><label for='firstName'><b><?php echo _("First Name");?></b></label></td><td><input type='text' id='firstName' name='firstName' value="<?php if (isset($updateUser)) echo $updateUser->firstName; ?>" style='width:140px;' /></td></tr>
+		<tr><td colspan='2'><label for='lastName'><b><?php echo _("Last Name");?></b></label></td><td><input type='text' id='lastName' name='lastName' value="<?php if (isset($updateUser)) echo $updateUser->lastName; ?>" style='width:140px;' /></td></tr>
+		<tr><td><label for='privilegeID'><b><?php echo _("Privilege");?></b></label></td>
 		<td>
 				<fieldset id="foottip">
 				<a href="#footnote_priv"><img src='images/help.gif'></a>
-				<div id="footnote_priv" style='display:none;'><?php echo _("Add/Edit users have access to everything");?><br /><?php echo _("except the Admin tab and admin users");?><br /><?php echo _("have access to everything");?></div>
+				<div id="footnote_priv" style='display:none;'><?php echo _("Add/Edit users have access to everything") . "<br />" . _("except the Admin tab and admin users") . "<br />" . _("have access to everything");?></div>
 				</fieldset>
 
 		</td>
@@ -1037,8 +1039,8 @@ switch ($action) {
 
 
 	default:
-				echo _("Function ") . $_REQUEST['function'] . _(" not set up!");
-				break;
+       echo _("Function ") . $_REQUEST['function'] . _(" not set up!");
+       break;
 
 
 }

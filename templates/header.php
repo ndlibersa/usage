@@ -37,7 +37,7 @@ $coralURL = $util->getCORALURL();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Usage Statistics - <?php echo $pageTitle; ?></title>
+<title><?php echo _("Usage Statistics") . ' - ' . $pageTitle;?></title>
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="css/jquery.tooltip.css" type="text/css" media="screen" />
@@ -69,7 +69,7 @@ $coralURL = $util->getCORALURL();
 <script type="text/javascript" src="js/common.js"></script>
 </head>
 <body>
-<noscript><font face=arial>JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then <a href="">try again</a>. </font></noscript>
+<noscript><font face='arial'><?php echo _("JavaScript must be enabled in order for you to use CORAL. However, it seems JavaScript is either disabled or not supported by your browser. To use CORAL, enable JavaScript by changing your browser options, then ");?><a href=""><?php echo _("try again");?></a>. </font></noscript>
 <center>
 <div class="wrapper">
 <center>

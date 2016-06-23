@@ -39,7 +39,7 @@ include 'templates/header.php';
 			$publisherPlatform = new PublisherPlatform();
 			foreach($platformObj->getPublisherPlatforms() as $publisherPlatform) {
 				$publisher = new Publisher(new NamedArguments(array('primaryKey' => $publisherPlatform->publisherID)));
-				echo $publisher->name . "&nbsp;&nbsp;<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatform->publisherPlatformID . "'>view / edit</a><br />";
+				echo $publisher->name . "&nbsp;&nbsp;<a href='publisherPlatform.php?publisherPlatformID=" . $publisherPlatform->publisherPlatformID . "'>" . _("view / edit") . "</a><br />";
 			}
 
 			echo "</div>";

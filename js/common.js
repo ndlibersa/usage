@@ -1,3 +1,20 @@
+/*
+**************************************************************************************************************************
+** CORAL Usage Statistics Module v. 1.0
+**
+** Copyright (c) 2010 University of Notre Dame
+**
+** This file is part of CORAL.
+**
+** CORAL is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+**
+** CORAL is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License along with CORAL.  If not, see <http://www.gnu.org/licenses/>.
+**
+**************************************************************************************************************************
+*/
+
 //image preloader
 (function($)
 {
@@ -15,10 +32,6 @@
     }
 })(jQuery)
 
-
-
-
-
 $(function()
 {
 
@@ -33,35 +46,7 @@ $(function()
             $('.coraldropdown:eq(0)', this).slideUp(100);
         });
     });
-
-    //for swapping menu images
-    $('.rollover').hover(function() {
-        var currentImg = $(this).attr('src');
-        $(this).attr('src', $(this).attr('hover'));
-        $(this).attr('hover', currentImg);
-        
-        if ($(this).attr('id') == 'menu-last'){
-            var endImg = $("#menu-end").attr('src');
-            $('#menu-end').attr('src', $("#menu-end").attr('hover'));
-            $('#menu-end').attr('hover', endImg);
-        }
-        }, function() {
-        var currentImg = $(this).attr('src');
-        $(this).attr('src', $(this).attr('hover'));
-        $(this).attr('hover', currentImg);
-        
-        if ($(this).attr('id') == 'menu-last'){
-            var endImg = $("#menu-end").attr('src');
-            $('#menu-end').attr('src', $("#menu-end").attr('hover'));
-            $('#menu-end').attr('hover', endImg);
-        }
-        
-     });
-     
 });
-
-
-
 
 
 var displayInds = [];
@@ -84,8 +69,6 @@ function toggleDivState(divID, intDisplay)
     }
 }
 
-
-
 // 1 visible, 0 hidden
 function toggleDivs(platformID)
 {
@@ -95,8 +78,10 @@ function toggleDivs(platformID)
 
     divID = 'div_' + platformID;
 
-
-    if (typeof displayInds[divID] == "undefined") displayInds[divID] = 1;
+    if (typeof displayInds[divID] == "undefined")
+    {
+    	displayInds[divID] = 1;
+    }
 
     toggleDivState(divID, displayInds[divID]);
 
@@ -108,20 +93,16 @@ function toggleDivs(platformID)
     {
 	displayInds[divID] = 0;
     }
-
-
 }
 
 
 function replaceSpecial(myString)
 {
-
     var re = new RegExp(/.?&/);
 
     myString = myString.replace(/\//gi, "\\/");
 
     return myString.replace(/\./gi, "\\.");
-
 }
 
 
@@ -213,10 +194,6 @@ function validateDate(field, alerttxt)
     return true;
 }
 
-
-
-
-
 function postwith(to, p)
 {
     var myForm = document.createElement("form");
@@ -261,8 +238,6 @@ if (!Array.prototype.indexOf)
     };
 }
 
-
-
 function isEmpty(value)
 {
     var error = "";
@@ -280,7 +255,6 @@ function isEmpty(value)
 
 function isISSN(value)
 {
-
     value = value.replace('-', '');
 
     if (value.length == 8)
@@ -295,8 +269,6 @@ function isISSN(value)
     }
 
 }
-
-
 
 function isYear(value)
 {

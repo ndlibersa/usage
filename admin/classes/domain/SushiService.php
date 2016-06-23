@@ -183,9 +183,9 @@ class SushiService extends DatabaseObject {
 		}
 
 		if ($reportLayouts == ""){
-			echo "At least one report type must be set up!";
+			echo _("At least one report type must be set up!");
 		}else{
-			echo "Connection test successful!";
+			echo _("Connection test successful!");
 		}
 
 	}
@@ -208,7 +208,7 @@ class SushiService extends DatabaseObject {
 		}
 
 		if ($reportLayouts == ""){
-			return "No report types are set up!";
+			return _("No report types are set up!");
 		}
 
 		return implode("\n", $detailsForOutput);
@@ -473,41 +473,58 @@ class SushiService extends DatabaseObject {
 		    }
 
 		}
+		$uStartArray = explode("-",$this->startDate);
+		$usd = $uStartArray[2];//the start day used to find the unix timestamp for the start date
+		$usm = $uStartArray[1];//the start month used to find the unix timestamp for the start date
+		$usy = $uStartArray[0];//the start year used to find the unix timestamp for the start date
+		$uStartDate = mktime(0,0,0,$usm,$usd,$usy);//finds the unix timestamp for the start date
+		//Do exactly the same thing for the end date
+		$uEndDate = explode("-", $this->endDate);
+		$ued = $uEndDate[2];
+		$uem = $uEndDate[1];
+		$uey = $uEndDate[0];
+		$uEndDate = mktime(0,0,0,$uem,$ued,$uey);
+		if (($uEndDate-$uStartDate)<31536000){
+			try{
+				$reportRequest = array
+				('Requestor' => array
+					('ID' => $this->requestorID,
+						'Name' => 'CORAL Processing',
+						'Email' => $this->requestorID
+					),
+					'CustomerReference' => array
+					('ID' => $this->customerID,
+						'Name' => 'CORAL Processing'
+					),
+					'ReportDefinition'  => array
+					('Filters' => array
+						('UsageDateRange' => array
+							('Begin' => $this->startDate,
+								'End' => $this->endDate
+							)
+						),
+						'Name' => $reportLayout,
+						'Release' => $releaseNumber
+					),
+					'Created' => $createDate,
+					'ID' => $id,
+					'connection_timeout' => 1000
+				);
+				$dateError=FALSE;
 
-		try{
-			$reportRequest = array
-	             ('Requestor' => array
-	               ('ID' => $this->requestorID,
-	                 'Name' => 'CORAL Processing',
-	                 'Email' => $this->requestorID
-	               ),
-	               'CustomerReference' => array
-	               ('ID' => $this->customerID,
-	                 'Name' => 'CORAL Processing'
-	               ),
-	               'ReportDefinition'  => array
-	               ('Filters' => array
-	                 ('UsageDateRange' => array
-	                   ('Begin' => $this->startDate,
-	                     'End' => $this->endDate
-	                   )
-	                 ),
-	                 'Name' => $reportLayout,
-	                 'Release' => $releaseNumber
-	               ),
-	               'Created' => $createDate,
-	               'ID' => $id,
-	               'connection_timeout' => 1000
-	             );
+				$result = $client->GetReport($reportRequest);
+			}catch(Exception $e){
+				$error = $e->getMessage();
 
-		    $result = $client->GetReport($reportRequest);
-		}catch(Exception $e){
-		    $error = $e->getMessage();
+				$this->logStatus("Exception performing GetReport with connection to $serviceProvider: $error");
 
-		    $this->logStatus("Exception performing GetReport with connection to $serviceProvider: $error");
-
-		    //exceptions seem to happen that don't matter, continue processing and if no data or error is found then it will quit.
-		    //$this->saveLogAndExit($reportLayout);
+				//exceptions seem to happen that don't matter, continue processing and if no data or error is found then it will quit.
+				//$this->saveLogAndExit($reportLayout);
+			}
+		}
+		else {
+			$dateError = TRUE;
+			$this->logStatus("Invalid Dates entered. Must enter a start and end date less than or equal to one year apart.");
 		}
 
 		$xml = $client->__getLastResponse();
@@ -554,8 +571,8 @@ class SushiService extends DatabaseObject {
 				$this->logStatus("$serviceProvider says: $severity: $message");
 			}
 		}
-
-		$this->log("$reportLayout successfully retrieved from $serviceProvider for start date:  $this->startDate, end date: $this->endDate");
+		if (!$dateError)
+			$this->log("$reportLayout successfully retrieved from $serviceProvider for start date:  $this->startDate, end date: $this->endDate");
 
 		$this->log("");
 		$this->log("-- Sushi Transfer completed --");
@@ -591,6 +608,19 @@ class SushiService extends DatabaseObject {
 		$layoutCode = "";
 		$countArray = array('ytd'=>null,'pdf'=>null,'html'=>null);
 		$txtOut = "";
+		$startDateArr = explode("-", $this -> startDate);
+		$endDateArr = explode("-", $this -> endDate);
+		$startYear = $startDateArr[0];
+		$startMonth = $startDateArr[1];
+		$endYear = $endDateArr[0];
+		$endMonth = $endDateArr[1];
+		$numMonths = 0;
+		if ($startMonth > $endMonth)
+			$numMonths = (13 - ($startMonth - $endMonth));
+		else if ($endMonth > $startMonth)
+			$numMonths = ($endMonth - $startMonth);
+		else
+			$numMonths = 1;
 		$m = null; //month
 
 		while ($reader->read()) {
@@ -620,9 +650,36 @@ class SushiService extends DatabaseObject {
 	  				$layoutCode = $reportLayout . "_R" . $this->releaseNumber;
 
 					$layoutKey = $layoutsArray['ReportTypes'][$layoutCode];
-		  			$layoutColumns = $layoutsArray[$layoutKey]['columns'];
-	  			}
-				
+					$layoutColumns = $layoutsArray[$layoutKey]['columns'];
+
+					///////////////////////////////////////////////////////
+					// Create header for SUSHI file
+					///////////////////////////////////////////////////////
+					$header = $layoutColumns;
+					$startMonthArray = array('jan' => 1, 'feb' => 2, 'mar' => 3, 'apr' => 4, 'may' => 5, 'jun' => 6, 'jul' => 7, 'aug' => 8, 'sep' => 9, 'oct' => 10, 'nov' => 11, 'dec' => 12);
+					for ($i = 0; $i < sizeof($header); $i++) {
+						foreach ($startMonthArray as $monthName => $monthNumber) {
+							if($header[$i] == $monthName && $monthNumber >= $startMonth) {
+								$header[$i] .= "-$startYear";
+								break;
+							}
+							else if ($header[$i] == $monthName && $monthNumber < $startMonth){
+								$header[$i] .= "-$endYear";
+								break;
+							}
+						}
+					}
+					for ($i = 12; $i > 0; $i--) {
+						if ($startMonth > $endMonth && $i < $startMonth && $i > $endMonth)
+							$header[(count($header) - 13)+$i] .= "-x";
+						else if ($endMonth > $startMonth && ($i < $startMonth || $i > $endMonth))
+							$header[(count($header) - 13)+$i] .= "-x";
+						else if ($endMonth == $startMonth && $i < $startMonth && $i > $endMonth)
+							$header[(count($header) - 13)+$i] .= "-x";
+					}
+					$txtOut .= implode($header, "\t") . "\n";
+				}
+
 				$this->log("Layout validated successfully against layouts.ini : " . $layoutCode);
 				
 

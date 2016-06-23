@@ -1,6 +1,6 @@
 <?php
 
-$pageTitle='Home';
+$pageTitle=_('Home');
 
 include 'templates/header.php';
 

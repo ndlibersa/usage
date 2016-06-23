@@ -72,7 +72,6 @@ if (isset($logText)) {
 			<div id="div_OutstandingSushiImports"></div>
 
 			<br /><br /><br />
-
 			<div class="headerText" style='margin-bottom:9px;'><?php echo _("Last Failed SUSHI Imports");?>&nbsp;&nbsp;&nbsp;<span id='span_failed_feedback'></span></div>
 			<div id="div_FailedSushiImports"></div>
 

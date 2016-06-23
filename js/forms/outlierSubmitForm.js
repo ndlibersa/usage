@@ -91,7 +91,7 @@ function ignoreOutlier(monthlyUsageSummaryIDValue){
 //validates fields
 function validateForm (monthlyUsageSummaryIDValue){
 	myReturn=0;
-	if (!validateRequired('overrideUsageCount_' + monthlyUsageSummaryIDValue, '<br />' + _('Count is required.  If you wish to remove the count the outlier should be ignored.'))) myReturn="1";
+	if (!validateRequired('overrideUsageCount_' + monthlyUsageSummaryIDValue, "<br />" + _("Count is required.  If you wish to remove the count the outlier should be ignored."))) myReturn="1";
 	if (myReturn == "1"){
 		return false;
 	}else{

@@ -68,7 +68,7 @@ function submitIdentifier(){
 function validateForm (){
 	myReturn=0;
 	if (!isIdentifier($("#identifier").val())){
-		$('#span_error_Identifier').html('<br />Identifier must be valid format.');
+		$('#span_error_Identifier').html("<br />" + _("Identifier must be valid format."));
 		myReturn=1;
 	}
 	

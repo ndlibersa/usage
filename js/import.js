@@ -35,7 +35,7 @@
  var pageStart = '1';
 
  function updateImportTable(){
-       $('#span_feedback').html('<img src = "images/circle.gif">&nbsp;&nbsp;Loading...');
+       $('#span_feedback').html("<img src = 'images/circle.gif'>&nbsp;&nbsp;" + _("Loading..."));
        $.ajax({
           type:       "GET",
           url:        "ajax_htmldata.php",
@@ -62,7 +62,7 @@ function setPageStart(pageStartNumber){
 function validateForm(){
 
 	  if ($("#usageFile").val() == '') {
-	  	$('#span_error').html('&nbsp;' + _('Please select a file.'));
+	  	$('#span_error').html('&nbsp;' + _("Please select a file."));
 	  	return false;
 	  }else{
 	  	$('#span_error').html('');
