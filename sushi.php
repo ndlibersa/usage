@@ -23,7 +23,7 @@ session_start();
 include_once 'directory.php';
 
 //print header
-$pageTitle='SUSHI Import';
+$pageTitle=_('SUSHI Import');
 include 'templates/header.php';
 
 
@@ -42,7 +42,7 @@ if ((isset($_POST['sushiServiceID'])) and ($_POST['sushiServiceID'] > 0)) {
 		$logText = $e->getMessage();
 	}
 
-	$logText = "<div class='headerText'>Sushi Output Log:</div>" . nl2br($logText) . "<br /><br />";
+	$logText = "<div class='headerText'>"._("Sushi Output Log:")."</div>" . nl2br($logText) . "<br /><br />";
 }
 
 ?>
@@ -50,16 +50,15 @@ if ((isset($_POST['sushiServiceID'])) and ($_POST['sushiServiceID'] > 0)) {
 	<script type="text/javascript" src="js/sushi.js"></script>
 
 	<table class="headerTable" style="background-image:url('images/header.gif');background-repeat:no-repeat;">
-	<tr><td>
-		<table style='width:897px;'>
-		<tr style='vertical-align:top'>
-		<td><span class="headerText">SUSHI Administration</span><br /></td>
-		<td style='text-align:right;'>&nbsp;</td>
-		</tr>
-		</table>
+		<tr><td>
+			<table style='width:897px;'>
+			<tr style='vertical-align:top'>
+			<td><span class="headerText"><?php echo _("SUSHI Administration");?></span><br /></td>
+			<td style='text-align:right;'>&nbsp;</td>
+			</tr>
+			</table>
 
-
-			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'><img src="images/plus.gif" / > Add new platform for SUSHI</a>
+			<a href='ajax_forms.php?action=getAddPlatformForm&height=150&width=325&modal=true' class='thickbox' id='uploadDocument'><img src="images/plus.gif" / > <?= _("Add new platform for SUSHI");?></a>
 
 			<br /><br /><div id="div_run_feedback"><?php
 
@@ -68,16 +67,16 @@ if (isset($logText)) {
 }
 
 ?></div><br />
-			<div class="headerText" style='margin-bottom:9px;'>Outstanding Import Queue&nbsp;&nbsp;&nbsp;<span id='span_outstanding_feedback'></span></div>
+			<div class="headerText" style='margin-bottom:9px;'><?php echo _("Outstanding Import Queue"); ?>&nbsp;&nbsp;&nbsp;<span id='span_outstanding_feedback'></span></div>
 			<div id="div_OutstandingSushiImports"></div>
 
 
 			<br /><br /><br />
-			<div class="headerText" style='margin-bottom:9px;'>Last Failed SUSHI Imports&nbsp;&nbsp;&nbsp;<span id='span_failed_feedback'></span></div>
+			<div class="headerText" style='margin-bottom:9px;'><?php echo _("Last Failed SUSHI Imports");?>&nbsp;&nbsp;&nbsp;<span id='span_failed_feedback'></span></div>
 			<div id="div_FailedSushiImports"></div>
 
 			<br /><br /><br />
-			<div class="headerText" style='margin-bottom:9px;'>All SUSHI Services&nbsp;&nbsp;&nbsp;<span id='span_upcoming_feedback'></span></div>
+			<div class="headerText" style='margin-bottom:9px;'><?php echo _("All SUSHI Services");?>&nbsp;&nbsp;&nbsp;<span id='span_upcoming_feedback'></span></div>
 			<div id="div_AllSushiServices"></div>
 
 

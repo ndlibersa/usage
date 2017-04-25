@@ -1,0 +1,2009 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: messages\n"
+"POT-Creation-Date: 2015-12-21 15:07+0100\n"
+"PO-Revision-Date: 2015-12-22 10:07+0100\n"
+"Last-Translator: Cesar <hernandez.antonio.cesar19@gmail.com>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: /var/lib/lxd/containers/coral/rootfs/home/coral/www/"
+"usage/\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: /var/lib/lxd/containers/coral/rootfs/home/coral/www/"
+"usage\n"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/admin.js:62
+#: js/admin.js:62
+msgid "Do you really want to delete this user?"
+msgstr "Voulez-vous vraiment supprimer cet utilisateur ?"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/admin.js:64
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/index.js:40
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:81
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:99
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:117
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:136
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:155
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:227
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/sushi.js:80
+#: js/admin.js:64 js/index.js:40 js/publisherPlatform.js:81
+#: js/publisherPlatform.js:99 js/publisherPlatform.js:117
+#: js/publisherPlatform.js:136 js/publisherPlatform.js:155
+#: js/publisherPlatform.js:227 js/sushi.js:80
+msgid "Processing..."
+msgstr "En traitement ..."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/admin.js:135
+#: js/admin.js:135
+msgid "Do you really want to delete this email address?"
+msgstr "Voulez-vous vraiment supprimer cette adresse email?"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/admin.js:199
+#: js/admin.js:199
+msgid "Count over must be a number."
+msgstr "Doit être un nombre"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/admin.js:200
+#: js/admin.js:200
+#, javascript-format
+msgid "% over must be a number."
+msgstr "% dépassement doit être un nombre."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/identifierSubmitForm.js:71
+#: js/forms/identifierSubmitForm.js:71
+msgid "Identifier must be valid format."
+msgstr "L'identifiant doit être dans un format valide."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/organizationForm.js:34
+#: js/forms/organizationForm.js:34
+msgid "This organization doesn't exist in the CORAL Organizations module."
+msgstr "Cette organisation n'existe pas dans le module Organisation de Coral."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/organizationForm.js:97
+#: js/forms/organizationForm.js:97
+msgid "This organization doesn't exist in the CORAL Organizations Module."
+msgstr "Cette organisation n'existe pas dans le module Organisations de Coral."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/outlierSubmitForm.js:94
+#: js/forms/outlierSubmitForm.js:94
+msgid ""
+"Count is required.  If you wish to remove the count the outlier should be "
+"ignored."
+msgstr "Le comptage est requis. Si vous souhaitez supprimer le comptage, les "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/overrideSubmitForm.js:58
+#: js/forms/overrideSubmitForm.js:58
+msgid "Count is required."
+msgstr "Comptage requis"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/platformNoteSubmitForm.js:54
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/publisherNoteSubmitForm.js:55
+#: js/forms/platformNoteSubmitForm.js:54
+#: js/forms/publisherNoteSubmitForm.js:55
+msgid "Start Year must be 4 numbers and start with 19 or 20."
+msgstr ""
+"L'année de départ doit être saisie sur 4 caractères, débutant par 19 ou 20"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/platformNoteSubmitForm.js:55
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/publisherNoteSubmitForm.js:56
+#: js/forms/platformNoteSubmitForm.js:55
+#: js/forms/publisherNoteSubmitForm.js:56
+msgid "End Year must be 4 numbers and start with 19 or 20."
+msgstr ""
+"L'année de fin doit être saisie sur 4 caractères, débutant par 19 ou 20"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/platformNoteSubmitForm.js:56
+#: js/forms/platformNoteSubmitForm.js:56
+msgid "Please choose Yes or No for Counter Compliant."
+msgstr "Choisir Oui ou Non pour compatibilité counter"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/forms/platformSubmitForm.js:71
+#: js/forms/platformSubmitForm.js:71
+msgid "Platform must be entered."
+msgstr "La plateforme doit être saisie."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/import.js:38
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:139
+#: js/import.js:38 js/publisherPlatform.js:139
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin.php:16
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin.php:31
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin.php:46
+#: admin.php:16 admin.php:31 admin.php:46
+msgid "Loading..."
+msgstr "Chargement..."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/import.js:65
+#: js/import.js:65
+msgid "Please select a file."
+msgstr "Sélectionner un fichier"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/index.js:128
+#: js/index.js:128
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1539
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/publisherPlatformList.php:32
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:41
+#: ajax_htmldata.php:1539 publisherPlatformList.php:32 reporting.php:41
+msgid "show publisher list"
+msgstr "Voir la liste des éditeurs"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/index.js:132
+#: js/index.js:132
+msgid "hide publisher list"
+msgstr "Cacher la liste des éditeurs"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:175
+#: js/publisherPlatform.js:175
+msgid "Do you really want to remove this interface note?"
+msgstr "Voulez-vous vraiment supprimer cette note d'interface ?"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:193
+#: js/publisherPlatform.js:193
+msgid "Do you really want to remove this Publisher note?"
+msgstr "Voulez-vous vraiment supprimer cette note d'éditeur ?"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:211
+#: js/publisherPlatform.js:211
+msgid "Do you really want to remove this login information?"
+msgstr "Voulez-vous vraiment supprimer cette information de connexion ?"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:226
+#: js/publisherPlatform.js:226
+msgid "Do you really want to delete this month?"
+msgstr "Voulez-vous vraiment supprimer ce mois ?"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:244
+#: js/publisherPlatform.js:244
+msgid "Do you really want to delete this "
+msgstr "Voulez-vous vraiment supprimer ceci "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatform.js:263
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/sushi.js:104
+#: js/publisherPlatform.js:263 js/sushi.js:104
+msgid "Running..."
+msgstr "En cours..."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatformList.js:35
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/reporting.js:35
+#: js/publisherPlatformList.js:35 js/reporting.js:35
+msgid "show Publisher list"
+msgstr "Afficher la liste des éditeurs"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/publisherPlatformList.js:39
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/reporting.js:39
+#: js/publisherPlatformList.js:39 js/reporting.js:39
+msgid "hide Publisher list"
+msgstr "Cacher la liste des éditeurs"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/js/sushi.js:78
+#: js/sushi.js:78
+msgid "Do you really want to delete this import?"
+msgstr "Voulez-vous vraiment supprimer cet import ?"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/LangCodes.php:17
+#: LangCodes.php:17
+msgid "French"
+msgstr "Français"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/LangCodes.php:18
+#: LangCodes.php:18
+msgid "English"
+msgstr "Anglais"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin.php:2
+#: admin.php:2
+msgid "Administration"
+msgstr "Administration"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin.php:12
+#: admin.php:12
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin.php:13
+#: admin.php:13
+msgid "add new user"
+msgstr "Ajouter utilisateur"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin.php:27
+#: admin.php:27
+msgid "Email addresses for logs"
+msgstr "Adresse email pour les logs"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin.php:28
+#: admin.php:28
+msgid "add new email address"
+msgstr "Ajouter adresse email"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin.php:43
+#: admin.php:43
+msgid "Outlier Parameters"
+msgstr "Paramètres aberrants"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin/classes/common/DBService.php:39
+#: admin/classes/common/DBService.php:39
+msgid "There was a problem with the database: "
+msgstr "Problème avec la base de données: "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin/classes/common/LdapPerson.php:34
+#: admin/classes/common/LdapPerson.php:34
+msgid "Could not connect to "
+msgstr "Impossible de se connecter à "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin/classes/common/Object.php:63
+#: admin/classes/common/Object.php:63
+msgid "Cannot set value for undefined key ("
+msgstr "Impossible d'assigner une valeur indefinie ("
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin/classes/common/Object.php:72
+#: admin/classes/common/Object.php:72
+msgid "Cannot get value for undefined key ("
+msgstr "Impossible de récupérer une valeur indéfinie ("
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin/classes/domain/ImportLog.php:36
+#: admin/classes/domain/ImportLog.php:36
+msgid " (via sushi)"
+msgstr " (via SUSHI)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin/classes/domain/ImportLog.php:42
+#: admin/classes/domain/ImportLog.php:42
+msgid "Failed"
+msgstr "Echec"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin/classes/domain/ImportLog.php:44
+#: admin/classes/domain/ImportLog.php:44
+msgid "awaiting import"
+msgstr "Attente import"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin/classes/domain/SushiService.php:186
+#: admin/classes/domain/SushiService.php:186
+msgid "At least one report type must be set up!"
+msgstr "Il doit y avoir au moins un type de rapport !"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin/classes/domain/SushiService.php:188
+#: admin/classes/domain/SushiService.php:188
+msgid "Connection test successful!"
+msgstr "Test de connexion réussi !"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/admin/classes/domain/SushiService.php:211
+#: admin/classes/domain/SushiService.php:211
+msgid "No report types are set up!"
+msgstr "Aucun type de rapport défini !"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:39
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:170
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:259
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:356
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:423
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:488
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:978
+#: ajax_forms.php:39 ajax_forms.php:170 ajax_forms.php:259 ajax_forms.php:356
+#: ajax_forms.php:423 ajax_forms.php:488 ajax_forms.php:978
+msgid "Update"
+msgstr "Mise à jour"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:43
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:259
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:365
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:429
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:492
+#: ajax_forms.php:43 ajax_forms.php:259 ajax_forms.php:365 ajax_forms.php:429
+#: ajax_forms.php:492
+msgid "Add"
+msgstr "Ajouter"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:55
+#: ajax_forms.php:55
+msgid "Email Address"
+msgstr "Adresse email"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:66
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:231
+#: ajax_forms.php:66 ajax_forms.php:231
+msgid "close"
+msgstr "Fermer"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:107
+#: ajax_forms.php:107
+msgid "SUSHI Service for"
+msgstr "SUSHI Service pour"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:107
+#: ajax_forms.php:107
+msgid "Optional Parameters"
+msgstr "Paramètres optionnels"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:110
+#: ajax_forms.php:110
+msgid "Start Date:"
+msgstr "Date de début:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:114
+#: ajax_forms.php:114
+msgid "End Date:"
+msgstr "Date de fin:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:120
+#: ajax_forms.php:120
+msgid "Ensure platform name stays CORAL's Platform Name:"
+msgstr ""
+"Vérifiez que le nom de la plate-forme reste celui de la plate-forme CORAL:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:129
+#: ajax_forms.php:129
+msgid "submit for processing"
+msgstr "Valider pour exécuter"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:130
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:170
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:328
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:397
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:464
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:573
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:627
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:831
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:885
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:1023
+#: ajax_forms.php:130 ajax_forms.php:170 ajax_forms.php:328 ajax_forms.php:397
+#: ajax_forms.php:464 ajax_forms.php:573 ajax_forms.php:627 ajax_forms.php:831
+#: ajax_forms.php:885 ajax_forms.php:1023
+msgid "cancel"
+msgstr "Annuler"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:143
+#: ajax_forms.php:143
+msgid "No Sushi Service passed in!"
+msgstr "Aucun Sushi Service transmis!"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:164
+#: ajax_forms.php:164
+msgid "Update Outlier"
+msgstr "Mise à jour aberration"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:164
+#: ajax_forms.php:164
+msgid "Level"
+msgstr "Niveau"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:165
+#: ajax_forms.php:165
+msgid "Count Over"
+msgstr "Compte sur"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:166
+#: ajax_forms.php:166
+msgid "Over prior 12 months"
+msgstr "Sur priorité de 12 mois"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:219
+#: ajax_forms.php:219
+msgid "Update Report Display Name"
+msgstr "Modifier le nom du rapport"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:224
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:771
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:778
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:785
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1011
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1018
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1025
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1416
+#: ajax_forms.php:224 ajax_forms.php:771 ajax_forms.php:778 ajax_forms.php:785
+#: ajax_htmldata.php:1011 ajax_htmldata.php:1018 ajax_htmldata.php:1025
+#: ajax_htmldata.php:1416
+msgid "update"
+msgstr "Modifier"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:298
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:377
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:398
+#: ajax_forms.php:298 ajax_htmldata.php:377 ajax_htmldata.php:398
+msgid "Interface Notes"
+msgstr "Notes de l'interface"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:301
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:379
+#: ajax_forms.php:301 ajax_forms.php:379
+msgid "Start Year:"
+msgstr "Année de début:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:305
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:383
+#: ajax_forms.php:305 ajax_forms.php:383
+msgid "End Year:"
+msgstr "Année de fin:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:311
+#: ajax_forms.php:311
+msgid "Yes"
+msgstr "Oui"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:312
+#: ajax_forms.php:312
+msgid "No"
+msgstr "Non"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:318
+#: ajax_forms.php:318
+msgid "Interface Notes:"
+msgstr "Notes de l'interface:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:327
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:396
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:463
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:572
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:626
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:830
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:884
+#: ajax_forms.php:327 ajax_forms.php:396 ajax_forms.php:463 ajax_forms.php:572
+#: ajax_forms.php:626 ajax_forms.php:830 ajax_forms.php:884
+msgid "submit"
+msgstr "Soumettre"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:376
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:321
+#: ajax_forms.php:376 ajax_htmldata.php:321
+msgid "Publisher Notes"
+msgstr "Notes d'éditeur"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:387
+#: ajax_forms.php:387
+msgid "Publisher Notes:"
+msgstr "Notes d'éditeur:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:440
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:470
+#: ajax_forms.php:440 ajax_htmldata.php:470
+msgid "Login"
+msgstr "Connexion"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:443
+#: ajax_forms.php:443
+msgid "Username:"
+msgstr "Nom d'utilisateur:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:447
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:551
+#: ajax_forms.php:447 ajax_forms.php:551
+msgid "Password:"
+msgstr "Mot de passe:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:454
+#: ajax_forms.php:454
+msgid "Login Notes:"
+msgstr "Notes de connexion:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:502
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:459
+#: ajax_forms.php:502 ajax_htmldata.php:459
+msgid "SUSHI Connection"
+msgstr "Connexion SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:505
+#: ajax_forms.php:505
+msgid "Service/Endpoint URL:"
+msgstr "URL de Service/Endpoint"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:507
+#: ajax_forms.php:507
+msgid "if using COUNTER's WSDL"
+msgstr "Si vous utlisez COUNTER WSDL"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:511
+#: ajax_forms.php:511
+msgid "or - WSDL URL:"
+msgstr "ou - l'URL WSDL:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:513
+#: ajax_forms.php:513
+msgid "if not using COUNTER's WSDL"
+msgstr "Si vous n'utilisez pas COUNTER WSDL"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:516
+#: ajax_forms.php:516
+msgid "Report Type(s):"
+msgstr "Types de rapport;"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:518
+#: ajax_forms.php:518
+msgid "separate report types with semi-colon, e.g. JR1;BR1"
+msgstr "séparez les types des reports avec points-virgules, ex. JR1;BR1"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:522
+#: ajax_forms.php:522
+msgid "COUNTER Release:"
+msgstr "Version de COUNTER:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:531
+#: ajax_forms.php:531
+msgid "Requestor ID:"
+msgstr "ID demandeur:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:535
+#: ajax_forms.php:535
+msgid "Customer ID:"
+msgstr "ID client:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:539
+#: ajax_forms.php:539
+msgid "Security Type:"
+msgstr "Type de sécurité:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:541
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:547
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:553
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:560
+#: ajax_forms.php:541 ajax_forms.php:547 ajax_forms.php:553 ajax_forms.php:560
+msgid "(optional)"
+msgstr "(optionnel)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:541
+#: ajax_forms.php:541
+msgid "can be: HTTP Basic, WSSE Authentication"
+msgstr "peut être: HTTP Basique, Authentification WSSE"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:545
+#: ajax_forms.php:545
+msgid "Login:"
+msgstr "Identification:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:547
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:553
+#: ajax_forms.php:547 ajax_forms.php:553
+msgid "only needed for HTTP or WSSE Authentication"
+msgstr "seulement nécessaire pour authentification HTTP ou WSSE"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:558
+#: ajax_forms.php:558
+msgid "Service Day:"
+msgstr "Jour de service:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:560
+#: ajax_forms.php:560
+msgid "number indicating the day of month the service should run"
+msgstr "Le nombre indique le jour du mois ou le service doit être exécuté"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:560
+#: ajax_forms.php:560
+msgid "(e.g. 27 will run 27th of every month)"
+msgstr "(ex. 27 sera exécuté le 27e de chaque mois)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:563
+#: ajax_forms.php:563
+msgid "Sushi Notes:"
+msgstr "Notes SUSHI:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:611
+#: ajax_forms.php:611
+msgid "Link Associated Organization"
+msgstr "Lien à une organisation"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:615
+#: ajax_forms.php:615
+msgid "Organization:"
+msgstr "Organisation"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:686
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:762
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:959
+#: ajax_forms.php:686 ajax_forms.php:762 ajax_htmldata.php:959
+msgid "None currently"
+msgstr "Aucun actuellement"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:693
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:967
+#: ajax_forms.php:693 ajax_htmldata.php:967
+msgid "ignore outlier"
+msgstr "Ignorer aberration"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:702
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:796
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:953
+#: ajax_forms.php:702 ajax_forms.php:796 ajax_forms.php:953
+msgid "Close"
+msgstr "Fermer"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:753
+#: ajax_forms.php:753
+msgid "(showing only titles for which there were outliers during the year)"
+msgstr ""
+"(affiche seulement les titres pour lesquels il y avait des valeurs "
+"aberrantes au cours de l'année)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:768
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1008
+#: ajax_forms.php:768 ajax_htmldata.php:1008
+msgid "Total"
+msgstr "Total"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:775
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1015
+#: ajax_forms.php:775 ajax_htmldata.php:1015
+msgid "PDF"
+msgstr "PDF"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:821
+#: ajax_forms.php:821
+msgid "Add New Platform for SUSHI Connection"
+msgstr "Ajouter une nouvelle plate-forme de connexion SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:822
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1512
+#: ajax_forms.php:822 ajax_htmldata.php:1512
+msgid "Platform Name"
+msgstr "Nom de la plateforme"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:863
+#: ajax_forms.php:863
+msgid "Add Identifier"
+msgstr "Ajouter identifiant"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:864
+#: ajax_forms.php:864
+msgid "Identifier Type"
+msgstr "Type d'identifiant"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:872
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/spreadsheet.php:64
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/spreadsheet.php:84
+#: ajax_forms.php:872 spreadsheet.php:64 spreadsheet.php:84
+msgid "Proprietary ID"
+msgstr "ID du propietaire"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:876
+#: ajax_forms.php:876
+msgid "Identifier"
+msgstr "Identifiant"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:918
+#: ajax_forms.php:918
+msgid "Associated Titles and Identifiers"
+msgstr "Titres et identifiants associés"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:981
+#: ajax_forms.php:981
+msgid "Add New"
+msgstr "Ajouter"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:988
+#: ajax_forms.php:988
+msgid "User"
+msgstr "Utilisateur"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:989
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1400
+#: ajax_forms.php:989 ajax_htmldata.php:1400
+msgid "Login ID"
+msgstr "Identifiant de connexion"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:990
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1401
+#: ajax_forms.php:990 ajax_htmldata.php:1401
+msgid "First Name"
+msgstr "Prénom"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:991
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1402
+#: ajax_forms.php:991 ajax_htmldata.php:1402
+msgid "Last Name"
+msgstr "Nom"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:992
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1403
+#: ajax_forms.php:992 ajax_htmldata.php:1403
+msgid "Privilege"
+msgstr "Privilège"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:996
+#: ajax_forms.php:996
+msgid "Add/Edit users have access to everything"
+msgstr "Ajouter/Modifier utilisateurs pour donner l'accès à tout"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:996
+#: ajax_forms.php:996
+msgid "except the Admin tab and admin users"
+msgstr "à exception l'onglet Admin et les Admin utilisateurs"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:996
+#: ajax_forms.php:996
+msgid "have access to everything"
+msgstr "ont l'accès à tout"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:1042
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1637
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_processing.php:598
+#: ajax_forms.php:1042 ajax_htmldata.php:1637 ajax_processing.php:598
+msgid "Function "
+msgstr "Fonction "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_forms.php:1042
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1637
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_processing.php:598
+#: ajax_forms.php:1042 ajax_htmldata.php:1637 ajax_processing.php:598
+msgid " not set up!"
+msgstr "Non défini!"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:47
+#: ajax_htmldata.php:47
+msgid "Import History for "
+msgstr "Historique d'import pour "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:62
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1145
+#: ajax_htmldata.php:62 ajax_htmldata.php:1145
+msgid "Import Date"
+msgstr "Date d'import"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:63
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1146
+#: ajax_htmldata.php:63 ajax_htmldata.php:1146
+msgid "Imported By"
+msgstr "Importé par"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:64
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1147
+#: ajax_htmldata.php:64 ajax_htmldata.php:1147
+msgid "Import Summary"
+msgstr "Résumé des imports"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:76
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1166
+#: ajax_htmldata.php:76 ajax_htmldata.php:1166
+msgid "view log"
+msgstr "Voir le log"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:77
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1167
+#: ajax_htmldata.php:77 ajax_htmldata.php:1167
+msgid "view archive"
+msgstr "Voir archive"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:82
+#: ajax_htmldata.php:82
+msgid "(no imports found)"
+msgstr "(aucun import)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:96
+#: ajax_htmldata.php:96
+msgid "Publisher Logins"
+msgstr "Identifiants éditeur"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:113
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:174
+#: ajax_htmldata.php:113 ajax_htmldata.php:174
+msgid "Interface Login"
+msgstr "Interface de connexion"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:114
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:175
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:242
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:471
+#: ajax_htmldata.php:114 ajax_htmldata.php:175 ajax_htmldata.php:242
+#: ajax_htmldata.php:471
+msgid "Password"
+msgstr "Mot de passe"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:115
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:176
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:243
+#: ajax_htmldata.php:115 ajax_htmldata.php:176 ajax_htmldata.php:243
+msgid "URL"
+msgstr "URL: "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:116
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:177
+#: ajax_htmldata.php:116 ajax_htmldata.php:177
+msgid "Login Notes"
+msgstr "Notes de connexion:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:128
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:189
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:351
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:420
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:899
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:923
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:340
+#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351
+#: ajax_htmldata.php:420 ajax_htmldata.php:899 ajax_htmldata.php:923
+#: uploadComplete.php:340
+msgid "edit"
+msgstr "Modifier"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:128
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:189
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:351
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:420
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1417
+#: ajax_htmldata.php:128 ajax_htmldata.php:189 ajax_htmldata.php:351
+#: ajax_htmldata.php:420 ajax_htmldata.php:1417
+msgid "remove"
+msgstr "Supprimer"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:138
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:199
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:359
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:428
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:478
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:636
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:663
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:697
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1426
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1534
+#: ajax_htmldata.php:138 ajax_htmldata.php:199 ajax_htmldata.php:359
+#: ajax_htmldata.php:428 ajax_htmldata.php:478 ajax_htmldata.php:636
+#: ajax_htmldata.php:663 ajax_htmldata.php:697 ajax_htmldata.php:1426
+#: ajax_htmldata.php:1534
+msgid "(none found)"
+msgstr "(non trouvé)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:146
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:207
+#: ajax_htmldata.php:146 ajax_htmldata.php:207
+msgid "add new login"
+msgstr "Ajouter connexion"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:157
+#: ajax_htmldata.php:157
+msgid "Interface Logins"
+msgstr "Identifiants interface"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:217
+#: ajax_htmldata.php:217
+msgid "Organization Accounts"
+msgstr "Comptes d'organisation"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:237
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:261
+#: ajax_htmldata.php:237 ajax_htmldata.php:261
+msgid "view organization"
+msgstr "Voir organisation"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:240
+#: ajax_htmldata.php:240
+msgid "Login Type"
+msgstr "Type de connexion:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:241
+#: ajax_htmldata.php:241
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:244
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:338
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:473
+#: ajax_htmldata.php:244 ajax_htmldata.php:338 ajax_htmldata.php:473
+msgid "Notes"
+msgstr "Notes"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:261
+#: ajax_htmldata.php:261
+msgid "No login information stored for "
+msgstr "Pas d'information enregistré pour "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:266
+#: ajax_htmldata.php:266
+msgid "change associated organization"
+msgstr "changer organisations associées"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:275
+#: ajax_htmldata.php:275
+msgid "link to associated organization"
+msgstr "Lien vers l'organisation associée"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:300
+#: ajax_htmldata.php:300
+msgid "Login Credentials are also available for the following publishers:"
+msgstr ""
+"Les identifiants de connexion sont aussi disponibles pour les éditeurs "
+"suivants:"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:336
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:395
+#: ajax_htmldata.php:336 ajax_htmldata.php:395
+msgid "Start Year"
+msgstr "Année de début"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:337
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:396
+#: ajax_htmldata.php:337 ajax_htmldata.php:396
+msgid "End Year"
+msgstr "Année de fin"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:364
+#: ajax_htmldata.php:364
+msgid "add new publisher notes"
+msgstr "Ajouter notes d'éditeur"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:397
+#: ajax_htmldata.php:397
+msgid "Counter"
+msgstr "Counter"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:397
+#: ajax_htmldata.php:397
+msgid "Compliant?"
+msgstr "Conforme?"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:433
+#: ajax_htmldata.php:433
+msgid "add new interface note"
+msgstr "Ajouter une note d'interface"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:463
+#: ajax_htmldata.php:463
+msgid "Service URL"
+msgstr "URL du service"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:465
+#: ajax_htmldata.php:465
+msgid "COUNTER Release"
+msgstr "Version de COUNTER"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:466
+#: ajax_htmldata.php:466
+msgid "Report Layouts"
+msgstr "Mise en page des Rapports"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:467
+#: ajax_htmldata.php:467
+msgid "Requestor ID"
+msgstr "ID demandeur"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:468
+#: ajax_htmldata.php:468
+msgid "Customer ID"
+msgstr "ID client"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:469
+#: ajax_htmldata.php:469
+msgid "Security"
+msgstr "Sécurité"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:472
+#: ajax_htmldata.php:472
+msgid "Service Day"
+msgstr "Jour de service"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:472
+#: ajax_htmldata.php:472
+msgid " (day of month)"
+msgstr " (jour du mois)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:475
+#: ajax_htmldata.php:475
+msgid "Edit SUSHI Connection Info"
+msgstr "Modifier l'information de la connexion SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:476
+#: ajax_htmldata.php:476
+msgid "Test SUSHI Connection"
+msgstr "Vérifier la connexion SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:478
+#: ajax_htmldata.php:478
+msgid "Add SUSHI Connection"
+msgstr "Ajouter une connexion SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:484
+#: ajax_htmldata.php:484
+msgid "Visit the"
+msgstr "Visiter le"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:484
+#: ajax_htmldata.php:484
+msgid "SUSHI Server Registry"
+msgstr "Registre du serveur SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:484
+#: ajax_htmldata.php:484
+msgid "for information about adding your provider."
+msgstr "pour plus d'information à propos de l'ajout d'un fournisseur."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:511
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:600
+#: ajax_htmldata.php:511 ajax_htmldata.php:600
+msgid "delete entire month"
+msgstr "Supprimer le mois complet"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:522
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:604
+#: ajax_htmldata.php:522 ajax_htmldata.php:604
+msgid "view outliers for this month"
+msgstr "regarder les valeurs aberrantes pour ce mois"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:557
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:636
+#: ajax_htmldata.php:557 ajax_htmldata.php:636
+msgid "Statistics Management"
+msgstr "Gestion des statistiques"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:567
+#: ajax_htmldata.php:567
+msgid "(archive)"
+msgstr "(archive)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:576
+#: ajax_htmldata.php:576
+msgid "View Spreadsheet"
+msgstr "Voir la feuille de calcul"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:621
+#: ajax_htmldata.php:621
+msgid "update overrides for this year"
+msgstr "Modifier les surcharges de cette année"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:623
+#: ajax_htmldata.php:623
+msgid "(no outliers found for this year)"
+msgstr "(pas des valeurs aberrantes pour cette année)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:659
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:697
+#: ajax_htmldata.php:659 ajax_htmldata.php:697
+msgid "Titles"
+msgstr "Titres"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:667
+#: ajax_htmldata.php:667
+msgid "View Journal Spreadsheet"
+msgstr "Voir le journal sur feuille de calcul"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:671
+#: ajax_htmldata.php:671
+msgid "View Books Spreadsheet"
+msgstr "Voir les livres sur feuilles de calcul"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:712
+#: ajax_htmldata.php:712
+msgid "Journals - Associated Titles and ISSNs"
+msgstr "Journaux - Titres Associés et ISSNs"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:716
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:791
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:865
+#: ajax_htmldata.php:716 ajax_htmldata.php:791 ajax_htmldata.php:865
+msgid "Title"
+msgstr "Titre"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:759
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:836
+#: ajax_htmldata.php:759 ajax_htmldata.php:836
+msgid "view related titles"
+msgstr "Voir les titres liés"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:759
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:836
+#: ajax_htmldata.php:759 ajax_htmldata.php:836
+msgid "view in link resolver"
+msgstr "Voir dans le résolveur de liens"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:787
+#: ajax_htmldata.php:787
+msgid "Books - Associated Titles and ISBNs"
+msgstr "Livres - Titres Associés et ISBNs"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:861
+#: ajax_htmldata.php:861
+msgid "Database Titles"
+msgstr "Titre de base de données"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:894
+#: ajax_htmldata.php:894
+msgid "Current Email Addresses"
+msgstr "Adresses email actuelles"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:900
+#: ajax_htmldata.php:900
+msgid "delete"
+msgstr "Supprimer"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:919
+#: ajax_htmldata.php:919
+msgid "Current Outlier Parameters"
+msgstr "Paramètres actuels des valeurs aberrantes"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:922
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:89
+#: ajax_htmldata.php:922 uploadComplete.php:89
+msgid " over plus "
+msgstr " surplus "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:922
+#: ajax_htmldata.php:922
+msgid "over - displayed "
+msgstr "Surplus - affiché"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:927
+#: ajax_htmldata.php:927
+msgid ""
+"Outliers are currently disabled in the configuration file.  Contact your "
+"technical support to enable them."
+msgstr ""
+"Les valeurs aberrantes sont desactivées dans le fichier de configuration. "
+"Contactez au votre support technique pour les activer."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:966
+#: ajax_htmldata.php:966
+msgid "update override"
+msgstr "Modifier la surcharge"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1053
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1078
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:36
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:59
+#: ajax_htmldata.php:1053 ajax_htmldata.php:1078 reporting.php:36
+#: reporting.php:59
+msgid "edit report display name"
+msgstr "Modifier le nom du rapport"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1104
+#: ajax_htmldata.php:1104
+msgid "No imports found."
+msgstr "Pas d'import trouvé"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1110
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1470
+#: ajax_htmldata.php:1110 ajax_htmldata.php:1470
+msgid "Displaying "
+msgstr "Affichage "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1110
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1470
+#: ajax_htmldata.php:1110 ajax_htmldata.php:1470
+msgid " to "
+msgstr " à "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1110
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1470
+#: ajax_htmldata.php:1110 ajax_htmldata.php:1470
+msgid " of "
+msgstr " de "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1110
+#: ajax_htmldata.php:1110
+msgid " Records"
+msgstr "fiches"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1226
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1278
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1335
+#: ajax_htmldata.php:1226 ajax_htmldata.php:1278 ajax_htmldata.php:1335
+msgid "Platform/Publisher"
+msgstr "Plateforme/Éditeur"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1227
+#: ajax_htmldata.php:1227
+msgid "Import Run Date"
+msgstr "Date d'exécution de l'import"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1228
+#: ajax_htmldata.php:1228
+msgid "Details"
+msgstr "Détails"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1252
+#: ajax_htmldata.php:1252
+msgid "view to process"
+msgstr "Voir pour procéder"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1253
+#: ajax_htmldata.php:1253
+msgid "delete import"
+msgstr "Supprimer l'import"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1258
+#: ajax_htmldata.php:1258
+msgid "(no outstanding imports found)"
+msgstr "(pas d'import en attente)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1279
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1338
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1515
+#: ajax_htmldata.php:1279 ajax_htmldata.php:1338 ajax_htmldata.php:1515
+msgid "Latest Run"
+msgstr "Dernière exécution"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1280
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1339
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1516
+#: ajax_htmldata.php:1280 ajax_htmldata.php:1339 ajax_htmldata.php:1516
+msgid "Latest Status"
+msgstr "Dernier statut"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1306
+#: ajax_htmldata.php:1306
+msgid "view full log"
+msgstr "Voir le log complet"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1307
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1370
+#: ajax_htmldata.php:1307 ajax_htmldata.php:1370
+msgid "run now"
+msgstr "Exécuter"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1308
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1371
+#: ajax_htmldata.php:1308 ajax_htmldata.php:1371
+msgid "change/test connection"
+msgstr "Changer/Vérifier la connexion"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1315
+#: ajax_htmldata.php:1315
+msgid "(no failed imports found)"
+msgstr "(pas d'import échoué)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1336
+#: ajax_htmldata.php:1336
+msgid "Report(s)"
+msgstr "Rapport(s)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1337
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1514
+#: ajax_htmldata.php:1337 ajax_htmldata.php:1514
+msgid "Next Run"
+msgstr "Prochaine exécution"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1378
+#: ajax_htmldata.php:1378
+msgid "(no sushi services set up)"
+msgstr "(Pas de service SUSHI configuré)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1466
+#: ajax_htmldata.php:1466
+msgid "Sorry, no platforms or publishers fit your query"
+msgstr "Désolé, il n'y a pas de plate-forme/éditeur pour votre requête"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1470
+#: ajax_htmldata.php:1470
+msgid " Platform Records"
+msgstr " Fiches plateforme"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1513
+#: ajax_htmldata.php:1513
+msgid "Publishers"
+msgstr "Éditeurs"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1517
+#: ajax_htmldata.php:1517
+msgid "By"
+msgstr "Par"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_htmldata.php:1618
+#: ajax_htmldata.php:1618
+msgid "records per page"
+msgstr "resultats par page"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_processing.php:395
+#: ajax_processing.php:395
+msgid "Override has been updated"
+msgstr "La surcharge a été mis à jour avec succès"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_processing.php:442
+#: ajax_processing.php:442
+msgid "Platform Reporting Display Name has been updated"
+msgstr "Le nom de la plate-forme des rapports a été modifié"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_processing.php:458
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_processing.php:490
+#: ajax_processing.php:458 ajax_processing.php:490
+msgid "Default display list has been updated"
+msgstr "La liste d'affichage par défault a été modifié"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/ajax_processing.php:474
+#: ajax_processing.php:474
+msgid "Publisher Reporting Display Name has been updated"
+msgstr "Le nom d'affichage pour les rapports a été modifié"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:3
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/index.php:26
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:107
+#: import.php:3 index.php:26 templates/header.php:107
+msgid "Home"
+msgstr "Accueil"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:14
+#: import.php:14
+msgid "Usage Statistics Import"
+msgstr "Import des statistiques d'utilisation"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:25
+#: import.php:25
+msgid "Incorrect File format, must be .txt!"
+msgstr "Format incorrect, doit être .txt !"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:28
+#: import.php:28
+msgid ""
+"There was an error uploading the file.  Please verify the size is not over "
+"5MB and try again!"
+msgstr ""
+"Il y a eu une erreur lors du téléchargement du fichier. Vérifiez que la "
+"taille ne dépasse pas 5Mo."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:31
+#: import.php:31
+msgid "File has an incorrectly formatted name - try filename.txt!"
+msgstr "Le fichier a un nom mal formé - essayez fichier.txt !"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:43
+#: import.php:43
+msgid "File:"
+msgstr "Fichier :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:57
+#: import.php:57
+msgid "Override previous month verification"
+msgstr "Surcharger la vérification du mois précédent"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:58
+#: import.php:58
+msgid "Upload"
+msgstr "Téléchargement"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:68
+#: import.php:68
+msgid "Instructions:"
+msgstr "Instructions :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:70
+#: import.php:70
+msgid "Save file as .txt files in tab delimited format"
+msgstr "Enregistrer comme .txt au format délimité par tabulation"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:71
+#: import.php:71
+msgid "File may not be larger than 5MB"
+msgstr "Le fichier ne peut pas dépasser 5Mo"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:72
+#: import.php:72
+msgid ""
+"Ensure column headers conform to Counter's standards for the report type"
+msgstr ""
+"Vérifiez que les en-têtes de colonne sont conformes au standard counter"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:73
+#: import.php:73
+msgid "More info:"
+msgstr "Plus d'information :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/import.php:82
+#: import.php:82
+msgid "Recent Imports"
+msgstr "Imports récents"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/index.php:49
+#: index.php:49
+msgid "Search"
+msgstr "Recherche"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/index.php:50
+#: index.php:50
+msgid "new search"
+msgstr "Nouvelle"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/index.php:59
+#: index.php:59
+msgid "Name (contains)"
+msgstr "Nom (contient)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/index.php:62
+#: index.php:62
+msgid "go!"
+msgstr "Go !"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/index.php:69
+#: index.php:69
+msgid "Starts with"
+msgstr "Commence par"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/not_avail.php:21
+#: not_avail.php:21
+msgid "Not Available"
+msgstr "Non disponible"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/not_avail.php:61
+#: not_avail.php:61
+msgid ""
+"You have not been set up to have access to the Usage Statistics Module.  "
+"Please contact"
+msgstr ""
+"Vous n'avez pas accès au module des statistiques d'utilisation. Contactez"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/not_avail.php:61
+#: not_avail.php:61
+msgid "to be added."
+msgstr "pour avoir l'accès"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/publisherPlatform.php:20
+#: publisherPlatform.php:20
+msgid "View or Edit Publisher / Platform"
+msgstr "Voir ou modifier l'éditeur/la plateforme"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/publisherPlatformList.php:4
+#: publisherPlatformList.php:4
+msgid "Edit Publishers / Platforms"
+msgstr "Modifier l'éditeur/la plateforme"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/publisherPlatformList.php:16
+#: publisherPlatformList.php:16
+msgid "Publisher / Platform Update"
+msgstr "Modification de l'éditeur/la plateforme"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/publisherPlatformList.php:31
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/publisherPlatformList.php:42
+#: publisherPlatformList.php:31 publisherPlatformList.php:42
+msgid "view / edit"
+msgstr "Voir / modifier"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/publisherPlatformList.php:50
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:71
+#: publisherPlatformList.php:50 reporting.php:71
+msgid "No publishers / platforms found."
+msgstr "Pas d'éditeur / de plateforme trouvée."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:2
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:107
+#: reporting.php:2 templates/header.php:107
+msgid "Report Options"
+msgstr "Options des rapports"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:10
+#: reporting.php:10
+msgid "Publisher / Platform Reporting Administrative Update"
+msgstr ""
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:12
+#: reporting.php:12
+msgid "Directions:"
+msgstr "Directions :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:12
+#: reporting.php:12
+msgid ""
+"Mark the checkboxes to add / remove specific Platforms or Publishers to the "
+"default report list."
+msgstr ""
+"Cocher les cases pour ajouter/enlever les éditeurs ou les plateformes à la "
+"liste des rapports par défaut."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:12
+#: reporting.php:12
+msgid ""
+"Click 'edit report display name' to change the display name in the reporting "
+"system for specific Platforms or Publishers."
+msgstr ""
+"Cliquer sur 'Modifier le nom du rapport' pour modifier le nom du rapport "
+"dans le système, pour un éditeur ou une plateforme spécifique."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:25
+#: reporting.php:25
+msgid "Available"
+msgstr "Disponible"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:25
+#: reporting.php:25
+msgid "As Default"
+msgstr "Par défaut"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/reporting.php:25
+#: reporting.php:25
+msgid "Report"
+msgstr "Rapport"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/spreadsheet.php:60
+#: spreadsheet.php:60
+msgid "Publisher"
+msgstr "Editeur"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/spreadsheet.php:61
+#: spreadsheet.php:61
+msgid "Platform"
+msgstr "Plateforme"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/spreadsheet.php:65
+#: spreadsheet.php:65
+msgid "Print ISSN"
+msgstr "ISSN imprimé"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/spreadsheet.php:66
+#: spreadsheet.php:66
+msgid "Online ISSN"
+msgstr "ISSN électronique"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/spreadsheet.php:124
+#: spreadsheet.php:124
+msgid "Total for all Journals"
+msgstr "Total pour tous les périodiques"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/spreadsheet.php:126
+#: spreadsheet.php:126
+msgid "Total for all Books"
+msgstr "Total pour tous les livres"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/spreadsheet.php:128
+#: spreadsheet.php:128
+msgid "Total for all Databases"
+msgstr "Total pour toutes les bases"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushi.php:26
+#: sushi.php:26
+msgid "SUSHI Import"
+msgstr "Import SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushi.php:45
+#: sushi.php:45
+msgid "Sushi Output Log:"
+msgstr "Logs d'export SUSHI :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushi.php:56
+#: sushi.php:56
+msgid "SUSHI Administration"
+msgstr "Administration SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushi.php:61
+#: sushi.php:61
+msgid "Add new platform for SUSHI"
+msgstr "Ajouter plateforme pour SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushi.php:70
+#: sushi.php:70
+msgid "Outstanding Import Queue"
+msgstr "Queue d'import en attente"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushi.php:75
+#: sushi.php:75
+msgid "Last Failed SUSHI Imports"
+msgstr "Dernier import SUSHI en échec"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushi.php:79
+#: sushi.php:79
+msgid "All SUSHI Services"
+msgstr "Tous services SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushiSchedule.php:33
+#: sushiSchedule.php:33
+msgid " SUSHI runs found for day: "
+msgstr "Exécutions SUSHI pour la journée :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushiSchedule.php:52
+#: sushiSchedule.php:52
+msgid "Log in to"
+msgstr "Se connecter à"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushiSchedule.php:52
+#: sushiSchedule.php:52
+msgid "Sushi Administration"
+msgstr "Administration SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushiSchedule.php:52
+#: sushiSchedule.php:52
+msgid "for more information."
+msgstr "Pour plus d'information"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushiSchedule.php:70
+#: sushiSchedule.php:70
+msgid "Run complete.  Log has been emailed to "
+msgstr "Exécution complète. Les logs ont été envoyés par email à "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushiSchedule.php:72
+#: sushiSchedule.php:72
+msgid "Email to "
+msgstr "Email à "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushiSchedule.php:72
+#: sushiSchedule.php:72
+msgid " Failed!"
+msgstr " Echec !"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/sushiSchedule.php:77
+#: sushiSchedule.php:77
+msgid "Nothing to see here!  (no sushi scheduled today)"
+msgstr "Rien à voir ici ! (pas de SUSHI planifié aujourd'hui)"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:69
+#: templates/header.php:69
+msgid ""
+"JavaScript must be enabled in order for you to use CORAL. However, it seems "
+"JavaScript is either disabled or not supported by your browser. To use "
+"CORAL, enable JavaScript by changing your browser options, then "
+msgstr ""
+"JavaScript doit être activé pour utiliser CORAL. Cependant, il semble que "
+"JavaScript est désactivé ou n'est pas supporté par votre navigateur. Pour "
+"utiliser CORAL, activez JavaScript en modifiant la configuration de votre "
+"navigateur, puis "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:69
+#: templates/header.php:69
+msgid "try again"
+msgstr "réessayez"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:88
+#: templates/header.php:88
+msgid "Hello, "
+msgstr "Bonjour, "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:97
+#: templates/header.php:97
+msgid "logout"
+msgstr "Se déconnecter"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:107
+#: templates/header.php:107
+msgid "File Import"
+msgstr "Importer un fichier"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:107
+#: templates/header.php:107
+msgid "Admin"
+msgstr "Admin"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:109
+#: templates/header.php:109
+msgid "Usage"
+msgstr "Utilisation"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:109
+#: templates/header.php:109
+msgid "Reports"
+msgstr "Rapport"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:124
+#: templates/header.php:124
+msgid "Change Module"
+msgstr "Changer de module"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/templates/header.php:167
+#: templates/header.php:167
+msgid "Invalid translation route!"
+msgstr "Route invalide !"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:25
+#: uploadComplete.php:25
+msgid "Upload Process Complete"
+msgstr "Téléchargement terminé"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:67
+#: uploadComplete.php:67
+msgid "Process started on "
+msgstr "La tâche a commencé le"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:68
+#: uploadComplete.php:68
+msgid "File: "
+msgstr "Fichier :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:69
+#: uploadComplete.php:69
+msgid "Report Format: "
+msgstr "Format du rapport :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:82
+#: uploadComplete.php:82
+msgid "Outlier Parameters:"
+msgstr "Paramêtres aberrations :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:89
+#: uploadComplete.php:89
+msgid "Level "
+msgstr "Niveau"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:89
+#: uploadComplete.php:89
+msgid "over"
+msgstr "dessus"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:269
+#: uploadComplete.php:269
+msgid "Override indicator set - all months will be imported."
+msgstr "Indicateur de surcharge positionné - tous les mois seront importés."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:278
+#: uploadComplete.php:278
+msgid ""
+"Entire year already exists for this Platform / year.  No counts will be "
+"imported."
+msgstr ""
+"Toute l'année existe déjà pour cette plateforme. Aucun comptage ne sera "
+"importé."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:282
+#: uploadComplete.php:282
+msgid "Month Started at: "
+msgstr "Mois débutant le :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:284
+#: uploadComplete.php:284
+msgid ""
+"No records exist for this Platform / year.  Import will start with month 1."
+msgstr ""
+"Il n'y a pas d'import pour cette plateforme / année. L'import démarrera avec "
+"le mois 1."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:287
+#: uploadComplete.php:287
+msgid ""
+"Partial year records exist for this Platform / year.  Import will start with "
+"month 1 and end with month"
+msgstr ""
+"Données partielles pour cette plateforme / année. L'import démarrera avec le "
+"mois 1 et terminera avec le mois "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:306
+#: uploadComplete.php:306
+msgid "Year: "
+msgstr "Année :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:340
+#: uploadComplete.php:340
+msgid "New Platform set up: "
+msgstr "Paramétrage nouvelle plateforme :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:422
+#: uploadComplete.php:422
+msgid "New Publisher / Platform set up: "
+msgstr "Paramétrage plateforme / éditeur :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:655
+#: uploadComplete.php:655
+msgid "Publisher / Platform: "
+msgstr "Editeur / plateforme :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:664
+#: uploadComplete.php:664
+msgid "Title: "
+msgstr "Titre :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:701
+#: uploadComplete.php:701
+msgid "Duplicate record for this Print ISSN in same spreadsheet: Month: "
+msgstr ""
+"Duplication de données pour cet ISSN imprimé dans la même feuille : mois :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:701
+#: uploadComplete.php:701
+msgid "  New Count: "
+msgstr "Nouveau comptage :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:785
+#: uploadComplete.php:785
+msgid "New Usage Count Record Added: Month: "
+msgstr "Nouveau comptage d'utilisation ajouté : mois :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:785
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:787
+#: uploadComplete.php:785 uploadComplete.php:787
+msgid "  Count: "
+msgstr "Comptage :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:787
+#: uploadComplete.php:787
+msgid "Usage Count Record is not numeric for month: "
+msgstr "Le comptage n'est pas un nombre pour le mois :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:787
+#: uploadComplete.php:787
+msgid " imported as 0."
+msgstr "Importé en tant que 0."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:794
+#: uploadComplete.php:794
+msgid "Outlier found for this record: Level "
+msgstr "Aberration trouvée pour cette donnée : niveau"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:803
+#: uploadComplete.php:803
+msgid "Current or future month will not be imported: "
+msgstr "Le mois en cours ou prochain ne sera pas importé :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:842
+#: uploadComplete.php:842
+msgid "YTD Already Exists for this Print ISSN, counts are added together."
+msgstr "YTD existe déjà pour cet ISSN, les comptage seront cumulés."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:866
+#: uploadComplete.php:866
+msgid "YTD Total Count: "
+msgstr "YTD comptage total :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:866
+#: uploadComplete.php:866
+msgid "YTD HTML Count: "
+msgstr "YTD comptage HTML :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:866
+#: uploadComplete.php:866
+msgid "YTD PDF Count: "
+msgstr "YTD comptage PDF :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:873
+#: uploadComplete.php:873
+msgid "No YTD import performed since monthly stats were not imported"
+msgstr ""
+"Aucun import YTD n'a été effectué depuis que les statistiques mensuelles "
+"n'ont plus été importées"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:883
+#: uploadComplete.php:883
+msgid ""
+"Title match did not complete correctly, please check ISBN / ISSN to verify "
+"for Title:  "
+msgstr ""
+"Le titre n'est pas complété correctement, merci de vérifier ISBN / ISSN pour "
+"le titre :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:999
+#: uploadComplete.php:999
+msgid "Status"
+msgstr "Statut"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:1001
+#: uploadComplete.php:1001
+msgid "File archived as"
+msgstr "Fichier archivé en tant que"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:1002
+#: uploadComplete.php:1002
+msgid "Log file available at:"
+msgstr "Fichier de log disponible à :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:1003
+#: uploadComplete.php:1003
+msgid "Process completed."
+msgstr "Tâche terminée."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:1005
+#: uploadComplete.php:1005
+msgid "Summary:"
+msgstr "Résumé :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadComplete.php:1005
+#: uploadComplete.php:1005
+msgid " titles processed."
+msgstr "titres traités."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:33
+#: uploadConfirmation.php:33
+msgid "SUSHI Import Confirmation"
+msgstr "Confirmation de l'import SUSHI"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:70
+#: uploadConfirmation.php:70
+msgid "The file "
+msgstr "Le fichier"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:70
+#: uploadConfirmation.php:70
+msgid " has been uploaded successfully."
+msgstr "a été téléchargé correctement."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:70
+#: uploadConfirmation.php:70
+msgid "Please confirm the following data:"
+msgstr "Merci de confirmer les données suivantes :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:90
+#: uploadConfirmation.php:90
+msgid "Upload Process Confirmation"
+msgstr "Confirmation du téléchargement"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:141
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:206
+#: uploadConfirmation.php:141 uploadConfirmation.php:206
+msgid " for "
+msgstr "pour"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:189
+#: uploadConfirmation.php:189
+msgid "Looking for"
+msgstr "Recherche de"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:189
+#: uploadConfirmation.php:189
+msgid "in column "
+msgstr "dans la colonne "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:189
+#: uploadConfirmation.php:189
+msgid " but found"
+msgstr "mais trouvé"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:264
+#: uploadConfirmation.php:264
+msgid "Error with Format"
+msgstr "Erreur de format"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:264
+#: uploadConfirmation.php:264
+msgid "Report format is set to"
+msgstr "Le format des rapports a été positionné à"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:264
+#: uploadConfirmation.php:264
+msgid ""
+"but does not match the column names listed in layouts.ini for this format"
+msgstr ""
+"mais ne correspond pas aux noms de colonnes définis dans layouts.ini pour ce "
+"format"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:264
+#: uploadConfirmation.php:264
+msgid "Expecting columns: "
+msgstr "Attente des colonnes :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:264
+#: uploadConfirmation.php:264
+msgid "Found columns: "
+msgstr "Trouvé les colonnes : "
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:264
+#: uploadConfirmation.php:264
+msgid ""
+"If problems persist you can copy an existing header that works into this "
+"file."
+msgstr ""
+"Si le problème persiste, copiez un en-tête existant et qui fonctionne dans "
+"ce fichier."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:269
+#: uploadConfirmation.php:269
+msgid "Error with Setup:  This report format is not set up in layouts.ini."
+msgstr ""
+"Erreur de paramétrage : ce format de rapport n'est pas défini dans layouts."
+"ini."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:274
+#: uploadConfirmation.php:274
+msgid ""
+"Error with Format:  The line preceding the first should start with 'Total'."
+msgstr ""
+"Erreur de format : la ligne qui précède la 1ere doit commencer par 'Total'."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:279
+#: uploadConfirmation.php:279
+msgid "Error with Year:  Year listed in header ("
+msgstr "Erreur dans l'année : année listée dans l'en-tête ("
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:279
+#: uploadConfirmation.php:279
+msgid ") may not be ahead of current year.  Please correct and submit again."
+msgstr ""
+") ne peut pas être au delà de l'année actuelle. Merci de corriger et "
+"recommencer."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:284
+#: uploadConfirmation.php:284
+msgid ""
+"File is flagged to override verifications of previous month data.  If this "
+"is incorrect use 'Cancel' to fix."
+msgstr ""
+"Le fichier est marqué pour outrepasser les vérifications du mois dernier. Si "
+"c'est incorrect, utilisez 'annuler' et corrigez."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:291
+#: uploadConfirmation.php:291
+msgid "Report Format:"
+msgstr "Format du rapport :"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:291
+#: uploadConfirmation.php:291
+msgid ""
+"If this is incorrect, please use 'Cancel' to go back and fix the headers of "
+"the file."
+msgstr ""
+"Si c'est incorrect, utilisez 'Annuler' et corriges l'en-tête du fichier."
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:307
+#: uploadConfirmation.php:307
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: /var/lib/lxd/containers/coral/rootfs/home/coral/www/usage/uploadConfirmation.php:310
+#: uploadConfirmation.php:310
+msgid "Cancel"
+msgstr "Annuler"
