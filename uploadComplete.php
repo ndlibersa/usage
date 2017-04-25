@@ -35,7 +35,25 @@ $orgFileName = $_POST['orgFileName'];
 $overrideInd = $_POST['overrideInd'];
 $layoutID = $_POST['layoutID'];
 $importLogID = $_POST['importLogID'];
-$year = $_POST['checkYear'];
+$startDate = $_POST['startDate'];
+$numMonths = $_POST['numMonths'];
+$startYearArr = explode("-", $startDate);
+$startYear = $startYearArr[1];
+$startMonthArr = explode("-", $startDate);
+$startMonth = date("n",strtotime($startMonthArr[0]));
+if ($startMonth == 1) {
+	$endMonth = 12;
+	$endYear = $startYear;
+}
+else {
+	$endMonth = $startMonth - 1;
+	$endYear = $startYear + 1;
+}
+
+if ($_POST['checkYear'] == NULL)
+	$year = $startYear;
+else
+	$year = $_POST['checkYear'];
 $pISSNArray = array();
 $platformArray = array();
 
@@ -64,7 +82,7 @@ if ($importLogID > 0){
 $logSummary = "\n" . $orgFileName;
 
 $topLogOutput = "";
-$logOutput = "Process started on " . date('l jS \of F Y h:i A') . "<br />";
+$logOutput = "Process started on " . date('l \t\h\e jS \o\f F Y \a\t h:i A') . "<br />";
 $logOutput.= "File: " . $uploadedFile . "<br /><br />";
 $logOutput.= "Report Format: " . $reportTypeDisplay . "<br /><br />";
 $monthlyInsert='';
@@ -106,7 +124,7 @@ if ($importLogID > 0){
 	$formatCorrectFlag = "Y";
 	$startFlag = "Y";
 	$logSummary .= " $reportTypeDisplay";
-	$logSummary .= "\n$year for ";
+	$logSummary .= "\nfor ";
 	$overrideInd="1";
 }
 
